@@ -1,0 +1,43 @@
+.login-container {
+  text-align: center;
+  padding: 20px;
+  max-width: 400px;
+  margin: auto;
+}
+
+.toggle-group {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.full-width {
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+mat-checkbox {
+  margin-right: 10px;
+}
+
+button {
+  margin-top: 20px;
+}
+
+.forgot-password {
+  float: right;
+  font-size: 0.9em;
+  text-decoration: none;
+  color: #8c8c8c;
+}
+
+.footer-text {
+  margin-top: 10px;
+  font-size: 0.9em;
+}
+
+.login-row{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

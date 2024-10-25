@@ -1,0 +1,26 @@
+.bottom-menu {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  background-color: #fff;
+  border-top: 1px solid #ccc;
+  padding: 10px 0;
+
+  a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #000;
+    text-decoration: none;
+
+    mat-icon {
+      font-size: 24px;
+    }
+
+    span {
+      font-size: 12px;
+    }
+  }
+}

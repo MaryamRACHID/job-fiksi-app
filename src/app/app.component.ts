@@ -1,13 +1,20 @@
-import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-root',
-  standalone: true,
-  imports: [RouterOutlet],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
-  title = 'job-fiksi-app';
+export class AppComponent implements OnInit {
+  showAuthContainer: boolean = true;
+
+  constructor(private router: Router, private activatedRoute: ActivatedRoute) {}
+
+  ngOnInit() {
+    // Surveille la route actuelle pour cacher ou afficher l'auth-container
+    this.router.events.subscribe(() => {
+      this.showAuthContainer = this.router.url !== '/home';
+    });
+  }
 }
