@@ -1,19 +1,36 @@
 .login-container {
   text-align: center;
-  padding: 20px;
+  padding: 60px 40px 20px 40px;
   max-width: 400px;
   margin: auto;
+  font-size: 12px;
 }
 
 .toggle-group {
-  margin-bottom: 20px;
   display: flex;
   justify-content: center;
+  width: 100%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+}
+
+.toggle-group .mat-button-toggle {
+  width: 50%;
+}
+
+.active-toggle {
+  background-color: #b9b9b9 !important;
+  color: white !important;
 }
 
 .full-width {
   width: 100%;
   margin-bottom: 15px;
+  font-size: 12px;
+}
+
+.textField{
 }
 
 mat-checkbox {
@@ -21,7 +38,9 @@ mat-checkbox {
 }
 
 button {
-  margin-top: 20px;
+  margin-top: 15px;
+  background-color: #ffad00 !important;
+  color: white !important;
 }
 
 .forgot-password {
@@ -36,8 +55,17 @@ button {
   font-size: 0.9em;
 }
 
-.login-row{
+.login-row {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.subtitle {
+  color: gray;
+  font-size: 12px;
+}
+
+.span{
+  color: #ffad00;
 }

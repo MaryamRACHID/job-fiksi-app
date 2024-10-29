@@ -1,22 +1,35 @@
 <div class="login-container">
   <h1>Bienvenue !</h1>
+  <p class="subtitle">Le lorem ipsum est, en imprimerie, une suite de mots sans signification</p>
 
-  <!-- Toggle pour Connexion / Inscription -->
-  <mat-button-toggle-group #group="matButtonToggleGroup" value="connexion" class="toggle-group">
-    <mat-button-toggle value="connexion">Connexion</mat-button-toggle>
-    <mat-button-toggle value="inscription">Inscription</mat-button-toggle>
+  <mat-button-toggle-group
+    #group="matButtonToggleGroup"
+    value="inscription"
+    class="toggle-group"
+  >
+    <mat-button-toggle
+      value="connexion"
+      [class.active-toggle]="group.value === 'connexion'"
+    >
+      Connexion
+    </mat-button-toggle>
+    <mat-button-toggle
+      value="inscription"
+      [class.active-toggle]="group.value === 'inscription'"
+    >
+      Inscription
+    </mat-button-toggle>
   </mat-button-toggle-group>
 
-  <!-- Formulaire de connexion -->
   <div *ngIf="group.value === 'connexion'">
     <mat-form-field appearance="outline" class="full-width">
       <mat-label>Email</mat-label>
-      <input matInput type="email" placeholder="Entrez votre email">
+      <input class="textField" matInput type="email" placeholder="Entrez votre email" />
     </mat-form-field>
 
     <mat-form-field appearance="outline" class="full-width">
       <mat-label>Mot de passe</mat-label>
-      <input matInput type="password" placeholder="Entrez votre mot de passe">
+      <input matInput type="password" placeholder="Entrez votre mot de passe" />
     </mat-form-field>
 
     <div class="login-row">
@@ -24,32 +37,35 @@
       <a href="#" class="forgot-password">Mot de passe oublié ?</a>
     </div>
 
-    <button mat-raised-button color="primary" class="full-width">Me connecter</button>
+    <button mat-raised-button color="primary" class="full-width" (click)="goToProfil()">
+      Me connecter
+    </button>
   </div>
 
-  <!-- Formulaire d'inscription -->
   <div *ngIf="group.value === 'inscription'">
     <mat-form-field appearance="outline" class="full-width">
       <mat-label>Email</mat-label>
-      <input matInput type="email" placeholder="Entrez votre email">
+      <input matInput type="email" placeholder="Entrez votre email" />
     </mat-form-field>
 
     <mat-form-field appearance="outline" class="full-width">
       <mat-label>Mot de passe</mat-label>
-      <input matInput type="password" placeholder="Créez un mot de passe">
+      <input matInput type="password" placeholder="Créez un mot de passe" />
     </mat-form-field>
 
     <mat-form-field appearance="outline" class="full-width">
       <mat-label>Confirmer le mot de passe</mat-label>
-      <input matInput type="password" placeholder="Créez un mot de passe">
+      <input matInput type="password" placeholder="Confirmez le mot de passe" />
     </mat-form-field>
 
     <div class="login-row">
       <mat-checkbox>Rester connecté</mat-checkbox>
     </div>
 
+    <button mat-raised-button color="primary" class="full-width">
+      M'inscrire
+    </button>
 
-    <button mat-raised-button color="primary" class="full-width">M'inscrire</button>
+    <p class="subtitle">Vous avez déja un compte? <span class="span">Se connecter</span></p>
   </div>
-
 </div>

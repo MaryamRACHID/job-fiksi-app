@@ -1,0 +1,26 @@
+.profile-pic {
+  text-align: center;
+}
+
+.gender-selection {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.name-inputs {
+  display: flex;
+  justify-content: center;
+  gap: 20px; // Espace entre le nom et le prénom
+}
+
+mat-form-field {
+  width: 200px; // Ajustez la largeur selon vos besoins
+}
+
+.icon-container{
+  background-color: #a1a1a1;
+  border-radius: 100% !important;
+  border: none;
+  padding: 45px 50px;
+}

@@ -1,0 +1,27 @@
+<h2>Complétez votre profil</h2>
+<p>Préférences professionnelles</p>
+
+<mat-form-field appearance="outline">
+  <mat-label>Type de poste recherché</mat-label>
+  <mat-checkbox [(ngModel)]="jobPreferences.server">Serveur</mat-checkbox>
+  <mat-checkbox [(ngModel)]="jobPreferences.cook">Cuisinier</mat-checkbox>
+  <mat-checkbox [(ngModel)]="jobPreferences.dishwasher">Plongeur</mat-checkbox>
+  <mat-checkbox [(ngModel)]="jobPreferences.other" disabled>Autres</mat-checkbox>
+  <input matInput *ngIf="jobPreferences.other" placeholder="Autres">
+</mat-form-field>
+
+<mat-form-field appearance="outline">
+  <mat-label>Préférence de lieu</mat-label>
+  <input matInput [(ngModel)]="locationPreference">
+</mat-form-field>
+
+<div class="salary-preference">
+  <p>Préférence de salaire</p>
+  <mat-slider min="1000" max="2000" step="100" [(ngModel)]="salaryPreference" thumbLabel></mat-slider>
+  <div class="salary-range">
+    <span>1000€</span>
+    <span>2000€</span>
+  </div>
+</div>
+
+<button mat-raised-button color="primary">Continuer</button>

@@ -1,1 +1,16 @@
-<p>description works!</p>
+<div class="container">
+  <h2>Complétez votre profil</h2>
+  <p>Expériences professionnelles (restauration)</p>
+
+  <mat-checkbox [(ngModel)]="hasExperience">Avez-vous déjà travaillé dans la restauration ?</mat-checkbox>
+
+  <mat-form-field class="full-width" *ngIf="hasExperience">
+    <mat-label>Description rapide des expériences</mat-label>
+    <textarea matInput [(ngModel)]="description"></textarea>
+  </mat-form-field>
+
+  <mat-form-field class="full-width">
+    <mat-label>Compétences spécifiques</mat-label>
+    <textarea matInput [(ngModel)]="skills"></textarea>
+  </mat-form-field>
+</div>

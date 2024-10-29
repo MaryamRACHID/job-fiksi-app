@@ -8,8 +8,8 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent {
   constructor(private router: Router) {}
-  goToHome() {
-    this.router.navigate(['/home']);
+  goToProfil() {
+    this.router.navigate(['/profil']);
   }
 
   switchToRegister(event: Event) {
@@ -19,4 +19,6 @@ export class LoginComponent {
       group.setAttribute('value', 'inscription');
     }
   }
+
+
 }

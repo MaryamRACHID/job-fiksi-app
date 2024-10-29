@@ -1,0 +1,12 @@
+<div class="container">
+  <h2>Complétez votre profil</h2>
+  <p>Disponibilités</p>
+  <mat-selection-list [(ngModel)]="availability">
+    <mat-list-option *ngFor="let day of days" [value]="day">{{ day }}</mat-list-option>
+  </mat-selection-list>
+
+  <p>Périodes disponibles</p>
+  <mat-checkbox [(ngModel)]="morning">Matin</mat-checkbox>
+  <mat-checkbox [(ngModel)]="afternoon">Après-midi</mat-checkbox>
+  <mat-checkbox [(ngModel)]="evening">Soir</mat-checkbox>
+</div>

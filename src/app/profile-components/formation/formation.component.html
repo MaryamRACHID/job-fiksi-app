@@ -1,0 +1,38 @@
+<div class="container">
+  <h2>Complétez votre profil</h2>
+  <p>Formation</p>
+
+  <!--
+  <mat-form-field class="full-width">
+    <mat-label>Niveau d'études</mat-label>
+    <mat-select [(ngModel)]="education.level">
+      <mat-option *ngFor="let level of educationLevels" [value]="level">{{ level }}</mat-option>
+    </mat-select>
+  </mat-form-field>-->
+
+  <div *ngFor="let diploma of diplomas; let i = index" class="diploma">
+    <mat-form-field class="full-width">
+      <mat-label>Nom de la formation</mat-label>
+      <input matInput [(ngModel)]="diploma.name">
+    </mat-form-field>
+    <mat-form-field class="full-width">
+      <mat-label>Établissement</mat-label>
+      <input matInput [(ngModel)]="diploma.institution">
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Début</mat-label>
+      <input matInput [matDatepicker]="startPicker{{i}}" [(ngModel)]="diploma.startDate">
+      <mat-datepicker-toggle matSuffix [for]="startPicker{{i}}"></mat-datepicker-toggle>
+      <mat-datepicker #startPicker{{i}}></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Fin</mat-label>
+      <input matInput [matDatepicker]="endPicker{{i}}" [(ngModel)]="diploma.endDate">
+      <mat-datepicker-toggle matSuffix [for]="endPicker{{i}}"></mat-datepicker-toggle>
+      <mat-datepicker #endPicker{{i}}></mat-datepicker>
+    </mat-form-field>
+  </div>
+
+  <button mat-button (click)="addDiploma()">Ajouter une formation</button>
+</div>
