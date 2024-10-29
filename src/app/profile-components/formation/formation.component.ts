@@ -3,7 +3,7 @@ import { Component, Output, EventEmitter } from '@angular/core';
 @Component({
   selector: 'app-formation',
   templateUrl: './formation.component.html',
-  styleUrl: './formation.component.scss'
+  styleUrls: ['./formation.component.scss'] // Correction ici
 })
 export class FormationComponent {
   @Output() formationInfoChange = new EventEmitter<any>();

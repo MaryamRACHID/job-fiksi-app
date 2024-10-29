@@ -3,7 +3,7 @@ import { Component, Output, EventEmitter } from '@angular/core';
 @Component({
   selector: 'app-experiences',
   templateUrl: './experiences.component.html',
-  styleUrl: './experiences.component.scss'
+  styleUrls: ['./experiences.component.scss']
 })
 export class ExperiencesComponent {
   @Output() experienceInfoChange = new EventEmitter<any>();
