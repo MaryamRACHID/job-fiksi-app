@@ -1,0 +1,35 @@
+.header {
+  background: linear-gradient(to bottom, #fbbc04, #fff);
+  padding: 16px;
+  text-align: center;
+}
+
+.logo {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.content {
+  padding: 16px;
+}
+
+.company-info mat-icon {
+  color: #fbbc04;
+  margin-right: 8px;
+}
+
+.advantages mat-chip {
+  margin: 4px;
+  background-color: #fbbc04;
+  color: #fff;
+}
+
+.social-links mat-icon {
+  color: #fbbc04;
+  margin-right: 8px;
+}

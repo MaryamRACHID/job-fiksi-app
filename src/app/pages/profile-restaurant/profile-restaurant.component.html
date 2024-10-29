@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<mat-toolbar color="primary">
+  <button mat-icon-button>
+    <mat-icon>arrow_back</mat-icon>
+  </button>
+  <span> Burger King </span>
+  <span class="spacer"></span>
+  <button mat-icon-button>
+    <mat-icon>share</mat-icon>
+  </button>
+  <button mat-icon-button>
+    <mat-icon>settings</mat-icon>
+  </button>
+</mat-toolbar>
+
+<div class="header">
+  <img src="assets/burger-king-logo.png" alt="Logo de l'entreprise" class="logo" />
+</div>
+
+<mat-tab-group>
+  <mat-tab label="Mes informations personnelles"></mat-tab>
+  <mat-tab label="Mes offres"></mat-tab>
+</mat-tab-group>
+
+<div class="content">
+  <section class="company-info">
+    <h2>Nom entreprise</h2>
+    <p><mat-icon>email</mat-icon> examplegmail.com</p>
+    <p><mat-icon>phone</mat-icon> 01 63 52 74 25</p>
+    <p><mat-icon>location_on</mat-icon> Lyon, 69 003</p>
+    <p><mat-icon>restaurant</mat-icon> Type de restaurant <strong>Fast - Food</strong></p>
+  </section>
+
+  <section class="description">
+    <h3>Description</h3>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+    <a href="#">Voir les postes</a>
+  </section>
+
+  <section class="advantages">
+    <h3>Avantages</h3>
+    <mat-chip-list>
+      <mat-chip color="primary">Tickets restaurants</mat-chip>
+      <mat-chip color="primary">Congé payés</mat-chip>
+      <mat-chip color="primary">Assurance</mat-chip>
+    </mat-chip-list>
+  </section>
+
+  <section class="social-links">
+    <h3>Notre présence sur Internet</h3>
+    <p><mat-icon>language</mat-icon> <a href="https://www.site.com" target="_blank">https://www.site.com</a></p>
+    <p><mat-icon>language</mat-icon> <a href="https://www.instagram.com" target="_blank">https://www.instagram.com</a></p>
+  </section>
+</div>
