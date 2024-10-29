@@ -1,0 +1,24 @@
+<div class="container">
+  <h2>Complétez votre profil</h2>
+  <p>Coordonnées de contact</p>
+
+  <mat-form-field class="full-width">
+    <mat-label>Numéro de téléphone</mat-label>
+    <input matInput type="tel" [(ngModel)]="contact.phone" placeholder="Numéro de téléphone">
+  </mat-form-field>
+
+  <mat-form-field class="full-width">
+    <mat-label>N° et rue</mat-label>
+    <input matInput [(ngModel)]="contact.address" placeholder="N° et rue">
+  </mat-form-field>
+
+  <mat-form-field class="full-width">
+    <mat-label>Code postal</mat-label>
+    <input matInput type="text" [(ngModel)]="contact.postalCode" placeholder="Code postal">
+  </mat-form-field>
+
+  <mat-form-field class="full-width">
+    <mat-label>Ville</mat-label>
+    <input matInput [(ngModel)]="contact.city" placeholder="Ville">
+  </mat-form-field>
+</div>

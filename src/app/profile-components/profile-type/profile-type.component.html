@@ -1,0 +1,33 @@
+<div class="container">
+  <button mat-icon-button class="back-button">
+    <mat-icon>arrow_back</mat-icon>
+  </button>
+
+  <h2>Complétez votre profil</h2>
+  <p>Veuillez sélectionner votre statut</p>
+
+  <div class="status-selection">
+    <mat-card
+      (click)="selectUserType('candidate')"
+      [class.selected]="userType === 'candidate'"
+    >
+      <div class="icon-container">
+        <mat-icon>school</mat-icon> <!-- Icône pour le candidat -->
+      </div>
+      <p class="title">Un candidat</p>
+      <p>Je recherche un job</p>
+    </mat-card>
+    <mat-card
+      (click)="selectUserType('restaurant')"
+      [class.selected]="userType === 'restaurant'"
+    >
+      <div class="icon-container">
+        <mat-icon>restaurant_menu</mat-icon> <!-- Icône pour le restaurant -->
+      </div>
+      <p class="title">Un restaurant</p>
+      <p>Je recherche un candidat</p>
+    </mat-card>
+  </div>
+
+
+</div>

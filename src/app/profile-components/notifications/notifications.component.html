@@ -1,1 +1,16 @@
-<p>notifications works!</p>
+<h2>Complétez votre profil</h2>
+
+<p>Notifications</p>
+<mat-radio-group [(ngModel)]="notificationsPreference">
+  <mat-radio-button value="yes">Oui</mat-radio-button>
+  <mat-radio-button value="no">Non</mat-radio-button>
+</mat-radio-group>
+
+<p>Autres</p>
+<p>Souhaitez-vous rendre votre profil public ?</p>
+<mat-radio-group [(ngModel)]="publicProfile">
+  <mat-radio-button value="yes">Oui</mat-radio-button>
+  <mat-radio-button value="no">Non</mat-radio-button>
+</mat-radio-group>
+
+<button mat-raised-button color="primary">Terminer mon inscription</button>

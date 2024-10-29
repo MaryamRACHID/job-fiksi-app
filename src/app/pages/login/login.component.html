@@ -1,22 +1,21 @@
 <div class="login-container">
   <h1>Bienvenue !</h1>
+  <p class="subtitle">Nous sommes heureux de vous rejoindre parmi nos clients !</p>
 
-  <!-- Toggle pour Connexion / Inscription -->
-  <mat-button-toggle-group #group="matButtonToggleGroup" value="connexion" class="toggle-group">
-    <mat-button-toggle value="connexion">Connexion</mat-button-toggle>
-    <mat-button-toggle value="inscription">Inscription</mat-button-toggle>
+  <mat-button-toggle-group [(ngModel)]="isRegistering" (change)="toggleForm()" class="toggle-group">
+    <mat-button-toggle [value]="false">Connexion</mat-button-toggle>
+    <mat-button-toggle [value]="true">Inscription</mat-button-toggle>
   </mat-button-toggle-group>
 
-  <!-- Formulaire de connexion -->
-  <div *ngIf="group.value === 'connexion'">
+  <div *ngIf="!isRegistering">
     <mat-form-field appearance="outline" class="full-width">
       <mat-label>Email</mat-label>
-      <input matInput type="email" placeholder="Entrez votre email">
+      <input matInput type="email" placeholder="Entrez votre email" [(ngModel)]="email" />
     </mat-form-field>
 
     <mat-form-field appearance="outline" class="full-width">
       <mat-label>Mot de passe</mat-label>
-      <input matInput type="password" placeholder="Entrez votre mot de passe">
+      <input matInput type="password" placeholder="Entrez votre mot de passe" />
     </mat-form-field>
 
     <div class="login-row">
@@ -24,32 +23,30 @@
       <a href="#" class="forgot-password">Mot de passe oublié ?</a>
     </div>
 
-    <button mat-raised-button color="primary" class="full-width">Me connecter</button>
+    <button mat-raised-button color="primary" class="full-width" (click)="goToProfile()">Me connecter</button>
   </div>
 
-  <!-- Formulaire d'inscription -->
-  <div *ngIf="group.value === 'inscription'">
+  <div *ngIf="isRegistering">
     <mat-form-field appearance="outline" class="full-width">
       <mat-label>Email</mat-label>
-      <input matInput type="email" placeholder="Entrez votre email">
+      <input matInput type="email" placeholder="Entrez votre email" [(ngModel)]="email" />
     </mat-form-field>
 
     <mat-form-field appearance="outline" class="full-width">
       <mat-label>Mot de passe</mat-label>
-      <input matInput type="password" placeholder="Créez un mot de passe">
+      <input matInput type="password" placeholder="Créez un mot de passe" />
     </mat-form-field>
 
     <mat-form-field appearance="outline" class="full-width">
       <mat-label>Confirmer le mot de passe</mat-label>
-      <input matInput type="password" placeholder="Créez un mot de passe">
+      <input matInput type="password" placeholder="Confirmez le mot de passe" />
     </mat-form-field>
 
-    <div class="login-row">
-      <mat-checkbox>Rester connecté</mat-checkbox>
-    </div>
-
-
-    <button mat-raised-button color="primary" class="full-width">M'inscrire</button>
+    <button mat-raised-button color="primary" class="full-width" (click)="prefillEmail()">M'inscrire</button>
   </div>
 
+  <p class="subtitle">
+    Vous avez déjà un compte? 
+    <a href="#" (click)="prefillEmail()">Se connecter</a>
+  </p>
 </div>

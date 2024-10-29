@@ -1,1 +1,29 @@
-<p>informations works!</p>
+<h2>Complétez votre profil</h2>
+<p>Informations personnelles</p>
+<div class="profile-pic">
+  <button mat-icon-buttonclass class="icon-container">
+    <mat-icon>add_a_photo</mat-icon>
+  </button>
+</div>
+
+<mat-radio-group class="gender-selection">
+  <mat-radio-button value="female">Madame</mat-radio-button>
+  <mat-radio-button value="male">Monsieur</mat-radio-button>
+</mat-radio-group>
+
+<div class="name-inputs">
+  <mat-form-field appearance="outline">
+    <mat-label>Nom</mat-label>
+    <input matInput [(ngModel)]="personalInfo.name">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Prénom</mat-label>
+    <input matInput [(ngModel)]="personalInfo.firstName">
+  </mat-form-field>
+</div>
+
+<mat-form-field appearance="outline">
+  <mat-label>Date de naissance</mat-label>
+  <input matInput type="date" [(ngModel)]="personalInfo.birthDate">
+</mat-form-field>

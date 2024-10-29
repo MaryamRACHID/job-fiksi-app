@@ -10,7 +10,6 @@ import { ProfileComponentsModule } from './profile-components/profile-components
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 
-
 @NgModule({
   imports: [
     BrowserModule,

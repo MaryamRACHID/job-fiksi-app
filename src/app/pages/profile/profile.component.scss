@@ -1,0 +1,35 @@
+.profile-container {
+  position: relative;
+  padding: 20px;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.back-button {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  color: #333; // Customize to fit design
+}
+
+.skip {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.fixed-button {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  border-radius: 10px;
+  background-color: #ffad00 !important;
+  color: white !important;
+  z-index: 1000;
+}

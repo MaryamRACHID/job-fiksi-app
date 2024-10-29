@@ -1,43 +1,59 @@
 .login-container {
-  text-align: center;
-  padding: 20px;
   max-width: 400px;
-  margin: auto;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
+}
+
+h1 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  color: #666;
+  font-size: 14px;
+  margin-bottom: 20px;
 }
 
 .toggle-group {
-  margin-bottom: 20px;
   display: flex;
   justify-content: center;
+  margin-bottom: 20px;
+}
+
+mat-button-toggle {
+  width: 50%;
+}
+
+mat-form-field {
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+.login-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 14px;
+  margin-bottom: 20px;
 }
 
 .full-width {
   width: 100%;
-  margin-bottom: 15px;
 }
 
-mat-checkbox {
-  margin-right: 10px;
+button.full-width {
+  background-color: #ffad00 !important;
+  color: white !important;
+  font-weight: bold;
 }
 
-button {
-  margin-top: 20px;
-}
-
-.forgot-password {
-  float: right;
-  font-size: 0.9em;
+a {
+  color: #007bff;
   text-decoration: none;
-  color: #8c8c8c;
 }
 
-.footer-text {
-  margin-top: 10px;
-  font-size: 0.9em;
-}
-
-.login-row{
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+a:hover {
+  text-decoration: underline;
 }

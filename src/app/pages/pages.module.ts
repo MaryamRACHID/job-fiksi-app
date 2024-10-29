@@ -3,8 +3,7 @@ import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
-import { ProfileComponent } from './profile/profile.component';
+import { ProfileComponent} from './profile/profile.component';
 import { SharedModule } from '../shared/shared.module';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
@@ -14,19 +13,21 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatButtonModule } from '@angular/material/button';
-
+import { MatIconModule } from '@angular/material/icon';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatCardModule } from '@angular/material/card';
+import {ProfileComponentsModule} from '../profile-components/profile-components.module';
 
 @NgModule({
   declarations: [
     HomeComponent,
     LoginComponent,
-    RegisterComponent,
     ProfileComponent,
   ],
   exports: [
     LoginComponent,
-    RegisterComponent,
-    HomeComponent
+    HomeComponent,
+    ProfileComponent
   ],
   imports: [
     RouterModule,
@@ -39,7 +40,11 @@ import { MatButtonModule } from '@angular/material/button';
     MatFormFieldModule,
     MatInputModule,
     MatCheckboxModule,
-    MatButtonModule
+    MatButtonModule,
+    MatIconModule,
+    MatRadioModule,
+    MatCardModule,
+    ProfileComponentsModule
   ]
 })
 export class PagesModule { }
