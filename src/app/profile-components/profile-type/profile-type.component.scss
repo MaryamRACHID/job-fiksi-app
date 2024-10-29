@@ -1,10 +1,34 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+}
+
+.back-button {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+
+.skip {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+h2 {
+  margin-top: 40px;
+  font-weight: bold;
+}
+
 .status-selection {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 20px; /* Espace entre les cartes */
-  padding: 20px; /* Optionnel : marge autour du conteneur */
-  font-size: 12px;
+  gap: 20px;
+  padding: 20px;
 }
 
 mat-card {
@@ -12,34 +36,40 @@ mat-card {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 20px; /* Espace à l'intérieur de la carte */
-  border: 2px solid transparent; /* Bordure par défaut */
-  border-radius: 8px; /* Coins arrondis */
-  transition: border 0.3s; /* Transition fluide pour la bordure */
-  width: 200px; /* Largeur fixe pour les cartes */
-  height: 150px; /* Hauteur fixe pour les cartes */
-  background-color: white;
+  padding: 20px;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  transition: border 0.3s;
+  width: 150px;
+  height: 150px;
+  background-color: #ffe8d6;
+  cursor: pointer;
 }
 
 mat-card.selected {
-  border: 2px solid #ffad00; /* Bordure jaune lorsque sélectionné */
+  border: 2px solid #ffad00;
 }
 
-h2 {
-  margin-top: 30px;
-}
-
-p{
-  margin: 0px;
-  text-align: center;
-}
-
-.icon-container{
+.icon-container {
   background-color: #ffebcb;
-  border-radius: 100% !important;
-  padding: 10px 12px;
+  border-radius: 50%;
+  padding: 10px;
 }
 
 mat-icon {
   color: #ffad00;
+  font-size: 40px;
+}
+
+.title {
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.continue-button {
+  margin-top: 30px;
+  width: 80%;
+  background-color: #ffad00 !important;
+  color: white !important;
+  border-radius: 8px;
 }

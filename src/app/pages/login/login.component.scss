@@ -1,71 +1,59 @@
 .login-container {
-  text-align: center;
-  padding: 60px 40px 20px 40px;
   max-width: 400px;
-  margin: auto;
-  font-size: 12px;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
+}
+
+h1 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  color: #666;
+  font-size: 14px;
+  margin-bottom: 20px;
 }
 
 .toggle-group {
   display: flex;
   justify-content: center;
-  width: 100%;
-  margin-top: 20px;
   margin-bottom: 20px;
-  border-radius: 5px;
 }
 
-.toggle-group .mat-button-toggle {
+mat-button-toggle {
   width: 50%;
 }
 
-.active-toggle {
-  background-color: #b9b9b9 !important;
-  color: white !important;
-}
-
-.full-width {
+mat-form-field {
   width: 100%;
-  margin-bottom: 15px;
-  font-size: 12px;
-}
-
-.textField{
-}
-
-mat-checkbox {
-  margin-right: 10px;
-}
-
-button {
-  margin-top: 15px;
-  background-color: #ffad00 !important;
-  color: white !important;
-}
-
-.forgot-password {
-  float: right;
-  font-size: 0.9em;
-  text-decoration: none;
-  color: #8c8c8c;
-}
-
-.footer-text {
-  margin-top: 10px;
-  font-size: 0.9em;
+  margin-bottom: 16px;
 }
 
 .login-row {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
+  font-size: 14px;
+  margin-bottom: 20px;
 }
 
-.subtitle {
-  color: gray;
-  font-size: 12px;
+.full-width {
+  width: 100%;
 }
 
-.span{
-  color: #ffad00;
+button.full-width {
+  background-color: #ffad00 !important;
+  color: white !important;
+  font-weight: bold;
+}
+
+a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
 }

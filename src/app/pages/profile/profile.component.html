@@ -1,11 +1,15 @@
 <div class="profile-container">
-  <button *ngIf="step > 1" mat-icon-button (click)="goToPreviousStep()">
+  <!-- Back button for navigating to the previous step -->
+  <button *ngIf="step > 1" mat-icon-button (click)="goToPreviousStep()" class="back-button">
     <mat-icon>arrow_back</mat-icon>
   </button>
-  <button mat-icon-button (click)="goToPreviousStep()" class="skip">
-    Abondonner
+
+  <!-- Skip/Abandon button -->
+  <button mat-button (click)="goToPreviousStep()" class="skip">
+    Abandonner
   </button>
 
+  <!-- Conditional rendering of components based on the current step -->
   <app-profile-type *ngIf="step === 1" (userTypeSelected)="updateUserType($event)"></app-profile-type>
   <app-informations *ngIf="step === 2" [personalInfo]="personalInfo" (personalInfoChange)="updatePersonalInfo($event)"></app-informations>
   <app-contact *ngIf="step === 3" (contactInfoChange)="updateContactInfo($event)"></app-contact>
@@ -16,13 +20,8 @@
   <app-preference *ngIf="step === 9" (preferencesChange)="updatePreferences($event)"></app-preference>
   <app-notifications *ngIf="step === 10" (notificationsChange)="updateNotifications($event)"></app-notifications>
 
-  <button mat-raised-button color="primary" (click)="goToNextStep()" [disabled]="!userType" class="fixed-button">
+  <!-- Continue button for navigating to the next step -->
+  <button mat-raised-button color="primary" (click)="goToNextStep()" [disabled]="step === 1 && !userType" class="fixed-button">
     Continuer
   </button>
-
-  <!--<app-description *ngIf="step === 3" [availability]="availability" (availabilityChange)="availability = $event" (next)="goToNextStep()"></app-description>
-  <app-preferences *ngIf="step === 4" [restaurantExperience]="restaurantExperience" (restaurantExperienceChange)="restaurantExperience = $event" (next)="goToNextStep()"></app-preferences>
-  <app-securite *ngIf="step === 5" [education]="education" (educationChange)="education = $event" (next)="goToNextStep()"></app-securite>
-  <app-notifications *ngIf="step === 6" [workExperience]="workExperience" (workExperienceChange)="workExperience = $event" (next)="goToNextStep()"></app-notifications>
--->
 </div>

@@ -9,39 +9,27 @@
   position: absolute;
   top: 10px;
   left: 10px;
-  color: #333; /* Set color to fit your design */
+  color: #333; // Customize to fit design
 }
 
-.step {
-  margin-top: 40px; /* Space to keep the back button visible above content */
-}
-
-mat-icon {
-  font-size: 24px;
+.skip {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 12px;
 }
 
 .fixed-button {
-  position: fixed;         // Ou "absolute" si vous préférez
-  bottom: 20px;           // Espace depuis le bas de la page
-  left: 50%;              // Centrer horizontalement
-  transform: translateX(-50%); // Ajuster pour centrer parfaitement
-  z-index: 1000;          // Assurez-vous qu'il soit au-dessus des autres éléments
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
   width: 90%;
   border-radius: 10px;
   background-color: #ffad00 !important;
   color: white !important;
+  z-index: 1000;
 }
-
-.skip {
-  position: fixed;         // Position fixe
-  top: 20px;              // Espace depuis le haut de la page
-  right: 50px;            // Espace depuis la droite de la page
-  z-index: 1000;          // Assurez-vous qu'il soit au-dessus des autres éléments
-
-  // Optionnel : ajouter un peu de style
-  background: transparent; // Pour un look d'icône
-  border: none;            // Pas de bordure
-  cursor: pointer;         // Curseur pointeur pour indiquer un clic
-  font-size: 12px;
-}
-

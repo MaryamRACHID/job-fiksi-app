@@ -1,5 +1,4 @@
 import { Component, Output, EventEmitter } from '@angular/core';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-profil',
@@ -9,39 +8,32 @@ import { Router } from '@angular/router';
 export class ProfileComponent {
   @Output() userTypeSelected = new EventEmitter<string>();
 
+  // Step management
   step: number = 1;
 
   // Shared data properties
   userType: string | null = null;
   personalInfo = { name: '', firstName: '', birthDate: '' };
+  contactInfo = { phone: '', address: '', postalCode: '', city: '' };
   availability: string[] = [];
   references = { hasExperience: false, description: '', skills: '' };
   formation = { level: '', diplomas: [] };
-  experience = [];
-  languages: string[] = [];
-  contactInfo = { phone: '', address: '', postalCode: '', city: '' };
-
-  // New properties for steps 9 and 10
+  experience: any[] = [];
   preferences: any = { preferredJobTypes: [], locations: [] };
   notifications: any = { emailNotifications: false, smsNotifications: false };
 
-  // Navigate to the next step
+  // Method to navigate to the next step
   goToNextStep() {
-    // Ensure userType is selected before advancing from step 1
-    if (this.step === 1 && !this.userType) {
-      return;
-    }
-    this.step++;
+    if (this.step === 1 && !this.userType) return; // Prevent going forward without user type
+    this.step++; // Navigate to the next step
   }
 
-  // Navigate to the previous step
+  // Method to navigate to the previous step
   goToPreviousStep() {
-    if (this.step > 1) {
-      this.step--;
-    }
+    if (this.step > 1) this.step--;
   }
 
-  // Update methods for child components to share data with parent
+  // Update methods for each section
   updateUserType(data: string) {
     this.userType = data;
     this.userTypeSelected.emit(data);
@@ -49,6 +41,10 @@ export class ProfileComponent {
 
   updatePersonalInfo(data: any) {
     this.personalInfo = data;
+  }
+
+  updateContactInfo(data: any) {
+    this.contactInfo = data;
   }
 
   updateAvailability(data: string[]) {
@@ -67,15 +63,6 @@ export class ProfileComponent {
     this.experience = data;
   }
 
-  updateLanguages(data: string[]) {
-    this.languages = data;
-  }
-
-  updateContactInfo(data: any) {
-    this.contactInfo = data;
-  }
-
-  // New update methods for steps 9 and 10
   updatePreferences(data: any) {
     this.preferences = data;
   }
@@ -84,21 +71,18 @@ export class ProfileComponent {
     this.notifications = data;
   }
 
-  // Save profile data and navigate to the next section
+  // Save the complete profile data
   saveProfile() {
-    // Logic to save or submit the complete profile information
-    console.log("Profile saved", {
+    console.log("Profile saved:", {
       userType: this.userType,
       personalInfo: this.personalInfo,
+      contactInfo: this.contactInfo,
       availability: this.availability,
       references: this.references,
       formation: this.formation,
       experience: this.experience,
-      languages: this.languages,
-      contactInfo: this.contactInfo,
-      preferences: this.preferences, // Added for step 9
-      notifications: this.notifications // Added for step 10
+      preferences: this.preferences,
+      notifications: this.notifications
     });
-    // Navigate to another route if needed, e.g., after completing the profile setup
   }
 }
