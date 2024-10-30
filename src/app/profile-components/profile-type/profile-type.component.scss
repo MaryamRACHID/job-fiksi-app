@@ -2,44 +2,57 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 20px; /* Espace entre les cartes */
-  padding: 20px; /* Optionnel : marge autour du conteneur */
+  gap: 20px;
   font-size: 12px;
+  margin-top: 15%;
 }
 
 mat-card {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between; /* Espace entre les éléments pour uniformité */
   align-items: center;
-  padding: 20px; /* Espace à l'intérieur de la carte */
-  border: 2px solid transparent; /* Bordure par défaut */
-  border-radius: 8px; /* Coins arrondis */
-  transition: border 0.3s; /* Transition fluide pour la bordure */
-  width: 200px; /* Largeur fixe pour les cartes */
-  height: 150px; /* Hauteur fixe pour les cartes */
+  padding: 20px;
+  border: 2px solid transparent;
+  border-radius: 30px;
+  width: 200px;
+  height: 190px;
   background-color: white;
+  transition: border 0.3s, box-shadow 0.3s;
+  text-align: center;
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
 }
 
 mat-card.selected {
-  border: 2px solid #ffad00; /* Bordure jaune lorsque sélectionné */
+  border: 2px solid #ffad00;
 }
 
-h2 {
-  margin-top: 30px;
-}
+.icon-container {
 
-p{
-  margin: 0px;
-  text-align: center;
-}
-
-.icon-container{
-  background-color: #ffebcb;
-  border-radius: 100% !important;
-  padding: 10px 12px;
 }
 
 mat-icon {
   color: #ffad00;
+  font-size: 24px; /* Taille fixe pour cohérence */
+  padding: 30px 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffebcb;
+  border-radius: 100%;
+  margin-top: 5%;
+}
+
+h6 {
+  font-size: 14px;
+  margin: 20px 0 10px 0;
+  min-height: 20px;
+  font-weight: 600;
+}
+
+.subtitle-2 {
+  font-size: 12px;
+  font-weight: 400;
+  color: #b9b9b9;
+  min-height: 80px; /* Hauteur pour garantir l'alignement */
 }

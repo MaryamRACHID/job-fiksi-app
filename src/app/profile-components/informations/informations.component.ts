@@ -16,7 +16,18 @@ export class InformationsComponent {
   }
 
   goToNextStep() {
-  this.updateInfo();
-  this.next.emit();
-}
+    this.updateInfo();
+    this.next.emit();
+  }
+
+  onFileSelected(event: Event): void {
+    const input = event.target as HTMLInputElement;
+    if (input.files && input.files.length > 0) {
+      const file = input.files[0];
+      console.log('File selected:', file);
+      // Vous pouvez maintenant traiter le fichier, par exemple, le prévisualiser ou le télécharger
+    }
+  }
+
+
 }

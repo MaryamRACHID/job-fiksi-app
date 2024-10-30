@@ -101,4 +101,7 @@ export class ProfileComponent {
     });
     // Navigate to another route if needed, e.g., after completing the profile setup
   }
+  skip() {
+    // Logique pour abandonner
+  }
 }

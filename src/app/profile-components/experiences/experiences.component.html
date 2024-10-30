@@ -11,6 +11,7 @@
       <mat-label>Nom de la structure</mat-label>
       <input matInput [(ngModel)]="experience.company">
     </mat-form-field>
+    <!--
     <mat-form-field>
       <mat-label>Début</mat-label>
       <input matInput [matDatepicker]="startPicker{{i}}" [(ngModel)]="experience.startDate">
@@ -23,6 +24,7 @@
       <mat-datepicker-toggle matSuffix [for]="endPicker{{i}}"></mat-datepicker-toggle>
       <mat-datepicker #endPicker{{i}}></mat-datepicker>
     </mat-form-field>
+    -->
   </div>
 
   <button mat-button (click)="addExperience()">Ajouter une expérience</button>

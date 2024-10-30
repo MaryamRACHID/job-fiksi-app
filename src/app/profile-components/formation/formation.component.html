@@ -19,7 +19,7 @@
       <mat-label>Établissement</mat-label>
       <input matInput [(ngModel)]="diploma.institution">
     </mat-form-field>
-
+    <!--
     <mat-form-field>
       <mat-label>Début</mat-label>
       <input matInput [matDatepicker]="startPicker{{i}}" [(ngModel)]="diploma.startDate">
@@ -31,7 +31,7 @@
       <input matInput [matDatepicker]="endPicker{{i}}" [(ngModel)]="diploma.endDate">
       <mat-datepicker-toggle matSuffix [for]="endPicker{{i}}"></mat-datepicker-toggle>
       <mat-datepicker #endPicker{{i}}></mat-datepicker>
-    </mat-form-field>
+    </mat-form-field>-->
   </div>
 
   <button mat-button (click)="addDiploma()">Ajouter une formation</button>

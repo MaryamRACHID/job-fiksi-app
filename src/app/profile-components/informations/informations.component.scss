@@ -18,9 +18,37 @@ mat-form-field {
   width: 200px; // Ajustez la largeur selon vos besoins
 }
 
-.icon-container{
-  background-color: #a1a1a1;
+.icon-container {
+  display: flex; /* Utilise Flexbox */
+  flex-direction: column; /* Aligne le contenu verticalement */
+  justify-content: center; /* Centre verticalement */
+  align-items: center; /* Centre horizontalement */
+  position: relative; /* Position relative pour permettre le positionnement absolu de l'icône */
+  background-color: #d9d9d9;
   border-radius: 100% !important;
   border: none;
-  padding: 45px 50px;
+  width: 140px;
+  height: 140px;
+  margin: auto;
+}
+
+.icon {
+  position: absolute; /* Position absolue pour placer l'icône */
+  bottom: 5px; /* Espace du bas du conteneur */
+  right: 5px; /* Espace du côté droit du conteneur */
+  color: white; /* Couleur de l'icône (vous pouvez changer cela) */
+  background-color: #8a8a8a;
+  font-size: 14px;
+  padding: 8px;
+  border-radius: 100%;
+}
+
+.text-img {
+  margin-top: 8px; /* Ajoute un léger espacement entre l'icône et le texte */
+  text-align: center; /* Centre le texte */
+  width: 100%; /* Assure que le texte utilise la largeur totale */
+  font-size: 14px;
+  font-weight: 600;
+  color: #3f3f3f;
+;
 }
