@@ -1,27 +1,35 @@
-<h2>Complétez votre profil</h2>
-<p>Préférences professionnelles</p>
+<h2 class="title">Complétez votre profil</h2>
+<p class="subtitle-1">Préférences professionnelles</p>
 
-<mat-form-field appearance="outline">
-  <mat-label>Type de poste recherché</mat-label>
-  <mat-checkbox [(ngModel)]="jobPreferences.server">Serveur</mat-checkbox>
-  <mat-checkbox [(ngModel)]="jobPreferences.cook">Cuisinier</mat-checkbox>
-  <mat-checkbox [(ngModel)]="jobPreferences.dishwasher">Plongeur</mat-checkbox>
-  <mat-checkbox [(ngModel)]="jobPreferences.other" disabled>Autres</mat-checkbox>
-  <input matInput *ngIf="jobPreferences.other" placeholder="Autres">
-</mat-form-field>
-
-<mat-form-field appearance="outline">
-  <mat-label>Préférence de lieu</mat-label>
-  <input matInput [(ngModel)]="locationPreference">
-</mat-form-field>
-
-<div class="salary-preference">
-  <p>Préférence de salaire</p>
-  <mat-slider min="1000" max="2000" step="100" [(ngModel)]="salaryPreference" thumbLabel></mat-slider>
-  <div class="salary-range">
-    <span>1000€</span>
-    <span>2000€</span>
-  </div>
+<div class="job-preferences">
+  <p>Type de poste recherché</p>
+  <label class="checkbox-inline">
+    <input type="checkbox" [(ngModel)]="jobPreferences.server"> Serveur
+  </label>
+  <label class="checkbox-inline">
+    <input type="checkbox" [(ngModel)]="jobPreferences.cook"> Cuisinier
+  </label>
+  <label class="checkbox-inline">
+    <input type="checkbox" [(ngModel)]="jobPreferences.dishwasher"> Plongeur
+  </label>
+  <label class="other-label">
+    Autre:
+    <input type="text" [(ngModel)]="jobPreferences.otherType" placeholder="Autre poste">
+  </label>
 </div>
 
-<button mat-raised-button color="primary">Continuer</button>
+<div class="location-preference mt-4">
+  <label>Préférence de lieu</label>
+  <input type="text" class="form-control" [(ngModel)]="locationPreference" placeholder="Ex: Paris">
+</div>
+
+<div class="salary-preference mt-4">
+  <p>Préférence de salaire</p>
+  <ngx-slider
+    [(value)]="salaryPreference.min"
+    [(highValue)]="salaryPreference.max"
+    [options]="salarySliderOptions">
+  </ngx-slider>
+  <div class="salary-range">
+  </div>
+</div>

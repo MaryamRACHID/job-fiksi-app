@@ -1,29 +1,34 @@
-<!--<h2>Complétez votre profil</h2>
-<p>Formation</p>
-<mat-form-field appearance="outline">
- <mat-label>Dernier niveau de formation</mat-label>
- <input matInput [(ngModel)]="educationLevel">
-</mat-form-field>
-<div *ngFor="let diploma of diplomas; let i = index">
- <h3>Diplôme {{i + 1}}</h3>
- <mat-form-field appearance="outline">
-   <mat-label>Nom de la formation</mat-label>
-   <input matInput [(ngModel)]="diploma.name">
- </mat-form-field>
- <mat-form-field appearance="outline">
-   <mat-label>Établissement</mat-label>
-   <input matInput [(ngModel)]="diploma.institution">
- </mat-form-field>
- <mat-form-field appearance="outline">
-   <mat-label>Début</mat-label>
-   <input matInput type="date" [(ngModel)]="diploma.startDate">
- </mat-form-field>
- <mat-form-field appearance="outline">
-   <mat-label>Fin</mat-label>
-   <input matInput type="date" [(ngModel)]="diploma.endDate">
- </mat-form-field>
-</div>
-<button mat-button color="primary" (click)="addDiploma()">Ajouter une formation</button>
-<button mat-raised-button color="primary" (click)="goToNextStep()">Continuer</button>
+<h2 class="title">Complétez votre profil</h2>
+<p class="subtitle-1">Documents requis</p>
 
--->
+<!-- Section pour le CV -->
+<div class="mb-4">
+  <label class="form-label">CV *</label>
+  <input type="file" class="d-none" #cvUploadInput (change)="onFileChange($event, 'cv')" />
+  <div class="custom-upload" (click)="cvUploadInput.click()">
+    <i class="fa-solid fa-upload me-2"></i>
+    <span>Ajouter mon CV</span>
+  </div>
+</div>
+
+<!-- Section pour la lettre de motivation -->
+<div class="mb-4">
+  <label class="form-label">Lettre de motivation</label>
+  <input type="file" class="d-none" #coverLetterUploadInput (change)="onFileChange($event, 'coverLetter')" />
+  <div class="custom-upload" (click)="coverLetterUploadInput.click()">
+    <i class="fa-solid fa-upload me-2"></i>
+    <span>Ajouter ma lettre de motivation</span>
+  </div>
+</div>
+
+<!-- Section pour les autres documents -->
+<div class="mb-4">
+  <label class="form-label">Autres documents (certificats de scolarité, etc)</label>
+  <input type="file" class="d-none" #otherDocUploadInput (change)="onFileChange($event, 'otherDoc')" />
+  <div class="custom-upload" (click)="otherDocUploadInput.click()">
+    <i class="fa-solid fa-upload me-2"></i>
+    <span>Ajouter un autre document</span>
+  </div>
+</div>
+
+<button class="btn btn-primary">Continuer</button>

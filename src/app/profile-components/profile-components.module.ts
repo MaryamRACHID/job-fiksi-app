@@ -24,6 +24,7 @@ import {MatCardModule} from '@angular/material/card';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import {MatOptionModule} from '@angular/material/core';
 import {MatListModule, MatSelectionList} from '@angular/material/list';
+import {NgxSliderModule} from '@angular-slider/ngx-slider';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import {MatListModule, MatSelectionList} from '@angular/material/list';
     PreferenceComponent
   ],
   exports: [
+    CvComponent,
     ProfileTypeComponent,
     InformationsComponent,
     DescriptionComponent,
@@ -65,7 +67,8 @@ import {MatListModule, MatSelectionList} from '@angular/material/list';
     MatCardModule,
     MatDatepickerModule,
     MatOptionModule,
-    MatListModule
+    MatListModule,
+    NgxSliderModule
   ]
 })
 export class ProfileComponentsModule { }

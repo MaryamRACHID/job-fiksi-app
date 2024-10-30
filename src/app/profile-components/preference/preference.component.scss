@@ -1,0 +1,56 @@
+.title {
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.subtitle-1 {
+  color: #333;
+}
+
+.job-preferences {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.checkbox-inline {
+  display: inline-block;
+  margin-right: 12px;
+}
+
+.other-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.location-preference label {
+  font-weight: 600;
+}
+
+.salary-preference {
+  margin-top: 20px;
+}
+
+.salary-range {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+::ng-deep .ngx-slider .ngx-slider-handle {
+  background-color: white !important; /* Couleur de fond blanche */
+  border: 2px solid #eeae00 !important; /* Bordure de la couleur principale */
+  width: 10px !important; /* Taille du cercle */
+  height: 10px !important; /* Taille du cercle */
+  box-shadow: none !important; /* Supprimer l'ombre si elle est appliquée */
+}
+
+::ng-deep .ngx-slider .ngx-slider-selection {
+  background-color: #eeae00 !important; /* Couleur principale pour l'intervalle sélectionné */
+}
+
+::ng-deep .ngx-slider .ngx-slider-track {
+  background-color: #e0e0e0 !important; /* Couleur de la piste non sélectionnée */
+}

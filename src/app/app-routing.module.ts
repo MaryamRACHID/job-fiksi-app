@@ -4,6 +4,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { ProfileComponent} from './pages/profile/profile.component';
 import { InformationsComponent } from './profile-components/informations/informations.component';
 import { ContactComponent } from './profile-components/contact/contact.component';
+import {CvComponent} from './profile-components/cv/cv.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -11,6 +12,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'info', component: InformationsComponent },
   { path: 'contact', component: ContactComponent },
+  { path: 'cv', component: CvComponent },
 ];
 
 @NgModule({

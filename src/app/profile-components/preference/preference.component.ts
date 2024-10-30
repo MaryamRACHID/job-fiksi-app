@@ -1,32 +1,32 @@
 import { Component } from '@angular/core';
+import { Options } from '@angular-slider/ngx-slider';
 
 @Component({
   selector: 'app-preference',
   templateUrl: './preference.component.html',
-  styleUrl: './preference.component.scss'
+  styleUrls: ['./preference.component.scss']
 })
 export class PreferenceComponent {
   jobPreferences = {
     server: false,
     cook: false,
     dishwasher: false,
-    other: false
+    otherType: ''
   };
 
   locationPreference: string = '';
-  salaryPreference: number = 1500; // Default value between 1000€ and 2000€
-  preferences: any = {};
 
-  constructor() {}
+  salaryPreference = {
+    min: 1000,
+    max: 2000
+  };
 
-  onContinue() {
-    // Handle continue action, for example save data or navigate to the next step
-    console.log('Job Preferences:', this.jobPreferences);
-    console.log('Location Preference:', this.locationPreference);
-    console.log('Salary Preference:', this.salaryPreference);
-  }
-
-  updatePreferences(preferences: any) {
-    this.preferences = preferences;
-  }
+  salarySliderOptions: Options = {
+    floor: 0,
+    ceil: 4000,
+    step: 50,
+    translate: (value: number): string => {
+      return value + ' €';
+    }
+  };
 }

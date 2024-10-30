@@ -12,6 +12,7 @@
     <app-description *ngIf="step === 5" (descriptionInfoChange)="updateAvailability($event)"></app-description>
     <app-formation *ngIf="step === 6" (formationInfoChange)="updateFormation($event)"></app-formation>
     <app-experiences *ngIf="step === 7" (experienceInfoChange)="updateExperience($event)"></app-experiences>
+    <app-cv *ngIf="step === 8" (experienceInfoChange)="updateExperience($event)"></app-cv>
     <app-preference *ngIf="step === 9" (preferencesChange)="updatePreferences($event)"></app-preference>
     <app-notifications *ngIf="step === 10" (notificationsChange)="updateNotifications($event)"></app-notifications>
   </div>
