@@ -4,26 +4,18 @@
     (previousStep)="goToPreviousStep()"
     (skip)="skip()">
   </app-header>
-
   <div class="component-container">
     <app-profile-type *ngIf="step === 1" (userTypeSelected)="updateUserType($event)"></app-profile-type>
     <app-informations *ngIf="step === 2" [personalInfo]="personalInfo" (personalInfoChange)="updatePersonalInfo($event)"></app-informations>
     <app-contact *ngIf="step === 3" (contactInfoChange)="updateContactInfo($event)"></app-contact>
-    <app-disponibilites *ngIf="step === 4" (referencesInfoChange)="updateReferences($event)"></app-disponibilites>
+    <app-disponibilites *ngIf="step === 4" (availabilityInfoChange)="updateAvailability($event)"></app-disponibilites>
     <app-description *ngIf="step === 5" (descriptionInfoChange)="updateAvailability($event)"></app-description>
     <app-formation *ngIf="step === 6" (formationInfoChange)="updateFormation($event)"></app-formation>
     <app-experiences *ngIf="step === 7" (experienceInfoChange)="updateExperience($event)"></app-experiences>
     <app-preference *ngIf="step === 9" (preferencesChange)="updatePreferences($event)"></app-preference>
     <app-notifications *ngIf="step === 10" (notificationsChange)="updateNotifications($event)"></app-notifications>
   </div>
-
-
-  <button (click)="goToNextStep()" [disabled]="!userType" class="fixed-button btn btn-primary full-width">Continuer</button>
-
-
-  <!--<app-description *ngIf="step === 3" [availability]="availability" (availabilityChange)="availability = $event" (next)="goToNextStep()"></app-description>
-  <app-preferences *ngIf="step === 4" [restaurantExperience]="restaurantExperience" (restaurantExperienceChange)="restaurantExperience = $event" (next)="goToNextStep()"></app-preferences>
-  <app-securite *ngIf="step === 5" [education]="education" (educationChange)="education = $event" (next)="goToNextStep()"></app-securite>
-  <app-notifications *ngIf="step === 6" [workExperience]="workExperience" (workExperienceChange)="workExperience = $event" (next)="goToNextStep()"></app-notifications>
--->
+  <div class="button-container">
+    <button (click)="goToNextStep()" [disabled]="!userType" class="fixed-button btn btn-primary full-width">Continuer</button>
+  </div>
 </div>

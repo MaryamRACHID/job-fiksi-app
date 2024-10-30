@@ -95,3 +95,35 @@ label{
 .form-control::placeholder{
   color: #ffad00;
 }
+
+/* styles.scss ou dans le fichier CSS global de votre projet */
+
+input[type="checkbox"] {
+  /* Utilisez accent-color pour changer la couleur de la case à cocher */
+  accent-color: #eeae00; /* Changez cette couleur par votre couleur principale */
+
+  /* Optionnel : Si vous souhaitez personnaliser davantage l'apparence */
+  appearance: none; /* Supprime le style par défaut */
+  width: 20px; /* Largeur personnalisée */
+  height: 20px; /* Hauteur personnalisée */
+  border: 2px solid #eeae00; /* Couleur de la bordure */
+  border-radius: 7px; /* Coins arrondis */
+
+  &:checked {
+    background-color: #eeae00; /* Couleur d'arrière-plan lorsque sélectionné */
+    border: 2px solid #eeae00; /* Couleur de la bordure */
+    border-radius: 5px; /* Coins arrondis */
+  }
+}
+
+input[type="radio"]{
+  /* Utilisez accent-color pour changer la couleur de la case à cocher */
+  accent-color: #eeae00;
+  appearance: none; /* Supprime le style par défaut */
+  border: 2px solid #eeae00; /* Couleur de la bordure */
+  &:checked {
+    background-color: #eeae00; /* Couleur d'arrière-plan lorsque sélectionné */
+    border: 2px solid #eeae00; /* Couleur de la bordure */
+  }
+}
+

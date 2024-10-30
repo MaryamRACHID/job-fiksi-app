@@ -1,12 +1,43 @@
-<div class="container">
-  <h2>Complétez votre profil</h2>
-  <p>Disponibilités</p>
-  <mat-selection-list [(ngModel)]="availability">
-    <mat-list-option *ngFor="let day of days" [value]="day">{{ day }}</mat-list-option>
-  </mat-selection-list>
+<h2 class="title">Complétez votre profil</h2>
+<p class="subtitle-1">Disponibilités</p>
 
-  <p>Périodes disponibles</p>
-  <mat-checkbox [(ngModel)]="morning">Matin</mat-checkbox>
-  <mat-checkbox [(ngModel)]="afternoon">Après-midi</mat-checkbox>
-  <mat-checkbox [(ngModel)]="evening">Soir</mat-checkbox>
+<div class="form-group mt-4"> <!-- Ajoutez text-center pour centrer le texte -->
+  <p>jours disponibles :</p>
+  <div class="d-flex flex-wrap justify-content-center mt-4"> <!-- Utilisez justify-content-center pour centrer les cases à cocher -->
+    <div class="form-check day-checkbox mx-auto" *ngFor="let day of days"> <!-- Ajoutez mx-auto ici -->
+      <input
+        type="checkbox"
+        class="form-check-input"
+        [id]="day"
+        [checked]="availability[day]"
+        (change)="onDayChange(day)" />
+      <label class="form-check-label" [for]="day">{{ day }}</label>
+    </div>
+  </div>
+</div>
+
+<p>Plages horaires disponibles</p>
+<div class="form-check">
+  <input
+    type="checkbox"
+    class="form-check-input"
+    id="morning"
+    [(ngModel)]="morning" />
+  <label class="form-check-label" for="morning">Matin</label>
+</div>
+<div class="form-check">
+  <input
+    type="checkbox"
+    class="form-check-input"
+    id="afternoon"
+    [(ngModel)]="afternoon" />
+  <label class="form-check-label" for="afternoon">Après-midi</label>
+</div>
+<div class="form-check">
+  <input
+    type="checkbox"
+    class="form-check-input"
+    id="evening"
+    [(ngModel)]="evening" />
+  <label class="form-check-label" for="evening">Soir</label>
 </div>
