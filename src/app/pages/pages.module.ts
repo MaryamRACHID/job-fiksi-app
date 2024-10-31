@@ -14,6 +14,12 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatButtonModule } from '@angular/material/button';
+import { ProfileRestaurantComponent } from './profile-restaurant/profile-restaurant.component';
+import { MatIconModule } from '@angular/material/icon';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatTabsModule } from '@angular/material/tabs';
+import { OffreDescriptionComponent } from "./profile-restaurant/offre-description/offre-description.component";
 
 
 @NgModule({
@@ -22,11 +28,13 @@ import { MatButtonModule } from '@angular/material/button';
     LoginComponent,
     RegisterComponent,
     ProfileComponent,
+    ProfileRestaurantComponent
   ],
   exports: [
     LoginComponent,
     RegisterComponent,
-    HomeComponent
+    HomeComponent,
+    ProfileRestaurantComponent
   ],
   imports: [
     RouterModule,
@@ -39,7 +47,13 @@ import { MatButtonModule } from '@angular/material/button';
     MatFormFieldModule,
     MatInputModule,
     MatCheckboxModule,
-    MatButtonModule
-  ]
+    MatButtonModule,
+    MatIconModule,
+    MatChipsModule,
+    MatIconModule,
+    MatToolbarModule,
+    MatTabsModule,
+    OffreDescriptionComponent
+]
 })
 export class PagesModule { }

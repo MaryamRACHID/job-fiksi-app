@@ -17,12 +17,14 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatTabsModule } from '@angular/material/tabs';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
 
 @NgModule({
   imports: [
     BrowserModule,
     RouterModule,
+    CommonModule,
     AppRoutingModule,
     SharedModule,
     PagesModule,
@@ -48,7 +50,6 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
   declarations: [
     AppComponent,
   ],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent],
   providers: [
     provideAnimationsAsync()

@@ -6,7 +6,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { ProfileRestaurantComponent } from './pages/profile-restaurant/profile-restaurant.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: '', redirectTo: 'profile-restaurant', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   { path: 'login', component: LoginComponent },
   {path: 'profile-restaurant', component: ProfileRestaurantComponent}

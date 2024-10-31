@@ -1,54 +1,114 @@
 <!DOCTYPE html>
-<mat-toolbar color="primary">
-  <button mat-icon-button>
-    <mat-icon>arrow_back</mat-icon>
-  </button>
-  <span> Burger King </span>
-  <span class="spacer"></span>
-  <button mat-icon-button>
-    <mat-icon>share</mat-icon>
-  </button>
-  <button mat-icon-button>
-    <mat-icon>settings</mat-icon>
-  </button>
-</mat-toolbar>
+
 
 <div class="header">
-  <img src="assets/burger-king-logo.png" alt="Logo de l'entreprise" class="logo" />
+  <mat-toolbar color="primary" class="toolbar">
+    <button mat-icon-button>
+      <mat-icon>arrow_back</mat-icon>
+    </button>
+    <span class="company_name"> Burger King </span>
+    <span class="spacer"></span>
+    <button mat-icon-button>
+      <mat-icon>share</mat-icon>
+    </button>
+    <button mat-icon-button>
+      <mat-icon>settings</mat-icon>
+    </button>
+    <button mat-icon-button>
+      <mat-icon>edit</mat-icon>
+    </button>
+  </mat-toolbar>
+  <div class="logo"></div>
 </div>
-
-<mat-tab-group>
-  <mat-tab label="Mes informations personnelles"></mat-tab>
-  <mat-tab label="Mes offres"></mat-tab>
+<mat-tab-group (selectedTabChange)="onTabChange($event)">
+  <mat-tab label="Mes informations personnelles" class="custum"></mat-tab>
+  <mat-tab label="Mes offres" class="custum"></mat-tab>
 </mat-tab-group>
 
-<div class="content">
+<div class="content" *ngIf="showInfos">
   <section class="company-info">
     <h2>Nom entreprise</h2>
-    <p><mat-icon>email</mat-icon> examplegmail.com</p>
-    <p><mat-icon>phone</mat-icon> 01 63 52 74 25</p>
-    <p><mat-icon>location_on</mat-icon> Lyon, 69 003</p>
-    <p><mat-icon>restaurant</mat-icon> Type de restaurant <strong>Fast - Food</strong></p>
+    <div class="contact-info">
+      <div class="info-item">
+        <mat-icon>email</mat-icon>
+          <div class="info">
+              <p class="label">Email</p>
+              <p class="text">examplegmail.com</p>
+          </div>
+      </div>
+      <div class="info-item">
+        <mat-icon>phone</mat-icon>
+          <div class="info">
+              <p class="label">Numéro de téléphone</p>
+              <p class="text">01 63 52 74 25</p>
+          </div>
+      </div>
+      <div class="info-item">
+        <mat-icon>location_on</mat-icon>
+          <div class="info">
+              <p class="label">Localisation</p>
+              <p class="text">Lyon, 69 003</p>
+          </div>
+      </div>
+      <div class="info-item">
+         <mat-icon>restaurant</mat-icon>
+          <div class="info">
+              <p class="label">Type de restaurant</p>
+              <p class="text">Fast - Food</p>
+          </div>
+      </div>
+  </div>
   </section>
-
+<div class="separator"></div>
   <section class="description">
-    <h3>Description</h3>
+    <h2>Description</h2>
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
-    <a href="#">Voir les postes</a>
+    <a href="#" class="lien">Voir les postes</a>
   </section>
+  <div class="separator"></div>
 
   <section class="advantages">
-    <h3>Avantages</h3>
-    <mat-chip-list>
-      <mat-chip color="primary">Tickets restaurants</mat-chip>
-      <mat-chip color="primary">Congé payés</mat-chip>
-      <mat-chip color="primary">Assurance</mat-chip>
-    </mat-chip-list>
+    <h2>Avantages</h2>
+    <mat-chip-listbox>
+      <mat-chip color="primary" class="avant">Tickets restaurants</mat-chip>
+      <mat-chip color="primary" class="avant">Congé payés</mat-chip>
+      <mat-chip color="primary" class="avant">Assurance</mat-chip>
+    </mat-chip-listbox>
   </section>
-
+<div class="separator"></div>
   <section class="social-links">
-    <h3>Notre présence sur Internet</h3>
-    <p><mat-icon>language</mat-icon> <a href="https://www.site.com" target="_blank">https://www.site.com</a></p>
-    <p><mat-icon>language</mat-icon> <a href="https://www.instagram.com" target="_blank">https://www.instagram.com</a></p>
+    <h2>Notre présence sur Internet</h2>
+    <div class="info-item">
+      <mat-icon>language</mat-icon>
+        <div class="info">
+          <p class="label">site Internet</p>
+          <a href="https://www.site.com" target="_blank"></a><p class="text">site.com</p>
+        </div>
+    </div>
+    <div class="info-item">
+      <mat-icon>linkdIn</mat-icon>
+        <div class="info">
+          <p class="label">LinkdIn</p>
+          <a href="https://www.site.com" target="_blank"></a><p class="text">profil_linkdIn</p>
+        </div>
+    </div>
   </section>
+</div>
+<div class="contentOffre" *ngIf="showTitle">
+  <h2>Mes offres d'emplois</h2>
+  <button class="addOffre" type="button" id="addOffre">Ajouter une offre</button>
+  <!-- <div class="poste-container" (click)="toggleDescription()">
+    <div class="poste-header">
+        <span>Poste Serveur</span>
+        <span [ngClass]="{ 'arrow-down': !showDescription, 'arrow-up': showDescription }"></span>
+    </div>
+    <div class="poste-description" *ngIf="showDescription" [@slideToggle]>
+        <p>Ce poste implique de servir les clients, prendre les commandes, et s'assurer de la satisfaction des clients dans le restaurant.</p>
+    </div>
+</div> -->
+
+<div *ngFor="let job of jobList">
+  <app-offre-description [job]="job"></app-offre-description>
+</div>
+<button class="postOffre" type="button">Publier une offre d'emploi</button>
 </div>
