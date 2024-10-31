@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import {Component, Output, EventEmitter, Input} from '@angular/core';
 
 @Component({
   selector: 'app-experiences',
@@ -7,6 +7,7 @@ import { Component, Output, EventEmitter } from '@angular/core';
 })
 export class ExperiencesComponent {
   @Output() experienceInfoChange = new EventEmitter<any>();
+  @Input() userType: string | null = null; // Propriété pour recevoir le type de profil
 
   experiences = [{ title: '', company: '', startDate: '', endDate: '' }];
   spokenLanguages: { french: boolean; english: boolean; other: string } = {

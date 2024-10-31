@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import {Component, Output, EventEmitter, Input} from '@angular/core';
 
 @Component({
   selector: 'app-disponibilites',
@@ -7,6 +7,7 @@ import { Component, Output, EventEmitter } from '@angular/core';
 })
 export class DisponibilitesComponent {
   @Output() availabilityInfoChange = new EventEmitter<any>();
+  @Input() userType: string | null = null; // Propriété pour recevoir le type de profil
 
   days = ['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche'];
   availability: { [key: string]: boolean } = {

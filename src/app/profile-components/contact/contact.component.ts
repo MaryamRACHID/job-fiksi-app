@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import {Component, Output, EventEmitter, Input} from '@angular/core';
 
 @Component({
   selector: 'app-contact',
@@ -6,7 +6,14 @@ import { Component, Output, EventEmitter } from '@angular/core';
   styleUrl: './contact.component.scss'
 })
 export class ContactComponent  {
+  @Input() contactInfo = { phone: String, address: String, postalCode: String, city: String};
   @Output() contactInfoChange = new EventEmitter<any>();
+  @Input() userType: string | null = null; // Propriété pour recevoir le type de profil
+
+  ngOnInit() {
+    // Affichez le type de profil dans la console lors de l'initialisation
+    console.log('Type de profil:', this.userType);
+  }
 
   contact = {
     phone: '',
@@ -17,5 +24,6 @@ export class ContactComponent  {
 
   save() {
     this.contactInfoChange.emit(this.contact);
+    this.contactInfoChange.emit(this.userType)
   }
 }

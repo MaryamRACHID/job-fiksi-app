@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
 
 @Component({
   selector: 'app-notifications',
@@ -8,6 +8,7 @@ import { Component } from '@angular/core';
 export class NotificationsComponent {
   notificationsPreference: string = 'yes'; // Default value
   publicProfile: string = 'no'; // Default value
+  @Input() userType: string | null = null; // Propriété pour recevoir le type de profil
 
   notifications: any = {};
 

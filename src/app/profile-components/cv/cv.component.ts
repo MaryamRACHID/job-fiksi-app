@@ -1,4 +1,4 @@
-import { Component, ViewChild, ElementRef } from '@angular/core';
+import {Component, ViewChild, ElementRef, Input} from '@angular/core';
 
 @Component({
   selector: 'app-cv',
@@ -9,6 +9,8 @@ export class CvComponent {
   @ViewChild('cvUploadInput') cvUploadInput!: ElementRef;
   @ViewChild('coverLetterUploadInput') coverLetterUploadInput!: ElementRef;
   @ViewChild('otherDocUploadInput') otherDocUploadInput!: ElementRef;
+  @Input() userType: string | null = null; // Propriété pour recevoir le type de profil
+
 
   onFileChange(event: Event, type: string) {
     const input = event.target as HTMLInputElement;

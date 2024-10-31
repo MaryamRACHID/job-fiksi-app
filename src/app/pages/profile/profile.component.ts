@@ -1,6 +1,6 @@
-import {Component, Output, EventEmitter, ViewChild} from '@angular/core';
+import { Component, Output, EventEmitter, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import {DisponibilitesComponent} from '../../profile-components/disponibilites/disponibilites.component';
+import { DisponibilitesComponent } from '../../profile-components/disponibilites/disponibilites.component';
 
 @Component({
   selector: 'app-profil',
@@ -11,8 +11,6 @@ export class ProfileComponent {
   @Output() userTypeSelected = new EventEmitter<string>();
 
   step: number = 1;
-
-  // Shared data properties
   userType: string | null = null;
   personalInfo = { name: '', firstName: '', birthDate: '' };
   availability: string[] = [];
@@ -21,33 +19,27 @@ export class ProfileComponent {
   experience = [];
   languages: string[] = [];
   contactInfo = { phone: '', address: '', postalCode: '', city: '' };
-
-  // New properties for steps 9 and 10
   preferences: any = { preferredJobTypes: [], locations: [] };
   notifications: any = { emailNotifications: false, smsNotifications: false };
 
   @ViewChild(DisponibilitesComponent) disponibilitesComponent!: DisponibilitesComponent;
 
-  // Navigate to the next step
   goToNextStep() {
-    // Ensure userType is selected before advancing from step 1
     if (this.step === 1 && !this.userType) {
       return;
     }
     if (this.step === 4) {
-      // Appelez la méthode save() du composant enfant
       this.saveAvailability();
     }
     this.step++;
   }
+
   saveAvailability() {
-    // Ici, vous appelez la méthode save() sur le composant enfant si vous avez une référence à celui-ci
-    const childComponent = this.disponibilitesComponent; // Référence au composant enfant
+    const childComponent = this.disponibilitesComponent;
     if (childComponent) {
       childComponent.save();
     }
   }
-  // Navigate to the previous step
 
   goToPreviousStep() {
     if (this.step > 1) {
@@ -55,7 +47,6 @@ export class ProfileComponent {
     }
   }
 
-  // Update methods for child components to share data with parent
   updateUserType(data: string) {
     this.userType = data;
     this.userTypeSelected.emit(data);
@@ -89,7 +80,6 @@ export class ProfileComponent {
     this.contactInfo = data;
   }
 
-  // New update methods for steps 9 and 10
   updatePreferences(data: any) {
     this.preferences = data;
   }
@@ -98,9 +88,7 @@ export class ProfileComponent {
     this.notifications = data;
   }
 
-  // Save profile data and navigate to the next section
   saveProfile() {
-    // Logic to save or submit the complete profile information
     console.log("Profile saved", {
       userType: this.userType,
       personalInfo: this.personalInfo,
@@ -110,53 +98,12 @@ export class ProfileComponent {
       experience: this.experience,
       languages: this.languages,
       contactInfo: this.contactInfo,
-      preferences: this.preferences, // Added for step 9
-      notifications: this.notifications // Added for step 10
+      preferences: this.preferences,
+      notifications: this.notifications
     });
-    // Navigate to another route if needed, e.g., after completing the profile setup
   }
+
   skip() {
     // Logique pour abandonner
   }
 }
-
-
-
-/*
-import { Component, ViewChild } from '@angular/core';
-import { DisponibilitesComponent } from './disponibilites/disponibilites.component'; // Importez le composant
-
-@Component({
-  selector: 'app-profile',
-  templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.scss']
-})
-export class ProfileComponent {
-  step: number = 1; // ou autre valeur selon votre logique
-  userType: boolean = false; // Ajoutez votre logique pour l'utilisateur
-
-  @ViewChild(DisponibilitesComponent) disponibilitesComponent!: DisponibilitesComponent;
-
-  availabilityData: any = {}; // Pour stocker les données de disponibilité
-
-  goToNextStep() {
-    // Si c'est l'étape 4, appelez la méthode save() du composant disponibilites
-    if (this.step === 4) {
-      this.disponibilitesComponent.save(); // Appelle la méthode save pour émettre les données
-      return; // Empêche de passer à l'étape suivante tant que les données ne sont pas sauvegardées
-    }
-
-    // Vérifiez si userType est sélectionné avant d'avancer
-    if (this.step === 1 && !this.userType) {
-      return;
-    }
-
-    this.step++; // Avance à l'étape suivante
-  }
-
-  updateAvailability(event: any) {
-    this.availabilityData = event; // Récupère les données de disponibilité
-  }
-}
-
- */

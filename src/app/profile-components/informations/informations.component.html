@@ -1,37 +1,80 @@
 <h2 class="title">Complétez votre profil</h2>
-<p class="subtitle-1">Informations personnelles</p>
 
-<div class="profile-pic text-center my-3 mb-5 mt-5">
-  <label class="btn btn-outline-secondary icon-container">
-    <p class="text-img mb-0">Ajouter une photo de profil</p>
-    <input type="file" accept="image/png, image/jpeg" style="display: none;" (change)="onFileSelected($event)">
-    <i class="fas fa-pen icon"></i> <!-- Icône de caméra de Font Awesome -->
-  </label>
+<div *ngIf="userType === 'candidate'">
+  <p class="subtitle-1">Informations personnelles : candidat</p>
+
+  <div class="profile-pic text-center my-3 mb-5 mt-5">
+    <label class="btn btn-outline-secondary icon-container">
+      <p class="text-img mb-0">Ajouter une photo de profil</p>
+      <input type="file" accept="image/png, image/jpeg" style="display: none;" (change)="onFileSelected($event)">
+      <i class="fas fa-pen icon"></i> <!-- Icône de caméra de Font Awesome -->
+    </label>
+  </div>
+
+  <div class="gender-selection text-center my-3 mt-5">
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="radio" name="gender" id="female" value="female">
+      <label class="form-check-label" for="female">Madame</label>
+    </div>
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="radio" name="gender" id="male" value="male">
+      <label class="form-check-label" for="male">Monsieur</label>
+    </div>
+  </div>
+
+  <div class="row mt-4">
+    <div class="col-6">
+      <label for="lastName" class="form-label">Nom</label>
+      <input type="text" class="form-control" id="lastName" [(ngModel)]="personalInfo.name" placeholder="Saisir votre nom">
+    </div>
+    <div class="col-6">
+      <label for="firstName" class="form-label">Prénom</label>
+      <input type="text" class="form-control" id="firstName" [(ngModel)]="personalInfo.firstName" placeholder="Saisir votre prénom">
+    </div>
+  </div>
+
+  <div class="mt-4">
+    <label for="birthDate" class="form-label">Date de naissance</label>
+    <input type="date" class="form-control mt-2" id="birthDate" [(ngModel)]="personalInfo.birthDate">
+  </div>
 </div>
 
-<div class="gender-selection text-center my-3 mt-5">
-  <div class="form-check form-check-inline">
-    <input class="form-check-input" type="radio" name="gender" id="female" value="female">
-    <label class="form-check-label" for="female">Madame</label>
+<div *ngIf="userType === 'restaurant'">
+  <p class="subtitle-1">Informations personnelles : restaurant</p>
+
+  <div class="profile-pic text-center my-3 mb-5 mt-5">
+    <label class="btn btn-outline-secondary icon-container">
+      <p class="text-img mb-0">Ajouter une photo de profil</p>
+      <input type="file" accept="image/png, image/jpeg" style="display: none;" (change)="onFileSelected($event)">
+      <i class="fas fa-pen icon"></i> <!-- Icône de caméra de Font Awesome -->
+    </label>
   </div>
-  <div class="form-check form-check-inline">
-    <input class="form-check-input" type="radio" name="gender" id="male" value="male">
-    <label class="form-check-label" for="male">Monsieur</label>
+
+  <div class="gender-selection text-center my-3 mt-5">
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="radio" name="gender" id="female" value="female">
+      <label class="form-check-label" for="female">Madame</label>
+    </div>
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="radio" name="gender" id="male" value="male">
+      <label class="form-check-label" for="male">Monsieur</label>
+    </div>
+  </div>
+
+  <div class="row mt-4">
+    <div class="col-6">
+      <label for="lastName" class="form-label">Nom</label>
+      <input type="text" class="form-control" id="lastName" [(ngModel)]="personalInfo.name" placeholder="Saisir votre nom">
+    </div>
+    <div class="col-6">
+      <label for="firstName" class="form-label">Prénom</label>
+      <input type="text" class="form-control" id="firstName" [(ngModel)]="personalInfo.firstName" placeholder="Saisir votre prénom">
+    </div>
+  </div>
+
+  <div class="mt-4">
+    <label for="birthDate" class="form-label">Date de naissance</label>
+    <input type="date" class="form-control mt-2" id="birthDate" [(ngModel)]="personalInfo.birthDate">
   </div>
 </div>
 
-<div class="row mt-4">
-  <div class="col-6">
-    <label for="lastName" class="form-label">Nom</label>
-    <input type="text" class="form-control" id="lastName" [(ngModel)]="personalInfo.name" placeholder="Saisir votre nom">
-  </div>
-  <div class="col-6">
-    <label for="firstName" class="form-label">Prénom</label>
-    <input type="text" class="form-control" id="firstName" [(ngModel)]="personalInfo.firstName" placeholder="Saisir votre prénom">
-  </div>
-</div>
-
-<div class="mt-4">
-  <label for="birthDate" class="form-label">Date de naissance</label>
-  <input type="date" class="form-control mt-2" id="birthDate" [(ngModel)]="personalInfo.birthDate">
-</div>
