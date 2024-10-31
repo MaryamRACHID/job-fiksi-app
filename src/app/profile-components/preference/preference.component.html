@@ -3,19 +3,27 @@
 
 <div class="job-preferences">
   <p>Type de poste recherché</p>
-  <label class="checkbox-inline">
-    <input type="checkbox" [(ngModel)]="jobPreferences.server"> Serveur
-  </label>
-  <label class="checkbox-inline">
-    <input type="checkbox" [(ngModel)]="jobPreferences.cook"> Cuisinier
-  </label>
-  <label class="checkbox-inline">
-    <input type="checkbox" [(ngModel)]="jobPreferences.dishwasher"> Plongeur
-  </label>
-  <label class="other-label">
-    Autre:
-    <input type="text" [(ngModel)]="jobPreferences.otherType" placeholder="Autre poste">
-  </label>
+  <div class="d-flex flex-wrap">
+    <div class="form-check me-4 mb-3 mt-2 d-flex justify-content-center align-items-center"> <!-- Ajoutez 'mb-3' pour la marge en bas -->
+      <input type="checkbox" class="form-check-input me-2" [(ngModel)]="jobPreferences.server">
+      <label class="form-check-label">Serveur</label>
+    </div>
+    <div class="form-check me-4 mb-3 mt-2 d-flex justify-content-center align-items-center">
+      <input type="checkbox" class="form-check-input me-2" [(ngModel)]="jobPreferences.cook">
+      <label class="form-check-label">Cuisinier</label>
+    </div>
+    <div class="form-check me-4 mb-3 mt-2 d-flex justify-content-center align-items-center">
+      <input type="checkbox" class="form-check-input me-2" [(ngModel)]="jobPreferences.dishwasher">
+      <label class="form-check-label">Plongeur</label>
+    </div>
+    <div class="form-check me-4 mb-3 mt-2 d-flex justify-content-center align-items-center">
+      <input type="checkbox" class="form-check-input me-2" [(ngModel)]="jobPreferences.other">
+      <label *ngIf="!jobPreferences.other" class="form-check-label">Autre</label>
+      <div *ngIf="jobPreferences.other" class=""> <!-- Ajoutez une marge en haut pour séparer l'input -->
+        <input type="text" [(ngModel)]="jobPreferences.otherType" placeholder="Autre" class="form-control input-autre">
+      </div>
+    </div>
+  </div>
 </div>
 
 <div class="location-preference mt-4">

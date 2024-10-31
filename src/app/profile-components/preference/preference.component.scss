@@ -1,27 +1,24 @@
-.title {
-  font-weight: bold;
-  font-size: 1.5rem;
+p{
+  font-weight: 500;
 }
 
-.subtitle-1 {
-  color: #333;
+.input-autre{
+  border: none;
+  border-bottom: 1px solid #b9b9b9;
+  border-radius: 0px;
+  max-width: 100px;
+  padding: 0px !important;
 }
 
-.job-preferences {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
+.input-autre:hover,
+.input-autre:focus {
+  background: transparent !important; /* ou la couleur de votre choix */
+  box-shadow: none !important; /* Supprime l'ombre */
 }
 
-.checkbox-inline {
-  display: inline-block;
-  margin-right: 12px;
-}
-
-.other-label {
-  display: flex;
-  align-items: center;
-  gap: 8px;
+input::placeholder {
+  color: #8c8c8c; /* Changez cette couleur selon vos besoins */
+  opacity: 10; /* Assurez-vous que l'opacité est à 1 pour voir la couleur */
 }
 
 .location-preference label {
@@ -39,18 +36,25 @@
   font-weight: bold;
 }
 
-::ng-deep .ngx-slider .ngx-slider-handle {
-  background-color: white !important; /* Couleur de fond blanche */
-  border: 2px solid #eeae00 !important; /* Bordure de la couleur principale */
-  width: 10px !important; /* Taille du cercle */
-  height: 10px !important; /* Taille du cercle */
-  box-shadow: none !important; /* Supprimer l'ombre si elle est appliquée */
-}
-
 ::ng-deep .ngx-slider .ngx-slider-selection {
   background-color: #eeae00 !important; /* Couleur principale pour l'intervalle sélectionné */
 }
 
-::ng-deep .ngx-slider .ngx-slider-track {
-  background-color: #e0e0e0 !important; /* Couleur de la piste non sélectionnée */
+::ng-deep .ngx-slider .ngx-slider-pointer {
+  background-color: white !important; /* Couleur blanche pour les cercles */
+  width: 20px !important; /* Réduction de la taille des cercles */
+  height: 20px !important; /* Réduction de la taille des cercles */
+  top: -8px !important; /* Ajustement de l'alignement vertical */
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.3) !important;
+
 }
+
+::ng-deep .ngx-slider .ngx-slider-pointer {
+  transition: none !important;
+}
+
+::ng-deep .ngx-slider .ngx-slider-pointer::after,
+::ng-deep .ngx-slider .ngx-slider-pointer::before {
+  content: none !important; /* Empêche l'apparition des styles pseudo-éléments */
+}
+

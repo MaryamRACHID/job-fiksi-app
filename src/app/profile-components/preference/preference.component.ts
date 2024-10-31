@@ -11,6 +11,7 @@ export class PreferenceComponent {
     server: false,
     cook: false,
     dishwasher: false,
+    other: false,
     otherType: ''
   };
 
