@@ -17,6 +17,7 @@
     <app-notifications *ngIf="step === 10" (notificationsChange)="updateNotifications($event)"></app-notifications>
   </div>
   <div class="button-container">
-    <button (click)="goToNextStep()" [disabled]="!userType" class="fixed-button btn btn-primary full-width">Continuer</button>
+    <button *ngIf="step != 10" (click)="goToNextStep()" [disabled]="!userType" class="fixed-button btn btn-primary full-width">Continuer</button>
+    <button *ngIf="step === 10" (click)="saveProfile()" [disabled]="!userType" class="fixed-button btn btn-primary full-width">Terminer mon inscription</button>
   </div>
 </div>
