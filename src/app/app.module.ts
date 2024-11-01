@@ -11,7 +11,6 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { MatChipsModule } from '@angular/material/chips';
-import { ProfileRestaurantComponent } from './pages/profile-restaurant/profile-restaurant.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTabsModule } from '@angular/material/tabs';

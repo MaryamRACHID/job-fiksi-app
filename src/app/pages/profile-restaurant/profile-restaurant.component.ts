@@ -30,9 +30,10 @@ import { CommonModule } from '@angular/common';
     ])
   ]
 })
-export class ProfileRestaurantComponent {
+export class ProfileRestaurantComponent{
   showTitle: boolean = true;
   showInfos: boolean=false;
+  job: any;
 
   onTabChange(event: MatTabChangeEvent) {
     // Affiche le titre seulement quand l'onglet "Mes offres" est sélectionné
@@ -41,17 +42,62 @@ export class ProfileRestaurantComponent {
     // L'index 1 correspond au deuxième onglet }
   }
   showDescription = false;
-
+  showDetails: boolean = false;
+  showOffreSection: boolean = true;
+  showCandidatureContainer: boolean = false;
   toggleDescription() {
     this.showDescription = !this.showDescription;
   }
+  // Méthode pour revenir à la liste des offres
+  backToJobList() {
+    this.jobList.forEach(job => job.show = false); // Réinitialiser `show` pour tous les jobs
+    this.showOffreSection = true;                  // Afficher la section offres
+  }
+  toggleDetails() {
+    this.showDetails = !this.showDetails;
+  }
+
+  // Méthode pour afficher uniquement les candidatures de l'offre sélectionnée
+  viewJobApplications(selectedJob: any) {
+    this.jobList.forEach(job => job.show = false); // Réinitialiser `show` pour tous les jobs
+    selectedJob.show = true;                       // Activer `show` pour le job sélectionné
+    this.showOffreSection = false;                 // Cacher la section offres
+  }
 
   jobList = [
-    { title: 'Serveur H/F', typePoste: 'Temps partiel', lieu: 'Lyon', nombreCandidature: '20', datePublication: '20/12/2021' },
-    { title: 'Cuisinier H/F', typePoste: 'Temps plein', lieu: 'Marseille', nombreCandidature: '15', datePublication: '15/11/2021' },
-    { title: 'Responsable de salle H/F', typePoste: 'Temps partiel', lieu: 'Paris', nombreCandidature: '10', datePublication: '10/10/2021' },
-    { title: 'Barman H/F', typePoste: 'Temps partiel', lieu: 'Nice', nombreCandidature: '25', datePublication: '05/09/2021' },
-    { title: 'Chef de rang H/F', typePoste: 'Temps plein', lieu: 'Lyon', nombreCandidature: '30', datePublication: '01/08/2021' }
-];
+    {
+      title: 'Serveur H/F',
+      typePoste: 'Temps partiel',
+      lieu: 'Lyon',
+      nombreCandidature: '20',
+      datePublication: '20/12/2021',
+      show:false,
+      candidatures: [
+        { name: 'Alice Dupont', Cv: 'cv.pdf', Email: 'alice@example.com', Telephone: '074474748', Disponibilite: 'Lundi, Mardi', _Statut: 'pas évalué' },
+        { name: 'Jean Martin', Cv: 'cv', Email: 'jean@example.com', Telephone: '075577889', Disponibilite: 'Mercredi, Vendredi', _Statut: 'en attente' },
+        { name: 'Claire Bernard', Cv: 'cv', Email: 'claire@example.com', Telephone: '076688990', Disponibilite: 'Mardi, Jeudi', _Statut: 'accepté' },
+        { name: 'Pierre Durand', Cv: 'cv', Email: 'pierre@example.com', Telephone: '077799001', Disponibilite: 'Lundi, Mercredi, Vendredi', _Statut: 'pas évalué' },
+        { name: 'Sophie Leroy', Cv: 'cv', Email: 'sophie@example.com', Telephone: '078800112', Disponibilite: 'Jeudi, Samedi', _Statut: 'en attente' },
+        { name: 'Marc Dupuis', Cv: 'cv', Email: 'marc@example.com', Telephone: '079911223', Disponibilite: 'Mardi, Vendredi', _Statut: 'pas évalué' },
+
+      ]
+    },
+    {
+      title: 'Cuisinier',
+      typePoste: 'Temps plein',
+      lieu: 'Paris',
+      nombreCandidature: '10',
+      datePublication: '15/11/2021',
+      show:false,
+      candidatures: [
+        { name: 'Isabelle Laurent', Cv: 'cv', Email: 'isabelle@example.com', Telephone: '070012345', Disponibilite: 'Lundi, Mardi, Jeudi', _Statut: 'refusé' },
+        { name: 'Lucas Garnier', Cv: 'cv', Email: 'lucas@example.com', Telephone: '071123456', Disponibilite: 'Mercredi, Vendredi', _Statut: 'en attente' },
+        { name: 'Emma Roche', Cv: 'cv', Email: 'emma@example.com', Telephone: '072234567', Disponibilite: 'Lundi, Samedi', _Statut: 'accepté' },
+        { name: 'Paul Millet', Cv: 'cv', Email: 'paul@example.com', Telephone: '073345678', Disponibilite: 'Jeudi, Dimanche', _Statut: 'pas évalué' }
+      ]
+    },
+    // autres postes
+  ];
+
 
 }

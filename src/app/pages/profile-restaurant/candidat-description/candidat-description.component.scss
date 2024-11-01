@@ -1,14 +1,15 @@
-
 .poste-container{
   width: 300px;
   // height: 15rem;
   margin: 10px;
+  background-color: #e7e2e257;
   border: 1px solid #ffffff;
   box-shadow: 1rem 1rem 1rem 1rem rgb(245, 243, 243);
   border-radius: 8px;
   overflow: hidden;
   cursor: pointer;
 }
+
 
 .poste-header{
   display: flex;
@@ -23,17 +24,6 @@
   padding: 10px;
   background-color: #e7e2e257;
   justify-items: center;
-}
-
-.arrow-down::before,
-.arrow-up::before {
-  content: '⮟';
-  font-size: 1.2em;
-  color: #333;
-}
-
-.arrow-up::before {
-  content: '▲';
 }
 .contentOffre h2{
   margin: 1rem;
@@ -55,12 +45,6 @@
 .table-items:nth-child(1) p{
  font-weight: bold;
 }
-
-.table-items a{
-  // text-decoration: none;
-  color: #f7b11c;
-  font-weight: bold;
-}
 .button-modif{
   display: flex;
   flex-direction: row;
@@ -72,19 +56,8 @@
   padding: 0.5rem 1rem;
   border-radius: 5px;
   border-color: transparent;
+  font-size: 0.6rem;
 }
-
-.header-title{
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  margin-top: 3rem;
-}
-.header-title h2{
-  font-size: 1rem;
-}
-.back-arrow {
-  margin-right: 10px;
-  font-size: 1.2em;
-  cursor: pointer;
+.poste-description .worning{
+  font-size: 0.5rem;
 }

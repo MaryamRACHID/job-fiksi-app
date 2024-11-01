@@ -1,0 +1,31 @@
+<div class="poste-container" *ngIf="showCandidate">
+  <div class="poste-header" (click)="toggleDescriptionCandidate()">
+    <span>{{ candidate.name }}</span>
+    <span [ngClass]="{'rotate-arrow': isOpen}" class="arrow">▼</span>
+  </div>
+  <div *ngIf="isOpen" class="poste-description">
+    <div class="table-infos">
+      <div class="table-items">
+        <p>Nom : </p>
+        <p>CV : </p>
+        <p>Email : </p>
+        <p>Téléphone : </p>
+        <p>Disponibilité : </p>
+        <p>Status : </p>
+      </div>
+      <div class="table-items">
+        <p>{{candidate.name}}</p>
+        <a [attr.href]="candidate.Cv" download>Voir CV</a>
+        <p>{{candidate.Email}}</p>
+        <p>{{candidate.Telephone}}</p>
+        <p>{{candidate.Disponibilite}}</p>
+        <p>{{candidate._Statut}}</p>
+      </div>
+    </div>
+    <div class="button-modif">
+      <button type="button">Refuser le candidat</button>
+      <button type="button">Proposer un entretien</button>
+    </div>
+    <p class="worning">* Si vous ne répondez pas au candidat dans les 48 heures, nous supposerons que vous l'avez refusé</p>
+  </div>
+</div>

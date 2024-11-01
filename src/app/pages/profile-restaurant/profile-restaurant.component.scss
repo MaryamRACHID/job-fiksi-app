@@ -186,3 +186,46 @@ p{
   font-weight: bold;
   border-radius: 20px;
 }
+
+.poste-details {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin: 10px 0;
+  background-color: #f9f9f9;
+  border-radius: 5px;
+}
+
+.poste-details-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+.arrow-up {
+  cursor: pointer;
+  font-size: 1.5rem;
+  transition: transform 0.3s ease;
+}
+
+.arrow-up:hover {
+  transform: translateY(-2px);
+}
+.candidature-header {
+  display: flex;
+  align-items: center;
+  font-family: Arial, sans-serif;
+  font-size: 20px;
+  color: #333;
+}
+
+.back-arrow {
+  font-size: 24px;
+  margin-right: 8px;
+  cursor: pointer;
+}
+
+.candidature-title {
+  font-weight: 500;
+}
+

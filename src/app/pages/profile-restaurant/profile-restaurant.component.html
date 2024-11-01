@@ -94,21 +94,30 @@
     </div>
   </section>
 </div>
-<div class="contentOffre" *ngIf="showTitle">
+
+<!-- ######################################################################"" -->
+<div class="contentOffre" *ngIf="showOffreSection">
   <h2>Mes offres d'emplois</h2>
   <button class="addOffre" type="button" id="addOffre">Ajouter une offre</button>
-  <!-- <div class="poste-container" (click)="toggleDescription()">
-    <div class="poste-header">
-        <span>Poste Serveur</span>
-        <span [ngClass]="{ 'arrow-down': !showDescription, 'arrow-up': showDescription }"></span>
-    </div>
-    <div class="poste-description" *ngIf="showDescription" [@slideToggle]>
-        <p>Ce poste implique de servir les clients, prendre les commandes, et s'assurer de la satisfaction des clients dans le restaurant.</p>
-    </div>
-</div> -->
+
 
 <div *ngFor="let job of jobList">
-  <app-offre-description [job]="job"></app-offre-description>
+  <app-offre-description [job]="job" *ngIf="!job.show"
+    (viewCandidatures)="viewJobApplications(job)">></app-offre-description>
 </div>
 <button class="postOffre" type="button">Publier une offre d'emploi</button>
+</div>
+<!-- ###################################################################### -->
+<div *ngFor="let job of jobList">
+<div class="contentOffre" *ngIf="job.show && !showOffreSection">
+  <div class="candidature-header">
+    <span class="back-arrow" (click)="backToJobList()">←</span>
+    <h2 class="candidature-title">Candidatures pour {{ job.title }}</h2>
+    <!-- Affichez ici les candidatures de job.candidatures -->
+  </div>
+      <div *ngFor="let candidate of job.candidatures">
+        <app-candidat-description [candidate]="candidate"></app-candidat-description>
+      </div>
+
+  </div>
 </div>
