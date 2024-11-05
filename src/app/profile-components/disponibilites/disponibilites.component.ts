@@ -10,7 +10,7 @@ export class DisponibilitesComponent {
   @Input() userType: string | null = null; // Propriété pour recevoir le type de profil
 
   days = ['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche'];
-  availability: { [key: string]: boolean } = {
+  availabilityInfo: { [key: string]: boolean } = {
     'Lundi': false,
     'Mardi': false,
     'Mercredi': false,
@@ -26,7 +26,7 @@ export class DisponibilitesComponent {
   // Appelle cette méthode pour émettre les données
   save() {
     this.availabilityInfoChange.emit({
-      availability: Object.keys(this.availability).filter(day => this.availability[day]),
+      availability: Object.keys(this.availabilityInfo).filter(day => this.availabilityInfo[day]),
       morning: this.morning,
       afternoon: this.afternoon,
       evening: this.evening
@@ -35,11 +35,11 @@ export class DisponibilitesComponent {
 
   // Méthode pour gérer le changement de jour
   onDayChange(day: string) {
-    this.availability[day] = !this.availability[day];
+    this.availabilityInfo[day] = !this.availabilityInfo[day];
 
     // Emit the availability change
     this.availabilityInfoChange.emit({
-      availability: this.availability,
+      availability: this.availabilityInfo,
       morning: this.morning,
       afternoon: this.afternoon,
       evening: this.evening

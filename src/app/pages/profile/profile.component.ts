@@ -1,6 +1,15 @@
 import { Component, Output, EventEmitter, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { DisponibilitesComponent } from '../../profile-components/disponibilites/disponibilites.component';
+import {InformationsComponent} from '../../profile-components/informations/informations.component';
+import {ContactComponent} from '../../profile-components/contact/contact.component';
+import {ProfileTypeComponent} from '../../profile-components/profile-type/profile-type.component';
+import {DescriptionComponent} from '../../profile-components/description/description.component';
+import {FormationComponent} from '../../profile-components/formation/formation.component';
+import {ExperiencesComponent} from '../../profile-components/experiences/experiences.component';
+import {CvComponent} from '../../profile-components/cv/cv.component';
+import {PreferenceComponent} from '../../profile-components/preference/preference.component';
+import {NotificationsComponent} from '../../profile-components/notifications/notifications.component';
 
 @Component({
   selector: 'app-profil',
@@ -13,25 +22,63 @@ export class ProfileComponent {
   step: number = 1;
   userType: string | null = null;
   personalInfo = { name: '', firstName: '', birthDate: '' };
+  contactInfo = { phone: '', address: '', postalCode: '', city: '' };
   availability: string[] = [];
   references = { hasExperience: false, description: '', skills: '' };
   formation = { level: '', diplomas: [] };
   experience = [];
   languages: string[] = [];
-  contactInfo = { phone: '', address: '', postalCode: '', city: '' };
   preferences: any = { preferredJobTypes: [], locations: [] };
   notifications: any = { emailNotifications: false, smsNotifications: false };
 
+  @ViewChild(ProfileTypeComponent) profileTypeComponent!: ProfileTypeComponent;
+  @ViewChild(InformationsComponent) informationsComponent!: InformationsComponent;
+  @ViewChild(ContactComponent) contactComponent!: ContactComponent;
   @ViewChild(DisponibilitesComponent) disponibilitesComponent!: DisponibilitesComponent;
+  @ViewChild(DescriptionComponent) descriptionComponent!: DescriptionComponent;
+  @ViewChild(FormationComponent) formationComponent!: FormationComponent;
+  @ViewChild(ExperiencesComponent) experiencesComponent!: ExperiencesComponent;
+  @ViewChild(CvComponent) cvComponent!: CvComponent;
+  @ViewChild(PreferenceComponent) preferenceComponent!: PreferenceComponent;
+  @ViewChild(NotificationsComponent) notificationsComponent!: NotificationsComponent;
+
 
   goToNextStep() {
-    if (this.step === 1 && !this.userType) {
-      return;
+    switch (this.step) {
+      case 1:
+        if (this.step === 1 && !this.userType) {
+          return;
+        }
+        this.profileTypeComponent.onTypeUpdate();
+        break;
+      case 2:
+        this.informationsComponent.onInfoUpdate();
+        break;
+      case 3:
+        this.contactComponent.onContactUpdate();
+        break;
+      case 4:
+        this.disponibilitesComponent.onDisponibiliteUpdate();
+        break;
+      case 5:
+        this.descriptionComponent.onDescriptionUpdate();
+        break;
+      case 6:
+        this.formationComponent.onFormationUpdate();
+        break;
+      case 7:
+        this.experiencesComponent.onExperienceUpdate();
+        break;
+      case 8:
+        this.cvComponent.onCvUpdate();
+        break;
+      case 9:
+        this.preferenceComponent.onPreferenceUpdate();
+        break;
+      case 10:
+        this.notificationsComponent.onNotificationUpdate();
+        break;
     }
-    if (this.step === 4) {
-      this.saveAvailability();
-    }
-    this.step++;
   }
 
   saveAvailability() {
@@ -92,12 +139,12 @@ export class ProfileComponent {
     console.log("Profile saved", {
       userType: this.userType,
       personalInfo: this.personalInfo,
+      contactInfo: this.contactInfo,
       availability: this.availability,
       references: this.references,
       formation: this.formation,
       experience: this.experience,
       languages: this.languages,
-      contactInfo: this.contactInfo,
       preferences: this.preferences,
       notifications: this.notifications
     });

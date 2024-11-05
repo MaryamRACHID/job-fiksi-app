@@ -6,7 +6,7 @@ import {Component, Output, EventEmitter, Input} from '@angular/core';
   styleUrl: './contact.component.scss'
 })
 export class ContactComponent  {
-  @Input() contactInfo = { phone: String, address: String, postalCode: String, city: String};
+  @Input() contactInfo!: { phone: string, address: string, postalCode: string, city: string};
   @Output() contactInfoChange = new EventEmitter<any>();
   @Input() userType: string | null = null; // Propriété pour recevoir le type de profil
 

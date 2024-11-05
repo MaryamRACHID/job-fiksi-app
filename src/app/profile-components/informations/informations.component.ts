@@ -12,19 +12,12 @@ export class InformationsComponent {
   @Input() userType: string | null = null; // Propriété pour recevoir le type de profil
 
   ngOnInit() {
-    // Affichez le type de profil dans la console lors de l'initialisation
     console.log('Type de profil:', this.userType);
   }
 
-    // Emit the updated personalInfo object to the parent component
-    updateInfo() {
+  updateInfo() {
     this.personalInfoChange.emit(this.personalInfo);
     this.personalInfoChange.emit(this.userType)
-  }
-
-  goToNextStep() {
-    this.updateInfo();
-    this.next.emit();
   }
 
   onFileSelected(event: Event): void {
