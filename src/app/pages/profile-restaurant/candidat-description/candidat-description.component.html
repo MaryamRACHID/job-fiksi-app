@@ -11,21 +11,75 @@
         <p>Email : </p>
         <p>Téléphone : </p>
         <p>Disponibilité : </p>
+        <p>Date d'entretien :</p>
+        <p>Heure d'entretien : </p>
         <p>Status : </p>
       </div>
       <div class="table-items">
         <p>{{candidate.name}}</p>
-        <a [attr.href]="candidate.Cv" download>Voir CV</a>
+        <p><a [attr.href]="candidate.Cv" download>Voir CV</a></p>
         <p>{{candidate.Email}}</p>
         <p>{{candidate.Telephone}}</p>
         <p>{{candidate.Disponibilite}}</p>
-        <p>{{candidate._Statut}}</p>
+        <p>{{candidate.DateEntretien}}</p>
+        <p>{{candidate.HeureEntretien}}</p>
+        <p>
+          {{candidate._Statut}}
+          <button mat-icon-button (click)="openEditDialog(candidate)">
+            <mat-icon>edit</mat-icon>
+          </button>
+        </p>
       </div>
     </div>
     <div class="button-modif">
       <button type="button">Refuser le candidat</button>
-      <button type="button">Proposer un entretien</button>
+      <button type="button" (click)="openEditDialog_entretien(candidate)">Proposer un entretien</button>
     </div>
     <p class="worning">* Si vous ne répondez pas au candidat dans les 48 heures, nous supposerons que vous l'avez refusé</p>
   </div>
 </div>
+
+<ng-template class="popup-statut" #editDialog>
+  <h2 class="popup-title">Modifier le statut de la candidature</h2>
+  <mat-radio-group [(ngModel)]="selectedStatus" class="items">
+    <mat-radio-button value="Non évalué" class="custom-radio" color="primary">Non évalué</mat-radio-button>
+    <mat-radio-button value="En cours">En cours</mat-radio-button>
+    <mat-radio-button value="Accepté">Accepté</mat-radio-button>
+    <mat-radio-button value="Refusé">Refusé</mat-radio-button>
+  </mat-radio-group>
+  <div class="dialog-actions">
+    <button mat-button (click)="updateStatus()" class="popup-button">Enregistrer</button>
+    <button mat-button (click)="closeDialog()" class="popup-button">Annuler</button>
+  </div>
+</ng-template>
+
+<ng-template class="popup-dateEntretien" #editDialogEntretien>
+  <h2 class="popup-title">Date et heure de l'entretien</h2>
+
+  <!-- Plage d'horaire pour fixer la date d'entretien -->
+  <div class="plage-horaire">
+    <mat-form-field appearance="fill">
+      <mat-label>Date de l'entretien</mat-label>
+      <input matInput [matDatepicker]="picker" [(ngModel)]="selectedDateEntretien">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <!-- Sélecteur d'heure pour choisir l'heure de l'entretien -->
+    <mat-form-field appearance="fill">
+      <mat-label>Heure de l'entretien</mat-label>
+      <input matInput type="time" [(ngModel)]="selectedTimeEntretien">
+    </mat-form-field>
+  </div>
+
+  <!-- Statut de l'entretien -->
+  <mat-radio-group class="radio" [(ngModel)]="selectedStatusEntretien">
+    <mat-radio-button value="Entretien réalisé">Entretien réalisé</mat-radio-button>
+  </mat-radio-group>
+
+  <!-- Boutons d'action -->
+  <div class="dialog-actions">
+    <button mat-button (click)="updateStatus_entretien()" class="popup-button">Enregistrer</button>
+    <button mat-button (click)="closeDialog_entretien()" class="popup-button">Annuler</button>
+  </div>
+</ng-template>
+

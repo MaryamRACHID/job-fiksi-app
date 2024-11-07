@@ -18,9 +18,14 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTabsModule } from '@angular/material/tabs';
+import { PlanningComponent } from './profile-restaurant/planning/planning.component';
 import { OffreDescriptionComponent } from "./profile-restaurant/offre-description/offre-description.component";
 import { ProfileRestaurantComponent } from './profile-restaurant/profile-restaurant.component';
-
+import { MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatRadioModule } from '@angular/material/radio';
 @NgModule({
   declarations: [
     HomeComponent,
@@ -29,13 +34,17 @@ import { ProfileRestaurantComponent } from './profile-restaurant/profile-restaur
     ProfileComponent,
     ProfileRestaurantComponent,
     CandidatDescriptionComponent,
-    OffreDescriptionComponent
+    OffreDescriptionComponent,
+    PlanningComponent,
+    SettingsComponent
   ],
   exports: [
     LoginComponent,
     RegisterComponent,
     HomeComponent,
-    ProfileRestaurantComponent
+    ProfileRestaurantComponent,
+    SettingsComponent,
+    CandidatDescriptionComponent
   ],
   imports: [
     RouterModule,
@@ -54,8 +63,21 @@ import { ProfileRestaurantComponent } from './profile-restaurant/profile-restaur
     MatIconModule,
     MatToolbarModule,
     MatTabsModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatSlideToggleModule,
+    MatButtonModule,
+    MatDialogModule,
+    MatIconModule,
+    MatRadioModule
+],
+providers: [
+  MatNativeDateModule, // Provide the native date adapter
 ]
 })
-export class PagesModule { }import { CandidatDescriptionComponent } from './profile-restaurant/candidat-description/candidat-description.component';
+export class PagesModule { }
+
+import { CandidatDescriptionComponent } from './profile-restaurant/candidat-description/candidat-description.component';
 import { InputModalityDetector } from '@angular/cdk/a11y';
+import { SettingsComponent } from './settings/settings.component';
 

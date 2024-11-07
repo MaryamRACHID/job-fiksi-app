@@ -4,12 +4,17 @@ import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { HomeComponent } from './pages/home/home.component';
 import { ProfileRestaurantComponent } from './pages/profile-restaurant/profile-restaurant.component';
+import { SettingsComponent } from './pages/settings/settings.component';
+import { PlanningComponent } from './pages/profile-restaurant/planning/planning.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'profile-restaurant', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   { path: 'login', component: LoginComponent },
-  {path: 'profile-restaurant', component: ProfileRestaurantComponent}
+  {path: 'profile-restaurant', component: ProfileRestaurantComponent},
+  {path:'settings', component:SettingsComponent},
+  {path:'planning', component:PlanningComponent},
+
 ];
 
 @NgModule({

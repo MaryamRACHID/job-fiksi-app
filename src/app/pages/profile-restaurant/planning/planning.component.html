@@ -1,0 +1,12 @@
+<div class="calendar-container">
+  <mat-calendar [(selected)]="selectedDate" (selectedChange)="onDateSelected($event)" [dateClass]="dateClass"></mat-calendar>
+</div>
+
+<div class="interview-details" *ngIf="selectedInterviews.length > 0">
+  <h3>Détails des entretiens pour le {{ selectedDate | date: 'dd/MM/yyyy' }}</h3>
+  <div *ngFor="let interview of selectedInterviews">
+    <p><strong>Candidat:</strong> {{ interview.name }}</p>
+    <p><strong>Poste:</strong> {{ interview.jobTitle }}</p>
+    <p><strong>Date d'entretien:</strong> {{ interview.dateEntretien }}</p>
+  </div>
+</div>

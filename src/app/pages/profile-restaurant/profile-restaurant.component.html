@@ -23,7 +23,13 @@
 <mat-tab-group (selectedTabChange)="onTabChange($event)">
   <mat-tab label="Mes informations personnelles" class="custum"></mat-tab>
   <mat-tab label="Mes offres" class="custum"></mat-tab>
+  <mat-tab label="Mon planning" class="custum">
+    <ng-template matTabContent>
+      <app-planning></app-planning>
+    </ng-template>
+  </mat-tab>
 </mat-tab-group>
+
 
 <div class="content" *ngIf="showInfos">
   <section class="company-info">
@@ -96,7 +102,7 @@
 </div>
 
 <!-- ######################################################################"" -->
-<div class="contentOffre" *ngIf="showOffreSection">
+<div class="contentOffre" *ngIf="showOffreSection && showTitle">
   <h2>Mes offres d'emplois</h2>
   <button class="addOffre" type="button" id="addOffre">Ajouter une offre</button>
 
@@ -120,4 +126,8 @@
       </div>
 
   </div>
+
 </div>
+
+<!-- ##################################################################################### -->
+

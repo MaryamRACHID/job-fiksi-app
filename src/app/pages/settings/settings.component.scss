@@ -1,0 +1,187 @@
+:host{
+  background-color: #D9D9D9;
+  height: 100vh;
+}
+
+html, body{
+  background-color: #D9D9D9;
+}
+.container{
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  background-color: #D9D9D9;
+  height: 100vh;
+}
+
+.container h2{
+  margin-top: 2.7rem;
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+}
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 20px;
+}
+
+input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.4s;
+  border-radius: 34px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 15px;
+  width: 15px;
+  left: 4px;
+  bottom: 3px;
+  background-color: white;
+  transition: 0.4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: #4CAF50;
+}
+
+input:checked + .slider:before {
+  transform: translateX(18px);
+}
+
+.element{
+  display: flex;
+  flex-direction: row;
+  gap: 0.7rem;
+  background-color: #ffffff;
+  align-items: center;
+  // justify-content: center;
+  height: 3rem;
+  padding-left: 1.2rem;
+  border-radius: 0.7rem;
+}
+.element .flech, .element .switch{
+  // margin-left: 2rem;
+  // margin-right: 0;
+  position: absolute;
+  right: 1.5rem;
+  float: right;
+  text-align: right;
+}
+
+footer{
+  display: flex;
+  flex-direction: row;
+  gap: 3.4rem;
+  margin: auto;
+  padding: auto;
+  margin-bottom: 0;
+  background-color: #ffffff;
+  width: 100%;
+  align-items: center;
+  justify-items: auto;
+  justify-content: center;
+  cursor: pointer;
+  transition: border 0.3s ease;
+}
+footer fa-icon{
+  font-size: 1.6rem;
+  color: #d1c6c6;
+}
+
+.active-icon fa-icon {
+  color: rgb(255, 238, 0);
+  border-radius: 50%;
+}
+footer .user{
+  color: #ffe608;
+}
+// .overlay {
+//   position: fixed;
+//   top: 0;
+//   left: 0;
+//   width: 100%;
+//   height: 100%;
+//   background-color: rgba(0, 0, 0, 0.5); /* Couleur grisée semi-transparente */
+//   visibility: hidden; /* Caché par défaut */
+//   opacity: 0; /* Caché par défaut */
+//   transition: visibility 0s, opacity 0.5s ease; /* Transition pour l'apparition de l'overlay */
+//   z-index: 10; /* Au-dessus du contenu principal mais sous le popup */
+// }
+
+// /* Afficher l'overlay lorsque le popup est visible */
+// .overlay.show {
+//   visibility: visible;
+//   opacity: 1;
+// }
+/* Style de base pour le popup (caché par défaut) */
+.popup {
+  position: fixed;
+  bottom: -250px; /* Commence hors de la vue */
+  left: 0;
+  right: 0;
+  background-color: white;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  text-align: center;
+  transition: bottom 0.5s ease; /* Animation pour faire monter le popup */
+  display: flex;
+  flex-direction: column;
+}
+/* Montrer le popup */
+.popup.show {
+  bottom: 0; /* Remonte à la vue */
+}
+
+/* Footer caché lorsque le popup est visible */
+.footer.hide {
+  display: none;
+}
+
+/* Style des boutons dans le popup */
+.popup button {
+  margin: 10px;
+  padding: 10px 20px;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.popup .oui{
+  background-color: #D6CDFE;
+}
+.popup .cancel{
+  background-color: #130160;
+}
+
+/* Bouton "Cancel" différent */
+.popup button:nth-child(2) {
+  background-color: gray;
+}
+
+.popup p:nth-child(1){
+  // color: #4CAF50;
+  font-weight: 500;
+  margin-bottom: 0;
+}
+
+.popup p:nth-child(2){
+  font-size: 0.7rem;
+}

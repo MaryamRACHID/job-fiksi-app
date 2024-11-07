@@ -39,7 +39,7 @@
   flex-direction: column;
 }
 
-.table-infos p, .table-items p{
+.table-infos p, .table-items p, .table-items a{
   font-size: 0.8rem;
 }
 .table-items:nth-child(1) p{
@@ -60,4 +60,61 @@
 }
 .poste-description .worning{
   font-size: 0.5rem;
+}
+.dialog-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+
+.worning {
+  color: red;
+  font-style: italic;
+}
+
+// ########################
+//pop up
+.popup-statut
+{
+  margin: auto;
+  padding: auto;
+}
+
+.popup-title{
+  font-size: 0.9rem;
+  // color: #f7b11c;
+  margin: auto;
+  margin-left: 1rem;
+  margin-top: 1.5rem;
+}
+
+.items{
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  margin: auto;
+  margin-left: 1rem;
+  margin-bottom: 1rem;
+}
+
+.dialog-actions{
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  // width: 100%;
+  margin: auto;
+  margin-bottom: 1rem;
+
+}
+
+.popup-button{
+  background-color: #f7b11c;
+  padding: 0.1rem 1.8rem;
+  border-radius: 5px;
+  border-color: transparent;
+  font-size: 0.6rem;
+  color: #000;
+}
+.custom-radio.mat-radio-checked .mat-radio-inner-circle {
+  background-color: #ff9900; /* Set your preferred color here */
 }
