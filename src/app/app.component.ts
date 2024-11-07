@@ -1,20 +1,12 @@
-import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+// src/app/app.component.ts
+import { Component } from '@angular/core';
+import { RouterModule } from '@angular/router';
+import { AccueilComponent } from './accueil/accueil.component';
 
 @Component({
   selector: 'app-root',
+  //imports: [RouterModule, AccueilComponent],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit {
-  showAuthContainer: boolean = true;
-
-  constructor(private router: Router, private activatedRoute: ActivatedRoute) {}
-
-  ngOnInit() {
-    // Surveille la route actuelle pour cacher ou afficher l'auth-container
-    this.router.events.subscribe(() => {
-      this.showAuthContainer = this.router.url !== '/home';
-    });
-  }
-}
+export class AppComponent { }
