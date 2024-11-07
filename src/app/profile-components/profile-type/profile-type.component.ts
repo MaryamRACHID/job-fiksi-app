@@ -6,17 +6,15 @@ import {Component, EventEmitter, Input, Output} from '@angular/core';
   styleUrl: './profile-type.component.scss'
 })
 export class ProfileTypeComponent {
-  userType: string | null = null;
+  userType: string = '';
 
-  @Output() userTypeSelected = new EventEmitter<string>();
+  @Output() userTypeChange = new EventEmitter<string>();
 
   selectUserType(type: string) {
-    this.userType = type; // Met à jour le type d'utilisateur localement
-    this.userTypeSelected.emit(type); // Émet l'événement
+    this.userType = type;
   }
 
-  updateUserType(data: string) {
-    this.userType = data; // Mettez à jour le type d'utilisateur
-    this.userTypeSelected.emit(data); // Émet l'événement
+  onTypeUpdate() {
+    this.userTypeChange.emit(this.userType);
   }
 }

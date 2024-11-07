@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 
 @Component({
   selector: 'app-notifications',
@@ -6,9 +6,11 @@ import {Component, Input} from '@angular/core';
   styleUrl: './notifications.component.scss'
 })
 export class NotificationsComponent {
-  notificationsPreference: string = 'yes'; // Default value
-  publicProfile: string = 'no'; // Default value
-  @Input() userType: string | null = null; // Propriété pour recevoir le type de profil
+  @Output() notificationsInfoChange = new EventEmitter<any>();
+
+  notificationsPreference: string = 'yes';
+  publicProfile: string = 'no';
+  @Input() userType: string | null = null;
 
   notifications: any = {};
 

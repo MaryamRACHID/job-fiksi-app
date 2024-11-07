@@ -36,10 +36,17 @@ export class DisponibilitesComponent {
   // Méthode pour gérer le changement de jour
   onDayChange(day: string) {
     this.availabilityInfo[day] = !this.availabilityInfo[day];
-
-    // Emit the availability change
     this.availabilityInfoChange.emit({
       availability: this.availabilityInfo,
+      morning: this.morning,
+      afternoon: this.afternoon,
+      evening: this.evening
+    });
+  }
+
+  onDisponibiliteUpdate() {
+    this.availabilityInfoChange.emit({
+      availability: Object.keys(this.availabilityInfo).filter(day => this.availabilityInfo[day]),
       morning: this.morning,
       afternoon: this.afternoon,
       evening: this.evening

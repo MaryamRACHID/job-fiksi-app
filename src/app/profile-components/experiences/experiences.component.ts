@@ -7,7 +7,7 @@ import {Component, Output, EventEmitter, Input} from '@angular/core';
 })
 export class ExperiencesComponent {
   @Output() experienceInfoChange = new EventEmitter<any>();
-  @Input() userType: string | null = null; // Propriété pour recevoir le type de profil
+  @Input() userType: string | null = null;
 
   experiences = [{ title: '', company: '', startDate: '', endDate: '' }];
   spokenLanguages: { french: boolean; english: boolean; other: string } = {
@@ -21,6 +21,10 @@ export class ExperiencesComponent {
   }
 
   save() {
+    this.experienceInfoChange.emit({ experiences: this.experiences });
+  }
+
+  onExperienceUpdate() {
     this.experienceInfoChange.emit({ experiences: this.experiences });
   }
 }

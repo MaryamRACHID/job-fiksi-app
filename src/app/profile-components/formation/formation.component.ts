@@ -22,4 +22,8 @@ export class FormationComponent {
   save() {
     this.formationInfoChange.emit({ education: this.education, diplomas: this.diplomas });
   }
+
+  onFormationUpdate() {
+    this.formationInfoChange.emit({ education: this.education, diplomas: this.diplomas });
+  }
 }

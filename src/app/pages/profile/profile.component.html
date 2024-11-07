@@ -5,16 +5,16 @@
     (skip)="skip()">
   </app-header>
   <div class="component-container">
-    <app-profile-type *ngIf="step === 1" (userTypeSelected)="updateUserType($event)"></app-profile-type>
-    <app-informations *ngIf="step === 2" [userType]="userType" [personalInfo]="personalInfo" (personalInfoChange)="updatePersonalInfo($event)"></app-informations>
-    <app-contact *ngIf="step === 3" [userType]="userType" [contactInfo]="contactInfo" (contactInfoChange)="updateContactInfo($event)"></app-contact>
-    <app-disponibilites *ngIf="step === 4" [userType]="userType" [availabilityInfo]="availabilityInfo" (availabilityInfoChange)="updateAvailability($event)"></app-disponibilites>
-    <app-description *ngIf="step === 5" [userType]="userType" [descriptionInfo]="descriptionInfo" (descriptionInfoChange)="updateAvailability($event)"></app-description>
-    <app-formation *ngIf="step === 6" [userType]="userType" [formationInfo]="formationInfo" (formationInfoChange)="updateFormation($event)"></app-formation>
-    <app-experiences *ngIf="step === 7" [userType]="userType" [experienceInfo]="experienceInfo" (experienceInfoChange)="updateExperience($event)"></app-experiences>
-    <app-cv *ngIf="step === 8"  [userType]="userType" [experienceInfo]="experienceInfo" (experienceInfoChange)="updateExperience($event)"></app-cv>
-    <app-preference *ngIf="step === 9" [userType]="userType" [preferencesInfo]="preferencesInfo" (preferencesInfoChange)="updatePreferences($event)"></app-preference>
-    <app-notifications *ngIf="step === 10" [userType]="userType" [notificationsInfo]="notificationsInfo" (notificationsInfoChange)="updateNotifications($event)"></app-notifications>
+    <app-profile-type *ngIf="step === 1" (userTypeChange)="updateUserType($event)"></app-profile-type>
+    <app-informations *ngIf="step === 2" [userType]="userType" (personalInfoChange)="updatePersonalInfo($event)"></app-informations>
+    <app-contact *ngIf="step === 3" [userType]="userType" (contactInfoChange)="updateContactInfo($event)"></app-contact>
+    <app-disponibilites *ngIf="step === 4" [userType]="userType" (availabilityInfoChange)="updateAvailability($event)"></app-disponibilites>
+    <app-description *ngIf="step === 5" [userType]="userType" (descriptionInfoChange)="updateAvailability($event)"></app-description>
+    <app-formation *ngIf="step === 6" [userType]="userType" (formationInfoChange)="updateFormation($event)"></app-formation>
+    <app-experiences *ngIf="step === 7" [userType]="userType" (experienceInfoChange)="updateExperience($event)"></app-experiences>
+    <app-cv *ngIf="step === 8"  [userType]="userType" (cvInfoChange)="updateExperience($event)"></app-cv>
+    <app-preference *ngIf="step === 9" [userType]="userType" (preferencesInfoChange)="updatePreferences($event)"></app-preference>
+    <app-notifications *ngIf="step === 10" [userType]="userType" (notificationsInfoChange)="updateNotifications($event)"></app-notifications>
   </div>
   <div class="button-container">
     <button *ngIf="(step != 10  && (userType === null || userType === 'candidate')) || (step != 5 && userType === 'restaurant')" (click)="goToNextStep()" [disabled]="!userType" class="fixed-button btn btn-primary full-width">Continuer</button>

@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import { Options } from '@angular-slider/ngx-slider';
 
 @Component({
@@ -7,7 +7,9 @@ import { Options } from '@angular-slider/ngx-slider';
   styleUrls: ['./preference.component.scss']
 })
 export class PreferenceComponent {
-  @Input() userType: string | null = null; // Propriété pour recevoir le type de profil
+  @Output() preferencesInfoChange = new EventEmitter<any>();
+
+  @Input() userType: string | null = null;
 
   jobPreferences = {
     server: false,

@@ -1,4 +1,4 @@
-import {Component, ViewChild, ElementRef, Input} from '@angular/core';
+import {Component, ViewChild, ElementRef, Input, Output, EventEmitter} from '@angular/core';
 
 @Component({
   selector: 'app-cv',
@@ -6,11 +6,13 @@ import {Component, ViewChild, ElementRef, Input} from '@angular/core';
   styleUrls: ['./cv.component.scss']
 })
 export class CvComponent {
+  @Output() cvInfoChange = new EventEmitter<any>();
+
   @ViewChild('cvUploadInput') cvUploadInput!: ElementRef;
   @ViewChild('coverLetterUploadInput') coverLetterUploadInput!: ElementRef;
   @ViewChild('otherDocUploadInput') otherDocUploadInput!: ElementRef;
-  @Input() userType: string | null = null; // Propriété pour recevoir le type de profil
 
+  @Input() userType: string | null = null;
 
   onFileChange(event: Event, type: string) {
     const input = event.target as HTMLInputElement;
@@ -18,5 +20,10 @@ export class CvComponent {
       const file = input.files[0];
       console.log(`${type} file selected:`, file);
     }
+  }
+
+
+  onCvUpdate() {
+    this.cvInfoChange.emit({ experiences: this.userType });
   }
 }

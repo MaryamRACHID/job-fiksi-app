@@ -21,4 +21,12 @@ export class DescriptionComponent {
       skills: this.skills
     });
   }
+
+  onDescriptionUpdate() {
+    this.descriptionInfoChange.emit({
+      hasExperience: this.hasExperience,
+      description: this.description,
+      skills: this.skills
+    });
+  }
 }
