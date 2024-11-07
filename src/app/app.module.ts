@@ -9,7 +9,10 @@ import { OffersComponentsModule } from './offers-components/offers-components.mo
 import { ProfileComponentsModule } from './profile-components/profile-components.module';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
-
+import { MatButtonModule } from '@angular/material/button';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatIconModule } from '@angular/material/icon';
+import { AccueilComponent } from './pages/accueil/accueil.component';
 @NgModule({
   imports: [
     BrowserModule,
@@ -18,8 +21,11 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
     SharedModule,
     PagesModule,
     MatButtonToggleModule,
+    MatDividerModule,
+    MatIconModule,
     OffersComponentsModule,
     ProfileComponentsModule,
+    MatButtonModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: !isDevMode(),
       registrationStrategy: 'registerWhenStable:30000'
@@ -27,6 +33,7 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
   ],
   declarations: [
     AppComponent,
+    AccueilComponent
   ],
   bootstrap: [AppComponent] // Composant racine pour démarrer l'application
 })

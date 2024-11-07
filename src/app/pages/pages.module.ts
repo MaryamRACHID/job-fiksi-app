@@ -17,17 +17,20 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatCardModule } from '@angular/material/card';
 import {ProfileComponentsModule} from '../profile-components/profile-components.module';
-
+import { MatDividerModule } from '@angular/material/divider';
 @NgModule({
   declarations: [
     HomeComponent,
     LoginComponent,
     ProfileComponent,
+   
+    
   ],
   exports: [
     LoginComponent,
     HomeComponent,
-    ProfileComponent
+    ProfileComponent,    
+
   ],
   imports: [
     RouterModule,
@@ -44,7 +47,7 @@ import {ProfileComponentsModule} from '../profile-components/profile-components.
     MatIconModule,
     MatRadioModule,
     MatCardModule,
-    ProfileComponentsModule
-  ]
+    ProfileComponentsModule,
+    MatDividerModule  ]
 })
 export class PagesModule { }
