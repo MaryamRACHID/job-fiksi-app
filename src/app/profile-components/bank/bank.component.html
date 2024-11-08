@@ -1,0 +1,30 @@
+<h2 class="title">Complétez votre profil</h2>
+<p class="subtitle-1">Documents requis</p>
+
+<div class="mb-4">
+  <label class="form-label">Relevé d’identité bancaire *</label>
+  <input type="file" class="d-none" #otherDocUploadInput (change)="onFileChange($event, 'rib')" />
+  <div class="custom-upload" (click)="otherDocUploadInput.click()">
+    <i class="fa-solid fa-upload me-2"></i>
+    <span>Ajouter mon RIB</span>
+  </div>
+</div>
+
+<h5 class="mt-3">Remplir manuellement</h5>
+
+<div class="form-group mt-2">
+  <label for="rib">RIB</label>
+  <input type="text" class="form-control" id="rib" placeholder="RIB">
+</div>
+<div class="form-group">
+  <label for="iban">IBAN</label>
+  <input type="text" class="form-control" id="iban" placeholder="IBAN">
+</div>
+<div class="form-group">
+  <label for="bic">BIC</label>
+  <input type="text" class="form-control" id="bic" placeholder="BIC">
+</div>
+
+<p class="note">* Ces informations sont recueillies pour les besoins administratifs et l’établissement du contrat de travail, et resteront confidentielles.</p>
+
+

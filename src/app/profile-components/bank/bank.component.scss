@@ -1,0 +1,29 @@
+.custom-upload {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff;
+  border: 2px dashed #ccc;
+  border-radius: 8px;
+  padding: 10px;
+  cursor: pointer;
+  width: 100%;
+  height: 100px;
+  text-align: center;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #f9f9f9;
+  }
+
+  i {
+    color: #a1a1a1; // Votre couleur principale pour l'icône
+    font-size: 20px;
+  }
+
+  span {
+    font-size: 16px;
+    color: #000;
+    text-decoration: none;
+  }
+}

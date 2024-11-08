@@ -25,4 +25,8 @@ export class NotificationsComponent {
   updateNotifications(notifications: any) {
     this.notifications = notifications;
   }
+
+  onNotificationUpdate() {
+    this.notificationsInfoChange.emit(this.userType);
+  }
 }

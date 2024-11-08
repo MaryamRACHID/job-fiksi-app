@@ -22,8 +22,7 @@ export class CvComponent {
     }
   }
 
-
   onCvUpdate() {
-    this.cvInfoChange.emit({ experiences: this.userType });
+    this.cvInfoChange.emit(this.userType);
   }
 }

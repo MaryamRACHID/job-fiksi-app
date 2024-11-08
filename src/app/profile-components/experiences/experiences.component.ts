@@ -26,5 +26,7 @@ export class ExperiencesComponent {
 
   onExperienceUpdate() {
     this.experienceInfoChange.emit({ experiences: this.experiences });
+    this.experienceInfoChange.emit(this.userType);
+
   }
 }

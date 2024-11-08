@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter, ViewChild } from '@angular/core';
+import {Component, Output, EventEmitter, ViewChild, Input} from '@angular/core';
 import { Router } from '@angular/router';
 import { DisponibilitesComponent } from '../../profile-components/disponibilites/disponibilites.component';
 import {InformationsComponent} from '../../profile-components/informations/informations.component';
@@ -10,6 +10,9 @@ import {ExperiencesComponent} from '../../profile-components/experiences/experie
 import {CvComponent} from '../../profile-components/cv/cv.component';
 import {PreferenceComponent} from '../../profile-components/preference/preference.component';
 import {NotificationsComponent} from '../../profile-components/notifications/notifications.component';
+import {IdentityComponent} from '../../profile-components/identity/identity.component';
+import {BankComponent} from '../../profile-components/bank/bank.component';
+import {InfoRestaurantComponent} from '../../profile-components/info-restaurant/info-restaurant.component';
 
 @Component({
   selector: 'app-profil',
@@ -21,7 +24,7 @@ export class ProfileComponent {
 
   step: number = 1;
   userType: string | null = null;
-  personalInfo = { name: '', firstName: '', birthDate: '' };
+  personalInfo = { name: '', firstName: '', birthDate: '', city: '', nationality: '' };
   contactInfo = { phone: '', address: '', postalCode: '', city: '' };
   availability: string[] = [];
   references = { hasExperience: false, description: '', skills: '' };
@@ -34,12 +37,15 @@ export class ProfileComponent {
   @ViewChild(ProfileTypeComponent) profileTypeComponent!: ProfileTypeComponent;
   @ViewChild(InformationsComponent) informationsComponent!: InformationsComponent;
   @ViewChild(ContactComponent) contactComponent!: ContactComponent;
+  @ViewChild(PreferenceComponent) preferenceComponent!: PreferenceComponent;
+  @ViewChild(InfoRestaurantComponent) infoRestaurantComponent!: InfoRestaurantComponent;
   @ViewChild(DisponibilitesComponent) disponibilitesComponent!: DisponibilitesComponent;
   @ViewChild(DescriptionComponent) descriptionComponent!: DescriptionComponent;
   @ViewChild(FormationComponent) formationComponent!: FormationComponent;
   @ViewChild(ExperiencesComponent) experiencesComponent!: ExperiencesComponent;
   @ViewChild(CvComponent) cvComponent!: CvComponent;
-  @ViewChild(PreferenceComponent) preferenceComponent!: PreferenceComponent;
+  @ViewChild(IdentityComponent) identityComponent!: IdentityComponent;
+  @ViewChild(BankComponent) bankComponent!: BankComponent;
   @ViewChild(NotificationsComponent) notificationsComponent!: NotificationsComponent;
 
 
@@ -58,27 +64,38 @@ export class ProfileComponent {
         this.contactComponent.onContactUpdate();
         break;
       case 4:
-        this.disponibilitesComponent.onDisponibiliteUpdate();
+        if (this.userType == 'candidate'){
+          this.preferenceComponent.onPreferenceUpdate();
+        } else {
+          this.infoRestaurantComponent.onRestaurantUpdate();
+        }
         break;
       case 5:
-        this.descriptionComponent.onDescriptionUpdate();
+        this.disponibilitesComponent.onDisponibiliteUpdate();
         break;
       case 6:
-        this.formationComponent.onFormationUpdate();
+        this.descriptionComponent.onDescriptionUpdate();
         break;
       case 7:
-        this.experiencesComponent.onExperienceUpdate();
+        this.formationComponent.onFormationUpdate();
         break;
       case 8:
-        this.cvComponent.onCvUpdate();
+        this.experiencesComponent.onExperienceUpdate();
         break;
       case 9:
-        this.preferenceComponent.onPreferenceUpdate();
+        this.cvComponent.onCvUpdate();
         break;
       case 10:
+        this.identityComponent.onIdentityUpdate();
+        break;
+      case 11:
+        this.bankComponent.onBankUpdate();
+        break;
+      case 12:
         this.notificationsComponent.onNotificationUpdate();
         break;
     }
+    this.step++;
   }
 
   saveAvailability() {

@@ -6,18 +6,22 @@
   </app-header>
   <div class="component-container">
     <app-profile-type *ngIf="step === 1" (userTypeChange)="updateUserType($event)"></app-profile-type>
-    <app-informations *ngIf="step === 2" [userType]="userType" (personalInfoChange)="updatePersonalInfo($event)"></app-informations>
+    <app-informations *ngIf="step === 2" [userType]="userType" [personalInfo]="personalInfo" (personalInfoChange)="updatePersonalInfo($event)"></app-informations>
     <app-contact *ngIf="step === 3" [userType]="userType" (contactInfoChange)="updateContactInfo($event)"></app-contact>
-    <app-disponibilites *ngIf="step === 4" [userType]="userType" (availabilityInfoChange)="updateAvailability($event)"></app-disponibilites>
-    <app-description *ngIf="step === 5" [userType]="userType" (descriptionInfoChange)="updateAvailability($event)"></app-description>
-    <app-formation *ngIf="step === 6" [userType]="userType" (formationInfoChange)="updateFormation($event)"></app-formation>
-    <app-experiences *ngIf="step === 7" [userType]="userType" (experienceInfoChange)="updateExperience($event)"></app-experiences>
-    <app-cv *ngIf="step === 8"  [userType]="userType" (cvInfoChange)="updateExperience($event)"></app-cv>
-    <app-preference *ngIf="step === 9" [userType]="userType" (preferencesInfoChange)="updatePreferences($event)"></app-preference>
-    <app-notifications *ngIf="step === 10" [userType]="userType" (notificationsInfoChange)="updateNotifications($event)"></app-notifications>
+    <app-preference *ngIf="step === 4 && userType === 'candidate'" [userType]="userType" (preferencesInfoChange)="updatePreferences($event)"></app-preference>
+    <app-info-restaurant *ngIf="step === 4 && userType === 'restaurant'" [userType]="userType" (restaurantInfoChange)="updatePreferences($event)"></app-info-restaurant>
+    <app-disponibilites *ngIf="step === 5 && userType === 'candidate'" [userType]="userType" (availabilityInfoChange)="updateAvailability($event)"></app-disponibilites>
+    <app-notifications *ngIf="step === 5 && userType === 'restaurant'" [userType]="userType" (notificationsInfoChange)="updateNotifications($event)"></app-notifications>
+    <app-description *ngIf="step === 6" [userType]="userType" (descriptionInfoChange)="updateAvailability($event)"></app-description>
+    <app-formation *ngIf="step === 7" [userType]="userType" (formationInfoChange)="updateFormation($event)"></app-formation>
+    <app-experiences *ngIf="step === 8" [userType]="userType" (experienceInfoChange)="updateExperience($event)"></app-experiences>
+    <app-cv *ngIf="step === 9"  [userType]="userType" (cvInfoChange)="updateExperience($event)"></app-cv>
+    <app-identity *ngIf="step === 10"  [userType]="userType" (identityInfoChange)="updateExperience($event)"></app-identity>
+    <app-bank *ngIf="step === 11"  [userType]="userType" (bankInfoChange)="updateExperience($event)"></app-bank>
+    <app-notifications *ngIf="step === 12" [userType]="userType" (notificationsInfoChange)="updateNotifications($event)"></app-notifications>
   </div>
   <div class="button-container">
-    <button *ngIf="(step != 10  && (userType === null || userType === 'candidate')) || (step != 5 && userType === 'restaurant')" (click)="goToNextStep()" [disabled]="!userType" class="fixed-button btn btn-primary full-width">Continuer</button>
-    <button *ngIf="(step === 10  && userType === 'candidate') || (step === 5  && userType === 'restaurant')" (click)="saveProfile()" [disabled]="!userType" class="fixed-button btn btn-primary full-width">Terminer mon inscription</button>
+    <button *ngIf="(step != 12  && (userType === null || userType === 'candidate')) || (step != 5 && userType === 'restaurant')" (click)="goToNextStep()" [disabled]="!userType" class="fixed-button btn btn-primary full-width">Continuer</button>
+    <button *ngIf="(step === 12  && userType === 'candidate') || (step === 5  && userType === 'restaurant')" (click)="saveProfile()" [disabled]="!userType" class="fixed-button btn btn-primary full-width">Terminer mon inscription</button>
   </div>
 </div>

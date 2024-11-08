@@ -17,13 +17,8 @@ export class ContactComponent  {
     city: ''
   };
 
-  save() {
-    this.contactInfoChange.emit(this.contact);
-    this.contactInfoChange.emit(this.userType)
-  }
-
   onContactUpdate() {
     this.contactInfoChange.emit(this.contact);
-    this.contactInfoChange.emit(this.userType)
+    this.contactInfoChange.emit(this.userType);
   }
 }

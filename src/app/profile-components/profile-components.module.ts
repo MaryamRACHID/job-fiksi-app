@@ -5,7 +5,6 @@ import { DescriptionComponent } from './description/description.component';
 import { InformationsComponent } from './informations/informations.component';
 import { NotificationsComponent } from './notifications/notifications.component';
 import { DisponibilitesComponent } from './disponibilites/disponibilites.component';
-import { SecuriteComponent } from './securite/securite.component';
 import { PreferenceComponent } from './preference/preference.component';
 import { SharedModule } from '../shared/shared.module';
 import { FormsModule } from '@angular/forms';
@@ -25,33 +24,40 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import {MatOptionModule} from '@angular/material/core';
 import {MatListModule, MatSelectionList} from '@angular/material/list';
 import {NgxSliderModule} from '@angular-slider/ngx-slider';
+import {IdentityComponent} from './identity/identity.component';
+import {BankComponent} from './bank/bank.component';
+import {InfoRestaurantComponent} from './info-restaurant/info-restaurant.component';
 
 @NgModule({
   declarations: [
-    CvComponent,
-    DescriptionComponent,
-    InformationsComponent,
-    NotificationsComponent,
-    DisponibilitesComponent,
-    SecuriteComponent,
     ProfileTypeComponent,
+    InformationsComponent,
     ContactComponent,
-    ExperiencesComponent,
+    PreferenceComponent,
+    DisponibilitesComponent,
+    DescriptionComponent,
     FormationComponent,
-    PreferenceComponent
+    ExperiencesComponent,
+    CvComponent,
+    IdentityComponent,
+    BankComponent,
+    NotificationsComponent,
+    InfoRestaurantComponent,
   ],
   exports: [
-    CvComponent,
     ProfileTypeComponent,
     InformationsComponent,
-    DescriptionComponent,
-    DisponibilitesComponent,
-    SecuriteComponent,
-    NotificationsComponent,
     ContactComponent,
-    ExperiencesComponent,
+    PreferenceComponent,
+    DisponibilitesComponent,
+    DescriptionComponent,
     FormationComponent,
-    PreferenceComponent
+    ExperiencesComponent,
+    CvComponent,
+    IdentityComponent,
+    BankComponent,
+    NotificationsComponent,
+    InfoRestaurantComponent,
   ],
   imports: [
     CommonModule,

@@ -28,8 +28,30 @@
 
 <div class="location-preference mt-4">
   <label>Préférence de lieu</label>
-  <input type="text" class="form-control" [(ngModel)]="locationPreference" placeholder="Ex: Paris">
+  <input type="text" class="form-control" [(ngModel)]="locationPreference" (input)="filterCities()" placeholder="Ex: Paris" #locationInput/>
+  <ul *ngIf="locationPreference && filteredCities.length > 0" class="dropdown-list">
+    <li *ngFor="let city of filteredCities" (click)="selectCity(city)">
+      {{ city }}
+    </li>
+  </ul>
 </div>
+
+
+<div class="form-check me-4 mb-3 mt-4 d-flex justify-content-center align-items-center">
+  <label class="form-check-label" for="accessibleByTransport">
+    <input type="checkbox" class="form-check-input me-2" id="accessibleByTransport" name="accessibleByTransport">
+    Accessible par les transports en communs
+  </label>
+</div>
+
+<div class="km-preference mt-4">
+  <p>Dans un rayon de :</p>
+  <ngx-slider
+    [(value)]="kmPreference.max"
+    [options]="kmSliderOptions">
+  </ngx-slider>
+</div>
+
 
 <div class="salary-preference mt-4">
   <p>Préférence de salaire</p>

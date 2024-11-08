@@ -34,4 +34,42 @@ export class PreferenceComponent {
       return value + ' €';
     }
   };
+
+  onPreferenceUpdate() {
+    this.preferencesInfoChange.emit(this.userType);
+  }
+  kmPreference = { max: 0 }; // Valeur maximale par défaut
+
+  kmSliderOptions = {
+    floor: 0,  // Valeur minimale fixée à 0
+    ceil: 100, // Valeur maximale
+    step: 1,   // Incrément du slider
+    showTicks: false, // Afficher des repères de valeur
+    showTicksValues: false, // Afficher les valeurs des ticks
+    translate: (value: number) => `${value} km`, // Ajouter "km" après la valeur
+    showTicksTooltip: false, // Désactive les tooltips
+    highlightedBarColor: '#eeae00',
+  };
+
+
+  cities: string[] = ['Paris', 'Lyon', 'Lille']; // Liste des villes
+  filteredCities: string[] = this.cities;  // Villes filtrées selon la saisie
+
+  filterCities() {
+    const searchTerm = this.locationPreference.toLowerCase();
+    if (searchTerm) {  // Vérifiez que la saisie n'est pas vide
+      this.filteredCities = this.cities.filter(city =>
+        city.toLowerCase().includes(searchTerm)
+      );
+    } else {
+      this.filteredCities = [];  // Masque la liste si aucune saisie
+    }
+  }
+
+
+  selectCity(city: string) {
+    // Sélectionner une ville et la mettre dans l'input
+    this.locationPreference = city;
+    this.filteredCities = [];  // Masquer la liste déroulante après sélection
+  }
 }

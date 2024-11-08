@@ -51,5 +51,6 @@ export class DisponibilitesComponent {
       afternoon: this.afternoon,
       evening: this.evening
     });
+    this.availabilityInfoChange.emit(this.userType);
   }
 }

@@ -14,19 +14,12 @@ export class DescriptionComponent {
   description: string = '';
   skills: string = '';
 
-  save() {
-    this.descriptionInfoChange.emit({
-      hasExperience: this.hasExperience,
-      description: this.description,
-      skills: this.skills
-    });
-  }
-
   onDescriptionUpdate() {
     this.descriptionInfoChange.emit({
       hasExperience: this.hasExperience,
       description: this.description,
       skills: this.skills
     });
+    this.descriptionInfoChange.emit(this.userType);
   }
 }

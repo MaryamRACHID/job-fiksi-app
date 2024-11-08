@@ -12,9 +12,12 @@ export class ProfileTypeComponent {
 
   selectUserType(type: string) {
     this.userType = type;
+    console.log(type);
+    this.userTypeChange.emit(this.userType);
   }
 
   onTypeUpdate() {
+    console.log("im here");
     this.userTypeChange.emit(this.userType);
   }
 }

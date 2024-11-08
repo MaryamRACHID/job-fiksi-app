@@ -1,8 +1,8 @@
 <h2 class="title">Complétez votre profil</h2>
-<p class="subtitle-1">Expérience</p>
+<h5 class="subtitle-1">Expérience</h5>
 
 <div *ngFor="let experience of experiences; let i = index" class="experience mb-4">
-  <h5>Expérience {{ i + 1 }}</h5>
+  <h6>Expérience {{ i + 1 }}</h6>
 
   <div class="form-group">
     <label for="jobTitle{{i}}">Poste occupé</label>
@@ -17,18 +17,23 @@
   <div class="form-group">
     <label>Période *</label>
     <div class="row">
-      <div class="col">
+      <div class="col-3">
         <label for="startDate{{i}}">Début</label>
+      </div>
+      <div class="col-9">
         <input type="date" class="form-control" id="startDate{{i}}" [(ngModel)]="experience.startDate" placeholder="Sélectionnez une date">
       </div>
-      <div class="col">
+    </div>
+    <div class="row">
+      <div class="col-3">
         <label for="endDate{{i}}">Fin</label>
+      </div>
+      <div class="col-9">
         <input type="date" class="form-control" id="endDate{{i}}" [(ngModel)]="experience.endDate" placeholder="Sélectionnez une date">
       </div>
     </div>
   </div>
 </div>
-
 <!-- Conteneur pour le bouton et le texte -->
 <div class="d-flex align-items-center justify-content-center mt-4 mb-4">
   <!-- Bouton circulaire avec icône -->
