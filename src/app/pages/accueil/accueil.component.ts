@@ -1,11 +1,17 @@
-// src/app/accueil/accueil.component.ts
 import { Component } from '@angular/core';
-
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-accueil',
-  //imports: [MatButtonModule, MatDividerModule, MatIconModule],
   templateUrl: './accueil.component.html',
   styleUrls: ['./accueil.component.scss']
 })
-export class AccueilComponent { }
+export class AccueilComponent {
+
+  constructor(private router: Router) {}
+
+  // Méthode pour naviguer vers différentes pages
+  navigateTo(route: string) {
+    this.router.navigate([route]);
+  }
+}
