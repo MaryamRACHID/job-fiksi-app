@@ -98,7 +98,7 @@ export class ProfileComponent {
         break;
       case 12:
         this.notificationsComponent.saveNotifications();
-        break;
+        return;
     }
     this.step++;
   }
