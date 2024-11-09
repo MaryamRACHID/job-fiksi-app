@@ -68,7 +68,7 @@ export class PreferenceComponent {
 
   savePreference() {
     this.preferencesInfoChange.emit(this.userType);
-    const apiUrl = 'https://your-api-endpoint.com/savePreferences'; // Replace with your API endpoint
+    const apiUrl = 'https://endpoint.com/savePreferences';
 
     const preferencesPayload = {
       jobPreferences: this.jobPreferences,

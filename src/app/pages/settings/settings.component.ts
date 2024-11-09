@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {Router} from '@angular/router';
+import {MatDialog} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-settings',
@@ -9,12 +10,26 @@ import {Router} from '@angular/router';
 export class SettingsComponent {
   notificationsEnabled: boolean = true;
   publicProfileEnabled: boolean = true;
+  showLogoutPopup = false;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, public dialog: MatDialog) {}
 
   navigateTo(route: string) {
-    // Replace with your actual navigation logic
-    console.log(`Navigating to ${route}`);
-    // Example: this.router.navigate([`/${route}`]);
+    this.router.navigate([`/${route}`]);
+  }
+
+
+  openLogoutPopup(): void {
+    this.showLogoutPopup = true;
+  }
+
+  closeLogoutPopup(): void {
+    this.showLogoutPopup = false;
+  }
+
+  confirmLogout(): void {
+    // Ajoutez ici le code pour gérer la déconnexion
+    console.log("Déconnecté");
+    this.closeLogoutPopup();
   }
 }

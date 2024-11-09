@@ -5,7 +5,7 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { ProfileComponent} from './profile/profile.component';
 import { SharedModule } from '../shared/shared.module';
-import { FormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
@@ -34,6 +34,7 @@ import {SecuriteComponent} from './securite/securite.component';
     ProfileComponent,
     SettingsComponent,
     SettingsComponent,
+    SecuriteComponent,
   ],
   imports: [
     RouterModule,
@@ -50,7 +51,8 @@ import {SecuriteComponent} from './securite/securite.component';
     MatIconModule,
     MatRadioModule,
     MatCardModule,
-    ProfileComponentsModule
+    ProfileComponentsModule,
+    ReactiveFormsModule
   ]
 })
 export class PagesModule { }

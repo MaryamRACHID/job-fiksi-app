@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './header/header.component';
 import {MenuComponent} from "./menu/menu.component";
 import { MatIconModule } from '@angular/material/icon';
+import {RouterModule} from "@angular/router";
 
 
 @NgModule({
@@ -10,10 +11,11 @@ import { MatIconModule } from '@angular/material/icon';
     HeaderComponent,
     MenuComponent,
   ],
-  imports: [
-    CommonModule,
-    MatIconModule
-  ],
+    imports: [
+        CommonModule,
+        MatIconModule,
+        RouterModule
+    ],
   exports:[
     HeaderComponent,
     MenuComponent
