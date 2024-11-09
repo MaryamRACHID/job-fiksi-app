@@ -55,44 +55,49 @@ export class ProfileComponent {
         if (this.step === 1 && !this.userType) {
           return;
         }
-        this.profileTypeComponent.onTypeUpdate();
+        this.profileTypeComponent.saveType();
         break;
       case 2:
-        this.informationsComponent.onInfoUpdate();
+        this.informationsComponent.saveInfo();
         break;
       case 3:
-        this.contactComponent.onContactUpdate();
+        this.contactComponent.saveContact();
         break;
       case 4:
         if (this.userType == 'candidate'){
-          this.preferenceComponent.onPreferenceUpdate();
+          this.preferenceComponent.savePreference();
         } else {
-          this.infoRestaurantComponent.onRestaurantUpdate();
+          this.infoRestaurantComponent.saveRestaurantInfo();
         }
         break;
       case 5:
-        this.disponibilitesComponent.onDisponibiliteUpdate();
+        if (this.userType == 'candidate'){
+          this.disponibilitesComponent.saveDisponibilite();
+        } else {
+          this.notificationsComponent.saveNotifications();
+          return;
+        }
         break;
       case 6:
-        this.descriptionComponent.onDescriptionUpdate();
+        this.descriptionComponent.saveDescription();
         break;
       case 7:
-        this.formationComponent.onFormationUpdate();
+        this.formationComponent.saveFormation();
         break;
       case 8:
-        this.experiencesComponent.onExperienceUpdate();
+        this.experiencesComponent.saveExperience();
         break;
       case 9:
-        this.cvComponent.onCvUpdate();
+        this.cvComponent.saveCV();
         break;
       case 10:
-        this.identityComponent.onIdentityUpdate();
+        this.identityComponent.saveIdentity();
         break;
       case 11:
-        this.bankComponent.onBankUpdate();
+        this.bankComponent.saveBank();
         break;
       case 12:
-        this.notificationsComponent.onNotificationUpdate();
+        this.notificationsComponent.saveNotifications();
         break;
     }
     this.step++;

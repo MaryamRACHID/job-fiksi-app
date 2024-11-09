@@ -1,9 +1,10 @@
-import {Component, Output, EventEmitter, Input} from '@angular/core';
+import { Component, Output, EventEmitter, Input } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-experiences',
   templateUrl: './experiences.component.html',
-  styleUrl: './experiences.component.scss'
+  styleUrls: ['./experiences.component.scss']
 })
 export class ExperiencesComponent {
   @Output() experienceInfoChange = new EventEmitter<any>();
@@ -16,17 +17,33 @@ export class ExperiencesComponent {
     other: ''
   };
 
+  constructor(private http: HttpClient) {}
+
+  // Add a new experience entry
   addExperience() {
     this.experiences.push({ title: '', company: '', startDate: '', endDate: '' });
   }
 
-  save() {
-    this.experienceInfoChange.emit({ experiences: this.experiences });
-  }
-
-  onExperienceUpdate() {
-    this.experienceInfoChange.emit({ experiences: this.experiences });
+  // Save the experience data
+  saveExperience() {
     this.experienceInfoChange.emit(this.userType);
 
+    const apiUrl = 'https://your-api-endpoint.com/saveExperience';  // Replace with your actual API endpoint
+
+    const experiencePayload = {
+      experiences: this.experiences,
+      spokenLanguages: this.spokenLanguages
+    };
+
+    // Send data to the API
+    this.http.post(apiUrl, experiencePayload)
+      .subscribe(
+        response => {
+          console.log('Experience saved successfully:', response);
+        },
+        error => {
+          console.error('Error saving experience:', error);
+        }
+      );
   }
 }

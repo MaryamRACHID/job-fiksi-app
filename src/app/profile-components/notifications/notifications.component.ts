@@ -1,32 +1,43 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-notifications',
   templateUrl: './notifications.component.html',
-  styleUrl: './notifications.component.scss'
+  styleUrls: ['./notifications.component.scss']
 })
 export class NotificationsComponent {
-  @Output() notificationsInfoChange = new EventEmitter<any>();
 
-  notificationsPreference: string = 'yes';
-  publicProfile: string = 'no';
-  @Input() userType: string | null = null;
+  notificationsPreference: string = 'yes'; // Default preference for notifications
+  publicProfile: string = 'no'; // Default value for public profile visibility
+  @Input() userType: string | null = null; // Receives user type
 
   notifications: any = {};
 
-  constructor() {}
+  constructor(private http: HttpClient) {}
 
-  onFinishRegistration() {
-    // Handle finish registration action, e.g., save data or finalize the registration process
-    console.log('Notifications Preference:', this.notificationsPreference);
-    console.log('Public Profile:', this.publicProfile);
-  }
+  // Save notifications preferences (e.g., send data to server)
+  saveNotifications() {
+    const preferences = {
+      notificationsPreference: this.notificationsPreference,
+      publicProfile: this.publicProfile,
+      userType: this.userType
+    };
 
-  updateNotifications(notifications: any) {
-    this.notifications = notifications;
-  }
+    // You can replace this with an actual HTTP call to save preferences on the server
+    console.log('Saving preferences:', preferences);
 
-  onNotificationUpdate() {
-    this.notificationsInfoChange.emit(this.userType);
+    // Example of sending preferences to a server
+    const apiUrl = 'https://your-api-endpoint.com/saveNotifications'; // Replace with your actual API endpoint
+
+    this.http.post(apiUrl, preferences)
+      .subscribe(
+        response => {
+          console.log('Preferences saved successfully:', response);
+        },
+        error => {
+          console.error('Error saving preferences:', error);
+        }
+      );
   }
 }

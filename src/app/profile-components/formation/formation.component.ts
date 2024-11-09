@@ -1,24 +1,27 @@
-import {Component, Output, EventEmitter, Input} from '@angular/core';
+import { Component, Output, EventEmitter, Input } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-formation',
   templateUrl: './formation.component.html',
-  styleUrl: './formation.component.scss'
+  styleUrls: ['./formation.component.scss']
 })
 export class FormationComponent {
   @Output() formationInfoChange = new EventEmitter<any>();
-  @Input() userType: string | null = null; // Propriété pour recevoir le type de profil
+  @Input() userType: string | null = null; // Property to receive profile type
 
   diplomas = [
     { name: '', institution: '', startDate: '', endDate: '' }
   ];
 
-  education = { level: '', certificates: '' };  // Valeur de niveau d'éducation saisie
-  educationLevels = ['Bac', 'Bac+2', 'Bac+3', 'Bac+5', 'Doctorat'];  // Liste des niveaux d'éducation
-  filteredEducationLevels: string[] = [...this.educationLevels];  // Villes filtrées selon la saisie
-  showDropdown: boolean = false;  // Contrôle l'affichage de la liste déroulante
+  education = { level: '', certificates: '' };  // Education level entered
+  educationLevels = ['Bac', 'Bac+2', 'Bac+3', 'Bac+5', 'Doctorat'];  // Education levels list
+  filteredEducationLevels: string[] = [...this.educationLevels];  // Filtered education levels
+  showDropdown: boolean = false;  // Controls the dropdown visibility
 
-  // Méthode de filtrage pour la liste déroulante
+  constructor(private http: HttpClient) {}
+
+  // Filter education levels based on input
   filterEducationLevels() {
     const searchTerm = this.education.level.toLowerCase();
     this.filteredEducationLevels = this.educationLevels.filter(level =>
@@ -27,37 +30,50 @@ export class FormationComponent {
     this.showDropdown = this.filteredEducationLevels.length > 0;
   }
 
-  // Méthode pour sélectionner un niveau d'éducation
+  // Select an education level
   selectLevel(level: string) {
     this.education.level = level;
-    this.showDropdown = false;  // Masquer la dropdown après sélection
+    this.showDropdown = false;  // Hide dropdown after selection
   }
 
-  // Masquer la dropdown quand l'input perd le focus
+  // Hide dropdown when input loses focus
   hideDropdown() {
-    setTimeout(() => { this.showDropdown = false; }, 100);  // Petit délai pour permettre à l'utilisateur de sélectionner un élément
+    setTimeout(() => { this.showDropdown = false; }, 100);  // Timeout for selection
   }
 
   importLinkedInData() {
-    console.log('Importation des données via LinkedIn');
-    // Ajouter votre logique pour importer les données via LinkedIn
+    console.log('Importing data via LinkedIn');
+    // Add your logic to import data from LinkedIn
   }
 
   importIndeedData() {
-    console.log('Importation des données via Indeed');
-    // Ajouter votre logique pour importer les données via Indeed
+    console.log('Importing data via Indeed');
+    // Add your logic to import data from Indeed
   }
 
+  // Add a new diploma entry
   addDiploma() {
     this.diplomas.push({ name: '', institution: '', startDate: '', endDate: '' });
   }
 
-  save() {
-    this.formationInfoChange.emit({ education: this.education, diplomas: this.diplomas });
-  }
-
-  onFormationUpdate() {
-    this.formationInfoChange.emit({ education: this.education, diplomas: this.diplomas });
+  // Save the education data
+  saveFormation() {
     this.formationInfoChange.emit(this.userType);
+    const apiUrl = 'https://your-api-endpoint.com/saveFormation';  // Replace with your API endpoint
+
+    const formationPayload = {
+      education: this.education,
+      diplomas: this.diplomas
+    };
+
+    this.http.post(apiUrl, formationPayload)
+      .subscribe(
+        response => {
+          console.log('Formation saved successfully:', response);
+        },
+        error => {
+          console.error('Error saving formation:', error);
+        }
+      );
   }
 }

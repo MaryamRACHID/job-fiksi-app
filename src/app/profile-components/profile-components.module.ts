@@ -27,6 +27,7 @@ import {NgxSliderModule} from '@angular-slider/ngx-slider';
 import {IdentityComponent} from './identity/identity.component';
 import {BankComponent} from './bank/bank.component';
 import {InfoRestaurantComponent} from './info-restaurant/info-restaurant.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -74,7 +75,8 @@ import {InfoRestaurantComponent} from './info-restaurant/info-restaurant.compone
     MatDatepickerModule,
     MatOptionModule,
     MatListModule,
-    NgxSliderModule
+    NgxSliderModule,
+    HttpClientModule
   ]
 })
 export class ProfileComponentsModule { }

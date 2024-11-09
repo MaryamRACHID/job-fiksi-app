@@ -1,4 +1,5 @@
-import {Component, Output, EventEmitter, Input} from '@angular/core';
+import { Component, Output, EventEmitter, Input } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-disponibilites',
@@ -7,7 +8,7 @@ import {Component, Output, EventEmitter, Input} from '@angular/core';
 })
 export class DisponibilitesComponent {
   @Output() availabilityInfoChange = new EventEmitter<any>();
-  @Input() userType: string | null = null; // Propriété pour recevoir le type de profil
+  @Input() userType: string | null = null;
 
   days = ['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche'];
   availabilityInfo: { [key: string]: boolean } = {
@@ -23,7 +24,8 @@ export class DisponibilitesComponent {
   afternoon: boolean = false;
   evening: boolean = false;
 
-  // Appelle cette méthode pour émettre les données
+  constructor(private http: HttpClient) {}
+
   save() {
     this.availabilityInfoChange.emit({
       availability: Object.keys(this.availabilityInfo).filter(day => this.availabilityInfo[day]),
@@ -33,7 +35,6 @@ export class DisponibilitesComponent {
     });
   }
 
-  // Méthode pour gérer le changement de jour
   onDayChange(day: string) {
     this.availabilityInfo[day] = !this.availabilityInfo[day];
     this.availabilityInfoChange.emit({
@@ -44,13 +45,25 @@ export class DisponibilitesComponent {
     });
   }
 
-  onDisponibiliteUpdate() {
-    this.availabilityInfoChange.emit({
+  saveDisponibilite() {
+    this.availabilityInfoChange.emit(this.userType);
+    const apiUrl = 'https://your-api-endpoint.com/saveDisponibilite'; // Replace with your API endpoint
+
+    const availabilityPayload = {
       availability: Object.keys(this.availabilityInfo).filter(day => this.availabilityInfo[day]),
       morning: this.morning,
       afternoon: this.afternoon,
       evening: this.evening
-    });
-    this.availabilityInfoChange.emit(this.userType);
+    };
+
+    this.http.post(apiUrl, availabilityPayload)
+      .subscribe(
+        response => {
+          console.log('Availability saved successfully:', response);
+        },
+        error => {
+          console.error('Error saving availability:', error);
+        }
+      );
   }
 }
