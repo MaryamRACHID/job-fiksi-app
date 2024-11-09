@@ -1,7 +1,8 @@
-.app-header {
+.header-container {
   display: flex;
   align-items: center;
   width: 100%;
+  margin-top: 5%;
   padding: 10px;
   box-sizing: border-box;
   position: relative; // Position relative pour fixer les éléments
@@ -28,8 +29,19 @@
   }
 }
 
-.page-title {
-  font-size: 22px;
-  font-weight: 700;
-  margin: 0 40px;
+.skip-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #484848FF; // Couleur du texte "Abandonner", modifiez si nécessaire
+  font-size: 14px;
+  text-decoration-line: underline;
+  position: absolute;
+  right: 0; // Positionnement à droite
+  margin-left: auto;
+  padding: 0;
+  width: 90px;
+  &:focus {
+    outline: none;
+  }
 }

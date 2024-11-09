@@ -1,0 +1,82 @@
+.settings-container {
+  position: relative;
+  max-width: 100%;
+  margin: 0 auto;
+  height: 100%;
+  background-color: #F9F9F9;
+  padding: 40px 20px 0 20px;
+}
+
+.settings-list {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin-top: 13%;
+}
+
+.settings-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  font-size: 16px;
+
+  .item-left {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+
+    i {
+      font-size: 20px;
+    }
+  }
+
+  .arrow {
+    font-size: 20px;
+    color: #b0b0b0;
+  }
+
+  input[type="checkbox"] {
+    width: 34px;
+    height: 18px;
+    appearance: none;
+    background-color: #ddd;
+    border-radius: 9px;
+    position: relative;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    outline: none;
+    border: none; /* Supprime complètement la bordure */
+    padding: 0; /* Enlève tout espacement interne */
+
+    &:checked {
+      background-color: #4caf50;
+    }
+
+    &:before {
+      content: "";
+      position: absolute;
+      width: 14px;
+      height: 14px;
+      background-color: white;
+      border-radius: 50%;
+      top: 50%; /* Centre verticalement */
+      left: 2px;
+      transform: translateY(-50%); /* Ajuste le cercle pour être parfaitement centré */
+      transition: left 0.3s;
+    }
+
+    &:checked:before {
+      left: 18px;
+    }
+
+    &:focus {
+      border: none !important; /* Bordure personnalisée au focus */
+      box-shadow: none !important; /* Ombre au focus */
+    }
+  }
+}

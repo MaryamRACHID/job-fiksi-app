@@ -1,8 +1,6 @@
-<div class="header-container">
-  <button *ngIf="step > 1" mat-icon-button class="arrow-button" (click)="goToPreviousStep()">
+<header class="app-header">
+  <button mat-icon-button class="arrow-button" (click)="goBack()">
     <mat-icon>arrow_back</mat-icon>
   </button>
-  <button mat-icon-button class="skip-button" (click)="abandon()">
-    Abandonner
-  </button>
-</div>
+  <p class="page-title">{{ title }}</p>
+</header>

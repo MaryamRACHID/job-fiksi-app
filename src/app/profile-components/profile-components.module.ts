@@ -28,9 +28,11 @@ import {IdentityComponent} from './identity/identity.component';
 import {BankComponent} from './bank/bank.component';
 import {InfoRestaurantComponent} from './info-restaurant/info-restaurant.component';
 import { HttpClientModule } from '@angular/common/http';
+import {ProfileHeaderComponent} from './profile-header/profile-header.component';
 
 @NgModule({
   declarations: [
+    ProfileHeaderComponent,
     ProfileTypeComponent,
     InformationsComponent,
     ContactComponent,
@@ -46,6 +48,7 @@ import { HttpClientModule } from '@angular/common/http';
     InfoRestaurantComponent,
   ],
   exports: [
+    ProfileHeaderComponent,
     ProfileTypeComponent,
     InformationsComponent,
     ContactComponent,

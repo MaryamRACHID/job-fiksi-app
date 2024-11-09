@@ -1,4 +1,5 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component } from '@angular/core';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-header',
@@ -7,15 +8,11 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 })
 
 export class HeaderComponent {
-  @Input() step: number = 1;
-  @Output() previousStep = new EventEmitter<void>();
-  @Output() skip = new EventEmitter<void>();
+  title: string = 'Titre de la Page'; // Vous pouvez modifier cela dynamiquement selon la page
 
-  goToPreviousStep() {
-    this.previousStep.emit();
-  }
+  constructor(private location: Location) {}
 
-  abandon() {
-    this.skip.emit();
+  goBack(): void {
+    this.location.back(); // Cette fonction permet de revenir à la page précédente
   }
 }

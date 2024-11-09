@@ -17,17 +17,23 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatCardModule } from '@angular/material/card';
 import {ProfileComponentsModule} from '../profile-components/profile-components.module';
+import {SettingsComponent} from './settings/settings.component';
+import {SecuriteComponent} from './securite/securite.component';
 
 @NgModule({
   declarations: [
     HomeComponent,
     LoginComponent,
     ProfileComponent,
+    SettingsComponent,
+    SecuriteComponent,
   ],
   exports: [
     LoginComponent,
     HomeComponent,
-    ProfileComponent
+    ProfileComponent,
+    SettingsComponent,
+    SettingsComponent,
   ],
   imports: [
     RouterModule,

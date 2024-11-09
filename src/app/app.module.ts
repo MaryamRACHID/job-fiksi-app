@@ -9,6 +9,7 @@ import { OffersComponentsModule } from './offers-components/offers-components.mo
 import { ProfileComponentsModule } from './profile-components/profile-components.module';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 @NgModule({
   imports: [
@@ -28,6 +29,9 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
   declarations: [
     AppComponent,
   ],
-  bootstrap: [AppComponent] // Composant racine pour démarrer l'application
+  bootstrap: [AppComponent],
+  providers: [
+    provideAnimationsAsync()
+  ] // Composant racine pour démarrer l'application
 })
 export class AppModule {}

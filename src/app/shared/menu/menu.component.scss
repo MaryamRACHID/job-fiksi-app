@@ -4,9 +4,8 @@
   width: 100%;
   display: flex;
   justify-content: space-around;
-  background-color: #fff;
-  border-top: 1px solid #ccc;
-  padding: 10px 0;
+  background-color: #F6BB10;
+  padding: 20px 0;
 
   a {
     display: flex;
@@ -15,8 +14,9 @@
     color: #000;
     text-decoration: none;
 
-    mat-icon {
-      font-size: 24px;
+    i {
+      font-size: 18px;
+      color: white;
     }
 
     span {

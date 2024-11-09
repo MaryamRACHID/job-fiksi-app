@@ -6,6 +6,7 @@ import { InformationsComponent } from './profile-components/informations/informa
 import { ContactComponent } from './profile-components/contact/contact.component';
 import {CvComponent} from './profile-components/cv/cv.component';
 import {PreferenceComponent} from './profile-components/preference/preference.component';
+import {SettingsComponent} from './pages/settings/settings.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -15,6 +16,7 @@ const routes: Routes = [
   { path: 'contact', component: ContactComponent },
   { path: 'cv', component: CvComponent },
   { path: 'job', component: PreferenceComponent },
+  { path: 'settings', component: SettingsComponent },
 ];
 
 @NgModule({
