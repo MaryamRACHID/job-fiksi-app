@@ -8,6 +8,7 @@ import { InformationsComponent } from './profile-components/informations/informa
 import { ContactComponent } from './profile-components/contact/contact.component';
 import { CvComponent } from './profile-components/cv/cv.component';
 import { PreferenceComponent } from './profile-components/preference/preference.component';
+import { AccueilRestaurantComponent } from './pages/accueil-restau/accueil-restau.component';
 
 export const routes: Routes = [
   { path: '', component: LoginComponent }, // Page d'accueil par défaut
@@ -18,6 +19,8 @@ export const routes: Routes = [
   { path: 'cv', component: CvComponent },
   { path: 'job', component: PreferenceComponent },
   { path: 'accueil', component: AccueilComponent },
+  { path: 'accueilRestau', component: AccueilRestaurantComponent },
+
 
   { path: '**', redirectTo: '' } // Redirection vers l'accueil pour les routes inconnues
 ];

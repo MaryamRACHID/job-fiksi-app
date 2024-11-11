@@ -8,6 +8,7 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { ProfileComponent } from './profile/profile.component';
 import { AccueilComponent } from './accueil/accueil.component';
+import { AccueilRestaurantComponent } from './accueil-restau/accueil-restau.component';
 
 import { SharedModule } from '../shared/shared.module';
 import { ProfileComponentsModule } from '../profile-components/profile-components.module';
@@ -18,13 +19,15 @@ import { MaterialModule } from '../material.module';
     HomeComponent,
     LoginComponent,
     ProfileComponent,
-    AccueilComponent
+    AccueilComponent,
+    AccueilRestaurantComponent
   ],
   exports: [
     LoginComponent,
     HomeComponent,
     ProfileComponent,
-    AccueilComponent
+    AccueilComponent,
+    AccueilRestaurantComponent
   ],
   imports: [
     CommonModule,
