@@ -8,6 +8,7 @@ import {CvComponent} from './profile-components/cv/cv.component';
 import {PreferenceComponent} from './profile-components/preference/preference.component';
 import {SettingsComponent} from './pages/settings/settings.component';
 import {SecuriteComponent} from './pages/securite/securite.component';
+import {DocumentListComponent} from './pages/document-list/document-list.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path: 'job', component: PreferenceComponent },
   { path: 'settings', component: SettingsComponent },
   { path: 'password', component: SecuriteComponent },
+  { path: 'documents', component: DocumentListComponent },
 ];
 
 @NgModule({

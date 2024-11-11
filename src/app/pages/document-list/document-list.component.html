@@ -1,0 +1,25 @@
+<div class="documents-list-container">
+  <app-header/>
+  <h6 class="mt-3">Mes documents</h6>
+  <div class="documents-list">
+    <div *ngFor="let document of documents" class="document-item">
+      <div class="document-header" (click)="toggleExpand(document)">
+        <span>{{ document.name }}</span>
+        <i class="fas" [ngClass]="document.expanded ? 'fa-chevron-up' : 'fa-chevron-down'"></i>
+      </div>
+
+      <div *ngIf="document.expanded" class="document-content">
+        <p class="mt-3 mb-0">{{ document.fileName }}</p>
+        <div class="mt-1">
+          <button class="view-icon" (click)="viewDocument(document)">
+            <i class="fas fa-eye fw-lighter"></i>
+          </button>
+          <button class="edit-icon" (click)="editDocument(document)">
+            <i class="fas fa-edit fw-lighter"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

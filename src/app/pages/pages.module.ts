@@ -19,6 +19,7 @@ import { MatCardModule } from '@angular/material/card';
 import {ProfileComponentsModule} from '../profile-components/profile-components.module';
 import {SettingsComponent} from './settings/settings.component';
 import {SecuriteComponent} from './securite/securite.component';
+import {DocumentListComponent} from './document-list/document-list.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import {SecuriteComponent} from './securite/securite.component';
     ProfileComponent,
     SettingsComponent,
     SecuriteComponent,
+    DocumentListComponent
   ],
   exports: [
     LoginComponent,
@@ -35,6 +37,7 @@ import {SecuriteComponent} from './securite/securite.component';
     SettingsComponent,
     SettingsComponent,
     SecuriteComponent,
+    DocumentListComponent
   ],
   imports: [
     RouterModule,
@@ -52,7 +55,7 @@ import {SecuriteComponent} from './securite/securite.component';
     MatRadioModule,
     MatCardModule,
     ProfileComponentsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ]
 })
 export class PagesModule { }

@@ -8,7 +8,7 @@ import { Location } from '@angular/common';
 })
 
 export class HeaderComponent {
-  title: string = 'Titre de la Page'; // Vous pouvez modifier cela dynamiquement selon la page
+  title: string = 'Paramètres'; // Vous pouvez modifier cela dynamiquement selon la page
 
   constructor(private location: Location) {}
 
