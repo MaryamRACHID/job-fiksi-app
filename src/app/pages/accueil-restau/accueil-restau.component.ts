@@ -12,15 +12,19 @@ interface Candidate {
 })
 export class AccueilRestaurantComponent implements OnInit {
   candidates: Candidate[] = [];
+  isFilterVisible = false;
 
   constructor() {}
 
   ngOnInit(): void {
-    // Exemple de données fictives pour la démonstration
     this.candidates = [
       { name: 'John Doe', location: 'Lyon 69003' },
       { name: 'Jane Doe', location: 'Lyon 69004' },
       { name: 'Alice Smith', location: 'Lyon 69005' }
     ];
+  }
+
+  toggleFilter() {
+    this.isFilterVisible = !this.isFilterVisible;
   }
 }

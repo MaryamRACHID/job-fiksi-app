@@ -1,0 +1,110 @@
+.filter-modal {
+    padding: 1rem;
+    background-color: #ffffff;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    box-shadow: 0px -2px 8px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+    max-height: 80vh;
+  
+    h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: #333;
+      text-align: center;
+    }
+  
+    .filter-section {
+      margin-bottom: 1.5rem;
+  
+      h3 {
+        font-size: 1rem;
+        font-weight: 500;
+        color: #666;
+        margin-bottom: 0.5rem;
+      }
+  
+      .filter-option {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+  
+        label {
+          font-size: 0.9rem;
+          display: flex;
+          align-items: center;
+          gap: 0.4rem;
+          color: #333;
+  
+          input[type="checkbox"],
+          input[type="radio"] {
+            accent-color: #ff9500;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+  
+    .filter-button {
+      background-color: #ff9500;
+      color: white;
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: background-color 0.3s ease;
+      margin: 0.3rem;
+  
+      &:hover {
+        background-color: #e68a00;
+      }
+    }
+  
+    .age-values {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.9rem;
+      color: #666;
+      margin-top: 0.5rem;
+    }
+  
+    input[type="range"] {
+      width: 100%;
+      margin-top: 0.5rem;
+      -webkit-appearance: none;
+      height: 6px;
+      background: #ff9500;
+      border-radius: 5px;
+      outline: none;
+  
+      &::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
+        background: #ff9500;
+        cursor: pointer;
+      }
+    }
+  
+    .apply-button {
+      background-color: #ff9500;
+      color: white;
+      width: 100%;
+      padding: 0.8rem;
+      font-size: 1rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 500;
+      transition: background-color 0.3s ease;
+  
+      &:hover {
+        background-color: #e68a00;
+      }
+    }
+  }
+  
