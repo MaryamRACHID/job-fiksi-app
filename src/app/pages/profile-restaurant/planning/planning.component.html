@@ -1,12 +1,46 @@
-<div class="calendar-container">
-  <mat-calendar [(selected)]="selectedDate" (selectedChange)="onDateSelected($event)" [dateClass]="dateClass"></mat-calendar>
-</div>
+<!DOCTYPE html>
+<div class="calendar-container border p-3 rounded">
+  <div class="contentAgenda">
+      <div class="calendar-header d-flex justify-content-between align-items-center">
+      <button (click)="previousMonth()">&#9664;</button>
+      <h3>{{ currentMonth | date: 'MMMM yyyy' }}</h3>
+      <button (click)="nextMonth()">&#9654;</button>
+    </div>
 
-<div class="interview-details" *ngIf="selectedInterviews.length > 0">
-  <h3>Détails des entretiens pour le {{ selectedDate | date: 'dd/MM/yyyy' }}</h3>
-  <div *ngFor="let interview of selectedInterviews">
-    <p><strong>Candidat:</strong> {{ interview.name }}</p>
-    <p><strong>Poste:</strong> {{ interview.jobTitle }}</p>
-    <p><strong>Date d'entretien:</strong> {{ interview.dateEntretien }}</p>
+    <div class="calendar-body">
+      <div class="week-days d-flex justify-content-around">
+        <div *ngFor="let day of weekDays" class="days">{{ day }}</div>
+      </div>
+      <div class="days-grid">
+        <div *ngFor="let date of datesInMonth" class="day"
+            [ngClass]="{'highlight': isInterviewDate(date)}"
+            (click)="selectDate(date)">
+          {{ date.getDate() }}
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!--
+  <div class="interview-list mt-3">
+    <h5 *ngIf="selectedDate" class="showInfosEntretien">{{ selectedDate | date: 'EEEE d MMMM' }}</h5>
+    <ul *ngIf="selectedInterviews.length > 0; else noInterviews">
+      <li *ngFor="let interview of selectedInterviews">
+        Entretien avec {{ interview.name }} à {{ interview.HeureEntretien }}
+      </li>
+    </ul>
+    <ng-template #noInterviews><p>Pas d'entretiens pour ce jour.</p></ng-template>
+  </div>
+</div> -->
+
+<div class="interview-date">
+  <div class="date-label">
+    <span *ngIf="selectedDate" class="showInfosEntretien">{{ selectedDate | date: 'EEEE d MMMM' }}</span>
+    <ul class="interview-l" *ngIf="selectedInterviews.length > 0; else noInterviews">
+      <li *ngFor="let interview of selectedInterviews" class="detailsEntretien">
+        <span></span>• Entretien avec {{ interview.name }} à {{ interview.HeureEntretien }}
+      </li>
+    </ul>
+    <ng-template #noInterviews><p>Pas d'entretiens pour ce jour.</p></ng-template>
   </div>
 </div>

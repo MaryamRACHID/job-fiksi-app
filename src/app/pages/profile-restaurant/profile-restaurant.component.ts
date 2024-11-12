@@ -34,26 +34,52 @@ export class ProfileRestaurantComponent{
   showTitle: boolean = false;
   showInfos: boolean=true;
   showPlanning : boolean = false;
+  showOffreSection: boolean = false;
+
   job: any;
 
   onTabChange(event: MatTabChangeEvent) {
     // Affiche le titre seulement quand l'onglet "Mes offres" est sélectionné
-    this.showTitle = event.index === 1;
-    this.showInfos = event.index === 0;
-    this.showPlanning = event.index === 2;
+    // this.showTitle = event.index === 1;
+    // this.showInfos = event.index === 0;
+    // this.showPlanning = event.index === 2;
     // L'index 1 correspond au deuxième onglet }
+    if(event.index === 0){
+      this.showInfos = true;
+      this.showOffreSection = false;
+      this.jobList.forEach(job => job.show = false);
+      this.showTitle = false;
+      this.showPlanning = false;
+      console.log(this.showInfos, this.showOffreSection, this.showTitle, this.showPlanning);
+    }else if(event.index === 1){
+      this.showInfos = false;
+      this.showOffreSection = false;
+      this.showTitle = true;
+      this.showPlanning = false;
+      console.log(this.showInfos, this.showOffreSection, this.showTitle, this.showPlanning);
+
+    }else if(event.index === 2){
+      this.showInfos = false;
+      this.showOffreSection = false;
+      this.jobList.forEach(job => job.show = false);
+      this.showTitle = false;
+      this.showPlanning = true;
+      console.log(this.showInfos, this.showOffreSection, this.showTitle, this.showPlanning);
+
+    }
   }
   showDescription = false;
   showDetails: boolean = false;
-  showOffreSection: boolean = true;
-  showCandidatureContainer: boolean = false;
+
+  // showCandidatureContainer: boolean = false;
   toggleDescription() {
     this.showDescription = !this.showDescription;
   }
   // Méthode pour revenir à la liste des offres
   backToJobList() {
     this.jobList.forEach(job => job.show = false); // Réinitialiser `show` pour tous les jobs
-    this.showOffreSection = true;                  // Afficher la section offres
+    this.showOffreSection = false;                  // Afficher la section offres
+    this.showTitle = true;
   }
   toggleDetails() {
     this.showDetails = !this.showDetails;
@@ -63,8 +89,12 @@ export class ProfileRestaurantComponent{
   viewJobApplications(selectedJob: any) {
     this.jobList.forEach(job => job.show = false); // Réinitialiser `show` pour tous les jobs
     selectedJob.show = true;                       // Activer `show` pour le job sélectionné
-    this.showOffreSection = false;                 // Cacher la section offres
+    this.showOffreSection = true;
+    // this.showTitle = !this.showTitle;               // Cacher la section offres
   }
+  // cacheContentOffre(){
+  //   this.showOffreSection = false;
+  // }
 
   jobList = [
     {
@@ -75,10 +105,10 @@ export class ProfileRestaurantComponent{
       datePublication: '20/12/2021',
       show:false,
       candidatures: [
-        { name: 'Alice Dupont', Cv: 'cv.pdf', Email: 'alice@example.com', Telephone: '074474748', Disponibilite: 'Lundi, Mardi', _Statut: 'Non évalué',DateEntretien:'aucun', HeureEntretien:'aucun' },
-        { name: 'Jean Martin', Cv: 'cv', Email: 'jean@example.com', Telephone: '075577889', Disponibilite: 'Mercredi, Vendredi', _Statut: 'En cours',DateEntretien:'', HeureEntretien:'' },
-        { name: 'Claire Bernard', Cv: 'cv', Email: 'claire@example.com', Telephone: '076688990', Disponibilite: 'Mardi, Jeudi', _Statut: 'Accepté',DateEntretien:'' , HeureEntretien:''},
-        { name: 'Pierre Durand', Cv: 'cv', Email: 'pierre@example.com', Telephone: '077799001', Disponibilite: 'Lundi, Mercredi, Vendredi', _Statut: 'Non évalué' ,DateEntretien:'', HeureEntretien:''},
+        { name: 'Alice Dupont', Cv: 'cv.pdf', Email: 'alice@example.com', Telephone: '074474748', Disponibilite: 'Lundi, Mardi', _Statut: 'Non évalué',DateEntretien:'2024-11-12', HeureEntretien:'08h00' },
+        { name: 'Jean Martin', Cv: 'cv', Email: 'jean@example.com', Telephone: '075577889', Disponibilite: 'Mercredi, Vendredi', _Statut: 'En cours',DateEntretien:'2024-11-12', HeureEntretien:'09h00' },
+        { name: 'Claire Bernard', Cv: 'cv', Email: 'claire@example.com', Telephone: '076688990', Disponibilite: 'Mardi, Jeudi', _Statut: 'Accepté',DateEntretien:'2024-11-14' , HeureEntretien:'10h00'},
+        { name: 'Pierre Durand', Cv: 'cv', Email: 'pierre@example.com', Telephone: '077799001', Disponibilite: 'Lundi, Mercredi, Vendredi', _Statut: 'Non évalué' ,DateEntretien:'2024-11-13', HeureEntretien:''},
         { name: 'Sophie Leroy', Cv: 'cv', Email: 'sophie@example.com', Telephone: '078800112', Disponibilite: 'Jeudi, Samedi', _Statut: 'En cours',DateEntretien:'', HeureEntretien:'' },
         { name: 'Marc Dupuis', Cv: 'cv', Email: 'marc@example.com', Telephone: '079911223', Disponibilite: 'Mardi, Vendredi', _Statut: 'Non évalué',DateEntretien:'', HeureEntretien:'' },
 

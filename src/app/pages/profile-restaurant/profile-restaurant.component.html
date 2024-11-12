@@ -24,14 +24,11 @@
   <mat-tab label="Mes informations personnelles" class="custum"></mat-tab>
   <mat-tab label="Mes offres" class="custum"></mat-tab>
   <mat-tab label="Mon planning" class="custum">
-    <ng-template matTabContent>
-      <app-planning></app-planning>
-    </ng-template>
   </mat-tab>
 </mat-tab-group>
 
 
-<div class="content" *ngIf="showInfos">
+<div class="content" *ngIf="showInfos && !showOffreSection">
   <section class="company-info">
     <h2>Nom entreprise</h2>
     <div class="contact-info">
@@ -102,20 +99,18 @@
 </div>
 
 <!-- ######################################################################"" -->
-<div class="contentOffre" *ngIf="showOffreSection && showTitle">
+<div class="contentOffre" *ngIf="showTitle && !showOffreSection">
   <h2>Mes offres d'emplois</h2>
   <button class="addOffre" type="button" id="addOffre">Ajouter une offre</button>
-
-
 <div *ngFor="let job of jobList">
   <app-offre-description [job]="job" *ngIf="!job.show"
-    (viewCandidatures)="viewJobApplications(job)">></app-offre-description>
+    (viewCandidatures)="viewJobApplications(job)"></app-offre-description>
 </div>
 <button class="postOffre" type="button">Publier une offre d'emploi</button>
 </div>
 <!-- ###################################################################### -->
 <div *ngFor="let job of jobList">
-<div class="contentOffre" *ngIf="job.show && !showOffreSection">
+<div class="contentOffre" *ngIf="job.show && showOffreSection && showTitle">
   <div class="candidature-header">
     <span class="back-arrow" (click)="backToJobList()">←</span>
     <h2 class="candidature-title">Candidatures pour {{ job.title }}</h2>
@@ -130,4 +125,9 @@
 </div>
 
 <!-- ##################################################################################### -->
+
+<div class="contentPlanning" *ngIf="showPlanning">
+  <!-- <app-planning></app-planning> -->
+  <app-planning *ngIf="showPlanning" [jobList]="jobList"></app-planning>
+</div>
 

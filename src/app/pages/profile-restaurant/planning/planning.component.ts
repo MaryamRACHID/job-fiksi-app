@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { MatCalendarCellClassFunction } from '@angular/material/datepicker';
 
 @Component({
@@ -6,72 +6,57 @@ import { MatCalendarCellClassFunction } from '@angular/material/datepicker';
   templateUrl: './planning.component.html',
   styleUrls: ['./planning.component.scss']
 })
-export class PlanningComponent implements OnInit {
+export class PlanningComponent{
+  @Input() jobList: any[] = []; // jobList input from parent component
+  currentMonth = new Date();
   selectedDate: Date | null = null;
-  selectedInterviews: any[] = [];
+  weekDays = ['L', 'M', 'M', 'J', 'V', 'S', 'D'];
 
-  jobList = [
-    {
-      title: 'Serveur H/F',
-      typePoste: 'Temps partiel',
-      lieu: 'Lyon',
-      nombreCandidature: '20',
-      datePublication: '20/12/2021',
-      show: false,
-      candidatures: [
-        { name: 'Alice Dupont', DateEntretien: '06/11/2024' },
-        { name: 'Jean Martin', DateEntretien: '07/11/2024' },
-        { name: 'Claire Bernard', DateEntretien: '08/11/2024' }
-      ]
-    },
-    {
-      title: 'Cuisinier',
-      typePoste: 'Temps plein',
-      lieu: 'Paris',
-      nombreCandidature: '10',
-      datePublication: '15/11/2021',
-      show: false,
-      candidatures: [
-        { name: 'Isabelle Laurent', DateEntretien: '09/11/2024' },
-        { name: 'Lucas Garnier', DateEntretien: '10/11/2024' },
-        { name: 'Emma Roche', DateEntretien: '11/11/2024' }
-      ]
-    },
-    // Other jobs...
-  ];
+  get datesInMonth(): Date[] {
+    const dates = [];
+    const year = this.currentMonth.getFullYear();
+    const month = this.currentMonth.getMonth();
+    const firstDay = new Date(year, month, 1);
+    const lastDay = new Date(year, month + 1, 0);
 
-  constructor() {}
-
-  ngOnInit(): void {}
-
-  dateClass: MatCalendarCellClassFunction<Date> = (cellDate, view) => {
-    if (view === 'month') {
-      const dateString = cellDate.toISOString().split('T')[0]; // Format to YYYY-MM-DD
-      return this.hasInterviewOnDate(dateString) ? 'highlight-date' : '';
+    for (let day = firstDay.getDate(); day <= lastDay.getDate(); day++) {
+      dates.push(new Date(year, month, day));
     }
-    return '';
-  };
+    return dates;
+  }
 
-  hasInterviewOnDate(dateString: string): boolean {
+  isInterviewDate(date: Date): boolean {
     return this.jobList.some(job =>
-      job.candidatures.some(cand => cand.DateEntretien === dateString)
+      job.candidatures.some((candidate: { DateEntretien: string; }) =>
+        candidate.DateEntretien === date.toISOString().split('T')[0]
+        // console.log(date.toISOString().split('T')[0], candidate.DateEntretien)
+      )
     );
   }
 
-  onDateSelected(date: Date | null): void {
-    if (date) {
-      const dateString = date.toISOString().split('T')[0];
-      this.selectedInterviews = this.jobList
-        .flatMap(job => job.candidatures
-          .filter(cand => cand.DateEntretien === dateString)
-          .map(cand => ({
-            name: cand.name,
-            jobTitle: job.title,
-            dateEntretien: cand.DateEntretien
-          }))
-        );
-    } else {
-      this.selectedInterviews = [];
-    }
+  selectDate(date: Date): void {
+    this.selectedDate = date;
+  }
+
+  get selectedInterviews() {
+    if (!this.selectedDate) return [];
+    const selectedDateString = this.selectedDate.toISOString().split('T')[0];
+    console.log(selectedDateString);
+    return this.jobList
+      // console.log(candidate.DateEntretien);
+      .flatMap(job => job.candidatures)
+      .filter(candidate => candidate.DateEntretien === selectedDateString);
+      // console.log(candidate.DateEntretien);
+
+  }
+
+  previousMonth() {
+    this.currentMonth.setMonth(this.currentMonth.getMonth() - 1);
+    this.currentMonth = new Date(this.currentMonth);
+  }
+
+  nextMonth() {
+    this.currentMonth.setMonth(this.currentMonth.getMonth() + 1);
+    this.currentMonth = new Date(this.currentMonth);
   }
 }
