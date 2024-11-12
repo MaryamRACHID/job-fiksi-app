@@ -1,95 +1,96 @@
-<div class="filter-modal" *ngIf="isVisible">
-    <h2>Filtrer</h2>
-    
-    <div class="filter-section">
-      <h3>Filtrer par</h3>
-      <div class="filter-option">
-        <label>
-          <input type="radio" name="filterBy" value="recent" /> Les plus récents
-        </label>
-        <label>
-          <input type="radio" name="filterBy" value="pertinent" /> Les plus pertinents
-        </label>
-      </div>
+<div class="filter-modal">
+  <div class="filter-icon-bar"></div>
+  <h2>Filtrer</h2>
+  <mat-divider></mat-divider>
+
+  <div class="filter-section">
+    <h3>Filtrer par</h3>
+    <div class="filter-option">
+      <label>
+        <input type="radio" name="filterBy" value="recent" /> Les plus récents
+      </label>
+      <label>
+        <input type="radio" name="filterBy" value="pertinent" /> Les plus pertinents
+      </label>
     </div>
-  
-    <div class="filter-section">
-      <h3>Niveau d'étude</h3>
-      <div class="filter-option">
-        <button class="filter-button">Master/Master 2</button>
-        <button class="filter-button">BAC+3</button>
-        <button class="filter-button">BAC+2</button>
-        <button class="filter-button">Licence</button>
-        <button class="filter-button">BAC</button>
-        <button class="filter-button">+</button>
-      </div>
-    </div>
-  
-    <div class="filter-section">
-      <h3>Lieu</h3>
-      <div class="filter-option">
-        <label>
-          <input type="checkbox" name="location" value="paris" /> Paris
-        </label>
-        <label>
-          <input type="checkbox" name="location" value="lyon" /> Lyon
-        </label>
-        <label>
-          <input type="checkbox" name="location" value="bordeaux" /> Bordeaux
-        </label>
-        <label>
-          <input type="checkbox" name="location" value="nantes" /> Nantes
-        </label>
-      </div>
-    </div>
-  
-    <div class="filter-section">
-      <h3>Disponibilité</h3>
-      <div class="filter-option">
-        <label>
-          <input type="checkbox" name="availability" value="immediate" /> Tout de suite
-        </label>
-        <label>
-          <input type="checkbox" name="availability" value="3_days" /> Dans les 3 prochains jours
-        </label>
-        <label>
-          <input type="checkbox" name="availability" value="weeks" /> Prochaines semaines
-        </label>
-        <label>
-          <input type="checkbox" name="availability" value="next_month" /> Prochain mois
-        </label>
-      </div>
-    </div>
-  
-    <div class="filter-section">
-      <h3>Âge</h3>
-      <div class="filter-option">
-        <input type="range" min="18" max="60" value="25" />
-        <div class="age-values">
-          <span>18 ans</span>
-          <span>25 ans</span>
-        </div>
-      </div>
-    </div>
-  
-    <div class="filter-section">
-      <h3>Spécialisation</h3>
-      <div class="filter-option">
-        <label>
-          <input type="checkbox" name="specialization" value="serveur" /> Serveur
-        </label>
-        <label>
-          <input type="checkbox" name="specialization" value="livreur" /> Livreur
-        </label>
-        <label>
-          <input type="checkbox" name="specialization" value="nettoyage" /> Nettoyage
-        </label>
-        <label>
-          <input type="checkbox" name="specialization" value="chef" /> Chef
-        </label>
-      </div>
-    </div>
-  
-    <button class="apply-button" (click)="closeFilter()">Appliquer</button>
   </div>
-  
+
+  <div class="filter-section">
+    <h3>Niveau d'étude</h3>
+    <div class="filter-option">
+      <button class="filter-button">Master/Master 2</button>
+      <button class="filter-button">BAC+3</button>
+      <button class="filter-button">BAC+2</button>
+      <button class="filter-button">Licence</button>
+      <button class="filter-button">BAC</button>
+      <button class="filter-button">+</button>
+    </div>
+  </div>
+
+  <div class="filter-section">
+    <h3>Lieu</h3>
+    <div class="filter-option">
+      <label>
+        <input type="checkbox" name="location" value="paris" /> Paris
+      </label>
+      <label>
+        <input type="checkbox" name="location" value="lyon" /> Lyon
+      </label>
+      <label>
+        <input type="checkbox" name="location" value="bordeaux" /> Bordeaux
+      </label>
+      <label>
+        <input type="checkbox" name="location" value="nantes" /> Nantes
+      </label>
+    </div>
+  </div>
+
+  <div class="filter-section">
+    <h3>Disponibilité</h3>
+    <div class="filter-option">
+      <label>
+        <input type="checkbox" name="availability" value="immediate" /> Tout de suite
+      </label>
+      <label>
+        <input type="checkbox" name="availability" value="3_days" /> Dans les 3 prochains jours
+      </label>
+      <label>
+        <input type="checkbox" name="availability" value="weeks" /> Prochaines semaines
+      </label>
+      <label>
+        <input type="checkbox" name="availability" value="next_month" /> Prochain mois
+      </label>
+    </div>
+  </div>
+
+  <div class="filter-section">
+    <h3>Âge</h3>
+    <div class="filter-option">
+      <input type="range" min="18" max="60" value="25" />
+      <div class="age-values">
+        <span>18 ans</span>
+        <span>25 ans</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="filter-section">
+    <h3>Spécialisation</h3>
+    <div class="filter-option">
+      <label>
+        <input type="checkbox" name="specialization" value="serveur" /> Serveur
+      </label>
+      <label>
+        <input type="checkbox" name="specialization" value="livreur" /> Livreur
+      </label>
+      <label>
+        <input type="checkbox" name="specialization" value="nettoyage" /> Nettoyage
+      </label>
+      <label>
+        <input type="checkbox" name="specialization" value="chef" /> Chef
+      </label>
+    </div>
+  </div>
+
+  <button class="apply-button" (click)="closeFilter()">Appliquer</button>
+</div>

@@ -1,18 +1,25 @@
 .filter-modal {
-    padding: 1rem;
-    background-color: #ffffff;
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
-    box-shadow: 0px -2px 8px rgba(0, 0, 0, 0.1);
-    overflow-y: auto;
-    max-height: 80vh;
-  
+  position: fixed;
+  top: 10%; // Ajustez ici pour positionner le filtre un peu plus bas si nécessaire
+  left: 50%;
+  transform: translateX(-50%); // Centrer horizontalement
+  width: 100%; // Ajustez la largeur en fonction de l’écran
+  max-width: 400px;
+  max-height: 90vh;
+  background-color: #ffffff;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  padding: 1rem;
+  z-index: 1001;
+  overflow-y: auto;
+  box-shadow: 0px -2px 8px rgba(0, 0, 0, 0.1);
+
+
     h2 {
       font-size: 1.5rem;
       font-weight: 700;
       margin-bottom: 1rem;
       color: #333;
-      text-align: center;
     }
   
     .filter-section {
@@ -105,6 +112,20 @@
       &:hover {
         background-color: #e68a00;
       }
+    }
+    .filter-icon-bar {
+      width: 50px;  // Ajustez la largeur si nécessaire
+      height: 4px;  // Ajustez la hauteur pour obtenir l'épaisseur souhaitée
+      background-color: #c4c4c4; // Couleur de la barre, à ajuster si besoin
+      border-radius: 2px;  // Arrondi des bords
+      margin: 0 auto;  // Centrage horizontal
+      margin-top: 8px;  // Espace au-dessus
+      margin-bottom: 12px;  // Espace en-dessous pour séparer du titre
+    }
+    
+    .mat-divider {
+      color: #e7e7e7;
+      margin-bottom: 7%;
     }
   }
   

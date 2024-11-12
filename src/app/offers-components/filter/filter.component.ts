@@ -1,25 +1,38 @@
-import { Component, Input } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-filter',
   templateUrl: './filter.component.html',
   styleUrls: ['./filter.component.scss']
 })
-export class FilterComponent {
-  @Input() filterOptions: string[] = [];
-  @Input() isVisible = false; // Ajout pour recevoir l'état de visibilité du composant parent
+export class FilterComponent implements OnInit {
 
-  /**
-   * Méthode pour afficher le filtre. Peut être utilisée si nécessaire.
-   */
-  showFilter() {
-    this.isVisible = true;
+  readonly dialogRef = inject(MatDialogRef<FilterComponent>);
+
+  sectionStates: Record<string, boolean> = {
+    sortBy: true,
+    educationLevel: true,
+    location: true,
+    availability: true,
+    specialization: true,
+  };
+  
+
+  educationLevels = ['Master1/Master2', 'BAC+3', 'BAC+2', 'Licence', 'BAC', '+'];
+  locations = ['Paris', 'Lyon', 'Rennes', 'Nantes'];
+  availabilityOptions = ['Tout de suite', 'Dans les 3 prochains jours', 'Prochaines semaines', 'Prochain mois'];
+  specializations = ['Serveur', 'Livreur', 'Nettoyage', 'Chef'];
+
+  ngOnInit() {
+    console.log("Filter component initialized.");
   }
 
-  /**
-   * Méthode pour fermer le filtre. Appelée lorsque l'utilisateur clique sur "Appliquer" ou ailleurs.
-   */
+  toggleSection(section: string) {
+    this.sectionStates[section] = !this.sectionStates[section];
+  }
+
   closeFilter() {
-    this.isVisible = false;
+    this.dialogRef.close();
   }
 }

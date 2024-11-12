@@ -39,7 +39,7 @@ import { MaterialModule } from '../material.module';
     SharedModule,
     ProfileComponentsModule,
     MaterialModule,
-    OffersComponentsModule,
+    OffersComponentsModule
   ]
 })
 export class PagesModule {}
