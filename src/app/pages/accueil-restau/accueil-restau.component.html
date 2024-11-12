@@ -1,10 +1,10 @@
 <div class="container">
   <header class="header">
     <div class="top-bar">
-      <img src="assets/logo.png" alt="Logo" class="logo" />
+      <img src="assets/BurKing.jpg" alt="Logo" class="logo" />
       <p class="welcome">Bonjour, username user</p>
       <button class="menu-button">
-        <mat-icon>menu</mat-icon>
+        <img src="assets/menu.png" alt="Logo" class="logo" />
       </button>
     </div>
 
@@ -14,7 +14,7 @@
         <mat-icon class="search-icon">search</mat-icon>
         <input type="text" placeholder="Rechercher" />
         <button class="filter-icon-button">
-          <mat-icon>tune</mat-icon>
+          <img src="assets/Filter.png" alt="filtre" class="filtre" />
         </button>
           
       </div>
@@ -29,7 +29,7 @@
 
     <div class="candidate-card" *ngFor="let candidate of candidates">
       <div class="profile-icon-container">
-        <mat-icon class="profile-icon">account_circle</mat-icon>
+        <img src="assets/profil.png" alt="profil" class="profil" />
       </div>
       <div class="candidate-info">
         <p class="candidate-name">{{ candidate.name }}</p>
