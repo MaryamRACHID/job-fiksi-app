@@ -1,0 +1,59 @@
+<div class="settings-container">
+  <app-header/>
+  <div class="settings-list">
+    <div class="settings-item">
+      <div class="item-left">
+        <i class="fas fa-bell fw-lighter"></i>
+        <span>Notifications</span>
+      </div>
+      <div class="item-right">
+        <input type="checkbox" [(ngModel)]="notificationsEnabled" />
+      </div>
+    </div>
+
+    <div class="settings-item">
+      <div class="item-left">
+        <i class="fas fa-user fw-lighter"></i>
+        <span>Profil public</span>
+      </div>
+      <div class="item-right">
+        <input type="checkbox" [(ngModel)]="publicProfileEnabled" />
+      </div>
+    </div>
+
+    <div class="settings-item" (click)="navigateTo('password')">
+      <div class="item-left">
+        <i class="fas fa-lock"></i>
+        <span>Mot de passe</span>
+      </div>
+      <i class="fa-solid fa-chevron-right"></i>
+    </div>
+
+    <div class="settings-item" (click)="navigateTo('documents')">
+      <div class="item-left">
+        <i class="fas fa-file fw-lighter"></i>
+        <span>Mes documents</span>
+      </div>
+      <i class="fa-solid fa-chevron-right"></i>
+    </div>
+
+    <div class="settings-item" (click)="openLogoutPopup()">
+      <div class="item-left">
+        <i class="fas fa-arrow-right-from-bracket"></i>
+        <span>Se déconnecter</span>
+      </div>
+      <i class="fa-solid fa-chevron-right"></i>
+    </div>
+  </div>
+
+  <div class="logout-popup" *ngIf="showLogoutPopup">
+    <div class="logout-content">
+      <hr class="barre">
+      <h3>Se déconnecter</h3>
+      <p>Êtes-vous sûr ?</p>
+      <button class="confirm-button" (click)="confirmLogout()">OUI</button>
+      <button class="cancel-button" (click)="closeLogoutPopup()">ANNULER</button>
+    </div>
+  </div>
+</div>
+<app-menu/>

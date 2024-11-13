@@ -1,43 +1,23 @@
 <h2 class="title">Complétez votre profil</h2>
-<p class="subtitle-1">Coordonnées de contact</p>
 
-<div class="form-group my-3 mt-5">
-  <label for="phone">Numéro de téléphone</label>
-  <input type="tel" class="form-control" id="phone" [(ngModel)]="contact.phone" placeholder="Numéro de téléphone">
-</div>
-<div class="form-group">
-  <label for="address">N° et rue</label>
-  <input type="text" class="form-control" id="address" [(ngModel)]="contact.address" placeholder="N° et rue">
-</div>
-<div class="form-group">
-  <label for="postalCode">Code postal</label>
-  <input type="text" class="form-control" id="postalCode" [(ngModel)]="contact.postalCode" placeholder="Code postal">
-</div>
-<div class="form-group">
-  <label for="city">Ville</label>
-  <input type="text" class="form-control" id="city" [(ngModel)]="contact.city" placeholder="Ville">
-</div>
-<div class="form-group">
-  <label for="address">IBAN</label>
-  <input type="text" class="form-control" id="address" [(ngModel)]="contact.address" placeholder="27 chiffres">
-</div>
-<div class="form-group">
-  <label for="postalCode">Sécurité social</label>
-  <input type="text" class="form-control" id="postalCode" [(ngModel)]="contact.postalCode" placeholder="Sécurité social">
-</div>
-<div class="form-group">
-  <label for="postalCode">Code postal</label>
-  <input type="text" class="form-control" id="postalCode" [(ngModel)]="contact.postalCode" placeholder="Code postal">
-</div>
-<div class="form-group">
-  <label for="city">Ville</label>
-  <input type="text" class="form-control" id="city" [(ngModel)]="contact.city" placeholder="Ville">
-</div>
-<div class="form-group">
-  <label for="address">IBAN</label>
-  <input type="text" class="form-control" id="address" [(ngModel)]="contact.address" placeholder="27 chiffres">
-</div>
-<div class="form-group">
-  <label for="postalCode">Sécurité social</label>
-  <input type="text" class="form-control" id="postalCode" [(ngModel)]="contact.postalCode" placeholder="Sécurité social">
+<!--<div *ngIf="userType === 'candidate'">-->
+<div>
+  <p class="subtitle-1">Coordonnées de contact</p>
+
+  <div class="form-group my-3 mt-5">
+    <label for="phone">Numéro de téléphone</label>
+    <input type="tel" class="form-control" id="phone" [(ngModel)]="contact.phone" placeholder="Numéro de téléphone">
+  </div>
+  <div class="form-group">
+    <label for="address">N° et rue</label>
+    <input type="text" class="form-control" id="address" [(ngModel)]="contact.address" placeholder="N° et rue">
+  </div>
+  <div class="form-group">
+    <label for="postalCode">Code postal</label>
+    <input type="text" class="form-control" id="postalCode" [(ngModel)]="contact.postalCode" placeholder="Code postal">
+  </div>
+  <div class="form-group">
+    <label for="city">Ville</label>
+    <input type="text" class="form-control" id="city" [(ngModel)]="contact.city" placeholder="Ville">
+  </div>
 </div>

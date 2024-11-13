@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent {
-  currentToggle: string = 'inscription'; // Valeur par défaut
+  currentToggle: string = 'connexion'; // Valeur par défaut
 
   constructor(private router: Router) {}
 

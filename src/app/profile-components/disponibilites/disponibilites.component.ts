@@ -1,4 +1,5 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component, Output, EventEmitter, Input } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-disponibilites',
@@ -7,9 +8,10 @@ import { Component, Output, EventEmitter } from '@angular/core';
 })
 export class DisponibilitesComponent {
   @Output() availabilityInfoChange = new EventEmitter<any>();
+  @Input() userType: string | null = null;
 
   days = ['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche'];
-  availability: { [key: string]: boolean } = {
+  availabilityInfo: { [key: string]: boolean } = {
     'Lundi': false,
     'Mardi': false,
     'Mercredi': false,
@@ -22,26 +24,46 @@ export class DisponibilitesComponent {
   afternoon: boolean = false;
   evening: boolean = false;
 
-  // Appelle cette méthode pour émettre les données
+  constructor(private http: HttpClient) {}
+
   save() {
     this.availabilityInfoChange.emit({
-      availability: Object.keys(this.availability).filter(day => this.availability[day]),
+      availability: Object.keys(this.availabilityInfo).filter(day => this.availabilityInfo[day]),
       morning: this.morning,
       afternoon: this.afternoon,
       evening: this.evening
     });
   }
 
-  // Méthode pour gérer le changement de jour
   onDayChange(day: string) {
-    this.availability[day] = !this.availability[day];
-
-    // Emit the availability change
+    this.availabilityInfo[day] = !this.availabilityInfo[day];
     this.availabilityInfoChange.emit({
-      availability: this.availability,
+      availability: this.availabilityInfo,
       morning: this.morning,
       afternoon: this.afternoon,
       evening: this.evening
     });
+  }
+
+  saveDisponibilite() {
+    this.availabilityInfoChange.emit(this.userType);
+    const apiUrl = 'https://your-api-endpoint.com/saveDisponibilite'; // Replace with your API endpoint
+
+    const availabilityPayload = {
+      availability: Object.keys(this.availabilityInfo).filter(day => this.availabilityInfo[day]),
+      morning: this.morning,
+      afternoon: this.afternoon,
+      evening: this.evening
+    };
+
+    this.http.post(apiUrl, availabilityPayload)
+      .subscribe(
+        response => {
+          console.log('Availability saved successfully:', response);
+        },
+        error => {
+          console.error('Error saving availability:', error);
+        }
+      );
   }
 }

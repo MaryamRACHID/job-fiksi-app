@@ -1,4 +1,5 @@
-import {Component, EventEmitter, Output} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
 
 @Component({
   selector: 'app-profile-type',
@@ -6,17 +7,30 @@ import {Component, EventEmitter, Output} from '@angular/core';
   styleUrl: './profile-type.component.scss'
 })
 export class ProfileTypeComponent {
-  userType: string | null = null;
+  userType: string = '';
+  @Output() userTypeChange = new EventEmitter<string>();
 
-  @Output() userTypeSelected = new EventEmitter<string>();
+  constructor(private http: HttpClient) {}
+
 
   selectUserType(type: string) {
-    this.userType = type; // Met à jour le type d'utilisateur localement
-    this.userTypeSelected.emit(type); // Émet l'événement
+    this.userType = type;
+    console.log(type);
+    this.userTypeChange.emit(this.userType);
   }
 
-  updateUserType(data: string) {
-    this.userType = data; // Mettez à jour le type d'utilisateur
-    this.userTypeSelected.emit(data); // Émet l'événement
+  saveType() {
+    this.userTypeChange.emit(this.userType);
+    const apiUrl = 'https://your-api-endpoint.com/saveUserType'; // Replace with your API endpoint
+
+    this.http.post(apiUrl, { userType: this.userType })
+      .subscribe(
+        response => {
+          console.log('User type saved successfully:', response);
+        },
+        error => {
+          console.error('Error saving user type:', error);
+        }
+      );
   }
 }

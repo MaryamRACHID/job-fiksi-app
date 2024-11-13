@@ -4,9 +4,7 @@
   width: 100%;
   display: flex;
   justify-content: space-around;
-  background-color: #fff;
-  border-top: 1px solid #ccc;
-  padding: 10px 0;
+  background-color: #F6BB10;
 
   a {
     display: flex;
@@ -14,13 +12,23 @@
     align-items: center;
     color: #000;
     text-decoration: none;
+    position: relative;
 
-    mat-icon {
-      font-size: 24px;
+    i {
+      font-size: 22px;
+      color: white;
+      padding: 25px 0;
+      width: 42px;
+      text-align: center;
     }
 
-    span {
-      font-size: 12px;
+    &.active::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 3px;
+      background-color: #fff; // Couleur de la ligne sous l'élément actif
     }
   }
 }

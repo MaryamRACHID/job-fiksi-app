@@ -11,10 +11,13 @@ import { OffersComponentsModule } from './offers-components/offers-components.mo
 import { ProfileComponentsModule } from './profile-components/profile-components.module';
 import { MaterialModule } from './material.module';
 import { ServiceWorkerModule } from '@angular/service-worker';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 @NgModule({
   declarations: [
-    AppComponent // Déclaration du composant racine
+    AppComponent,
+     // Déclaration du composant racine
   ],
   imports: [
     BrowserModule,
@@ -25,6 +28,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
     OffersComponentsModule, // Module pour les composants d'offres
     ProfileComponentsModule, // Module pour les composants de profil
     MaterialModule, // Module pour Angular Material
+    MatButtonToggleModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: !isDevMode(),
       registrationStrategy: 'registerWhenStable:30000'
