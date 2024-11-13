@@ -1,23 +1,4 @@
-.header {
-  background: linear-gradient(to bottom, #fbbc04, #fff);
-  // padding: 16px;
-  text-align: center;
-}
-.toolbar{
-  margin: 0;
-  background-color: transparent;
-}
-.logo {
-  width: 7rem;
-  height: 7rem;
-  border-radius: 50%;
-  margin-left: 1.5rem;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-  background-image: url("OIP.jpg");
-  background-size: cover;
 
-}
 .spacer {
   flex: 1 1 auto;
 }
@@ -37,8 +18,6 @@ p{
 }
 .content {
   padding: 2rem;
-  justify-content: center;
-  justify-items: center;
 }
 .bloc-info{
   display: flex;
@@ -48,6 +27,33 @@ p{
   display: flex;
   flex-direction: column;
   gap: 0;
+}
+.infos-input{
+  width: 100%;
+  padding: 0.3rem;
+  border: 2px solid #b4b3b3;
+  background-color: #f7f5f5;
+  border-radius: 0.3rem;
+}
+.group-avantage{
+  display: flex;
+  flex-direction: row;
+  gap: 0.4rem;
+  margin-bottom: 1rem;
+}
+.group-avantage .addAvantage{
+  // background-color: #f7f7f7;
+  background-color: #f6b400;
+  border-color: transparent;
+  border-radius: 0.3rem;
+  // margin-bottom: 1rem;
+}
+.infos-description{
+  width: 100%;
+  height: 4rem;
+  border: 2px solid #b4b3b3;
+  background-color: #f7f5f5;
+  border-radius: 0.3rem;
 }
 
 .company-info mat-icon {
@@ -230,4 +236,32 @@ p{
 .candidature-title {
   font-weight: 500;
 }
+.button-container {
+  display: flex;
+  gap: 1rem; /* espace entre les boutons */
+  margin: auto;
+  margin-top: 1rem;
+}
 
+.btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 0.4rem;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.cancel {
+  background-color: #1A0A45; /* Couleur bleu foncé */
+  color: white;
+}
+
+.save {
+  background-color: #FFC107; /* Couleur jaune */
+  color: black;
+}
+
+.btn:hover {
+  opacity: 0.9; /* Effet hover pour les deux boutons */
+}

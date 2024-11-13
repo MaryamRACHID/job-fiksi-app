@@ -14,7 +14,7 @@
     <button mat-icon-button>
       <mat-icon>settings</mat-icon>
     </button>
-    <button mat-icon-button>
+    <button mat-icon-button *ngIf="showButtonEdit" (click)="onTabEdit()">
       <mat-icon>edit</mat-icon>
     </button>
   </mat-toolbar>
@@ -27,78 +27,17 @@
   </mat-tab>
 </mat-tab-group>
 
-
-<div class="content" *ngIf="showInfos && !showOffreSection">
-  <section class="company-info">
-    <h2>Nom entreprise</h2>
-    <div class="contact-info">
-      <div class="info-item">
-        <mat-icon>email</mat-icon>
-          <div class="info">
-              <p class="label">Email</p>
-              <p class="text">examplegmail.com</p>
-          </div>
-      </div>
-      <div class="info-item">
-        <mat-icon>phone</mat-icon>
-          <div class="info">
-              <p class="label">Numéro de téléphone</p>
-              <p class="text">01 63 52 74 25</p>
-          </div>
-      </div>
-      <div class="info-item">
-        <mat-icon>location_on</mat-icon>
-          <div class="info">
-              <p class="label">Localisation</p>
-              <p class="text">Lyon, 69 003</p>
-          </div>
-      </div>
-      <div class="info-item">
-         <mat-icon>restaurant</mat-icon>
-          <div class="info">
-              <p class="label">Type de restaurant</p>
-              <p class="text">Fast - Food</p>
-          </div>
-      </div>
-  </div>
-  </section>
-<div class="separator"></div>
-  <section class="description">
-    <h2>Description</h2>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
-    <a href="#" class="lien">Voir les postes</a>
-  </section>
-  <div class="separator"></div>
-
-  <section class="advantages">
-    <h2>Avantages</h2>
-    <mat-chip-listbox>
-      <mat-chip color="primary" class="avant">Tickets restaurants</mat-chip>
-      <mat-chip color="primary" class="avant">Congé payés</mat-chip>
-      <mat-chip color="primary" class="avant">Assurance</mat-chip>
-    </mat-chip-listbox>
-  </section>
-<div class="separator"></div>
-  <section class="social-links">
-    <h2>Notre présence sur Internet</h2>
-    <div class="info-item">
-      <mat-icon>language</mat-icon>
-        <div class="info">
-          <p class="label">site Internet</p>
-          <a href="https://www.site.com" target="_blank"></a><p class="text">site.com</p>
-        </div>
-    </div>
-    <div class="info-item">
-      <mat-icon>linkdIn</mat-icon>
-        <div class="info">
-          <p class="label">LinkdIn</p>
-          <a href="https://www.site.com" target="_blank"></a><p class="text">profil_linkdIn</p>
-        </div>
-    </div>
-  </section>
+<!-- ///////////// EDIT PROFIL //////////////////////// -->
+<div class="editInfosSection" *ngIf="showEditSection">
+  <app-modifier-infos-restaurant [infos]="RestaurantInfos" (cancelEdit)="handleCancel()"></app-modifier-infos-restaurant>
 </div>
 
-<!-- ######################################################################"" -->
+<!-- /////////////////// RESTAURANT INFOS ///////////////////// -->
+<div class="restaurantInfos" *ngIf="showInfos && !showOffreSection">
+  <app-restaurant-infos [infos]="RestaurantInfos"></app-restaurant-infos>
+</div>
+
+<!-- ////////////////////////AFFICHAGE OFFRE EMPLOI ////////////////////////////// -->
 <div class="contentOffre" *ngIf="showTitle && !showOffreSection">
   <h2>Mes offres d'emplois</h2>
   <button class="addOffre" type="button" id="addOffre">Ajouter une offre</button>
@@ -108,7 +47,8 @@
 </div>
 <button class="postOffre" type="button">Publier une offre d'emploi</button>
 </div>
-<!-- ###################################################################### -->
+
+<!-- ///////////////////////// AFFICHAGE CANDIDATURES //////////////////////////////////// -->
 <div *ngFor="let job of jobList">
 <div class="contentOffre" *ngIf="job.show && showOffreSection && showTitle">
   <div class="candidature-header">
@@ -124,8 +64,7 @@
 
 </div>
 
-<!-- ##################################################################################### -->
-
+<!-- /////////////////////////////////// AFFICHAGE PLANNING ///////////////////////////////////// -->
 <div class="contentPlanning" *ngIf="showPlanning">
   <!-- <app-planning></app-planning> -->
   <app-planning *ngIf="showPlanning" [jobList]="jobList"></app-planning>

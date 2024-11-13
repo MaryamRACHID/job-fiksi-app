@@ -60,13 +60,8 @@ export class CandidatDescriptionComponent {
     this.isOpen = !this.isOpen;
   }
 
-  // openEditDialog_entretien(candidate: any) {
-  //   this.selectedStatusEntretien = candidate.DateEntretien;
-  //   this.selectedDateEntretien = candidate.DateEntretien ? new Date(candidate.DateEntretien) : null;
-  //   this.dialog.open(this.editDialogEntretien);
-  // }
   openEditDialog_entretien(candidate: any) {
-    this.selectedStatus = candidate._Statut;
+    this.selectedStatusEntretien = candidate.DateEntretien;
     this.selectedDateEntretien = candidate.DateEntretien ? new Date(candidate.DateEntretien.split(' ')[0]) : null;
     this.selectedTimeEntretien = candidate.HeureEntretien ? candidate.HeureEntretien.split(' ')[1] : '';
     this.dialog.open(this.editDialogEntretien);
@@ -75,25 +70,19 @@ export class CandidatDescriptionComponent {
   closeDialog_entretien() {
     this.dialog.closeAll();
   }
+  accepterCandidat(candidate:any){}
 
-  // updateStatus_entretien() {
-  //   // Met à jour le statut et la date d'entretien de la candidature
-  //   this.candidate.DateEntretien = this.selectedStatusEntretien;
-  //   if (this.selectedDateEntretien) {
-  //     this.candidate.DateEntretien = this.selectedDateEntretien.toISOString().split('T')[0]; // Enregistre la date en format YYYY-MM-DD
-  //   }
-  //   this.closeDialog_entretien();
-  // }
   updateStatus_entretien() {
     if (this.selectedDateEntretien && this.selectedTimeEntretien) {
-      const date = this.selectedDateEntretien.toLocaleDateString(); // Formate la date
+      var date = this.selectedDateEntretien.toLocaleDateString(); // Formate la date
       const dateTime = `${date} ${this.selectedTimeEntretien}`; // Combine la date et l'heure
 
-      this.candidate.DateEntretien = dateTime; // Met à jour la date et l'heure de l'entretien
+      this.candidate.DateEntretien = date; // Met à jour la date et l'heure de l'entretien
+      this.candidate.HeureEntretien = this.selectedTimeEntretien;
     }
     this.candidate.DateEntretien = this.selectedStatusEntretien;
     if(this.candidate.DateEntretien == 'Entretien réalisé'){
-      this.candidate.HeureEntretien = '';
+      this.candidate.HeureEntretien = '_';
     }
     this.closeDialog();
   }

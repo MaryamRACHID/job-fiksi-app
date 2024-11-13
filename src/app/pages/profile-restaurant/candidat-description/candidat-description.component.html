@@ -21,24 +21,38 @@
         <p>{{candidate.Email}}</p>
         <p>{{candidate.Telephone}}</p>
         <p>{{candidate.Disponibilite}}</p>
-        <p>{{candidate.DateEntretien}}</p>
+        <p class="dateEntretien" [ngStyle]="{'background-color': candidate.DateEntretien === 'Entretien réalisé' ? '#f7b11c' : 'transparent'}">{{candidate.DateEntretien}}</p>
         <p>{{candidate.HeureEntretien}}</p>
         <p>
           {{candidate._Statut}}
-          <button mat-icon-button (click)="openEditDialog(candidate)">
-            <mat-icon>edit</mat-icon>
+          <button mat-icon-button (click)="openEditDialog(candidate)" class="btn-edit">
+            <mat-icon class="icon-edit">edit</mat-icon>
           </button>
         </p>
       </div>
     </div>
     <div class="button-modif">
       <button type="button">Refuser le candidat</button>
-      <button type="button" (click)="openEditDialog_entretien(candidate)">Proposer un entretien</button>
+      <button
+        type="button"
+        (click)="openEditDialog_entretien(candidate)"
+        *ngIf="candidate.DateEntretien !== 'Entretien réalisé'">
+        Proposer un entretien
+    </button>
+
+    <!-- Display "Accepter le candidat" if DateEntretien is "entretien réliser" -->
+    <button
+        type="button"
+        (click)="accepterCandidat(candidate)"
+        *ngIf="candidate.DateEntretien === 'Entretien réalisé'">
+        Accepter le candidat
+    </button>
     </div>
     <p class="worning">* Si vous ne répondez pas au candidat dans les 48 heures, nous supposerons que vous l'avez refusé</p>
   </div>
 </div>
 
+<!-- /////////////////////////////pop up modif status candidature ///////////////////////////// -->
 <ng-template class="popup-statut" #editDialog>
   <h2 class="popup-title">Modifier le statut de la candidature</h2>
   <mat-radio-group [(ngModel)]="selectedStatus" class="items">
@@ -53,6 +67,7 @@
   </div>
 </ng-template>
 
+<!-- ///////////////////////////////pop up modif date entretien ///////////////////////////////////// -->
 <ng-template class="popup-dateEntretien" #editDialogEntretien>
   <h2 class="popup-title">Date et heure de l'entretien</h2>
 

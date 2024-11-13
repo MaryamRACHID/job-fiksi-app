@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<div class="content">
+  <form action="" (ngSubmit)="save()" #restaurantForm="ngForm">
+  <section class="company-info">
+      <h2>Nom entreprise</h2>
+
+      <div class="contact-info">
+        <div class="info-item">
+          <mat-icon>email</mat-icon>
+            <div class="info">
+                <p class="label">Email</p>
+                <!-- <p class="text">examplegmail.com</p> -->
+                <input type="text" class="infos-input" name="email" id="emailEdit" placeholder="{{infos.email}}" [(ngModel)]="infos.email">
+            </div>
+        </div>
+        <div class="info-item">
+          <mat-icon>phone</mat-icon>
+            <div class="info">
+                <p class="label">Numéro de téléphone</p>
+                <!-- <p class="text">01 63 52 74 25</p> -->
+                <input type="tel" class="infos-input" name="tel" id="telEdit" placeholder="{{infos.tel}}" [(ngModel)]="infos.tel">
+            </div>
+        </div>
+        <div class="info-item">
+          <mat-icon>location_on</mat-icon>
+            <div class="info">
+                <p class="label">Localisation</p>
+                <!-- <p class="text">Lyon, 69 003</p> -->
+                <input type="text" class="infos-input" rows="3" name="adresse" id="adresseEdit" placeholder="{{infos.adresse}}" [(ngModel)]="infos.adresse">
+            </div>
+        </div>
+        <div class="info-item">
+          <mat-icon>schedule</mat-icon>
+            <div class="info">
+                <p class="label">Horaire du restaurant</p>
+                <!-- <p class="text">Lyon, 69 003</p> -->
+                <input type="text" class="infos-input" rows="3" name="adresse" id="hoaireEdit" placeholder="{{infos.horaireRestaurant}}" [(ngModel)]="infos.horaireRestaurant">
+            </div>
+        </div>
+        <div class="info-item">
+          <mat-icon>restaurant</mat-icon>
+            <div class="info">
+                <p class="label">Type de restaurant</p>
+                <!-- <p class="text">Fast - Food</p> -->
+                <select name="typeResto" id="typeRestoEdit" class="infos-input" [(ngModel)]="infos.typeRestaurant">
+                  <option value="{{infos.typeRestaurant}}" [(ngModel)]="infos.typeRestaurant">{{infos.typeRestaurant}}</option>
+                  <option value="Hôtel">Hôtel</option>
+                  <option value="crous">Crous</option>
+                  <option value="buffet">buffet</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    </section>
+  <div class="separator"></div>
+    <section class="description">
+      <h2>Description</h2>
+      <!-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p> -->
+      <textarea name="description" class="infos-description" id="descriptionEdit" placeholder="{{infos.description}}" [(ngModel)]="infos.description"></textarea>
+      <!-- <a href="#" class="lien">Voir les postes</a> -->
+    </section>
+    <div class="separator"></div>
+
+    <section class="advantages">
+      <h2>Avantages</h2>
+      <div class="group-avantage">
+        <input type="text" name="avantages" class="infos-input" [(ngModel)]="newAvantage" placeholder="Ajouter un avantage" id="input-avantages">
+        <button type="button" class="addAvantage" (click)="addAvantages()">+</button>
+      </div>
+      <mat-chip-listbox>
+        <mat-chip *ngFor="let avantage of infos.avantages" color="primary" class="avant">
+          {{ avantage }}
+        </mat-chip>
+      </mat-chip-listbox>
+    </section>
+
+  <div class="separator"></div>
+    <section class="social-links">
+      <h2>Notre présence sur Internet</h2>
+      <div class="info-item">
+        <mat-icon>language</mat-icon>
+          <div class="info">
+            <p class="label">site Internet</p>
+            <!-- <a href="https://www.site.com" target="_blank"></a><p class="text">site.com</p> -->
+            <input type="url" class="infos-input" name="siteIternet" id="siteInternetEdit" placeholder="{{infos.siteInternet}}" [(ngModel)]="infos.siteInternet">
+          </div>
+      </div>
+      <div class="info-item">
+        <mat-icon>linkdIn</mat-icon>
+          <div class="info">
+            <p class="label">LinkdIn</p>
+            <!-- <a href="https://www.site.com" target="_blank"></a><p class="text">profil_linkdIn</p> -->
+            <input type="text" class="infos-input" name="LinkdIn" id="LinkdInEdit" placeholder="{{infos.linkdin}}" [(ngModel)]="infos.linkdin">
+          </div>
+      </div>
+    </section>
+    <div class="button-container">
+      <button class="btn cancel" (click)="cancel()">Annuler</button>
+      <button type="submit" class="btn save" [disabled]="restaurantForm.invalid">Sauvegarder</button>
+    </div>
+  </form>
+
+
+</div>
+

@@ -6,7 +6,9 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatTabChangeEvent } from '@angular/material/tabs';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { OffreDescriptionComponent } from './offre-description/offre-description.component';
+import { ModifierInfosRestaurantComponent } from './modifier-infos-restaurant/modifier-infos-restaurant.component';
 import { CommonModule } from '@angular/common';
+import { DescriptionComponent } from '../../profile-components/description/description.component';
 // import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @Component({
@@ -35,27 +37,31 @@ export class ProfileRestaurantComponent{
   showInfos: boolean=true;
   showPlanning : boolean = false;
   showOffreSection: boolean = false;
+  showEditSection : boolean = false;
+  showButtonEdit : boolean = true;
+  showDescription = false;
+  showDetails: boolean = false;
 
   job: any;
-
+  onTabEdit(){
+    this.showEditSection=true;
+    this.showInfos = false;
+  }
   onTabChange(event: MatTabChangeEvent) {
-    // Affiche le titre seulement quand l'onglet "Mes offres" est sélectionné
-    // this.showTitle = event.index === 1;
-    // this.showInfos = event.index === 0;
-    // this.showPlanning = event.index === 2;
-    // L'index 1 correspond au deuxième onglet }
     if(event.index === 0){
       this.showInfos = true;
       this.showOffreSection = false;
       this.jobList.forEach(job => job.show = false);
       this.showTitle = false;
       this.showPlanning = false;
+      this.showButtonEdit = true;
       console.log(this.showInfos, this.showOffreSection, this.showTitle, this.showPlanning);
     }else if(event.index === 1){
       this.showInfos = false;
       this.showOffreSection = false;
       this.showTitle = true;
       this.showPlanning = false;
+      this.showButtonEdit = false;
       console.log(this.showInfos, this.showOffreSection, this.showTitle, this.showPlanning);
 
     }else if(event.index === 2){
@@ -64,14 +70,12 @@ export class ProfileRestaurantComponent{
       this.jobList.forEach(job => job.show = false);
       this.showTitle = false;
       this.showPlanning = true;
+      this.showButtonEdit = false;
       console.log(this.showInfos, this.showOffreSection, this.showTitle, this.showPlanning);
 
     }
   }
-  showDescription = false;
-  showDetails: boolean = false;
 
-  // showCandidatureContainer: boolean = false;
   toggleDescription() {
     this.showDescription = !this.showDescription;
   }
@@ -89,12 +93,12 @@ export class ProfileRestaurantComponent{
   viewJobApplications(selectedJob: any) {
     this.jobList.forEach(job => job.show = false); // Réinitialiser `show` pour tous les jobs
     selectedJob.show = true;                       // Activer `show` pour le job sélectionné
-    this.showOffreSection = true;
-    // this.showTitle = !this.showTitle;               // Cacher la section offres
+    this.showOffreSection = true;           // Cacher la section offres
   }
-  // cacheContentOffre(){
-  //   this.showOffreSection = false;
-  // }
+  handleCancel() {
+    this.showEditSection = false;
+    this.showInfos = true;
+  }
 
   jobList = [
     {
@@ -130,6 +134,20 @@ export class ProfileRestaurantComponent{
     },
     // autres postes
   ];
-
+  RestaurantInfos = {
+    nomEntreprise:'Burger King',
+    email:'burger@gmail.com',
+    tel:'0674859612',
+    adresse:'Lyon, 69003',
+    horaireRestaurant:'10h-23h',
+    typeRestaurant:'Fast-Food',
+    description:'Lorem ipsum dolor sit amet, consectetur adipiscing elit...',
+    avantages:["Tickes restaurants","Congé payés", "assurance"],
+    siteInternet:'site.com',
+    linkdin:'prifil-linkdin',
+    offreEmploi:this.jobList
+  }
 
 }
+
+

@@ -14,7 +14,7 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     // Surveille la route actuelle pour cacher ou afficher l'auth-container
     this.router.events.subscribe(() => {
-      this.showAuthContainer = this.router.url !== '/profile-restaurant';
+      this.showAuthContainer = this.router.url !== '/profile-candidat';
     });
   }
 }

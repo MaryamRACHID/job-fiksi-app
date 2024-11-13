@@ -26,6 +26,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatRadioModule } from '@angular/material/radio';
+// import { ModifierInfosRestaurantComponent } from './profile-restaurant/modifier-infos-restaurant/modifier-infos-restaurant.component';
 @NgModule({
   declarations: [
     HomeComponent,
@@ -36,7 +37,10 @@ import { MatRadioModule } from '@angular/material/radio';
     CandidatDescriptionComponent,
     OffreDescriptionComponent,
     PlanningComponent,
-    SettingsComponent
+    SettingsComponent,
+    ModifierInfosRestaurantComponent,
+    RestaurantInfosComponent,
+    ProfileCandidatComponent
   ],
   exports: [
     LoginComponent,
@@ -44,7 +48,9 @@ import { MatRadioModule } from '@angular/material/radio';
     HomeComponent,
     ProfileRestaurantComponent,
     SettingsComponent,
-    CandidatDescriptionComponent
+    CandidatDescriptionComponent,
+    ModifierInfosRestaurantComponent,
+    ProfileCandidatComponent
   ],
   imports: [
     RouterModule,
@@ -80,4 +86,7 @@ export class PagesModule { }
 import { CandidatDescriptionComponent } from './profile-restaurant/candidat-description/candidat-description.component';
 import { InputModalityDetector } from '@angular/cdk/a11y';
 import { SettingsComponent } from './settings/settings.component';
+import { ModifierInfosRestaurantComponent } from './profile-restaurant/modifier-infos-restaurant/modifier-infos-restaurant.component';
+import { RestaurantInfosComponent } from './profile-restaurant/restaurant-infos/restaurant-infos.component';
+import { ProfileCandidatComponent } from './profile-candidat/profile-candidat.component';
 

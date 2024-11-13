@@ -20,19 +20,6 @@
       </div>
     </div>
   </div>
-
-<!--
-  <div class="interview-list mt-3">
-    <h5 *ngIf="selectedDate" class="showInfosEntretien">{{ selectedDate | date: 'EEEE d MMMM' }}</h5>
-    <ul *ngIf="selectedInterviews.length > 0; else noInterviews">
-      <li *ngFor="let interview of selectedInterviews">
-        Entretien avec {{ interview.name }} à {{ interview.HeureEntretien }}
-      </li>
-    </ul>
-    <ng-template #noInterviews><p>Pas d'entretiens pour ce jour.</p></ng-template>
-  </div>
-</div> -->
-
 <div class="interview-date">
   <div class="date-label">
     <span *ngIf="selectedDate" class="showInfosEntretien">{{ selectedDate | date: 'EEEE d MMMM' }}</span>

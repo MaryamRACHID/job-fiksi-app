@@ -1,3 +1,37 @@
+
+/////// FORMATION///////////////////////
+.interview-date {
+  display: flex;
+  align-items: flex-start;
+  margin: 10px 0;
+  margin-bottom: 1.2rem;
+}
+
+.date-label {
+  // font-weight: 500;
+  // color: gray;
+  margin-right: 10px;
+  border-left: 3px solid #FFC107; /* Yellow border */
+  padding-left: 10px;
+}
+.showInfosEntretien{
+  font-size: 0.8rem;
+  color: #989797;
+}
+.interview-l .detailsEntretien{
+  color: #000;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.interview-l {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+//////////////////////////////////////////////
+///
 .header {
   background: linear-gradient(to bottom, #fbbc04, #fff);
   // padding: 16px;
@@ -230,4 +264,6 @@ p{
 .candidature-title {
   font-weight: 500;
 }
+
+
 
