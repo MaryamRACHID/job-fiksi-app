@@ -1,1 +1,14 @@
-<p>job-list works!</p>
+<div *ngIf="isLoading">Chargement...</div>
+<div *ngIf="errorMessage">{{ errorMessage }}</div>
+
+<ul *ngIf="!isLoading && offres.length > 0">
+  <li *ngFor="let offre of offres">
+    <!-- Lien vers les détails de l'offre -->
+    <a [routerLink]="['/annonces', offre.id]">
+      <h3>{{ offre.titre }} - {{ offre.id }}</h3>
+      <p>{{ offre.description }}</p>
+    </a>
+  </li>
+</ul>
+
+<div *ngIf="!isLoading && offres.length === 0">Aucune offre trouvée.</div>

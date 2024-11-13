@@ -1,1 +1,12 @@
-<p>job-details works!</p>
+<div *ngIf="offre">
+    <h2>Détails de l'offre : {{ offre.title }}</h2>
+    <p><strong>Publiée le : </strong>{{ offre.date_publication }} par {{ offre.created_by }}</p>
+    <p><strong>Description : </strong>{{ offre.description }}</p>
+    <p><strong>Type de contrat : </strong>{{ offre.type_contrat }}</p>
+    <p><strong>Lieu : </strong>{{ offre.ville }}</p>
+    <p><strong>Salaire : </strong>{{ offre.salaire }}</p>
+    <p><strong>Temps de travail : </strong>{{ offre.temps_travail }}</p>
+    <p><strong>Statut : </strong>{{ offre.statut }}</p>
+    <!-- Autres détails -->
+  </div>
+  
