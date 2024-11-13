@@ -1,9 +1,9 @@
 .filter-modal {
   position: fixed;
-  top: 10%; // Ajustez ici pour positionner le filtre un peu plus bas si nécessaire
+  top: 10%;
   left: 50%;
-  transform: translateX(-50%); // Centrer horizontalement
-  width: 100%; // Ajustez la largeur en fonction de l’écran
+  transform: translateX(-50%);
+  width: 100%;
   max-width: 400px;
   max-height: 90vh;
   background-color: #ffffff;
@@ -14,182 +14,174 @@
   overflow-y: auto;
   box-shadow: 0px -2px 8px rgba(0, 0, 0, 0.1);
 
+  h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: #333;
+  }
 
-    h2 {
-      font-size: 1.5rem;
-      font-weight: 700;
-      margin-bottom: 1rem;
-      color: #333;
-    }
-  
-    .filter-section {
-      margin-bottom: 1.5rem;
-  
-      h3 {
-        font-size: 1rem;
-        font-weight: 500;
-        color: #000000;
-        margin: 2rem 0rem;
-      }
-      .filter-option {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.5rem;
-      }
-      
-      .filter-button {
-        background-color: #f2f2f5; /* Couleur de fond des boutons non sélectionnés */
-        color: #4b4b5a; /* Couleur du texte */
-        padding: 0.5rem 1rem;
-        border: none;
-        border-radius: 8px;
-        cursor: pointer;
-        font-size: 0.9rem;
-        font-weight: 500;
-        transition: background-color 0.3s ease, color 0.3s ease;
-      
-        &:hover {
-          background-color: #e0e0e5; /* Couleur de fond au survol */
-        }
-      }
-      
-      .filter-button.selected {
-        background-color: #ff9800; /* Couleur de fond pour le bouton sélectionné */
-        color: white; /* Couleur du texte pour le bouton sélectionné */
-      }
-      
-    }
-  
-    .filter-button {
-      background-color: #f0eff2;
-      color: black;
-      padding: 0.5rem 1rem;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      font-size: 0.9rem;
-      transition: background-color 0.3s ease;
-      margin: 0.3rem;
-  
-      &:hover {
-        background-color: #e68a00;
-      }
-    }
-  
-    .age-values {
+  .filter-section {
+    margin-bottom: 1.5rem;
+
+    h3.filter-header {
       display: flex;
-      justify-content: space-between;
-      font-size: 0.9rem;
-      color: #666;
-      margin-top: 0.5rem;
-    }
-  
-    input[type="range"] {
-      width: 100%;
-      margin-top: 0.5rem;
-      -webkit-appearance: none;
-      height: 6px;
-      background: #ff9500;
-      border-radius: 5px;
-      outline: none;
-  
-      &::-webkit-slider-thumb {
-        -webkit-appearance: none;
-        appearance: none;
-        width: 15px;
-        height: 15px;
-        border-radius: 50%;
-        background: #ff9500;
-        cursor: pointer;
-      }
-    }
-  
-    .apply-button {
-      background-color: #ff9500;
-      color: white;
-      width: 100%;
-      padding: 0.8rem;
+      justify-content: space-between; /* Space between title and toggle icon */
+      align-items: center;
       font-size: 1rem;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
       font-weight: 500;
-      transition: background-color 0.3s ease;
-  
-      &:hover {
-        background-color: #e68a00;
+      color: #000000;
+      cursor: pointer;
+      margin: 0; /* Remove extra margin */
+
+      .toggle-icon {
+        display: inline-flex;
+        align-items: center;
+        margin-left: auto;
       }
     }
-    .filter-icon-bar {
-      width: 50px;  // Ajustez la largeur si nécessaire
-      height: 4px;  // Ajustez la hauteur pour obtenir l'épaisseur souhaitée
-      background-color: #c4c4c4; // Couleur de la barre, à ajuster si besoin
-      border-radius: 2px;  // Arrondi des bords
-      margin: 0 auto;  // Centrage horizontal
-      margin-top: 8px;  // Espace au-dessus
-      margin-bottom: 12px;  // Espace en-dessous pour séparer du titre
+
+    .filter-option {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
     }
-    
-    .mat-divider {
-      border-top: 1px solid rgba(0, 0, 0, 0.05); /* Couleur de la ligne principale */
-      box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.1); /* Ombre légère pour donner de la profondeur */
-      margin-bottom: 7%;
-      margin-top: 7%;    
+
+    .filter-content {
+      margin-top: 1rem;
     }
-    
   }
-  .filter-section h3 {
-    font-weight: bold;
-    color: #1a1a2e; /* Couleur de la maquette */
+
+  .filter-button {
+    background-color: #f2f2f5; /* Background color for unselected buttons */
+    color: #4b4b5a; /* Text color */
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    margin: 0.3rem;
+
+    &:hover {
+      background-color: #e0e0e5;
+    }
+
+    &.selected {
+      background-color: #ff9800; /* Background color for selected button */
+      color: white;
+    }
   }
-  
+
+  .age-values {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+    color: #666;
+    margin-top: 0.5rem;
+  }
+
+  input[type="range"] {
+    width: 100%;
+    margin-top: 0.5rem;
+    -webkit-appearance: none;
+    height: 6px;
+    background: #ff9500;
+    border-radius: 5px;
+    outline: none;
+
+    &::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      background: #ff9500;
+      cursor: pointer;
+    }
+  }
+
+  .apply-button {
+    background-color: #ff9500;
+    color: white;
+    width: 100%;
+    padding: 0.8rem;
+    font-size: 1rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: #e68a00;
+    }
+  }
+
+  .filter-icon-bar {
+    width: 50px;
+    height: 4px;
+    background-color: #c4c4c4;
+    border-radius: 2px;
+    margin: 0 auto;
+    margin-top: 8px;
+    margin-bottom: 12px;
+  }
+
+  .mat-divider {
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.1);
+    margin-bottom: 7%;
+    margin-top: 7%;
+  }
+
   .filter-list {
     list-style: none;
     padding: 0;
     margin: 0;
   }
-  
+
   .filter-list li {
     margin-bottom: 10px;
   }
-  
+
   .radio-label {
     display: flex;
     align-items: center;
     font-size: 16px;
-    color: #4b4b5a; /* Couleur du texte */
+    color: #4b4b5a;
   }
-  
+
   .radio-label input[type="radio"] {
     display: none;
   }
-  
+
   .radio-custom {
     width: 18px;
     height: 18px;
-    border: 2px solid #4b4b5a; /* Couleur du contour */
+    border: 2px solid #4b4b5a;
     border-radius: 50%;
     display: inline-block;
     margin-right: 10px;
     position: relative;
   }
-  
+
   .radio-label input[type="radio"]:checked + .radio-custom {
-    border-color: #ff9800; /* Couleur orange pour la sélection */
+    border-color: #ff9800;
   }
-  
+
   .radio-label input[type="radio"]:checked + .radio-custom::after {
     content: "";
     width: 10px;
     height: 10px;
-    background-color: #ff9800; /* Couleur orange pour l'intérieur */
+    background-color: #ff9800;
     border-radius: 50%;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
   }
-  
 
   .age-range {
     display: flex;
@@ -197,67 +189,55 @@
     margin-top: 10px;
     font-weight: bold;
   }
-  
+
   ::ng-deep .ngx-slider .ngx-slider-selection {
-    background-color: #eeae00 !important; /* Couleur principale pour l'intervalle sélectionné */
-  }
-  
-  ::ng-deep .ngx-slider .ngx-slider-pointer {
-    background-color: white !important; /* Couleur blanche pour les cercles */
-    width: 20px !important; /* Réduction de la taille des cercles */
-    height: 20px !important; /* Réduction de la taille des cercles */
-    top: -8px !important; /* Ajustement de l'alignement vertical */
-    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.3) !important;
-  
-  }
-  
-  ::ng-deep .ngx-slider .ngx-slider-pointer {
-    transition: none !important;
-  }
-  
-  ::ng-deep .ngx-slider .ngx-slider-pointer::after,
-  ::ng-deep .ngx-slider .ngx-slider-pointer::before {
-    content: none !important; /* Empêche l'apparition des styles pseudo-éléments */
+    background-color: #eeae00 !important;
   }
 
+  ::ng-deep .ngx-slider .ngx-slider-pointer {
+    background-color: white !important;
+    width: 20px !important;
+    height: 20px !important;
+    top: -8px !important;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.3) !important;
+  }
 
   .checkbox-label {
     display: flex;
     align-items: center;
     font-size: 16px;
-    color: #4b4b5a; /* Couleur du texte */
+    color: #4b4b5a;
     font-weight: 500;
   }
-  
+
   .checkbox-label input[type="checkbox"] {
     display: none;
   }
-  
+
   .checkbox-custom {
     width: 20px;
     height: 20px;
-    border: 1px solid #ff9800; /* Couleur du contour */
+    border: 1px solid #ff9800;
     border-radius: 4px;
     display: inline-block;
     margin-right: 10px;
     position: relative;
     transition: background-color 0.3s ease, border-color 0.3s ease;
   }
-  
+
   .checkbox-label input[type="checkbox"]:checked + .checkbox-custom {
-    border-color: #ff9800; /* Couleur orange pour le contour */
+    border-color: #ff9800;
   }
-  
+
   .checkbox-label input[type="checkbox"]:checked + .checkbox-custom::after {
     content: "";
     position: absolute;
     top: 43%;
     left: 50%;
-    width: 6px; /* Ajustez la largeur de la coche */
-    height: 12px; /* Ajustez la hauteur de la coche */
+    width: 6px;
+    height: 12px;
     border: solid #ff9800;
     border-width: 0 2px 2px 0;
-    transform: translate(-50%, -50%) rotate(45deg); /* Ajustement de la translation */
+    transform: translate(-50%, -50%) rotate(45deg);
   }
-  
-  
+}

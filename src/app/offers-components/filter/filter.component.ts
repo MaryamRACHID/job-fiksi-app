@@ -17,25 +17,15 @@ export class FilterComponent implements OnInit {
     location: true,
     availability: true,
     specialization: true,
+    age: true
   };
-  
 
   educationLevels = ['Master1/Master2', 'BAC+3', 'BAC+2', 'Licence', 'BAC', '+'];
   locations = ['Paris', 'Lyon', 'Rennes', 'Nantes'];
   availabilityOptions = ['Tout de suite', 'Dans les 3 prochains jours', 'Prochaines semaines', 'Prochain mois'];
   specializations = ['Serveur', 'Livreur', 'Nettoyage', 'Chef'];
 
-  ngOnInit() {
-    console.log("Filter component initialized.");
-  }
-
-  toggleSection(section: string) {
-    this.sectionStates[section] = !this.sectionStates[section];
-  }
-
-  closeFilter() {
-    this.dialogRef.close();
-  }
+  selectedButton: string = '';
   agePreference = {
     min: 18,
     max: 25
@@ -52,11 +42,19 @@ export class FilterComponent implements OnInit {
     }
   };
 
-  // Définir un état pour le bouton sélectionné
-selectedButton: string = '';
+  ngOnInit() {
+    console.log("Filter component initialized.");
+  }
 
-selectButton(button: string) {
-  this.selectedButton = button;
-}
+  toggleSection(section: string) {
+    this.sectionStates[section] = !this.sectionStates[section];
+  }
 
+  closeFilter() {
+    this.dialogRef.close();
+  }
+
+  selectButton(button: string) {
+    this.selectedButton = button;
+  }
 }
