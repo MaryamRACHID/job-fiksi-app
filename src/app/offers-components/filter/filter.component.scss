@@ -28,34 +28,41 @@
       h3 {
         font-size: 1rem;
         font-weight: 500;
-        color: #666;
-        margin-bottom: 0.5rem;
+        color: #000000;
+        margin: 2rem 0rem;
       }
-  
       .filter-option {
         display: flex;
         flex-wrap: wrap;
         gap: 0.5rem;
-  
-        label {
-          font-size: 0.9rem;
-          display: flex;
-          align-items: center;
-          gap: 0.4rem;
-          color: #333;
-  
-          input[type="checkbox"],
-          input[type="radio"] {
-            accent-color: #ff9500;
-            cursor: pointer;
-          }
+      }
+      
+      .filter-button {
+        background-color: #f2f2f5; /* Couleur de fond des boutons non sélectionnés */
+        color: #4b4b5a; /* Couleur du texte */
+        padding: 0.5rem 1rem;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 0.9rem;
+        font-weight: 500;
+        transition: background-color 0.3s ease, color 0.3s ease;
+      
+        &:hover {
+          background-color: #e0e0e5; /* Couleur de fond au survol */
         }
       }
+      
+      .filter-button.selected {
+        background-color: #ff9800; /* Couleur de fond pour le bouton sélectionné */
+        color: white; /* Couleur du texte pour le bouton sélectionné */
+      }
+      
     }
   
     .filter-button {
-      background-color: #ff9500;
-      color: white;
+      background-color: #f0eff2;
+      color: black;
       padding: 0.5rem 1rem;
       border: none;
       border-radius: 8px;
@@ -124,9 +131,12 @@
     }
     
     .mat-divider {
-      color: #e7e7e7;
+      border-top: 1px solid rgba(0, 0, 0, 0.05); /* Couleur de la ligne principale */
+      box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.1); /* Ombre légère pour donner de la profondeur */
       margin-bottom: 7%;
+      margin-top: 7%;    
     }
+    
   }
   .filter-section h3 {
     font-weight: bold;

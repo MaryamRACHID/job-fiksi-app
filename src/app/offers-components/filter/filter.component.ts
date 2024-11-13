@@ -51,4 +51,12 @@ export class FilterComponent implements OnInit {
       return value + ' ans';
     }
   };
+
+  // Définir un état pour le bouton sélectionné
+selectedButton: string = '';
+
+selectButton(button: string) {
+  this.selectedButton = button;
+}
+
 }

@@ -22,18 +22,34 @@
       </li>
     </ul>
   </div>
-  
+  <mat-divider></mat-divider>
+
   <div class="filter-section">
     <h3>Niveau d'étude</h3>
-    <div class="filter-option">
-      <button class="filter-button">Master/Master 2</button>
-      <button class="filter-button">BAC+3</button>
-      <button class="filter-button">BAC+2</button>
-      <button class="filter-button">Licence</button>
-      <button class="filter-button">BAC</button>
-      <button class="filter-button">+</button>
-    </div>
   </div>
+  <div class="filter-option">
+    
+    <button class="filter-button" 
+            [ngClass]="{'selected': selectedButton === 'Master/Master 2'}" 
+            (click)="selectButton('Master/Master 2')">Master/Master 2</button>
+    <button class="filter-button" 
+            [ngClass]="{'selected': selectedButton === 'BAC+3'}" 
+            (click)="selectButton('BAC+3')">BAC+3</button>
+    <button class="filter-button" 
+            [ngClass]="{'selected': selectedButton === 'BAC+2'}" 
+            (click)="selectButton('BAC+2')">BAC+2</button>
+    <button class="filter-button" 
+            [ngClass]="{'selected': selectedButton === 'Licence'}" 
+            (click)="selectButton('Licence')">Licence</button>
+    <button class="filter-button" 
+            [ngClass]="{'selected': selectedButton === 'BAC'}" 
+            (click)="selectButton('BAC')">BAC</button>
+    <button class="filter-button" 
+            [ngClass]="{'selected': selectedButton === '+'}" 
+            (click)="selectButton('+')">+</button>
+  </div>
+  <mat-divider></mat-divider>
+
 
   <div class="filter-section">
     <h3>Lieu</h3>
@@ -65,6 +81,7 @@
     </ul>
   </div>
   
+  <mat-divider></mat-divider>
 
   <div class="filter-section">
     <h3>Disponibilité</h3>
@@ -96,10 +113,13 @@
     </ul>
   </div>
   
+  <mat-divider></mat-divider>
 
   <div class="age-preference mt-4">
-    <p>Age</p>
-    <ngx-slider
+    <div class="filter-section">
+      <h3>Age</h3>
+    </div>
+      <ngx-slider
       [(value)]="agePreference.min"
       [(highValue)]="agePreference.max"
       [options]="ageSliderOptions">
@@ -107,6 +127,7 @@
     <div class="age-range">
     </div>
   </div>
+  <mat-divider></mat-divider>
 
   <div class="filter-section">
     <h3>Spécialisation</h3>
