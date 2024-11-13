@@ -97,14 +97,14 @@
   </div>
   
 
-  <div class="filter-section">
-    <h3>Âge</h3>
-    <div class="filter-option">
-      <input type="range" min="18" max="60" value="25" />
-      <div class="age-values">
-        <span>18 ans</span>
-        <span>25 ans</span>
-      </div>
+  <div class="age-preference mt-4">
+    <p>Age</p>
+    <ngx-slider
+      [(value)]="agePreference.min"
+      [(highValue)]="agePreference.max"
+      [options]="ageSliderOptions">
+    </ngx-slider>
+    <div class="age-range">
     </div>
   </div>
 

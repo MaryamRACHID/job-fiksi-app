@@ -180,3 +180,32 @@
     transform: translate(-50%, -50%);
   }
   
+
+  .age-range {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    font-weight: bold;
+  }
+  
+  ::ng-deep .ngx-slider .ngx-slider-selection {
+    background-color: #eeae00 !important; /* Couleur principale pour l'intervalle sélectionné */
+  }
+  
+  ::ng-deep .ngx-slider .ngx-slider-pointer {
+    background-color: white !important; /* Couleur blanche pour les cercles */
+    width: 20px !important; /* Réduction de la taille des cercles */
+    height: 20px !important; /* Réduction de la taille des cercles */
+    top: -8px !important; /* Ajustement de l'alignement vertical */
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.3) !important;
+  
+  }
+  
+  ::ng-deep .ngx-slider .ngx-slider-pointer {
+    transition: none !important;
+  }
+  
+  ::ng-deep .ngx-slider .ngx-slider-pointer::after,
+  ::ng-deep .ngx-slider .ngx-slider-pointer::before {
+    content: none !important; /* Empêche l'apparition des styles pseudo-éléments */
+  }

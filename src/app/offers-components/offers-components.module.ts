@@ -7,6 +7,7 @@ import { SearchBarComponent } from './search-bar/search-bar.component';
 import { FormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
 import { MaterialModule } from '../material.module';
+import {NgxSliderModule} from '@angular-slider/ngx-slider';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { MaterialModule } from '../material.module';
     CommonModule,
     FormsModule,
     SharedModule,
-    MaterialModule
+    MaterialModule,
+    NgxSliderModule
   ]
 })
 export class OffersComponentsModule { }

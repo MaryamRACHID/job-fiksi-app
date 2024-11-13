@@ -1,5 +1,6 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
+import { Options } from '@angular-slider/ngx-slider';
 
 @Component({
   selector: 'app-filter',
@@ -35,4 +36,19 @@ export class FilterComponent implements OnInit {
   closeFilter() {
     this.dialogRef.close();
   }
+  agePreference = {
+    min: 18,
+    max: 25
+  };
+  ageSliderOptions: Options = {
+    floor: 16,
+    ceil: 65,
+    step: 1,
+    translate: (value: number): string => {
+      if (value === 16 || value === 65) {
+        return ''; // Cache les valeurs des bornes
+      }
+      return value + ' ans';
+    }
+  };
 }
