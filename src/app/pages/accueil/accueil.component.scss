@@ -6,7 +6,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: #FFD700; // couleur de fond
+    background-color: #f0ba00; // couleur de fond
     padding: 16px;
     position: fixed; // Important pour occuper tout l'écran
     top: 0;
@@ -60,8 +60,8 @@
   }
   
   .menu mat-divider {
-    margin: 5px 0;
-    background-color: #aaa; /* Légèrement plus clair pour la séparation */
+    margin: 5px 15px;
+    color: #ffffff; /* Légèrement plus clair pour la séparation */
   }
   
   .close-btn {

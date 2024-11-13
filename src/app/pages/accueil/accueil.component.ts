@@ -14,4 +14,10 @@ export class AccueilComponent {
   navigateTo(route: string) {
     this.router.navigate([route]);
   }
+
+  navigateToAccueil() {
+   
+    this.router.navigate(['/accueilRestau']); // Route par défaut pour les candidats
+  }
+
 }

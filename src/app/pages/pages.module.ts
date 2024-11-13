@@ -1,5 +1,5 @@
 // src/app/pages/pages.module.ts
-import { NgModule } from '@angular/core';
+import { NgModule,CUSTOM_ELEMENTS_SCHEMA  } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
@@ -7,7 +7,9 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { ProfileComponent } from './profile/profile.component';
 import { AccueilComponent } from './accueil/accueil.component';
-
+import { AccueilRestaurantComponent } from './accueil-restau/accueil-restau.component';
+import { OffersComponentsModule } from '../offers-components/offers-components.module';
+import { FilterComponent } from '../offers-components/filter/filter.component';
 import { SharedModule } from '../shared/shared.module';
 import { MaterialModule } from '../material.module';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
@@ -27,6 +29,8 @@ import {SecuriteComponent} from './securite/securite.component';
 import {DocumentListComponent} from './document-list/document-list.component';
 
 @NgModule({
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+
   declarations: [
     HomeComponent,
     LoginComponent,
@@ -35,6 +39,7 @@ import {DocumentListComponent} from './document-list/document-list.component';
     SettingsComponent,
     SecuriteComponent,
     DocumentListComponent,
+    AccueilRestaurantComponent,
   ],
   exports: [
     LoginComponent,
@@ -45,6 +50,8 @@ import {DocumentListComponent} from './document-list/document-list.component';
     SettingsComponent,
     SecuriteComponent,
     DocumentListComponent,
+
+    AccueilRestaurantComponent
   ],
   imports: [
     CommonModule,
@@ -65,6 +72,7 @@ import {DocumentListComponent} from './document-list/document-list.component';
     MatCardModule,
     ProfileComponentsModule,
     ReactiveFormsModule,
+    OffersComponentsModule
   ]
 })
 export class PagesModule {}
