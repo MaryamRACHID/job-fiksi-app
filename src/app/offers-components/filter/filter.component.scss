@@ -209,3 +209,45 @@
   ::ng-deep .ngx-slider .ngx-slider-pointer::before {
     content: none !important; /* Empêche l'apparition des styles pseudo-éléments */
   }
+
+
+  .checkbox-label {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    color: #4b4b5a; /* Couleur du texte */
+    font-weight: 500;
+  }
+  
+  .checkbox-label input[type="checkbox"] {
+    display: none;
+  }
+  
+  .checkbox-custom {
+    width: 20px;
+    height: 20px;
+    border: 1px solid #ff9800; /* Couleur du contour */
+    border-radius: 4px;
+    display: inline-block;
+    margin-right: 10px;
+    position: relative;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+  }
+  
+  .checkbox-label input[type="checkbox"]:checked + .checkbox-custom {
+    border-color: #ff9800; /* Couleur orange pour le contour */
+  }
+  
+  .checkbox-label input[type="checkbox"]:checked + .checkbox-custom::after {
+    content: "";
+    position: absolute;
+    top: 43%;
+    left: 50%;
+    width: 6px; /* Ajustez la largeur de la coche */
+    height: 12px; /* Ajustez la hauteur de la coche */
+    border: solid #ff9800;
+    border-width: 0 2px 2px 0;
+    transform: translate(-50%, -50%) rotate(45deg); /* Ajustement de la translation */
+  }
+  
+  
