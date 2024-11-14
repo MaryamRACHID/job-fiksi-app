@@ -47,6 +47,9 @@ export class ProfileComponent {
   @ViewChild(IdentityComponent) identityComponent!: IdentityComponent;
   @ViewChild(BankComponent) bankComponent!: BankComponent;
   @ViewChild(NotificationsComponent) notificationsComponent!: NotificationsComponent;
+  
+  constructor(private router: Router) {}
+
 
 
   goToNextStep() {
@@ -74,6 +77,7 @@ export class ProfileComponent {
         if (this.userType == 'candidate'){
           this.disponibilitesComponent.saveDisponibilite();
         } else {
+          this.router.navigate(['/accueil']);
           this.notificationsComponent.saveNotifications();
           return;
         }
@@ -98,6 +102,7 @@ export class ProfileComponent {
         break;
       case 12:
         this.notificationsComponent.saveNotifications();
+        this.router.navigate(['/accueil']);
         return;
     }
     this.step++;
@@ -174,5 +179,7 @@ export class ProfileComponent {
 
   skip() {
     // Logique pour abandonner
+    this.router.navigate(['/accueil']);
+
   }
 }
