@@ -1,4 +1,3 @@
-// src/app/pages/pages.module.ts
 import { NgModule,CUSTOM_ELEMENTS_SCHEMA  } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
@@ -26,20 +25,26 @@ import {ProfileComponentsModule} from '../profile-components/profile-components.
 import {SettingsComponent} from './settings/settings.component';
 import {SecuriteComponent} from './securite/securite.component';
 import {DocumentListComponent} from './document-list/document-list.component';
+import {FirstPageComponent} from './first-page/first-page.component';
+import {SplashScreenComponent} from './splash-screen/splash-screen.component';
 
 @NgModule({
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 
   declarations: [
+    FirstPageComponent,
+    SplashScreenComponent,
     LoginComponent,
     ProfileComponent,
     AccueilComponent,
     SettingsComponent,
     SecuriteComponent,
     DocumentListComponent,
-    AccueilRestaurantComponent,
+    AccueilRestaurantComponent
   ],
   exports: [
+    FirstPageComponent,
+    SplashScreenComponent,
     LoginComponent,
     ProfileComponent,
     AccueilComponent,
@@ -47,7 +52,6 @@ import {DocumentListComponent} from './document-list/document-list.component';
     SettingsComponent,
     SecuriteComponent,
     DocumentListComponent,
-
     AccueilRestaurantComponent
   ],
   imports: [

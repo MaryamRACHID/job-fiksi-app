@@ -12,9 +12,14 @@ import {SecuriteComponent} from './pages/securite/securite.component';
 import {DocumentListComponent} from './pages/document-list/document-list.component';
 import { PreferenceComponent } from './profile-components/preference/preference.component';
 import { AccueilRestaurantComponent } from './pages/accueil-restau/accueil-restau.component';
+import {SplashScreenComponent} from './pages/splash-screen/splash-screen.component';
+import {FirstPageComponent} from './pages/first-page/first-page.component';
 
-export const routes: Routes = [
-  { path: '', component: LoginComponent }, // Page d'accueil par défaut
+const routes: Routes = [
+  //{ path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: '', component: FirstPageComponent },
+  { path: 'splash-screen', component: SplashScreenComponent },
+  { path: 'profil', component: ProfileComponent },
   { path: 'login', component: LoginComponent },
   { path: 'profil', component: ProfileComponent },
   { path: 'info', component: InformationsComponent },
@@ -28,7 +33,7 @@ export const routes: Routes = [
   { path: 'documents', component: DocumentListComponent },
 
   { path: '**', redirectTo: '' }, // Redirection vers l'accueil pour les routes inconnues
-  
+
 ];
 
 @NgModule({
