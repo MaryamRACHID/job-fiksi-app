@@ -5,7 +5,7 @@ import { Component } from '@angular/core';
   // standalone: true,
   // imports: [],
   templateUrl: './profile-candidat-vu-recruteur.component.html',
-  styleUrl: './profile-candidat-vu-recruteur.component.scss'
+  styleUrls: ['./profile-candidat-vu-recruteur.component.scss','../profile-candidat.component.scss',]
 })
 export class ProfileCandidatVuRecruteurComponent {
 

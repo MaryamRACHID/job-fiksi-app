@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-
 @Component({
   selector: 'app-button-contact-candidat',
   // standalone: true,
@@ -8,5 +7,4 @@ import { Component } from '@angular/core';
   styleUrl: './button-contact-candidat.component.scss'
 })
 export class ButtonContactCandidatComponent {
-
 }

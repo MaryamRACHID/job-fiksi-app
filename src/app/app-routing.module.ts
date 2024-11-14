@@ -12,6 +12,9 @@ import {SecuriteComponent} from './pages/securite/securite.component';
 import {DocumentListComponent} from './pages/document-list/document-list.component';
 import { PreferenceComponent } from './profile-components/preference/preference.component';
 import { AccueilRestaurantComponent } from './pages/accueil-restau/accueil-restau.component';
+import { ProfileCandidatComponent } from './pages/profile-candidat/profile-candidat.component';
+import { ProfileCandidatVuRecruteurComponent } from './pages/profile-candidat/profile-candidat-vu-recruteur/profile-candidat-vu-recruteur.component';
+import { ModifierProfileCandidatComponent } from './pages/profile-candidat/modifier-profile-candidat/modifier-profile-candidat.component';
 
 export const routes: Routes = [
   { path: '', component: LoginComponent }, // Page d'accueil par défaut
@@ -26,9 +29,11 @@ export const routes: Routes = [
   { path: 'settings', component: SettingsComponent },
   { path: 'password', component: SecuriteComponent },
   { path: 'documents', component: DocumentListComponent },
-
+  {path:'profile-candidat', component:ProfileCandidatComponent},
+  {path:'profile-candidat-vu-recruteur', component:ProfileCandidatVuRecruteurComponent},
+  {path:'modifier-profile-candidat', component:ModifierProfileCandidatComponent},
   { path: '**', redirectTo: '' }, // Redirection vers l'accueil pour les routes inconnues
-  
+
 ];
 
 @NgModule({
