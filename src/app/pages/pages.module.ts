@@ -40,7 +40,9 @@ import { MatRadioModule } from '@angular/material/radio';
     SettingsComponent,
     ModifierInfosRestaurantComponent,
     RestaurantInfosComponent,
-    ProfileCandidatComponent
+    ProfileCandidatComponent,
+    ProfileCandidatVuRecruteurComponent,
+    ButtonContactCandidatComponent
   ],
   exports: [
     LoginComponent,
@@ -50,7 +52,8 @@ import { MatRadioModule } from '@angular/material/radio';
     SettingsComponent,
     CandidatDescriptionComponent,
     ModifierInfosRestaurantComponent,
-    ProfileCandidatComponent
+    ProfileCandidatComponent,
+    ProfileCandidatVuRecruteurComponent
   ],
   imports: [
     RouterModule,
@@ -89,4 +92,6 @@ import { SettingsComponent } from './settings/settings.component';
 import { ModifierInfosRestaurantComponent } from './profile-restaurant/modifier-infos-restaurant/modifier-infos-restaurant.component';
 import { RestaurantInfosComponent } from './profile-restaurant/restaurant-infos/restaurant-infos.component';
 import { ProfileCandidatComponent } from './profile-candidat/profile-candidat.component';
+import { ProfileCandidatVuRecruteurComponent } from './profile-candidat/profile-candidat-vu-recruteur/profile-candidat-vu-recruteur.component';
+import { ButtonContactCandidatComponent } from './profile-candidat/button-contact-candidat/button-contact-candidat.component';
 

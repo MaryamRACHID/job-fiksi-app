@@ -9,6 +9,7 @@ import { PlanningComponent } from './pages/profile-restaurant/planning/planning.
 import { ModifierInfosRestaurantComponent } from './pages/profile-restaurant/modifier-infos-restaurant/modifier-infos-restaurant.component';
 import { RestaurantInfosComponent } from './pages/profile-restaurant/restaurant-infos/restaurant-infos.component';
 import { ProfileCandidatComponent } from './pages/profile-candidat/profile-candidat.component';
+import { ProfileCandidatVuRecruteurComponent } from './pages/profile-candidat/profile-candidat-vu-recruteur/profile-candidat-vu-recruteur.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'profile-restaurant', pathMatch: 'full' },
@@ -19,7 +20,8 @@ const routes: Routes = [
   {path:'planning', component:PlanningComponent},
   {path:'modifier-infos-restaurant', component:ModifierInfosRestaurantComponent},
   {path:'restaurant-infos', component:RestaurantInfosComponent},
-  {path:'profile-candidat', component:ProfileCandidatComponent}
+  {path:'profile-candidat', component:ProfileCandidatComponent},
+  {path:'profile-candidat-vu-recruteur', component:ProfileCandidatVuRecruteurComponent}
 ];
 
 @NgModule({
