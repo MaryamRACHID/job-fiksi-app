@@ -1,43 +1,78 @@
 .login-container {
-  text-align: center;
-  padding: 20px;
+  padding: 60px 40px 20px 40px;
   max-width: 400px;
   margin: auto;
-}
+  font-size: 12px;
 
-.toggle-group {
-  margin-bottom: 20px;
-  display: flex;
-  justify-content: center;
-}
+  .toggle-group {
+    display: flex;
+    justify-content: center;
+  }
 
-.full-width {
-  width: 100%;
-  margin-bottom: 15px;
-}
+  .toggle-container{
+    margin-top: 10%;
+    margin-bottom: 20px;
+    padding: 4px;
+    background-color: #eeeeef;
+    border-radius: 10px;
+  }
 
-mat-checkbox {
-  margin-right: 10px;
-}
+  .full-width {
+    width: 100%;
+    margin-bottom: 15px;
+    font-size: 12px;
+  }
 
-button {
-  margin-top: 20px;
-}
+  .forgot-password {
+    float: right;
+    font-size: 0.9em;
+    text-decoration: none;
+    color: #8c8c8c;
+  }
 
-.forgot-password {
-  float: right;
-  font-size: 0.9em;
-  text-decoration: none;
-  color: #8c8c8c;
-}
+  .login-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
 
-.footer-text {
-  margin-top: 10px;
-  font-size: 0.9em;
-}
+  .subtitle {
+    color: gray;
+    font-size: 12px;
+  }
 
-.login-row{
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  .span {
+    color: #ffad00;
+    cursor: pointer;
+  }
+
+  h1, p{
+    text-align: center;
+  }
+  h1{
+    margin-top: 10%;
+  }
+
+  .toggle-container {
+    .toggle-group {
+      display: flex;
+      justify-content: center;
+    }
+
+    .toggle-button {
+      border: none;
+      border-radius: 10px;
+      background-color: inherit;
+      cursor: pointer;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      &:hover {
+        background-color: #ddd;
+      }
+
+      &.active {
+        background-color: white;
+        font-weight: 500;
+      }
+    }
+  }
 }

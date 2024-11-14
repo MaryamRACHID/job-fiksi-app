@@ -1,0 +1,36 @@
+.profile-container {
+  position: relative;
+  padding: 20px;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.fixed-button {         // Assurez-vous qu'il soit au-dessus des autres éléments
+  width: 90%;
+  border-radius: 10px;
+  background-color: #ffad00 !important;
+  color: #1e1e1e !important;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+
+.component-container{
+  margin-top: 15%;
+  margin-bottom: 30%;
+}
+
+.button-container {
+  position: fixed;         // Ou "absolute" si vous préférez
+  bottom: 0px;           // Espace depuis le bas de la page
+  left: 50%;              // Centrer horizontalement
+  transform: translateX(-50%); // Ajuster pour centrer parfaitement
+  z-index: 1000;          // Assurez-vous qu'il soit au-dessus des autres éléments
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.75), rgb(255, 255, 255, 1));
+  padding-top: 20px;
+  width: 100%;
+  text-align: center;
+}
+
+
+

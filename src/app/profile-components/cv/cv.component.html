@@ -1,1 +1,32 @@
-<p>cv works!</p>
+<h2 class="title">Complétez votre profil</h2>
+<p class="subtitle-1">Documents requis</p>
+
+<!-- Section pour le CV -->
+<div class="mb-4">
+  <label class="form-label">CV *</label>
+  <input type="file" class="d-none" #cvUploadInput (change)="onFileChange($event, 'cv')" />
+  <div class="custom-upload" (click)="cvUploadInput.click()">
+    <i class="fa-solid fa-upload me-2"></i>
+    <span>Ajouter mon CV</span>
+  </div>
+</div>
+
+<!-- Section pour la lettre de motivation -->
+<div class="mb-4">
+  <label class="form-label">Lettre de motivation</label>
+  <input type="file" class="d-none" #coverLetterUploadInput (change)="onFileChange($event, 'coverLetter')" />
+  <div class="custom-upload" (click)="coverLetterUploadInput.click()">
+    <i class="fa-solid fa-upload me-2"></i>
+    <span>Ajouter ma lettre de motivation</span>
+  </div>
+</div>
+
+<!-- Section pour les autres documents -->
+<div class="mb-4">
+  <label class="form-label">Autres documents (certificats de scolarité, etc)</label>
+  <input type="file" class="d-none" #otherDocUploadInput (change)="onFileChange($event, 'otherDoc')" />
+  <div class="custom-upload" (click)="otherDocUploadInput.click()">
+    <i class="fa-solid fa-upload me-2"></i>
+    <span>Ajouter un autre document</span>
+  </div>
+</div>

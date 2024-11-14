@@ -1,0 +1,19 @@
+<h2 class="title">Complétez votre profil</h2>
+<p class="subtitle-1">Veuillez sélectionner votre statut</p>
+<div class="status-selection">
+  <mat-card (click)="selectUserType('candidat')" [class.selected]="userType === 'candidat'">
+    <div class="icon-container">
+      <mat-icon>person</mat-icon>
+    </div>
+    <h6>Un candidat</h6>
+    <p class="subtitle-2">Je recherche un job</p>
+  </mat-card>
+  <mat-card (click)="selectUserType('restaurant')" [class.selected]="userType === 'restaurant'">
+    <div class="icon-container">
+      <mat-icon>restaurant</mat-icon>
+    </div>
+    <h6>Un Restaurant</h6>
+    <p class="subtitle-2">Je recherche un candidat</p>
+  </mat-card>
+</div>
+

@@ -1,0 +1,223 @@
+/* Importation de la police */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+.container {
+  position: relative;
+  font-family: 'Roboto', sans-serif;
+  background-color: #f3f4f6;
+  width: 100%;
+  max-width: 400px;
+  margin: auto;
+  border-radius: 20px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  padding: inherit;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 1rem 1.5rem;
+  background: linear-gradient(98deg, #f1ba00, #f59609);
+  border-radius: 8px;
+  color: white;
+  text-align: center;
+
+  .top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 350px;
+    margin-bottom: 3rem;
+  }
+
+  .logo {
+    width: 40px;
+    height: 40px;
+    border-radius: 15px;
+  }
+
+  .welcome {
+    font-weight: 200;
+    font-size: 1.0rem;
+    margin-right: 4rem;
+    margin-top: 1rem;
+  }
+
+  .menu-button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.8rem;
+    cursor: pointer;
+  }
+}
+
+.search-section {
+  width: 100%;
+  max-width: 350px;
+
+  h2 {
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: white;
+    margin-bottom: 4rem;
+  }
+
+  .search-bar {
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 6px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    width: 80%;
+
+    .search-icon {
+      color: #b0b0b0;
+    }
+
+    input {
+      border: none;
+      outline: none;
+      flex-grow: 1;
+      font-size: 1rem;
+      color: #666;
+      padding: 0.5rem;
+    }
+
+    .filter-icon-button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+      background-color: #ffffff;
+      border: none;
+      box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+
+      img.filtre {
+        color: #000000;
+        font-size: 24px;
+      }
+    }
+  }
+}
+
+.recommendations {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  background-color: #f3f4f6;
+  border-radius: 15px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.05);
+
+  .section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 0.5rem;
+
+    h3 {
+      color: #333;
+      font-size: 1rem;
+      font-weight: 500;
+    }
+
+    .view-all {
+      font-size: 0.9rem;
+      color: #ff9500;
+      text-decoration: none;
+    }
+  }
+
+  .candidat-card {
+    display: flex;
+    align-items: center;
+    background-color: white;
+    padding: 0.75rem 1rem;
+    margin-top: 1rem;
+    border-radius: 10px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+
+    .profile-icon {
+      font-size: 1.5rem;
+      color: #ff9500;
+    }
+
+    .candidat-info {
+      flex-grow: 1;
+
+      .candidat-name {
+        font-weight: bold;
+        font-size: 1rem;
+        color: #333;
+        margin: 0;
+      }
+
+      .candidat-location {
+        font-size: 0.9rem;
+        color: #666;
+        margin: 0.2rem 0;
+      }
+
+      .view-profile {
+        font-size: 0.8rem;
+        color: #ff9500;
+        text-decoration: none;
+      }
+    }
+
+    .bookmark-button {
+      background: none;
+      border: none;
+      color: #ff9500;
+    }
+  }
+}
+
+/* Overlay pour le fond grisé */
+.filter-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+}
+
+/* Modale de filtre pour l'affichage en plein écran */
+.filter-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ffffff;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  padding: 1rem;
+  z-index: 1001;
+  overflow-y: auto;
+  box-shadow: 0px -2px 8px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  margin: auto;
+}
+
+.apply-button {
+  width: 100%;
+  padding: 0.75rem;
+  background-color: #ff9500;
+  color: #fff;
+  font-weight: bold;
+  border: none;
+  border-radius: 10px;
+  text-align: center;
+  cursor: pointer;
+}
+
+
+
+

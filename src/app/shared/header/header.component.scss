@@ -1,0 +1,35 @@
+.app-header {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  position: relative; // Position relative pour fixer les éléments
+}
+
+.arrow-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  color: #484848; // Couleur de la flèche, modifiez si nécessaire
+  position: absolute;
+  left: 0; // Positionnement à gauche
+  margin-right: auto; // Pour s’assurer qu’il est bien collé à gauche
+  padding: 0px;
+
+  mat-icon {
+    font-size: 24px;
+  }
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.page-title {
+  font-size: 22px;
+  font-weight: 700;
+  margin: 0 40px;
+}

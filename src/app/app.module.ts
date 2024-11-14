@@ -1,34 +1,39 @@
+// src/app/app.module.ts
 import { NgModule, isDevMode } from '@angular/core';
-import { RouterModule } from '@angular/router';
-import { AppComponent } from './app.component';
 import { BrowserModule } from '@angular/platform-browser';
-import { AppRoutingModule } from './app-routing.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { AppComponent } from './app.component';
+import { AppRoutingModule } from './app-routing.module'; // Module de routage principal
 import { SharedModule } from './shared/shared.module';
 import { PagesModule } from './pages/pages.module';
 import { OffersComponentsModule } from './offers-components/offers-components.module';
 import { ProfileComponentsModule } from './profile-components/profile-components.module';
+import { MaterialModule } from './material.module';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
-
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 @NgModule({
+  declarations: [
+    AppComponent,
+     // Déclaration du composant racine
+  ],
   imports: [
     BrowserModule,
-    RouterModule,
-    AppRoutingModule,
-    SharedModule,
-    PagesModule,
+    BrowserAnimationsModule,
+    AppRoutingModule, // Import du module de routage principal
+    SharedModule, // Module partagé (importé pour les composants/utilitaires partagés)
+    PagesModule, // Module des pages principales
+    OffersComponentsModule, // Module pour les composants d'offres
+    ProfileComponentsModule, // Module pour les composants de profil
+    MaterialModule, // Module pour Angular Material
     MatButtonToggleModule,
-    OffersComponentsModule,
-    ProfileComponentsModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: !isDevMode(),
       registrationStrategy: 'registerWhenStable:30000'
-    }),
+    }) // Configuration du Service Worker pour les PWA
   ],
-  declarations: [
-    AppComponent,
-  ],
-  bootstrap: [AppComponent] // Composant racine pour démarrer l'application
+  bootstrap: [AppComponent] // Démarrage de l'application avec AppComponent comme composant racine
 })
 export class AppModule {}

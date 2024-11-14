@@ -1,0 +1,78 @@
+<h2 class="title">Complétez votre profil</h2>
+<div class="form-group mt-5">
+  <button class="btn linkedin" (click)="importLinkedInData()">
+    <i class="fab fa-linkedin"></i> Importer les données via LinkedIn
+  </button>
+  <button class="btn indeed mt-2" (click)="importIndeedData()">
+    <i class="fab fa-indeed"></i> Importer les données via Indeed
+  </button>
+</div>
+
+<p class="subtitle-1">Formation</p>
+
+<div class="form-group">
+  <label>Dernier niveau de formation</label>
+  <input
+    type="text"
+    class="form-control"
+    [(ngModel)]="education.level"
+    (input)="filterEducationLevels()"
+    (focus)="showDropdown = true"
+    (blur)="hideDropdown()"
+    placeholder="Bac"
+    #educationInput
+  />
+
+  <ul *ngIf="showDropdown && filteredEducationLevels.length > 0" class="dropdown-list">
+    <li *ngFor="let level of filteredEducationLevels" (click)="selectLevel(level)">
+      {{ level }}
+    </li>
+  </ul>
+</div>
+
+<div class="form-group">
+  <label for="restaurantCertification">Diplômes ou certifications en lien avec la restauration</label>
+  <input type="text" id="restaurantCertification" class="form-control" [(ngModel)]="education.certificates" placeholder="Entrez votre diplôme ou certification">
+</div>
+<h5>Diplômes obtenus</h5>
+<div *ngFor="let diploma of diplomas; let i = index" class="diploma mb-3 mt-3">
+  <h6>Formation {{ i + 1 }}</h6>
+
+  <div class="form-group">
+    <label for="diplomaName{{i}}">Nom de la formation</label>
+    <input type="text" class="form-control" id="diplomaName{{i}}" [(ngModel)]="diploma.name" placeholder="Entrez le nom de la formation">
+  </div>
+
+  <div class="form-group">
+    <label for="institution{{i}}">Établissement</label>
+    <input type="text" class="form-control" id="institution{{i}}" [(ngModel)]="diploma.institution" placeholder="Entrez le nom de l'établissement">
+  </div>
+
+  <div class="form-group">
+    <label>Période *</label>
+    <div class="row">
+      <div class="col-3">
+        <label for="startDate{{i}}">Début</label>
+      </div>
+      <div class="col-9">
+        <input type="date" class="form-control" id="startDate{{i}}" [(ngModel)]="diploma.startDate" placeholder="Sélectionnez une date">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-3">
+        <label for="endDate{{i}}">Fin</label>
+      </div>
+      <div class="col-9">
+        <input type="date" class="form-control" id="endDate{{i}}" [(ngModel)]="diploma.endDate" placeholder="Sélectionnez une date">
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Conteneur pour le bouton et le texte -->
+<div class="d-flex align-items-center justify-content-center mt-4 mb-4">
+  <!-- Bouton circulaire avec icône -->
+  <button class="btn btn-primary me-2 mt-0" (click)="addDiploma()" style="border-radius: 30%; width: 25px; height: 25px; padding: 0;">
+    <i class="fa fa-plus" aria-hidden="true"></i>
+  </button>
+  <span class="text-dark" (click)="addDiploma()" style="cursor: pointer;">Ajouter une formation</span>
+</div>

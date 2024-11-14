@@ -1,0 +1,80 @@
+.container {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
+
+  .back-button {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+  }
+
+  h2 {
+    font-size: 1.5em;
+    color: #0f0f66;
+    margin-bottom: 10px;
+  }
+
+  p {
+    font-size: 1em;
+    color: #333;
+    margin-bottom: 10px;
+  }
+
+  .full-width {
+    width: 100%;
+    margin-bottom: 15px;
+  }
+
+  .diploma {
+    margin-bottom: 20px;
+    h3 {
+      font-size: 1.2em;
+      color: #333;
+      margin-bottom: 5px;
+    }
+
+    p {
+      font-size: 1em;
+      color: #666;
+    }
+  }
+
+  .date-fields {
+    display: flex;
+    gap: 10px;
+    mat-form-field {
+      flex: 1;
+    }
+  }
+
+  .continue-button {
+    width: 100%;
+    background-color: #eeae00;
+    color: #fff;
+  }
+}
+
+.linkedin{
+  width: 100%;
+  background-color: #0A66C2;
+  color: white;
+  padding: 10px;
+}
+.linkedin i{
+  color: white;
+}
+
+.indeed{
+  width: 100%;
+  background-color: white;
+  color: #0A66C2;
+  padding: 10px;
+  border: 1px solid #0A66C2;
+}
+
+.indeed i{
+  color: #0A66C2;
+}
+

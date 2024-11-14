@@ -1,0 +1,48 @@
+<div class="container">
+  <header class="header">
+    <div class="top-bar">
+      <img src="assets/BurKing.jpg" alt="Logo" class="logo" />
+      <p class="welcome">Bonjour, username user</p>
+      <button class="menu-button" (click)="toggleAccueil()">
+        <img src="assets/menu.png" alt="Menu" class="logo" />
+      </button>
+    </div>
+
+    <div class="search-section">
+      <h2>Trouve vite votre prochain candidat !</h2>
+      <div class="search-bar">
+        <mat-icon class="search-icon">search</mat-icon>
+        <input type="text" placeholder="Rechercher" />
+        <button class="filter-icon-button" (click)="toggleFilter()">
+          <img src="assets/Filter.png" alt="filtre" class="filtre" />
+        </button>
+      </div>
+    </div>
+  </header>
+
+
+ 
+  <app-filter></app-filter>
+
+
+  <section class="recommendations">
+    <div class="section-header">
+      <h3>Recommandation de candidats</h3>
+      <a href="#" class="view-all">Voir tout</a>
+    </div>
+
+    <div class="candidat-card" *ngFor="let candidat of candidats">
+      <div class="profile-icon-container">
+        <img src="assets/profil.png" alt="profil" class="profil" />
+      </div>
+      <div class="candidat-info">
+        <p class="candidat-name">{{ candidat.name }}</p>
+        <p class="candidat-location">{{ candidat.location }}</p>
+        <a href="#" class="view-profile">Voir le profil</a>
+      </div>
+      <button mat-icon-button class="bookmark-button">
+        <mat-icon>bookmark_border</mat-icon>
+      </button>
+    </div>
+  </section>
+</div>
