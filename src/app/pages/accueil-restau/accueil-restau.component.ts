@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialog, MatDialogConfig  } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { FilterComponent } from '../../offers-components/filter/filter.component';
 
-interface candidat {
+interface Candidat {
   name: string;
   location: string;
 }
@@ -13,10 +14,10 @@ interface candidat {
   styleUrls: ['./accueil-restau.component.scss']
 })
 export class AccueilRestaurantComponent implements OnInit {
-  candidats: candidat[] = [];
+  candidats: Candidat[] = [];
   isFilterVisible = false;
 
-  constructor(private dialog: MatDialog) {}
+  constructor(private dialog: MatDialog, private router: Router) {}
 
   ngOnInit(): void {
     console.log('init : AccueilRestaurantComponent');
@@ -33,7 +34,10 @@ export class AccueilRestaurantComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed' + result);
     });
-}
+  }
 
-  
+  toggleAccueil(): void {
+    // Rediriger vers /accueil
+    this.router.navigate(['/accueil']);
+  }
 }
