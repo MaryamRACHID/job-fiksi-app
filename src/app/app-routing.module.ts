@@ -25,6 +25,7 @@ import {MessagesListComponent} from './messagerie/messages-list/messages-list.co
 import {ChatComponent} from './messagerie/chat/chat.component';
 import {NoMessagesComponent} from './messagerie/no-messages/no-messages.component';
 import {AuthGuard} from './guards/auth.guard';
+import { HeaderRechercheComponent } from './offers-components/header-recherche/header-recherche.component';
 
 export const routes: Routes = [
   { path: '', component: FirstPageComponent },
@@ -48,12 +49,10 @@ export const routes: Routes = [
   { path: 'addPost/jobAvantages', component: JobAvantagesComponent, data: { title: 'Ajouter un poste' }},
   { path: 'addPost/jobPage', component: JobPageComponent, data: { title: 'Ajouter un poste' }},
   { path: 'addPost/succeed', component: SucceedPageComponent, data: { title: 'Ajouter un poste' }},
-
   { path: 'messagerie', component: MessagesListComponent, data: { title: 'Messagerie' }},
   { path: 'conversation', component: ChatComponent },
   { path: 'ajout/message', component: NoMessagesComponent },
-
-
+  { path: 'header-recherche', component: HeaderRechercheComponent},
   { path: '**', redirectTo: '' }, // Redirection vers l'accueil pour les routes inconnues
 
 ];
