@@ -10,6 +10,7 @@ import {PreferenceComponent} from './profile-components/preference/preference.co
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'profil', component: ProfileComponent },
+  { path: 'profil/:id', component: ProfileComponent },
   { path: 'login', component: LoginComponent },
   { path: 'info', component: InformationsComponent },
   { path: 'contact', component: ContactComponent },

@@ -1,9 +1,26 @@
-<div class="profile-container">
+<!-- Affichage pendant le chargement -->
+<div *ngIf="isLoading">Chargement des informations...</div>
+
+<!-- Affichage en cas d'erreur -->
+<div *ngIf="isError" class="alert alert-danger">{{ errorMessage }}</div>
+
+<!-- Affichage des données utilisateur si pas d'erreur et pas en cours de chargement -->
+<div *ngIf="!isLoading && !isError">
+  <h2>Profil de l'utilisateur</h2>
+  <p><strong>Bonjour {{ user.username }} !</strong></p>
+  <p class="alert alert-info">Vous êtes un {{ user.user_type }}, n'hésitez pas à compléter votre profil pour augmenter vos chances de trouver un emploi.</p>
+
+
+</div>
+
+
+  <!-- Header de navigation -->
   <app-header
     [step]="step"
     (previousStep)="goToPreviousStep()"
     (skip)="skip()">
   </app-header>
+
   <div class="component-container">
     <app-profile-type *ngIf="step === 1" (userTypeSelected)="updateUserType($event)"></app-profile-type>
     <app-informations *ngIf="step === 2" [personalInfo]="personalInfo" (personalInfoChange)="updatePersonalInfo($event)"></app-informations>
@@ -16,8 +33,11 @@
     <app-preference *ngIf="step === 9" (preferencesChange)="updatePreferences($event)"></app-preference>
     <app-notifications *ngIf="step === 10" (notificationsChange)="updateNotifications($event)"></app-notifications>
   </div>
+
+  <!-- Boutons de navigation -->
   <div class="button-container">
     <button *ngIf="step != 10" (click)="goToNextStep()" [disabled]="!userType" class="fixed-button btn btn-primary full-width">Continuer</button>
     <button *ngIf="step === 10" (click)="saveProfile()" [disabled]="!userType" class="fixed-button btn btn-primary full-width">Terminer mon inscription</button>
   </div>
-</div>
+
+

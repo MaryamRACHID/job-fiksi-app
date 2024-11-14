@@ -1,15 +1,44 @@
-import {Component, Output, EventEmitter, ViewChild} from '@angular/core';
-import { Router } from '@angular/router';
+import {Component, Output,OnInit, EventEmitter, ViewChild} from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import {DisponibilitesComponent} from '../../profile-components/disponibilites/disponibilites.component';
+import { UserService } from '../../user.service';
 
 @Component({
   selector: 'app-profil',
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.scss']
 })
-export class ProfileComponent {
+export class ProfileComponent implements OnInit {
   @Output() userTypeSelected = new EventEmitter<string>();
+  user: any = null
+  isLoading: boolean = true;
 
+ 
+  isError: boolean = false;  // Indicateur d'erreur
+  errorMessage: string = '';  // Message d'erreur
+  constructor(private userService: UserService , private route: ActivatedRoute) { }
+  ngOnInit() {
+    this.route.params.subscribe(params => {
+      const userId = +params['id'];  // Récupérer l'ID de l'utilisateur depuis les paramètres de l'URL
+      
+      this.loadUserProfile(+userId);  // Passer l'ID à la méthode pour charger le profil
+      
+    });
+  }
+
+  // Méthode pour charger le profil de l'utilisateur
+  async loadUserProfile(userId: number) {
+    try {
+      this.user = await this.userService.getUserProfile(userId);  // Passer l'ID à la méthode getUserProfile du service
+      this.isLoading = false;  // Mettre fin au chargement
+    } catch (error) {
+      console.error('Erreur lors du chargement du profil :', error);
+      this.isError = true;  // Afficher un message d'erreur
+      this.errorMessage = 'Erreur lors du chargement du profil';  // Message d'erreur
+      this.isLoading = false;
+    }
+  }
+  
   step: number = 1;
 
   // Shared data properties
