@@ -16,8 +16,10 @@ import {FirstPageComponent} from './pages/first-page/first-page.component';
 import {SplashScreenComponent} from './pages/splash-screen/splash-screen.component';
 
 export const routes: Routes = [
+  //{ path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: '', component: FirstPageComponent },
   { path: 'splash-screen', component: SplashScreenComponent },
+  { path: 'profil', component: ProfileComponent },
   { path: 'login', component: LoginComponent },
   { path: 'profil', component: ProfileComponent },
   { path: 'info', component: InformationsComponent },
@@ -31,7 +33,7 @@ export const routes: Routes = [
   { path: 'documents', component: DocumentListComponent },
 
   { path: '**', redirectTo: '' }, // Redirection vers l'accueil pour les routes inconnues
-  
+
 ];
 
 @NgModule({
