@@ -12,9 +12,12 @@ import {SecuriteComponent} from './pages/securite/securite.component';
 import {DocumentListComponent} from './pages/document-list/document-list.component';
 import { PreferenceComponent } from './profile-components/preference/preference.component';
 import { AccueilRestaurantComponent } from './pages/accueil-restau/accueil-restau.component';
+import {FirstPageComponent} from './pages/first-page/first-page.component';
+import {SplashScreenComponent} from './pages/splash-screen/splash-screen.component';
 
 export const routes: Routes = [
-  { path: '', component: LoginComponent }, // Page d'accueil par défaut
+  { path: '', component: FirstPageComponent },
+  { path: 'splash-screen', component: SplashScreenComponent },
   { path: 'login', component: LoginComponent },
   { path: 'profil', component: ProfileComponent },
   { path: 'info', component: InformationsComponent },
