@@ -26,12 +26,12 @@ export const routes: Routes = [
   { path: 'job', component: PreferenceComponent },
   { path: 'accueil', component: AccueilComponent },
   { path: 'accueilRestau', component: AccueilRestaurantComponent },
-
-
-  { path: '**', redirectTo: '' }, // Redirection vers l'accueil pour les routes inconnues
   { path: 'settings', component: SettingsComponent },
   { path: 'password', component: SecuriteComponent },
   { path: 'documents', component: DocumentListComponent },
+
+  { path: '**', redirectTo: '' }, // Redirection vers l'accueil pour les routes inconnues
+  
 ];
 
 @NgModule({
