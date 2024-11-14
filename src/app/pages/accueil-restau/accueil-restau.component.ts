@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig  } from '@angular/material/dialog';
 import { FilterComponent } from '../../offers-components/filter/filter.component';
 
-interface Candidate {
+interface candidat {
   name: string;
   location: string;
 }
@@ -13,14 +13,14 @@ interface Candidate {
   styleUrls: ['./accueil-restau.component.scss']
 })
 export class AccueilRestaurantComponent implements OnInit {
-  candidates: Candidate[] = [];
+  candidats: candidat[] = [];
   isFilterVisible = false;
 
   constructor(private dialog: MatDialog) {}
 
   ngOnInit(): void {
     console.log('init : AccueilRestaurantComponent');
-    this.candidates = [
+    this.candidats = [
       { name: 'John Doe', location: 'Lyon 69003' },
       { name: 'Jane Doe', location: 'Lyon 69004' },
       { name: 'Alice Smith', location: 'Lyon 69005' }

@@ -132,7 +132,7 @@
     }
   }
 
-  .candidate-card {
+  .candidat-card {
     display: flex;
     align-items: center;
     background-color: white;
@@ -146,17 +146,17 @@
       color: #ff9500;
     }
 
-    .candidate-info {
+    .candidat-info {
       flex-grow: 1;
 
-      .candidate-name {
+      .candidat-name {
         font-weight: bold;
         font-size: 1rem;
         color: #333;
         margin: 0;
       }
 
-      .candidate-location {
+      .candidat-location {
         font-size: 0.9rem;
         color: #666;
         margin: 0.2rem 0;

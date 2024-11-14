@@ -20,4 +20,9 @@ export class AccueilComponent {
     this.router.navigate(['/accueilRestau']); // Route par défaut pour les candidats
   }
 
+  navigateToProfil() {
+   
+    this.router.navigate(['/profil']); 
+  }
+
 }

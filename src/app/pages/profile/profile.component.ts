@@ -67,14 +67,14 @@ export class ProfileComponent {
         this.contactComponent.saveContact();
         break;
       case 4:
-        if (this.userType == 'candidate'){
+        if (this.userType == 'candidat'){
           this.preferenceComponent.savePreference();
         } else {
           this.infoRestaurantComponent.saveRestaurantInfo();
         }
         break;
       case 5:
-        if (this.userType == 'candidate'){
+        if (this.userType == 'candidat'){
           this.disponibilitesComponent.saveDisponibilite();
         } else {
           this.router.navigate(['/accueil']);

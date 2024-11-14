@@ -3,7 +3,6 @@ import { NgModule,CUSTOM_ELEMENTS_SCHEMA  } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
-import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { ProfileComponent } from './profile/profile.component';
 import { AccueilComponent } from './accueil/accueil.component';
@@ -32,7 +31,6 @@ import {DocumentListComponent} from './document-list/document-list.component';
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 
   declarations: [
-    HomeComponent,
     LoginComponent,
     ProfileComponent,
     AccueilComponent,
@@ -43,7 +41,6 @@ import {DocumentListComponent} from './document-list/document-list.component';
   ],
   exports: [
     LoginComponent,
-    HomeComponent,
     ProfileComponent,
     AccueilComponent,
     SettingsComponent,
