@@ -18,4 +18,9 @@ export class LoginComponent {
   setToggle(value: string) {
     this.currentToggle = value;
   }
+
+  goToPassword(event: Event) {
+    event.preventDefault(); // Empêche le comportement par défaut du lien
+    this.router.navigate(['/password']); // Redirige vers la route /password
+  }
 }
