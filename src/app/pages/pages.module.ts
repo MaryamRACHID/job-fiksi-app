@@ -26,6 +26,9 @@ import {ProfileComponentsModule} from '../profile-components/profile-components.
 import {SettingsComponent} from './settings/settings.component';
 import {SecuriteComponent} from './securite/securite.component';
 import {DocumentListComponent} from './document-list/document-list.component';
+import { ProfileCandidatComponent } from './profile-candidat/profile-candidat.component';
+import { ProfileCandidatVuRecruteurComponent } from './profile-candidat/profile-candidat-vu-recruteur/profile-candidat-vu-recruteur.component';
+import { ModifierProfileCandidatComponent } from './profile-candidat/modifier-profile-candidat/modifier-profile-candidat.component';
 
 @NgModule({
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
@@ -38,6 +41,9 @@ import {DocumentListComponent} from './document-list/document-list.component';
     SecuriteComponent,
     DocumentListComponent,
     AccueilRestaurantComponent,
+    ProfileCandidatComponent,
+    ProfileCandidatVuRecruteurComponent,
+    ModifierProfileCandidatComponent
   ],
   exports: [
     LoginComponent,
@@ -47,8 +53,10 @@ import {DocumentListComponent} from './document-list/document-list.component';
     SettingsComponent,
     SecuriteComponent,
     DocumentListComponent,
-
-    AccueilRestaurantComponent
+    AccueilRestaurantComponent,
+    ProfileCandidatComponent,
+    ProfileCandidatVuRecruteurComponent,
+    ModifierProfileCandidatComponent
   ],
   imports: [
     CommonModule,
