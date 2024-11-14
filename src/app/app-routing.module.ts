@@ -1,4 +1,3 @@
-// src/app/app-routing.module.ts
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AccueilComponent } from './pages/accueil/accueil.component';
@@ -15,11 +14,9 @@ import { AccueilRestaurantComponent } from './pages/accueil-restau/accueil-resta
 import {SplashScreenComponent} from './pages/splash-screen/splash-screen.component';
 import {FirstPageComponent} from './pages/first-page/first-page.component';
 
-const routes: Routes = [
-  //{ path: '', redirectTo: '/login', pathMatch: 'full' },
+export const routes: Routes = [
   { path: '', component: FirstPageComponent },
   { path: 'splash-screen', component: SplashScreenComponent },
-  { path: 'profil', component: ProfileComponent },
   { path: 'login', component: LoginComponent },
   { path: 'profil', component: ProfileComponent },
   { path: 'info', component: InformationsComponent },
