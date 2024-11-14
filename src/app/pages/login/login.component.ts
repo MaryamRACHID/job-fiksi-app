@@ -18,7 +18,11 @@ export class LoginComponent implements OnInit {
     // Formulaire de connexion
     this.loginForm = this.fb.group({
       emailConnexion: ['', [Validators.required, Validators.email]],
+<<<<<<< HEAD
       passwordConnexion: ['', [Validators.required]],
+=======
+      passwordConnexion: ['', [Validators.required, Validators.minLength(12)]],
+>>>>>>> 477d814 (fix: login-register-fields-validator)
     });
 
     // Formulaire d'inscription
@@ -37,6 +41,7 @@ export class LoginComponent implements OnInit {
       },
       { validators: this.passwordMatchValidator } // Validation pour la correspondance des mots de passe
     );
+<<<<<<< HEAD
   }
 
   // Méthode pour rediriger l'utilisateur vers la page de profil
@@ -117,10 +122,88 @@ export class LoginComponent implements OnInit {
   // Gérer l'activation de l'onglet Connexion / Inscription
   setToggle(value: string): void {
     this.currentToggle = value;
+=======
   }
 
-  goToPassword(event: Event) {
-    event.preventDefault(); // Empêche le comportement par défaut du lien
-    this.router.navigate(['/password']); // Redirige vers la route /password
+  // Méthode pour rediriger l'utilisateur vers la page de profil
+  goToProfil(): void {
+    if (this.loginForm.valid) {
+      this.router.navigate(['/profil']);
+    } else {
+      console.log('Formulaire de connexion invalide');
+    }
+  }
+
+  // Validateur personnalisé pour le mot de passe : au moins une majuscule, un chiffre et un caractère spécial
+  passwordValidator(control: any) {
+    const password = control.value;
+
+    // Si le mot de passe est vide, retourne une erreur
+    if (!password) {
+      return { required: true };
+    }
+
+    // Vérifie chaque critère individuellement et retourne des erreurs spécifiques
+    const errors: any = {};
+
+    // Vérification majuscule
+    if (!/[A-Z]/.test(password)) {
+      errors.noUppercase = true;
+    }
+
+    // Vérification chiffre
+    if (!/\d/.test(password)) {
+      errors.noNumber = true;
+    }
+
+    // Vérification caractère spécial
+    if (!/[^\w\d\s]/.test(password)) {
+      errors.noSpecialChar = true;
+    }
+
+    // Vérification longueur
+    if (password.length < 12) {
+      errors.tooShort = true;
+    }
+
+    // Si des erreurs existent, retourne l'objet d'erreurs
+    if (Object.keys(errors).length > 0) {
+      return errors;
+    }
+
+    return null; // Si aucune erreur
+  }
+
+
+  // Validateur pour vérifier que le mot de passe et la confirmation sont identiques
+  passwordMatchValidator(group: FormGroup) {
+    const password = group.get('passwordInscription')?.value;
+    const confirmPassword = group.get('confirmPassword')?.value;
+    return password === confirmPassword ? null : { passwordsDoNotMatch: true }; // Vérifie que les mots de passe sont identiques
+>>>>>>> 477d814 (fix: login-register-fields-validator)
+  }
+
+  // Soumettre le formulaire de connexion
+  onLoginSubmit(): void {
+    if (this.loginForm.valid) {
+      this.router.navigate(['/profil']); // Redirige l'utilisateur vers le profil
+    } else {
+      console.log('Formulaire de connexion invalide');
+    }
+  }
+
+  // Soumettre le formulaire d'inscription
+  onInscriptionSubmit(): void {
+    if (this.inscriptionForm.valid) {
+      console.log('Formulaire d\'inscription soumis');
+      // Traiter l'inscription (par exemple, envoyer les données au backend)
+    } else {
+      console.log('Formulaire d\'inscription invalide');
+    }
+  }
+
+  // Gérer l'activation de l'onglet Connexion / Inscription
+  setToggle(value: string): void {
+    this.currentToggle = value;
   }
 }
