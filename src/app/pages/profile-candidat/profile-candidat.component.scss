@@ -61,11 +61,18 @@ p{
   background-color:#d3d3d3;
   margin-top: 1.5rem;
 }
+// ::ng-deep mat-chip-listbox{
+//   display: flex;
+//   // flex-wrap: wrap-reverse;
+//   flex-direction: column;
+// }
 ::ng-deep mat-chip.avant{
-  background-color: #f6bd1076 !important; /* Exemple de couleur de fond personnalisée */
+  background-color: #f7cf58 !important; /* Exemple de couleur de fond personnalisée */
   color: white !important; /* Couleur du texte */
   // font-size: 0.9rem; /* Taille de la police */
-  padding: 0 12px;
+  padding: 5px 12px;
+  margin-right:1rem;
+  border: 2px solid #000;
 }
 
 .social-links mat-icon {
