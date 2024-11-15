@@ -37,6 +37,12 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { RestaurantInfosComponent } from './profile-restaurant/restaurant-infos/restaurant-infos.component';
 import { OffreDescriptionComponent } from './profile-restaurant/offre-description/offre-description.component';
 import { CandidatDescriptionComponent } from './profile-restaurant/candidat-description/candidat-description.component';
+
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { PlanningComponent } from './profile-restaurant/planning/planning.component';
+import { MatCalendarCellClassFunction } from '@angular/material/datepicker';
+
 @NgModule({
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 
@@ -55,7 +61,8 @@ import { CandidatDescriptionComponent } from './profile-restaurant/candidat-desc
     ProfileRestaurantComponent,
     RestaurantInfosComponent,
     OffreDescriptionComponent,
-    CandidatDescriptionComponent
+    CandidatDescriptionComponent,
+    PlanningComponent
   ],
   exports: [
     LoginComponent,
@@ -73,7 +80,8 @@ import { CandidatDescriptionComponent } from './profile-restaurant/candidat-desc
     ProfileRestaurantComponent,
     RestaurantInfosComponent,
     OffreDescriptionComponent,
-    CandidatDescriptionComponent
+    CandidatDescriptionComponent,
+    PlanningComponent
   ],
   imports: [
     CommonModule,
@@ -97,7 +105,12 @@ import { CandidatDescriptionComponent } from './profile-restaurant/candidat-desc
     OffersComponentsModule,
     MatTabsModule,
     MatRadioModule,
-    MatDialogModule
-  ]
+    MatDialogModule,
+    MatDatepickerModule,
+    MatNativeDateModule
+  ],
+  providers: [
+    MatDatepickerModule, // Nécessaire pour fournir le service du datepicker
+  ],
 })
 export class PagesModule {}
