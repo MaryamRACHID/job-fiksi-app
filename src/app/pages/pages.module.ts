@@ -34,6 +34,9 @@ import { ProfileRestaurantComponent } from './profile-restaurant/profile-restaur
 import { MatTabChangeEvent } from '@angular/material/tabs';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatDialogModule } from '@angular/material/dialog';
+import { RestaurantInfosComponent } from './profile-restaurant/restaurant-infos/restaurant-infos.component';
+import { OffreDescriptionComponent } from './profile-restaurant/offre-description/offre-description.component';
+import { CandidatDescriptionComponent } from './profile-restaurant/candidat-description/candidat-description.component';
 @NgModule({
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 
@@ -49,7 +52,10 @@ import { MatDialogModule } from '@angular/material/dialog';
     ProfileCandidatVuRecruteurComponent,
     ModifierProfileCandidatComponent,
 
-    ProfileRestaurantComponent
+    ProfileRestaurantComponent,
+    RestaurantInfosComponent,
+    OffreDescriptionComponent,
+    CandidatDescriptionComponent
   ],
   exports: [
     LoginComponent,
@@ -64,7 +70,10 @@ import { MatDialogModule } from '@angular/material/dialog';
     ProfileCandidatVuRecruteurComponent,
     ModifierProfileCandidatComponent,
 
-    ProfileRestaurantComponent
+    ProfileRestaurantComponent,
+    RestaurantInfosComponent,
+    OffreDescriptionComponent,
+    CandidatDescriptionComponent
   ],
   imports: [
     CommonModule,

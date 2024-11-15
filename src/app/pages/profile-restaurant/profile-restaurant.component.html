@@ -39,12 +39,12 @@
 </div> -->
 
 <!-- /////////////////// RESTAURANT INFOS ///////////////////// -->
-<!-- <div class="restaurantInfos" *ngIf="showInfos && !showOffreSection">
+<div class="restaurantInfos" *ngIf="showInfos && !showOffreSection">
   <app-restaurant-infos [infos]="RestaurantInfos"></app-restaurant-infos>
-</div> -->
+</div>
 
 <!-- ////////////////////////AFFICHAGE OFFRE EMPLOI ////////////////////////////// -->
-<!-- <div class="contentOffre" *ngIf="showTitle && !showOffreSection">
+<div class="contentOffre" *ngIf="showTitle && !showOffreSection">
   <h2>Mes offres d'emplois</h2>
   <button class="addOffre" type="button" id="addOffre">Ajouter une offre</button>
 <div *ngFor="let job of jobList">
@@ -52,7 +52,7 @@
     (viewCandidatures)="viewJobApplications(job)"></app-offre-description>
 </div>
 <button class="postOffre" type="button">Publier une offre d'emploi</button>
-</div> -->
+</div>
 
 <!-- ///////////////////////// AFFICHAGE CANDIDATURES //////////////////////////////////// -->
 <!-- <div *ngFor="let job of jobList">

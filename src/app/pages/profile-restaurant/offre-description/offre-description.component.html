@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<div class="poste-container" *ngIf="showOffre">
+  <div class="poste-header" (click)="toggleDescription()">
+    <span>{{ job.title }}</span>
+    <span [ngClass]="{'rotate-arrow': isOpen}" class="arrow">▼</span>
+  </div>
+  <div *ngIf="isOpen" class="poste-description">
+    <div class="table-infos">
+      <div class="table-items">
+        <p>Type de poste : </p>
+        <p>Lieu : </p>
+        <p>Nombre de candidature : </p>
+        <p>Date de publication : </p>
+      </div>
+      <div class="table-items">
+        <p>{{job.typePoste}}</p>
+        <p>{{job.lieu}}</p>
+        <p>{{job.nombreCandidature}}<a (click)="showCandidatures()">  voir  </a></p>
+        <p>{{job.datePublication}}</p>
+      </div>
+    </div>
+    <div class="button-modif">
+      <button type="button">Supprimer</button>
+      <button type="button">Modifier</button>
+    </div>
+  </div>
+</div>
+<!-- ################################################ -->
+
