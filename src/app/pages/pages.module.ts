@@ -29,7 +29,11 @@ import {DocumentListComponent} from './document-list/document-list.component';
 import { ProfileCandidatComponent } from './profile-candidat/profile-candidat.component';
 import { ProfileCandidatVuRecruteurComponent } from './profile-candidat/profile-candidat-vu-recruteur/profile-candidat-vu-recruteur.component';
 import { ModifierProfileCandidatComponent } from './profile-candidat/modifier-profile-candidat/modifier-profile-candidat.component';
+import { ProfileRestaurantComponent } from './profile-restaurant/profile-restaurant.component';
 
+import { MatTabChangeEvent } from '@angular/material/tabs';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatDialogModule } from '@angular/material/dialog';
 @NgModule({
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 
@@ -43,7 +47,9 @@ import { ModifierProfileCandidatComponent } from './profile-candidat/modifier-pr
     AccueilRestaurantComponent,
     ProfileCandidatComponent,
     ProfileCandidatVuRecruteurComponent,
-    ModifierProfileCandidatComponent
+    ModifierProfileCandidatComponent,
+
+    ProfileRestaurantComponent
   ],
   exports: [
     LoginComponent,
@@ -56,7 +62,9 @@ import { ModifierProfileCandidatComponent } from './profile-candidat/modifier-pr
     AccueilRestaurantComponent,
     ProfileCandidatComponent,
     ProfileCandidatVuRecruteurComponent,
-    ModifierProfileCandidatComponent
+    ModifierProfileCandidatComponent,
+
+    ProfileRestaurantComponent
   ],
   imports: [
     CommonModule,
@@ -77,7 +85,10 @@ import { ModifierProfileCandidatComponent } from './profile-candidat/modifier-pr
     MatCardModule,
     ProfileComponentsModule,
     ReactiveFormsModule,
-    OffersComponentsModule
+    OffersComponentsModule,
+    MatTabsModule,
+    MatRadioModule,
+    MatDialogModule
   ]
 })
 export class PagesModule {}

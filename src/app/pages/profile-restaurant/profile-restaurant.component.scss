@@ -1,0 +1,24 @@
+.header {
+  background: linear-gradient(to bottom, #fbbc04, #fff);
+  text-align: center;
+}
+
+.toolbar{
+  margin: 0;
+  background-color: transparent;
+}
+
+.logo {
+  width: 7rem;
+  height: 7rem;
+  border-radius: 50%;
+  margin-left: 1.5rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  background-image: url("OIP.jpg");
+  background-size: cover;
+
+}
+.spacer {
+  flex: 1 1 auto;
+}
