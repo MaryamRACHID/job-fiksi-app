@@ -27,9 +27,7 @@
 
 <div class="content">
   <section class="company-info">
-    <!-- <h2>{{infos.nomEntreprise}}</h2> -->
-     <!-- <h2>inas HAKKOU</h2> -->
-      <input type="text" name="user-name" id="user-name" class="grp-input">
+      <input type="text" name="user-name" id="user-name" class="grp-input" placeholder="{{user.nomUser}}" [(ngModel)]="user.emailUser">
     <div class="contact-info">
       <div class="info-item">
         <mat-icon>email</mat-icon>
@@ -61,6 +59,7 @@
           </div>
       </div>
   </div>
+
   </section>
 
   <div class="separator"></div>
@@ -119,7 +118,7 @@
       </button>
     </div>
     <div class="add-formarions">
-      <button mat-raised-button color="primary" class="-btn-add-formation" id="btn-add-formation">
+      <button mat-raised-button color="primary" class="-btn-add-formation" id="btn-add-formation" (click)="openAddFormation()">
         <mat-icon class="add-icon">add</mat-icon> Ajouter une formation
       </button>
     </div>
@@ -171,4 +170,23 @@
         </div>
     </div>
   </section>
+  <div class="button-container">
+    <button class="btn cancel">Annuler</button>
+    <button type="submit" class="btn save">Sauvegarder</button>
+  </div>
 </div>
+
+<!-- ///////////////////// pop up edit fomations /////////////////////////////////// -->
+<ng-template class="popup-statut" #editDialog>
+  <h2 class="popup-title">Modifier le statut de la candidature</h2>
+  <mat-radio-group class="items">
+    <mat-radio-button value="Non évalué" class="custom-radio" color="primary">Non évalué</mat-radio-button>
+    <mat-radio-button value="En cours">En cours</mat-radio-button>
+    <mat-radio-button value="Accepté">Accepté</mat-radio-button>
+    <mat-radio-button value="Refusé">Refusé</mat-radio-button>
+  </mat-radio-group>
+  <div class="dialog-actions">
+    <button mat-button class="popup-button">Enregistrer</button>
+    <button mat-button class="popup-button">Annuler</button>
+  </div>
+</ng-template>

@@ -90,3 +90,65 @@ textarea{
   border-radius: 0.3rem;
   margin-bottom: 0.7rem;
 }
+.button-container {
+  display: flex;
+  gap: 1rem; /* espace entre les boutons */
+  margin: auto;
+  margin-top: 1rem;
+}
+
+.btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 0.4rem;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.cancel {
+  background-color: #1A0A45; /* Couleur bleu foncé */
+  color: white;
+}
+
+.save {
+  background-color: #FFC107; /* Couleur jaune */
+  color: black;
+}
+
+.btn:hover {
+  opacity: 0.9; /* Effet hover pour les deux boutons */
+}
+
+.popup-statut
+{
+  margin: auto;
+  padding: auto;
+}
+
+.popup-title{
+  font-size: 0.9rem;
+  // color: #f7b11c;
+  margin: auto;
+  margin-left: 1rem;
+  margin-top: 1.5rem;
+}
+
+.items{
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  margin: auto;
+  margin-left: 1rem;
+  margin-bottom: 1rem;
+}
+
+.dialog-actions{
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  // width: 100%;
+  margin: auto;
+  margin-bottom: 1rem;
+  margin-top: 0.8rem;
+}
