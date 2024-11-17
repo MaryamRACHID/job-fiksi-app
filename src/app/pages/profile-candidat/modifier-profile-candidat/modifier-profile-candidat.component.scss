@@ -1,0 +1,65 @@
+textarea{
+  width: 100%;
+}
+.cv-section{
+  display: flex;
+  flex-direction: row;
+}
+.interview-date{
+  display: flex;
+  flex-direction: row;
+  gap: 0;
+  width: 100%;
+  justify-content: center;
+  justify-items: center;
+}
+.date-label{
+  flex-grow: 1;
+}
+.formation-edit, .formation-delete, .competences-edit, .competences-delete{
+  font-size: 1rem;
+}
+.cv-section{
+  display: flex;
+  flex-direction: row;
+  // background-color: aquamarine;
+}
+.cv-edit{
+  font-size: 1rem;
+  // background-color: aqua;
+  margin: 0;
+  padding: 0;
+  color: rgb(255, 217, 0);
+}
+.add-formarions{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  justify-items: center;
+  margin: auto;
+  margin-top: 1rem;
+  gap: 1rem;
+}
+.-btn-add-formation{
+  padding: 0;
+}
+.btn-edit-pic{
+  margin: 0;
+  // background-color: aqua;
+  top:0;
+  right: 0;
+  padding: 0;
+}
+.icon-edit-pic{
+  color: rgba(111, 94, 10, 0.959);
+}
+.logo{
+  margin-bottom: 0 !important;
+  // background-color: aquamarine;
+}
+.bloc-pic{
+  // background-color: antiquewhite;
+  display: grid;
+  gap: 0;
+  grid-column: auto;
+}

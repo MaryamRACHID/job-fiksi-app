@@ -5,7 +5,7 @@ import { Component } from '@angular/core';
   // standalone: true,
   // imports: [],
   templateUrl: './modifier-profile-candidat.component.html',
-  styleUrl: './modifier-profile-candidat.component.scss'
+  styleUrls: ['./modifier-profile-candidat.component.scss', '../profile-candidat.component.scss']
 })
 export class ModifierProfileCandidatComponent {
 

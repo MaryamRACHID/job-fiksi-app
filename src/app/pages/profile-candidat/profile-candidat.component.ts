@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-
+import { ButtonContactCandidatComponent } from './button-contact-candidat/button-contact-candidat.component';
 @Component({
   selector: 'app-profile-candidat',
   // standalone: true,

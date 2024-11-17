@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<div class="header">
+  <mat-toolbar color="primary" class="toolbar">
+    <button mat-icon-button>
+      <mat-icon>arrow_back</mat-icon>
+    </button>
+    <span class="company_name"> inas HAKKOU </span>
+    <span class="spacer"></span>
+    <button mat-icon-button>
+      <mat-icon>share</mat-icon>
+    </button>
+    <button mat-icon-button>
+      <mat-icon>settings</mat-icon>
+    </button>
+    <button mat-icon-button>
+      <mat-icon>edit</mat-icon>
+    </button>
+  </mat-toolbar>
+  <div class="bloc-pic">
+    <div class="logo"></div>
+    <button mat-icon-button class="btn-edit-pic">
+      <mat-icon class="icon-edit-pic">edit</mat-icon>
+    </button>
+  </div>
+
+</div>
+
+<div class="content">
+  <section class="company-info">
+    <!-- <h2>{{infos.nomEntreprise}}</h2> -->
+     <!-- <h2>inas HAKKOU</h2> -->
+      <input type="text" name="user-name" id="user-name" class="grp-input">
+    <div class="contact-info">
+      <div class="info-item">
+        <mat-icon>email</mat-icon>
+          <div class="info">
+              <p class="label">Email</p>
+              <input type="text" name="user-email" id="user-email" class="grp-input">
+               <!-- <p>inas.com</p> -->
+          </div>
+      </div>
+      <div class="info-item">
+        <mat-icon>phone</mat-icon>
+          <div class="info">
+              <p class="label">Numéro de téléphone</p>
+              <input type="text" name="user-tel" id="user-tel" class="grp-input">
+          </div>
+      </div>
+      <div class="info-item">
+        <mat-icon>location_on</mat-icon>
+          <div class="info">
+              <p class="label">Localisation</p>
+              <input type="text" name="user-adresse" id="user-adresse" class="grp-input">
+          </div>
+      </div>
+      <div class="info-item">
+         <mat-icon>restaurant</mat-icon>
+          <div class="info">
+              <p class="label">Disponibilité</p>
+              <input type="text" name="user-dispo" id="user-dispo" class="grp-input">
+          </div>
+      </div>
+  </div>
+  </section>
+
+  <div class="separator"></div>
+  <section class="description">
+    <h2>Description</h2>
+    <textarea name="description" class="user-description" id="user-description"></textarea>
+    <div class="cv-section">
+      <a href="#" class="lien">Voir le CV</a>
+      <button mat-icon-button class="cv-edit">
+        <mat-icon class="cv-edit">edit</mat-icon>
+      </button>
+    </div>
+
+  </section>
+
+
+  <div class="separator"></div>
+  <section class="formations">
+    <h2>Formations</h2>
+    <div class="interview-date">
+      <div class="date-label">
+        <span class="showInfosEntretien">2022-2023</span>
+        <ul class="interview-l">
+          <li class="detailsEntretien">
+            <span></span>master1
+          </li>
+          <li class="detailsEntite">
+            <span></span>université lumière lyon 2
+          </li>
+        </ul>
+      </div>
+      <button mat-icon-button>
+        <mat-icon class="formation-edit">edit</mat-icon>
+      </button>
+      <button mat-icon-button>
+        <mat-icon class="formation-delete">delete</mat-icon>
+      </button>
+    </div>
+    <div class="interview-date">
+      <div class="date-label">
+        <span class="showInfosEntretien">2024-2025</span>
+        <ul class="interview-l">
+          <li class="detailsEntretien">
+            <span></span>master2
+          </li>
+          <li class="detailsEntite">
+            <span></span>université lumière lyon 2
+          </li>
+        </ul>
+      </div>
+      <button mat-icon-button>
+        <mat-icon class="formation-edit">edit</mat-icon>
+      </button>
+      <button mat-icon-button>
+        <mat-icon class="formation-delete">delete</mat-icon>
+      </button>
+    </div>
+    <div class="add-formarions">
+      <button class="-btn-add-formation" id="btn-add-formation">+</button>
+      <p class="text-add-formation">Ajouter une formation</p>
+    </div>
+  </section>
+
+  <div class="separator"></div>
+  <section class="advantages">
+    <h2>Compétences</h2>
+    <textarea name="user-competences" class="user-competences" id="user-competences"></textarea>
+  </section>
+
+  <div class="separator"></div>
+  <section class="experiences">
+    <h2>Experiences</h2>
+    <div class="interview-date">
+      <div class="date-label">
+        <span class="showInfosEntretien">2022-2023</span>
+        <ul class="interview-l">
+          <li class="detailsEntretien">
+            <span></span>• Employé polyvalant
+          </li>
+          <li class="detailsEntite">
+            <span></span>• Lidl
+          </li>
+        </ul>
+      </div>
+      <button mat-icon-button>
+        <mat-icon class="competences-edit">edit</mat-icon>
+      </button>
+      <button mat-icon-button>
+        <mat-icon class="competences-delete">delete</mat-icon>
+      </button>
+    </div>
+    <div class="add-experience">
+      <button class="add-experience" id="add-experience">+</button>
+      <p class="text-add-experience">Ajouter une experience</p>
+    </div>
+  </section>
+
+  <div class="separator"></div>
+  <section class="social-links">
+    <h2>Social média</h2>
+    <div class="info-item">
+      <mat-icon>linkdIn</mat-icon>
+        <div class="info">
+          <p class="label">LinkdIn</p>
+          <input type="text" name="user-linkdin" id="user-linkdin" class="grp-input">
+        </div>
+    </div>
+  </section>
+</div>

@@ -29,6 +29,7 @@ import {DocumentListComponent} from './document-list/document-list.component';
 import { ProfileCandidatComponent } from './profile-candidat/profile-candidat.component';
 import { ProfileCandidatVuRecruteurComponent } from './profile-candidat/profile-candidat-vu-recruteur/profile-candidat-vu-recruteur.component';
 import { ModifierProfileCandidatComponent } from './profile-candidat/modifier-profile-candidat/modifier-profile-candidat.component';
+import { ButtonContactCandidatComponent } from './profile-candidat/button-contact-candidat/button-contact-candidat.component';
 
 @NgModule({
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
@@ -43,7 +44,8 @@ import { ModifierProfileCandidatComponent } from './profile-candidat/modifier-pr
     AccueilRestaurantComponent,
     ProfileCandidatComponent,
     ProfileCandidatVuRecruteurComponent,
-    ModifierProfileCandidatComponent
+    ModifierProfileCandidatComponent,
+    ButtonContactCandidatComponent
   ],
   exports: [
     LoginComponent,
@@ -56,7 +58,8 @@ import { ModifierProfileCandidatComponent } from './profile-candidat/modifier-pr
     AccueilRestaurantComponent,
     ProfileCandidatComponent,
     ProfileCandidatVuRecruteurComponent,
-    ModifierProfileCandidatComponent
+    ModifierProfileCandidatComponent,
+    ButtonContactCandidatComponent
   ],
   imports: [
     CommonModule,
