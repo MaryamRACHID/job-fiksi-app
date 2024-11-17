@@ -13,13 +13,18 @@
       <mat-icon>settings</mat-icon>
     </button>
     <button mat-icon-button>
-      <mat-icon>edit</mat-icon>
+      <mat-icon (click)="onTabEdit()">edit</mat-icon>
     </button>
   </mat-toolbar>
   <div class="logo"></div>
 </div>
 
-<div class="content">
+<div class="editInfosSection" *ngIf="showEditSection">
+  <app-modifier-profile-candidat [user]="user"></app-modifier-profile-candidat>
+</div>
+
+<div class="showInfosCandidat"  *ngIf="showInfos">
+  <div class="content" >
   <section class="company-info">
      <h2>{{user.nomUser}}</h2>
     <div class="contact-info">
@@ -122,3 +127,5 @@
     </div>
   </section>
 </div>
+</div>
+

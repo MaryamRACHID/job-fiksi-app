@@ -9,6 +9,13 @@ import { ButtonContactCandidatComponent } from './button-contact-candidat/button
 })
 
 export class ProfileCandidatComponent {
+  showEditSection: boolean = false;
+  showInfos: boolean = true;
+
+  onTabEdit(){
+    this.showEditSection=true;
+    this.showInfos = false;
+  }
   user = {
     nomUser: 'inas',
     emailUser: 'inas@gmail.com',

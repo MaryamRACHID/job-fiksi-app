@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<div class="header">
+<!-- <div class="header">
   <mat-toolbar color="primary" class="toolbar">
     <button mat-icon-button>
       <mat-icon>arrow_back</mat-icon>
@@ -23,17 +23,17 @@
     </button>
   </div>
 
-</div>
+</div> -->
 
 <div class="content">
   <section class="company-info">
-      <input type="text" name="user-name" id="user-name" class="grp-input" placeholder="{{user.nomUser}}" [(ngModel)]="user.emailUser">
+      <input type="text" name="user-name" id="user-name" class="grp-input" placeholder="{{user.nomUser}}" [(ngModel)]="user.nomUser">
     <div class="contact-info">
       <div class="info-item">
         <mat-icon>email</mat-icon>
           <div class="info">
               <p class="label">Email</p>
-              <input type="text" name="user-email" id="user-email" class="grp-input">
+              <input type="text" name="user-email" id="user-email" class="grp-input" placeholder="{{user.emailUser}}" [(ngModel)]="user.emailUser">
                <!-- <p>inas.com</p> -->
           </div>
       </div>
@@ -41,21 +41,21 @@
         <mat-icon>phone</mat-icon>
           <div class="info">
               <p class="label">Numéro de téléphone</p>
-              <input type="text" name="user-tel" id="user-tel" class="grp-input">
+              <input type="text" name="user-tel" id="user-tel" class="grp-input" placeholder="{{user.telUser}}" [(ngModel)]="user.telUser">
           </div>
       </div>
       <div class="info-item">
         <mat-icon>location_on</mat-icon>
           <div class="info">
               <p class="label">Localisation</p>
-              <input type="text" name="user-adresse" id="user-adresse" class="grp-input">
+              <input type="text" name="user-adresse" id="user-adresse" class="grp-input" placeholder="{{user.adresseUser}}" [(ngModel)]="user.adresseUser">
           </div>
       </div>
       <div class="info-item">
          <mat-icon>event_available</mat-icon>
           <div class="info">
               <p class="label">Disponibilité</p>
-              <input type="text" name="user-dispo" id="user-dispo" class="grp-input">
+              <input type="text" name="user-dispo" id="user-dispo" class="grp-input" placeholder="{{user.disponibilitesUser}}" [(ngModel)]="user.disponibilitesUser">
           </div>
       </div>
   </div>
@@ -65,7 +65,7 @@
   <div class="separator"></div>
   <section class="description">
     <h2>Description</h2>
-    <textarea name="description" class="user-description" id="user-description"></textarea>
+    <textarea name="description" class="user-description" id="user-description" placeholder="{{user.descriptionUser}}" [(ngModel)]="user.descriptionUser"></textarea>
     <div class="cv-section">
       <a href="#" class="lien">Voir le CV</a>
       <button mat-icon-button class="cv-edit">
@@ -118,7 +118,7 @@
       </button>
     </div>
     <div class="add-formarions">
-      <button mat-raised-button color="primary" class="-btn-add-formation" id="btn-add-formation" (click)="openAddFormation()">
+      <button mat-raised-button color="primary" class="-btn-add-formation" id="btn-add-formation" (click)="openEditDialog(user)">
         <mat-icon class="add-icon">add</mat-icon> Ajouter une formation
       </button>
     </div>
@@ -127,7 +127,7 @@
   <div class="separator"></div>
   <section class="advantages">
     <h2>Compétences</h2>
-    <textarea name="user-competences" class="user-competences" id="user-competences"></textarea>
+    <textarea name="user-competences" class="user-competences" id="user-competences" placeholder="{{user.competencesUser}}" [(ngModel)]="user.competencesUser"></textarea>
   </section>
 
   <div class="separator"></div>
@@ -166,7 +166,7 @@
       <mat-icon>linkdIn</mat-icon>
         <div class="info">
           <p class="label">LinkdIn</p>
-          <input type="text" name="user-linkdin" id="user-linkdin" class="grp-input">
+          <input type="text" name="user-linkdin" id="user-linkdin" class="grp-input" placeholder="{{user.linkdinUser}}" [(ngModel)]="user.linkdinUser">
         </div>
     </div>
   </section>
@@ -178,15 +178,24 @@
 
 <!-- ///////////////////// pop up edit fomations /////////////////////////////////// -->
 <ng-template class="popup-statut" #editDialog>
-  <h2 class="popup-title">Modifier le statut de la candidature</h2>
-  <mat-radio-group class="items">
-    <mat-radio-button value="Non évalué" class="custom-radio" color="primary">Non évalué</mat-radio-button>
-    <mat-radio-button value="En cours">En cours</mat-radio-button>
-    <mat-radio-button value="Accepté">Accepté</mat-radio-button>
-    <mat-radio-button value="Refusé">Refusé</mat-radio-button>
-  </mat-radio-group>
+  <div class="bloc-input">
+    <h2 class="popup-title">Nom de la formation *</h2>
+    <input type="text" name="nomFormationEdit" id="nomFormationEdit">
+  </div>
+  <div class="bloc-input">
+    <h2 class="popup-title">Etablissement *</h2>
+    <input type="text" name="etablissementFormationEdit" id="etablissementFormationEdit">
+  </div>
+  <!-- <div class="blocDateFormation">
+    <mat-form-field appearance="fill">
+      <mat-label>Date de l'entretien</mat-label>
+      <input matInput [matDatepicker]="picker" [(ngModel)]="selectedDateEntretien">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+  </div> -->
   <div class="dialog-actions">
-    <button mat-button class="popup-button">Enregistrer</button>
+    <button mat-button class="popup-button">Sauvegarder</button>
     <button mat-button class="popup-button">Annuler</button>
   </div>
 </ng-template>

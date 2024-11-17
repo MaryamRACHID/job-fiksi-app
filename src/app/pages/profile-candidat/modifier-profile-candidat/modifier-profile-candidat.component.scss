@@ -120,15 +120,19 @@ textarea{
   opacity: 0.9; /* Effet hover pour les deux boutons */
 }
 
+
+
 .popup-statut
 {
+  position: fixed;
+  width: 100%;
   margin: auto;
   padding: auto;
 }
 
 .popup-title{
   font-size: 0.9rem;
-  // color: #f7b11c;
+  color: #f7b11c;
   margin: auto;
   margin-left: 1rem;
   margin-top: 1.5rem;
@@ -152,3 +156,31 @@ textarea{
   margin-bottom: 1rem;
   margin-top: 0.8rem;
 }
+.dateEntretien{
+  justify-content: center;
+  justify-items: center;
+  text-align: center;
+  border-radius: 0.8rem;
+  font-weight: 500;
+}
+
+.popup-button{
+  background-color: #f7b11c;
+  padding: 0.1rem 1.8rem;
+  border-radius: 5px;
+  border-color: transparent;
+  font-size: 0.6rem;
+  color: #000;
+}
+
+.plage-horaire{
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  justify-content: center;
+  justify-items: center;
+  margin: 1rem;
+  margin-bottom: 0.4rem;
+}
+
+

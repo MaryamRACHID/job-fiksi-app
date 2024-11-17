@@ -30,7 +30,8 @@ import { ProfileCandidatComponent } from './profile-candidat/profile-candidat.co
 import { ProfileCandidatVuRecruteurComponent } from './profile-candidat/profile-candidat-vu-recruteur/profile-candidat-vu-recruteur.component';
 import { ModifierProfileCandidatComponent } from './profile-candidat/modifier-profile-candidat/modifier-profile-candidat.component';
 import { ButtonContactCandidatComponent } from './profile-candidat/button-contact-candidat/button-contact-candidat.component';
-
+import { MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 @NgModule({
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 
@@ -80,7 +81,9 @@ import { ButtonContactCandidatComponent } from './profile-candidat/button-contac
     MatCardModule,
     ProfileComponentsModule,
     ReactiveFormsModule,
-    OffersComponentsModule
+    OffersComponentsModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ]
 })
 export class PagesModule {}
