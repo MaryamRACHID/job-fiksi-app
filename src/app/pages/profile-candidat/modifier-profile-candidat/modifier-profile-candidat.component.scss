@@ -1,5 +1,12 @@
+h2{
+  margin-top: 1rem;
+}
 textarea{
   width: 100%;
+  height: 7rem;
+  border: 2px solid #e5e5e5;
+  background-color: #f7f5f5;
+  border-radius: 0.3rem;
 }
 .cv-section{
   display: flex;
@@ -43,6 +50,16 @@ textarea{
 .-btn-add-formation{
   padding: 0;
 }
+
+.add-formarions .btn-add-formation{
+  border-color: transparent;
+  border-radius: 0.3rem;
+}
+.add-icon{
+  background-color: #f6b400;
+  color: rgb(255, 255, 255);
+  border-radius: 0.2rem;
+}
 .btn-edit-pic{
   margin: 0;
   // background-color: aqua;
@@ -62,4 +79,14 @@ textarea{
   display: grid;
   gap: 0;
   grid-column: auto;
+}
+
+
+.grp-input{
+  width: 100%;
+  padding: 0.2rem;
+  border: 2px solid #e5e5e5;
+  background-color: #f7f5f5;
+  border-radius: 0.3rem;
+  margin-bottom: 0.7rem;
 }
