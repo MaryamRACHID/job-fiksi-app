@@ -84,6 +84,9 @@ import { MatNativeDateModule } from '@angular/material/core';
     OffersComponentsModule,
     MatDatepickerModule,
     MatNativeDateModule
+  ],
+  providers:[
+    MatDatepickerModule
   ]
 })
 export class PagesModule {}

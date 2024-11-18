@@ -79,38 +79,22 @@
   <div class="separator"></div>
   <section class="formations">
     <h2>Formations</h2>
-    <div class="interview-date">
+    <div class="interview-date" *ngFor="let formation of user.formationsUser">
       <div class="date-label">
-        <span class="showInfosEntretien">2022-2023</span>
+        <span class="showInfosEntretien">
+          {{ formation.dateDebutFormation | date: 'yyyy' }} - {{ formation.dateFinFormation | date: 'yyyy' }}
+        </span>
+
         <ul class="interview-l">
           <li class="detailsEntretien">
-            <span></span>master1
+            <span></span>{{formation.nomFormation}}
           </li>
           <li class="detailsEntite">
-            <span></span>université lumière lyon 2
+            <span></span>{{formation.etablissementFormation}}
           </li>
         </ul>
       </div>
-      <button mat-icon-button>
-        <mat-icon class="formation-edit">edit</mat-icon>
-      </button>
-      <button mat-icon-button>
-        <mat-icon class="formation-delete">delete</mat-icon>
-      </button>
-    </div>
-    <div class="interview-date">
-      <div class="date-label">
-        <span class="showInfosEntretien">2024-2025</span>
-        <ul class="interview-l">
-          <li class="detailsEntretien">
-            <span></span>master2
-          </li>
-          <li class="detailsEntite">
-            <span></span>université lumière lyon 2
-          </li>
-        </ul>
-      </div>
-      <button mat-icon-button>
+      <button mat-icon-button (click)="editFormation(formation)">
         <mat-icon class="formation-edit">edit</mat-icon>
       </button>
       <button mat-icon-button>
@@ -118,7 +102,7 @@
       </button>
     </div>
     <div class="add-formarions">
-      <button mat-raised-button color="primary" class="-btn-add-formation" id="btn-add-formation" (click)="openEditDialog(user)">
+      <button mat-raised-button color="primary" class="-btn-add-formation" id="btn-add-formation">
         <mat-icon class="add-icon">add</mat-icon> Ajouter une formation
       </button>
     </div>
@@ -176,26 +160,32 @@
   </div>
 </div>
 
-<!-- ///////////////////// pop up edit fomations /////////////////////////////////// -->
-<ng-template class="popup-statut" #editDialog>
-  <div class="bloc-input">
-    <h2 class="popup-title">Nom de la formation *</h2>
-    <input type="text" name="nomFormationEdit" id="nomFormationEdit">
+<!-- ////////////////////////////////////////////////////////// -->
+
+
+<div class="popup-overlay" *ngIf="showPopup" (click)="closePopup($event)">
+  <div class="popup-content" (click)="$event.stopPropagation()">
+    <h2>Modifier la formation</h2>
+    <div>
+      <label>Nom de la formation *</label>
+      <input type="text" [(ngModel)]="selectedFormation.nomFormation" />
+    </div>
+    <div>
+      <label>Établissement *</label>
+      <input type="text" [(ngModel)]="selectedFormation.etablissementFormation" />
+    </div>
+    <div class="bloc-date">
+      <label>Période *</label>
+      <div class="periode">
+        <input type="date" matInput [matDatepicker]="picker" [(ngModel)]="selectedFormation.dateDebutFormation" placeholder="{{selectedFormation.dateDebutFormation}}" />
+        <!-- <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle> -->
+        <mat-datepicker #picker></mat-datepicker>
+        <input type="date" matInput [matDatepicker]="picker" [(ngModel)]="selectedFormation.dateFinFormation" />
+      </div>
+    </div>
+    <div class="popup-actions">
+      <button mat-button (click)="closePopup()">Annuler</button>
+      <button mat-raised-button color="primary" (click)="saveFormation()">Sauvegarder</button>
+    </div>
   </div>
-  <div class="bloc-input">
-    <h2 class="popup-title">Etablissement *</h2>
-    <input type="text" name="etablissementFormationEdit" id="etablissementFormationEdit">
-  </div>
-  <!-- <div class="blocDateFormation">
-    <mat-form-field appearance="fill">
-      <mat-label>Date de l'entretien</mat-label>
-      <input matInput [matDatepicker]="picker" [(ngModel)]="selectedDateEntretien">
-      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-      <mat-datepicker #picker></mat-datepicker>
-    </mat-form-field>
-  </div> -->
-  <div class="dialog-actions">
-    <button mat-button class="popup-button">Sauvegarder</button>
-    <button mat-button class="popup-button">Annuler</button>
-  </div>
-</ng-template>
+</div>

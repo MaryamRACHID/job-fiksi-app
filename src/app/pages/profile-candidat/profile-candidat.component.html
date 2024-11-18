@@ -72,7 +72,9 @@
     <h2>Formations</h2>
     <div class="interview-date" *ngFor="let formation of user.formationsUser">
       <div class="date-label">
-        <span class="showInfosEntretien">{{formation.dateDebutFormation}}-{{formation.dateFinFormation}}</span>
+        <span class="showInfosEntretien">
+          {{ formation.dateDebutFormation | date: 'yyyy' }} - {{ formation.dateFinFormation | date: 'yyyy' }}
+        </span>
         <ul class="interview-l">
           <li class="detailsEntretien">
             <span></span>{{formation.nomFormation}}
@@ -102,7 +104,7 @@
     <h2>Experiences</h2>
     <div class="interview-date" *ngFor="let experience of user.experiencesUser">
       <div class="date-label">
-        <span class="showInfosEntretien">{{experience.debutExperience}}-{{experience.finExperience}}</span>
+        <span class="showInfosEntretien">{{experience.debutExperience  | date: 'yyyy'}}-{{experience.finExperience  | date: 'yyyy'}}</span>
         <ul class="interview-l">
           <li class="detailsEntretien">
             <span></span>• {{experience.poste}}
