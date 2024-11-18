@@ -1,90 +1,125 @@
-import {Component, Output,OnInit, EventEmitter, ViewChild} from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import {DisponibilitesComponent} from '../../profile-components/disponibilites/disponibilites.component';
+import { Component, Output, OnInit, EventEmitter, ViewChild } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { DisponibilitesComponent } from '../../profile-components/disponibilites/disponibilites.component';
 import { UserService } from '../../user.service';
 
 @Component({
   selector: 'app-profil',
   templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.scss']
+  styleUrls: ['./profile.component.scss'],
 })
 export class ProfileComponent implements OnInit {
   @Output() userTypeSelected = new EventEmitter<string>();
-  user: any = null
+  @ViewChild(DisponibilitesComponent) disponibilitesComponent!: DisponibilitesComponent;
+
+  user: any = null;
   isLoading: boolean = true;
-
- 
-  isError: boolean = false;  // Indicateur d'erreur
-  errorMessage: string = '';  // Message d'erreur
-  constructor(private userService: UserService , private route: ActivatedRoute) { }
-  ngOnInit() {
-    this.route.params.subscribe(params => {
-      const userId = +params['id'];  // Récupérer l'ID de l'utilisateur depuis les paramètres de l'URL
-      
-      this.loadUserProfile(+userId);  // Passer l'ID à la méthode pour charger le profil
-      
-    });
-  }
-
-  // Méthode pour charger le profil de l'utilisateur
-  async loadUserProfile(userId: number) {
-    try {
-      this.user = await this.userService.getUserProfile(userId);  // Passer l'ID à la méthode getUserProfile du service
-      this.isLoading = false;  // Mettre fin au chargement
-    } catch (error) {
-      console.error('Erreur lors du chargement du profil :', error);
-      this.isError = true;  // Afficher un message d'erreur
-      this.errorMessage = 'Erreur lors du chargement du profil';  // Message d'erreur
-      this.isLoading = false;
-    }
-  }
-  
+  isError: boolean = false;
+  errorMessage: string = '';
   step: number = 1;
 
   // Shared data properties
-  userType: string | null = null;
-  personalInfo = { name: '', firstName: '', birthDate: '' };
+  userType: string = '';
+  personalInfo: any = { nom: '', prenom: '', date_naissance: '' };
   availability: string[] = [];
   references = { hasExperience: false, description: '', skills: '' };
   formation = { level: '', diplomas: [] };
   experience = [];
   languages: string[] = [];
   contactInfo = { phone: '', address: '', postalCode: '', city: '' };
-
-  // New properties for steps 9 and 10
   preferences: any = { preferredJobTypes: [], locations: [] };
   notifications: any = { emailNotifications: false, smsNotifications: false };
 
-  @ViewChild(DisponibilitesComponent) disponibilitesComponent!: DisponibilitesComponent;
+  constructor(private userService: UserService, private route: ActivatedRoute) {}
 
-  // Navigate to the next step
-  goToNextStep() {
-    // Ensure userType is selected before advancing from step 1
-    if (this.step === 1 && !this.userType) {
-      return;
+  ngOnInit() {
+    this.route.params.subscribe((params) => {
+      const userId = +params['id'];
+      this.loadUserProfile(userId);
+    });
+  }
+
+  async loadUserProfile(userId: number) {
+    try {
+      this.user = await this.userService.getUserProfile(userId);
+      if (this.user.image) {
+        this.user.image = `https://jobfiksi.ismael-dev.com${this.user.image}`;
+      }
+      this.isLoading = false;
+    } catch (error) {
+      console.error('Erreur lors du chargement du profil :', error);
+      this.isError = true;
+      this.errorMessage = 'Erreur lors du chargement du profil';
+      this.isLoading = false;
     }
+  }
+
+  // Step navigation methods
+  goToNextStep() {
+    if (this.step === 1 && !this.userType) {
+      return; // Prevent advancing if userType is not selected
+    }
+    
+    this.saveCurrentStepData(); // Save data before moving to the next step
     if (this.step === 4) {
-      // Appelez la méthode save() du composant enfant
       this.saveAvailability();
     }
     this.step++;
   }
-  saveAvailability() {
-    // Ici, vous appelez la méthode save() sur le composant enfant si vous avez une référence à celui-ci
-    const childComponent = this.disponibilitesComponent; // Référence au composant enfant
-    if (childComponent) {
-      childComponent.save();
-    }
-  }
-  // Navigate to the previous step
 
   goToPreviousStep() {
+    this.saveCurrentStepData(); // Save data before moving to the previous step
     if (this.step > 1) {
       this.step--;
     }
   }
 
-  // Update methods for child components to share data with parent
+  // Save data for the current step
+  saveCurrentStepData() {
+    switch (this.step) {
+      case 1:
+        console.log('User type saved:', this.userType);
+        break;
+      case 2:
+        console.log('Personal info saved:', this.personalInfo);
+        break;
+      case 3:
+        console.log('Availability saved:', this.availability);
+        break;
+      case 4:
+        console.log('References saved:', this.references);
+        break;
+      case 5:
+        console.log('Formation saved:', this.formation);
+        break;
+      case 6:
+        console.log('Experience saved:', this.experience);
+        break;
+      case 7:
+        console.log('Languages saved:', this.languages);
+        break;
+      case 8:
+        console.log('Contact info saved:', this.contactInfo);
+        break;
+      case 9:
+        console.log('Preferences saved:', this.preferences);
+        break;
+      case 10:
+        console.log('Notifications saved:', this.notifications);
+        break;
+      default:
+        console.log('Unknown step, nothing to save.');
+    }
+  }
+
+  // Child component interaction
+  saveAvailability() {
+    if (this.disponibilitesComponent) {
+      this.disponibilitesComponent.save();
+    }
+  }
+
+  // Update methods for shared data
   updateUserType(data: string) {
     this.userType = data;
     this.userTypeSelected.emit(data);
@@ -118,7 +153,6 @@ export class ProfileComponent implements OnInit {
     this.contactInfo = data;
   }
 
-  // New update methods for steps 9 and 10
   updatePreferences(data: any) {
     this.preferences = data;
   }
@@ -127,10 +161,9 @@ export class ProfileComponent implements OnInit {
     this.notifications = data;
   }
 
-  // Save profile data and navigate to the next section
+  // Save profile data
   saveProfile() {
-    // Logic to save or submit the complete profile information
-    console.log("Profile saved", {
+    console.log('Profile saved', {
       userType: this.userType,
       personalInfo: this.personalInfo,
       availability: this.availability,
@@ -139,53 +172,12 @@ export class ProfileComponent implements OnInit {
       experience: this.experience,
       languages: this.languages,
       contactInfo: this.contactInfo,
-      preferences: this.preferences, // Added for step 9
-      notifications: this.notifications // Added for step 10
+      preferences: this.preferences,
+      notifications: this.notifications,
     });
-    // Navigate to another route if needed, e.g., after completing the profile setup
   }
+
   skip() {
-    // Logique pour abandonner
+    console.log('Profile update skipped');
   }
 }
-
-
-
-/*
-import { Component, ViewChild } from '@angular/core';
-import { DisponibilitesComponent } from './disponibilites/disponibilites.component'; // Importez le composant
-
-@Component({
-  selector: 'app-profile',
-  templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.scss']
-})
-export class ProfileComponent {
-  step: number = 1; // ou autre valeur selon votre logique
-  userType: boolean = false; // Ajoutez votre logique pour l'utilisateur
-
-  @ViewChild(DisponibilitesComponent) disponibilitesComponent!: DisponibilitesComponent;
-
-  availabilityData: any = {}; // Pour stocker les données de disponibilité
-
-  goToNextStep() {
-    // Si c'est l'étape 4, appelez la méthode save() du composant disponibilites
-    if (this.step === 4) {
-      this.disponibilitesComponent.save(); // Appelle la méthode save pour émettre les données
-      return; // Empêche de passer à l'étape suivante tant que les données ne sont pas sauvegardées
-    }
-
-    // Vérifiez si userType est sélectionné avant d'avancer
-    if (this.step === 1 && !this.userType) {
-      return;
-    }
-
-    this.step++; // Avance à l'étape suivante
-  }
-
-  updateAvailability(event: any) {
-    this.availabilityData = event; // Récupère les données de disponibilité
-  }
-}
-
- */

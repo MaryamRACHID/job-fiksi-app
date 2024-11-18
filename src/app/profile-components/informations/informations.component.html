@@ -1,3 +1,4 @@
+<!-- Formulaire de saisie des informations personnelles -->
 <h2 class="title">Complétez votre profil</h2>
 <p class="subtitle-1">Informations personnelles</p>
 
@@ -11,27 +12,35 @@
 
 <div class="gender-selection text-center my-3 mt-5">
   <div class="form-check form-check-inline">
-    <input class="form-check-input" type="radio" name="gender" id="female" value="female">
+    <input class="form-check-input" type="radio" name="genre" id="female" value="Madame" [(ngModel)]="personalInfo.genre">
     <label class="form-check-label" for="female">Madame</label>
   </div>
   <div class="form-check form-check-inline">
-    <input class="form-check-input" type="radio" name="gender" id="male" value="male">
+    <input class="form-check-input" type="radio" name="genre" id="male" value="Monsieur" [(ngModel)]="personalInfo.genre">
     <label class="form-check-label" for="male">Monsieur</label>
   </div>
 </div>
 
+
+<!-- Champs de saisie pour les informations personnelles -->
 <div class="row mt-4">
   <div class="col-6">
-    <label for="lastName" class="form-label">Nom</label>
-    <input type="text" class="form-control" id="lastName" [(ngModel)]="personalInfo.name" placeholder="Saisir votre nom">
+    <label for="nom" class="form-label">Nom</label>
+    <input type="text" class="form-control" id="lastName" [(ngModel)]="personalInfo.nom" placeholder="Saisir votre nom">
   </div>
   <div class="col-6">
-    <label for="firstName" class="form-label">Prénom</label>
-    <input type="text" class="form-control" id="firstName" [(ngModel)]="personalInfo.firstName" placeholder="Saisir votre prénom">
+    <label for="prenom" class="form-label">Prénom</label>
+    <input type="text" class="form-control" id="firstName" [(ngModel)]="personalInfo.prenom" placeholder="Saisir votre prénom">
   </div>
 </div>
 
+<!-- Champ pour la date de naissance -->
 <div class="mt-4">
-  <label for="birthDate" class="form-label">Date de naissance</label>
-  <input type="date" class="form-control mt-2" id="birthDate" [(ngModel)]="personalInfo.birthDate">
+  <label for="date_naissance" class="form-label">Date de naissance</label>
+  <input type="date" class="form-control mt-2" id="birthDate" [(ngModel)]="personalInfo.date_naissance">
+</div>
+
+<!-- Bouton pour envoyer les informations et passer à l'étape suivante -->
+<div class="text-center mt-4">
+  <button (click)="goToNextStep()" class="btn btn-primary">Suivant</button>
 </div>

@@ -1,17 +1,30 @@
-<!-- Affichage pendant le chargement -->
-<div *ngIf="isLoading">Chargement des informations...</div>
-
-<!-- Affichage en cas d'erreur -->
-<div *ngIf="isError" class="alert alert-danger">{{ errorMessage }}</div>
-
 <!-- Affichage des données utilisateur si pas d'erreur et pas en cours de chargement -->
 <div *ngIf="!isLoading && !isError">
   <h2>Profil de l'utilisateur</h2>
-  <p><strong>Bonjour {{ user.username }} !</strong></p>
-  <p class="alert alert-info">Vous êtes un {{ user.user_type }}, n'hésitez pas à compléter votre profil pour augmenter vos chances de trouver un emploi.</p>
-
-
+  
+  <!-- Affichage du nom et prénom -->
+  <p><strong>Bonjour {{ user.nom }} {{ user.prenom }}</strong></p>
+  
+  <!-- Affichage de l'image de profil -->
+  <div class="profile-image-container">
+    <img *ngIf="user.image" [src]="user.image" alt="Avatar de {{ user.nom }} {{ user.prenom }}" class="avatar" />
+  </div>
+  
+  <!-- Affichage du type d'utilisateur et message d'alerte -->
+  <p class="alert alert-info">
+    Vous êtes un <strong>{{ user.user_type  }}</strong>, 
+    n'hésitez pas à compléter votre profil pour augmenter vos chances de trouver un emploi.
+  </p>
 </div>
+
+<!-- Affichage du message de chargement -->
+<div *ngIf="isLoading">Chargement...</div>
+
+<!-- Affichage des erreurs -->
+<div *ngIf="isError" class="alert alert-danger">
+  {{ errorMessage }}
+</div>
+
 
 
   <!-- Header de navigation -->
@@ -23,7 +36,7 @@
 
   <div class="component-container">
     <app-profile-type *ngIf="step === 1" (userTypeSelected)="updateUserType($event)"></app-profile-type>
-    <app-informations *ngIf="step === 2" [personalInfo]="personalInfo" (personalInfoChange)="updatePersonalInfo($event)"></app-informations>
+    <app-informations *ngIf="step === 2" [personalInfo]="{genre: personalInfo.genre, nom: personalInfo.nom, prenom: personalInfo.prenom, date_naissance: personalInfo.date_naissance }" (personalInfoChange)="updatePersonalInfo($event)"></app-informations>
     <app-contact *ngIf="step === 3" (contactInfoChange)="updateContactInfo($event)"></app-contact>
     <app-disponibilites *ngIf="step === 4" (availabilityInfoChange)="updateAvailability($event)"></app-disponibilites>
     <app-description *ngIf="step === 5" (descriptionInfoChange)="updateAvailability($event)"></app-description>

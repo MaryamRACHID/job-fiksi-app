@@ -6,7 +6,7 @@ import axios from 'axios';
 })
 export class UserService {
 
-  private apiUrl: string = 'http://127.0.0.1:8000/api/users/'; // URL de votre API directement ici
+  private apiUrl: string = 'https://jobfiksi.ismael-dev.com/api/users/'; // URL de votre API directement ici
  
   constructor() { }
 
@@ -25,7 +25,7 @@ export class UserService {
   // Méthode de connexion (si vous avez un endpoint pour la connexion)
   async loginUser(data: any) {
     try {
-      const response = await axios.post('http://127.0.0.1:8000/login/', data) 
+      const response = await axios.post('https://jobfiksi.ismael-dev.com/login/', data,) 
       return response.data;
     } catch (error) {
       console.error('Error during login:', error);
@@ -36,10 +36,14 @@ export class UserService {
 
   // Méthode pour récupérer un utilisateur par ID
   async getUserProfile(id: number) {
-    const token = localStorage.getItem('token');
-    const headers = { 'Authorization': 'Token ' + token };
+    const token = localStorage.getItem('token'); // Récupérer le token depuis le localStorage
+    const headers = { 'Authorization': 'Token ' + token ,
+    
+
+    };
     try {
       // Construire l'URL dynamique avec l'ID de l'utilisateur
+      
       const response = await axios.get(this.apiUrl+id+'/', { headers: headers });
       return response.data;  // Retourner les données de l'utilisateur
     } catch (error) {
@@ -48,6 +52,4 @@ export class UserService {
     }
   }
 
-
-  
 }

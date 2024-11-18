@@ -70,7 +70,7 @@ export class LoginComponent {
 
         // En cas de succès
         this.isSuccess = true;
-        this.successMessage = 'Connexion réussie ! Redirection en cours... 😊';
+        this.successMessage = 'Connexion réussie ! Redirection en cours... '+ token;
 
         setTimeout(() => {
             this.router.navigate(['/profil', userId]); // Rediriger vers le profil de l'utilisateur

@@ -62,3 +62,16 @@ mat-icon {
 
 
 
+.avatar {
+  width: 100px;         /* Largeur de l'image */
+  height: 100px;        /* Hauteur de l'image */
+  border-radius: 50%;   /* Rendre l'image circulaire */
+  object-fit: cover;    /* Couvrir la zone sans déformation */
+  margin-bottom: 10px;  /* Espace sous l'image */
+}
+
+.profile-image-container {
+  display: flex;
+  justify-content: center;  /* Centrer l'image horizontalement */
+  margin-bottom: 15px;
+}
