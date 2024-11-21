@@ -16,6 +16,10 @@ export class ProfileCandidatComponent {
     this.showEditSection=true;
     this.showInfos = false;
   }
+  handleCancel(){
+    this.showEditSection=false;
+    this.showInfos = true;
+  }
   user = {
     nomUser: 'inas',
     emailUser: 'inas@gmail.com',

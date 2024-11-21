@@ -1,6 +1,8 @@
 import {
   Component,
+  EventEmitter,
   Input,
+  Output,
   TemplateRef,
   ViewChild,
 } from '@angular/core';
@@ -24,6 +26,7 @@ export class ModifierProfileCandidatComponent {
 
   @Input() user!:any; // Définir le type correctement
   @ViewChild('editDialog') editDialog!: TemplateRef<any>;
+  @Output() cancelEdit = new EventEmitter<void>();
 
   showPopupformationedit = false; // Gestion de la visibilité du popup formation edit
   showPopupexperienceedit = false; // Gestion de la visibilité du popup experience edit
@@ -213,5 +216,15 @@ export class ModifierProfileCandidatComponent {
     this.closePopup(); // Fermer le popup
   }
 
+  cancel() {
+    // Navigue vers la page `restaurant-infos.html`
+    // this.router.navigate(['/profile-restaurant']);
+    this.cancelEdit.emit();
+  }
+  save(){
+    // Navigue vers la page `restaurant-infos.html`
+    // this.router.navigate(['/profile-restaurant']);
+    this.cancelEdit.emit();
+  }
 
 }

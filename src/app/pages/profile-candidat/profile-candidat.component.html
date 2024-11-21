@@ -20,7 +20,7 @@
 </div>
 
 <div class="editInfosSection" *ngIf="showEditSection">
-  <app-modifier-profile-candidat [user]="user"></app-modifier-profile-candidat>
+  <app-modifier-profile-candidat [user]="user" (cancelEdit)="handleCancel()"></app-modifier-profile-candidat>
 </div>
 
 <div class="showInfosCandidat"  *ngIf="showInfos">
