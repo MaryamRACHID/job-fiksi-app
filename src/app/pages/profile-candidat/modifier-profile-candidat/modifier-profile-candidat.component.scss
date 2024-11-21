@@ -95,6 +95,8 @@ textarea{
   gap: 1rem; /* espace entre les boutons */
   margin: auto;
   margin-top: 1rem;
+  justify-content: center;
+  justify-items: center;
 }
 
 .btn {
@@ -304,6 +306,19 @@ input::placeholder {
   // background-color: #FFC107;
 }
 
-.Date{
+.errorDate{
+  display: flex;
+  color: red;
+  font-size: 0.7rem;
+  margin-left: 10px;
+  margin-bottom: 5px;
+  background-color: #FFC107;
+  border: 1px solid red;
+  border-radius: 5px;
+  padding: 5px;
+  width: 100%;
+  text-align: center;
+  justify-content: center;
+  justify-items: center;
 
 }

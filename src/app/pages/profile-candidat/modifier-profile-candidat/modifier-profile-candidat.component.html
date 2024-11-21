@@ -1,29 +1,4 @@
 <!DOCTYPE html>
-<!-- <div class="header">
-  <mat-toolbar color="primary" class="toolbar">
-    <button mat-icon-button>
-      <mat-icon>arrow_back</mat-icon>
-    </button>
-    <span class="company_name"> inas HAKKOU </span>
-    <span class="spacer"></span>
-    <button mat-icon-button>
-      <mat-icon>share</mat-icon>
-    </button>
-    <button mat-icon-button>
-      <mat-icon>settings</mat-icon>
-    </button>
-    <button mat-icon-button>
-      <mat-icon>edit</mat-icon>
-    </button>
-  </mat-toolbar>
-  <div class="bloc-pic">
-    <div class="logo"></div>
-    <button mat-icon-button class="btn-edit-pic">
-      <mat-icon class="icon-edit-pic">edit</mat-icon>
-    </button>
-  </div>
-
-</div> -->
 
 <div class="content">
   <section class="company-info">
@@ -100,12 +75,14 @@
       <button mat-icon-button>
         <mat-icon class="formation-delete">delete</mat-icon>
       </button>
+
     </div>
     <div class="add-formarions">
-      <button mat-raised-button color="primary" class="-btn-add-formation" id="btn-add-formation">
+      <button mat-raised-button color="primary" class="-btn-add-formation" id="btn-add-formation" (click)="showPopUpAddFormation()">
         <mat-icon class="add-icon">add</mat-icon> Ajouter une formation
       </button>
     </div>
+
   </section>
 
   <div class="separator"></div>
@@ -117,27 +94,27 @@
   <div class="separator"></div>
   <section class="experiences">
     <h2>Experiences</h2>
-    <div class="interview-date">
+    <div class="interview-date" *ngFor="let experience of user.experiencesUser">
       <div class="date-label">
-        <span class="showInfosEntretien">2022-2023</span>
+        <span class="showInfosEntretien">{{experience.debutExperience  | date: 'yyyy'}}-{{experience.finExperience  | date: 'yyyy'}}</span>
         <ul class="interview-l">
           <li class="detailsEntretien">
-            <span></span>• Employé polyvalant
+            <span></span>• {{experience.poste}}
           </li>
           <li class="detailsEntite">
-            <span></span>• Lidl
+            <span></span>• {{experience.structure}}
           </li>
         </ul>
       </div>
       <button mat-icon-button>
-        <mat-icon class="competences-edit">edit</mat-icon>
+        <mat-icon class="competences-edit" (click)="editExperience(experience)">edit</mat-icon>
       </button>
       <button mat-icon-button>
-        <mat-icon class="competences-delete">delete</mat-icon>
+        <mat-icon class="competences-delete" (click)="saveExperience()">delete</mat-icon>
       </button>
     </div>
     <div class="add-formarions">
-      <button mat-raised-button color="primary" class="-btn-add-formation" id="btn-add-formation">
+      <button mat-raised-button color="primary" class="-btn-add-formation" id="btn-add-formation" (click)="showPopUpAddExperience()">
         <mat-icon class="add-icon">add</mat-icon> Ajouter une experience
       </button>
     </div>
@@ -160,10 +137,9 @@
   </div>
 </div>
 
-<!-- ////////////////////////////////////////////////////////// -->
+<!-- ///////////////////////////popup edit formation/////////////////////////////// -->
 
-
-<div class="popup-overlay" *ngIf="showPopup">
+<div class="popup-overlay" *ngIf="showPopupformationedit">
   <div class="popup-content" #editdialog>
     <h2>Modifier la formation</h2>
     <div>
@@ -175,45 +151,148 @@
       <input type="text" [(ngModel)]="selectedetablissementFormation" />
     </div>
     <div class="bloc-date">
-      <label for="periode">Période *</label>
-      <div class="periode-container">
-        <!-- Date de début -->
-        <div class="date-debut">
-          <label class="label" for="dateDebut">Début</label>
-          <input
-            id="dateDebut"
-            class="date"
-            type="date"
-            matInput
-            [matDatepicker]="picker1"
-            [(ngModel)]="selectedDateDebutFormation"
-            placeholder="{{ selectedFormation.dateDebutFormation }}"
-          />
-          <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
-          <mat-datepicker #picker1></mat-datepicker>
-        </div>
+      <label>Période *</label>
+      <div class="periode-cantainer">
 
-        <!-- Date de fin -->
-        <div class="date-fin">
-          <label class="label" for="dateFin">Fin</label>
-          <input
-            id="dateFin"
-            class="date"
-            type="date"
-            matInput
-            [matDatepicker]="picker2"
-            [(ngModel)]="selectedDateFinFormation"
-          />
-          <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
-          <mat-datepicker #picker2></mat-datepicker>
-        </div>
-      </div>
+          <div class="dateDebut">
+            <label class="label" for="">Début</label>
+            <input class="Date" matInput [matDatepicker]="picker1" [(ngModel)]="selectedDateDebutFormation" />
+            <!-- <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle> -->
+            <mat-datepicker #picker1></mat-datepicker>
+          </div>
+
+          <div class="dateFin">
+            <label class="label" for="">Fin</label>
+            <input class="Date" matInput [matDatepicker]="picker2" [(ngModel)]="selectedDateFinFormation" />
+            <mat-datepicker #picker2></mat-datepicker>
+          </div>
+
+       </div>
+
     </div>
-
 
     <div class="button-container">
       <button class="btn cancel" (click)="closePopup()">Annuler</button>
-      <button type="submit" class="btn save" (click)="updateFormation()">Sauvegarder</button>
+      <button type="submit" class="btn save" (click)="saveFormation()">Sauvegarder</button>
+    </div>
+  </div>
+</div>
+
+<!-- /////////////////////////////pop up edit experienc/////////////////////////////// -->
+<div class="popup-overlay" *ngIf="showPopupexperienceedit">
+  <div class="popup-content" #editdialog>
+    <h2>Modifier l'experience'</h2>
+    <div>
+      <label>Poste occupé *</label>
+      <input type="text" [(ngModel)]="selectedPosteExperience" />
+    </div>
+    <div>
+      <label>structure d'acceuil *</label>
+      <input type="text" [(ngModel)]="selectedStructureExperience" />
+    </div>
+    <div class="bloc-date">
+      <label>Période *</label>
+      <div class="periode-cantainer">
+
+          <div class="dateDebut">
+            <label class="label" for="">Début</label>
+            <input class="Date" matInput [matDatepicker]="picker1" [(ngModel)]="selectedDateDebutExperience" />
+            <!-- <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle> -->
+            <mat-datepicker #picker1></mat-datepicker>
+          </div>
+
+          <div class="dateFin">
+            <label class="label" for="">Fin</label>
+            <input class="Date" matInput [matDatepicker]="picker2" [(ngModel)]="selectedDateFinExperience" />
+            <mat-datepicker #picker2></mat-datepicker>
+          </div>
+       </div>
+    </div>
+    <div class="button-container">
+      <button class="btn cancel" (click)="closePopup()">Annuler</button>
+      <button type="submit" class="btn save" (click)="saveExperience()">Sauvegarder</button>
+    </div>
+  </div>
+</div>
+
+<!-- //////////////////////add formation pop up/////////////////////// -->
+
+<div class="popup-overlay" *ngIf="showPopupformationadd">
+  <div class="popup-content" #editdialog>
+    <h2>Ajouer une formation</h2>
+    <div>
+      <label>Nom de la formation *</label>
+      <input type="text" [(ngModel)]="selectedNewNomFormation" />
+    </div>
+    <div>
+      <label>Établissement *</label>
+      <input type="text" [(ngModel)]="selectedNewEtablissementFormation" />
+    </div>
+    <div class="bloc-date">
+      <label>Période *</label>
+      <div class="periode-cantainer">
+
+          <div class="dateDebut">
+            <label class="label" for="">Début</label>
+            <input class="Date" matInput [matDatepicker]="picker1" [(ngModel)]="selectedNewDateDebutFormation" />
+            <!-- <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle> -->
+            <mat-datepicker #picker1></mat-datepicker>
+          </div>
+
+          <div class="dateFin">
+            <label class="label" for="">Fin</label>
+            <input class="Date" matInput [matDatepicker]="picker2" [(ngModel)]="selectedNewDateFinFormation" />
+            <mat-datepicker #picker2></mat-datepicker>
+          </div>
+
+       </div>
+
+    </div>
+
+    <div class="button-container">
+      <button class="btn cancel" (click)="closePopup()">Annuler</button>
+      <button type="submit" class="btn save" (click)="addFormation(user)">Ajouter</button>
+    </div>
+  </div>
+</div>
+
+<!-- //////////////////////add formation pop up/////////////////////// -->
+
+<div class="popup-overlay" *ngIf="showPopupexperienceadd">
+  <div class="popup-content" #editdialog>
+    <h2>Ajouer une experience</h2>
+    <div>
+      <label>Poste occupé *</label>
+      <input type="text" [(ngModel)]="selectedNewPosetExperience" />
+    </div>
+    <div>
+      <label>Structure *</label>
+      <input type="text" [(ngModel)]="selectedNewStructureExperience" />
+    </div>
+    <div class="bloc-date">
+      <label>Période *</label>
+      <div class="periode-cantainer">
+
+          <div class="dateDebut">
+            <label class="label" for="">Début</label>
+            <input class="Date" matInput [matDatepicker]="picker1" [(ngModel)]="selectedNewDateDebutExperience" />
+            <!-- <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle> -->
+            <mat-datepicker #picker1></mat-datepicker>
+          </div>
+
+          <div class="dateFin">
+            <label class="label" for="">Fin</label>
+            <input class="Date" matInput [matDatepicker]="picker2" [(ngModel)]="selectedNewDateFinExperience" />
+            <mat-datepicker #picker2></mat-datepicker>
+          </div>
+
+       </div>
+
+    </div>
+
+    <div class="button-container">
+      <button class="btn cancel" (click)="closePopup()">Annuler</button>
+      <button type="submit" class="btn save" (click)="addExperience(user)">Ajouter</button>
     </div>
   </div>
 </div>

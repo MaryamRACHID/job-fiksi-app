@@ -43,14 +43,14 @@ export class ProfileCandidatComponent {
       {
         poste: 'Employé polyvalent',
         structure: 'Lidl',
-        debutExperience: '2024',
-        finExperience: '2025',
+        debutExperience: '2024-07-12',
+        finExperience: '2025-02-03',
       },
       {
         poste: 'Employé polyvalent',
         structure: 'Carrefour',
-        debutExperience: '2023',
-        finExperience: '2024',
+        debutExperience: '2023-06-17',
+        finExperience: '2024-12-31',
       },
     ],
     linkdin: 'inas.hakkou',
