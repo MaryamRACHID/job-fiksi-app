@@ -24,7 +24,6 @@ import { JobDetailsComponent } from '../offers-components/job-details/job-detail
     RegisterComponent,
     ProfileComponent,
     HomeComponent,
-    JobListComponent,
     JobDetailsComponent,    
   ],
   exports: [
@@ -32,7 +31,6 @@ import { JobDetailsComponent } from '../offers-components/job-details/job-detail
     RegisterComponent,
     HomeComponent,
     ProfileComponent,
-    JobListComponent,
     JobDetailsComponent,
 
 

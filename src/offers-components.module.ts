@@ -11,8 +11,9 @@ import { RouterModule } from '@angular/router';
 @NgModule({
   declarations: [
     FilterComponent,
-    JobListComponent,
+    
     JobDetailsComponent,
+    JobListComponent,
     SearchBarComponent,
     
   ],
