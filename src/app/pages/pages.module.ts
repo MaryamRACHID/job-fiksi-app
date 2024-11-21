@@ -1,8 +1,6 @@
-// src/app/pages/pages.module.ts
 import { NgModule,CUSTOM_ELEMENTS_SCHEMA  } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
-
 import { LoginComponent } from './login/login.component';
 import { ProfileComponent } from './profile/profile.component';
 import { AccueilComponent } from './accueil/accueil.component';
@@ -37,16 +35,18 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { RestaurantInfosComponent } from './profile-restaurant/restaurant-infos/restaurant-infos.component';
 import { OffreDescriptionComponent } from './profile-restaurant/offre-description/offre-description.component';
 import { CandidatDescriptionComponent } from './profile-restaurant/candidat-description/candidat-description.component';
-
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { PlanningComponent } from './profile-restaurant/planning/planning.component';
 import { MatCalendarCellClassFunction } from '@angular/material/datepicker';
-
+import {FirstPageComponent} from './first-page/first-page.component';
+import {SplashScreenComponent} from './splash-screen/splash-screen.component';
 @NgModule({
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 
   declarations: [
+    FirstPageComponent,
+    SplashScreenComponent,
     LoginComponent,
     ProfileComponent,
     AccueilComponent,
@@ -62,9 +62,12 @@ import { MatCalendarCellClassFunction } from '@angular/material/datepicker';
     RestaurantInfosComponent,
     OffreDescriptionComponent,
     CandidatDescriptionComponent,
-    PlanningComponent
+    PlanningComponent,
+    AccueilRestaurantComponent
   ],
   exports: [
+    FirstPageComponent,
+    SplashScreenComponent,
     LoginComponent,
     ProfileComponent,
     AccueilComponent,
@@ -80,7 +83,8 @@ import { MatCalendarCellClassFunction } from '@angular/material/datepicker';
     RestaurantInfosComponent,
     OffreDescriptionComponent,
     CandidatDescriptionComponent,
-    PlanningComponent
+    PlanningComponent,
+    AccueilRestaurantComponent
   ],
   imports: [
     CommonModule,

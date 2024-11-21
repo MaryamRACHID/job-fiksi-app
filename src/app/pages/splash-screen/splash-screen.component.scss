@@ -1,0 +1,62 @@
+.splash-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Align text to the left */
+  justify-content: center;
+  height: 100vh;
+  padding: 20px; /* Add padding for the left alignment */
+  background-color: #fff;
+
+  .brand {
+    position: absolute;
+    top: 6%;
+    right: 20px;
+    font-size: 1.25rem;
+    color: black;
+    font-weight: 700;
+
+    span {
+      font-weight: 400;
+    }
+  }
+
+  img {
+    width: 90%; /* Increased size */
+    margin-bottom: 20px;
+  }
+
+  h1 {
+    font-size: 2.75rem; /* Increased font size */
+    text-align: left;
+    color: black;
+    font-weight: 700;
+    line-height: 1;
+
+    .span {
+      color: #FFC107; // Yellow
+      text-decoration: underline;
+    }
+  }
+
+  .description {
+    font-size: 1rem;
+    color: #666;
+    text-align: left;
+    margin-top: 10px;
+    margin-bottom: 20px;
+  }
+
+  .btn-next {
+    position: absolute;
+    bottom: 6%;
+    right: 20px;
+    background-color: #3f3f3f;
+    border: none;
+    border-radius: 50%;
+    width: 65px;
+    height: 65px;
+    color: white;
+    font-size: 2rem;
+  }
+}
