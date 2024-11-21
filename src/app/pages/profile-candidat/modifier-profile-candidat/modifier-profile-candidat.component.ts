@@ -34,29 +34,40 @@ export class ModifierProfileCandidatComponent {
   showPopup = false; // Gestion de la visibilité du popup
   selectedFormation: any = null; // Formation actuellement éditée
 
+  selectedDateDebutFormation!: Date | null; // Date de début de la formation
+  selectedDateFinFormation!: Date | null;
+  selectedetablissementFormation: string=''; //
+  selectedNomFormation: string=''; //
+
   constructor(private dialog: MatDialog) {}
 
   // Ouvrir le popup pour modifier une formation
   editFormation(formation: any) {
     this.showPopup = true;
     this.selectedFormation = { ...formation }; // Cloner les données de la formation pour éviter les modifications directes
+
+    this.selectedDateDebutFormation = this.selectedFormation.dateDebutFormation ? new Date(this.selectedFormation.dateDebutFormation.split(' ')[0]) : null;
+    this.selectedDateFinFormation = this.selectedFormation.dateFintFormation ? new Date(this.selectedFormation.dateFinFormation.split(' ')[0]) : null;
+    this.selectedetablissementFormation = this.selectedFormation.etablissementFormation;
+    this.selectedNomFormation = this.selectedFormation.nomFormation;
+
     console.log('Modifier la formation', this.selectedFormation);
     console.log('Date de début', this.selectedFormation.dateDebutFormation);
     console.log('Date de fin', this.selectedFormation.dateFinFormation);
 
-    // Conversion des dates en objets Date pour le datepicker
-    if (this.selectedFormation.dateDebutFormation) {
-      this.selectedFormation.dateDebutFormation = new Date(
-        this.selectedFormation.dateDebutFormation
-      );
-      console.log('Date de début', this.selectedFormation.dateDebutFormation);
-    }
-    if (this.selectedFormation.dateFinFormation) {
-      this.selectedFormation.dateFinFormation = new Date(
-        this.selectedFormation.dateFinFormation
-      );
-      console.log('Date de fin', this.selectedFormation.dateFinFormation);
-    }
+    // // Conversion des dates en objets Date pour le datepicker
+    // if (this.selectedFormation.dateDebutFormation) {
+    //   this.selectedFormation.dateDebutFormation = new Date(
+    //     this.selectedFormation.dateDebutFormation
+    //   );
+    //   console.log('Date de début', this.selectedFormation.dateDebutFormation);
+    // }
+    // if (this.selectedFormation.dateFinFormation) {
+    //   this.selectedFormation.dateFinFormation = new Date(
+    //     this.selectedFormation.dateFinFormation
+    //   );
+    //   console.log('Date de fin', this.selectedFormation.dateFinFormation);
+    // }
   }
 
   // Fermer le popup et réinitialiser les données
@@ -89,4 +100,28 @@ export class ModifierProfileCandidatComponent {
 
     this.closePopup(); // Fermer le popup
   }
+
+  updateFormation() {
+    if (
+      this.selectedDateDebutFormation &&
+      this.selectedDateFinFormation &&
+      this.selectedNomFormation &&
+      this.selectedetablissementFormation
+    ) {
+      var nomFormation = this.selectedNomFormation;
+      var etablissementFormation = this.selectedetablissementFormation;
+      var dateDebutFormation = this.selectedDateDebutFormation.toLocaleDateString();
+      var dateFinFormation = this.selectedDateFinFormation.toLocaleDateString();
+      this.selectedFormation = {
+        nomFormation,
+        etablissementFormation,
+        dateDebutFormation,
+        dateFinFormation,
+      };
+      console.log('Formation modifiée', this.selectedFormation);
+      this.closePopup();
+    }
+  }
+
+
 }

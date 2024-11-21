@@ -218,11 +218,92 @@ textarea{
   display: flex;
   flex-direction: column;
   gap: 10px;
-  background-color: #FFC107;
+  // background-color: #FFC107;
 }
 
-.periode{
+.periode .grid-container {
+  display: grid;
+  grid-template-columns: 1rem 1fr; /* Deux colonnes de largeur égale */
+  grid-template-rows: auto auto; /* Deux lignes */
+  gap: 2rem; /* Espacement entre les éléments */
+  align-items: center; /* Alignement vertical */
+}
+
+.grid-item label {
+  display: block;
+  margin-bottom: 5px; /* Espacement entre le label et l'input */
+  font-weight: bold;
+}
+
+.grid-item input {
+  width: 100%; /* L'input prend toute la largeur disponible */
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box; /* Pour inclure padding et bordure dans la largeur */
+}
+
+
+
+.periode-container {
   display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  font-family: Arial, sans-serif;
+}
+
+.label {
+  font-size: 0.9rem;
+  color: #1d1135; /* Couleur sombre pour le texte */
+  margin-bottom: 0.5rem;
+}
+
+.input-container {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+input {
+  // width: 100%;
+  padding: 0.5rem 2.5rem 0.5rem 0.75rem;
+  border: 1px solid #dcdcdc;
+  border-radius: 5px;
+  font-size: 1rem;
+  color: #000;
+}
+.Date {
+  width: 70%;
+  padding: 0.5rem 0.3rem 0.5rem 0.75rem;
+  border: 1px solid #dcdcdc;
+  border-radius: 5px;
+  font-size: 1rem;
+  color: #000;
+}
+
+input::placeholder {
+  color: #6b6b6b; /* Couleur grise pour le placeholder */
+}
+
+.icon-calendar {
+  position: absolute;
+  right: 0.75rem;
+  width: 1.5rem;
+  height: 1.5rem;
+  // background: url('path-to-calendar-icon.svg') no-repeat center center;
+  background-size: contain;
+  pointer-events: none;
+}
+
+.dateDebut, .dateFin{
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
   justify-content: flex-end;
-  background-color: #1A0A45;
+  justify-items: flex-end;
+  // background-color: #FFC107;
+}
+
+.Date{
+
 }

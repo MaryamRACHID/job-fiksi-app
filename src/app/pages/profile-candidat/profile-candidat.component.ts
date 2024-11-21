@@ -26,8 +26,8 @@ export class ProfileCandidatComponent {
       'Retrouvez toutes les offres d’emploi, de stage et d’alternance d’EDF, ainsi que toutes les actualités liées au recrutement au sein du Groupe.',
     formationsUser: [
       {
-        dateDebutFormation: '01/09/2022',
-        dateFinFormation: '2023/09/01',
+        dateDebutFormation: '01-09-2022',
+        dateFinFormation: '2023-09-01',
         nomFormation: 'master1',
         etablissementFormation: 'université lyon 2',
       },

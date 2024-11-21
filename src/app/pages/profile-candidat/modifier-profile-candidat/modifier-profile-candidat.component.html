@@ -163,29 +163,57 @@
 <!-- ////////////////////////////////////////////////////////// -->
 
 
-<div class="popup-overlay" *ngIf="showPopup" (click)="closePopup($event)">
-  <div class="popup-content" (click)="$event.stopPropagation()">
+<div class="popup-overlay" *ngIf="showPopup">
+  <div class="popup-content" #editdialog>
     <h2>Modifier la formation</h2>
     <div>
       <label>Nom de la formation *</label>
-      <input type="text" [(ngModel)]="selectedFormation.nomFormation" />
+      <input type="text" [(ngModel)]="selectedNomFormation" />
     </div>
     <div>
       <label>Établissement *</label>
-      <input type="text" [(ngModel)]="selectedFormation.etablissementFormation" />
+      <input type="text" [(ngModel)]="selectedetablissementFormation" />
     </div>
     <div class="bloc-date">
-      <label>Période *</label>
-      <div class="periode">
-        <input type="date" matInput [matDatepicker]="picker" [(ngModel)]="selectedFormation.dateDebutFormation" placeholder="{{selectedFormation.dateDebutFormation}}" />
-        <!-- <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle> -->
-        <mat-datepicker #picker></mat-datepicker>
-        <input type="date" matInput [matDatepicker]="picker" [(ngModel)]="selectedFormation.dateFinFormation" />
+      <label for="periode">Période *</label>
+      <div class="periode-container">
+        <!-- Date de début -->
+        <div class="date-debut">
+          <label class="label" for="dateDebut">Début</label>
+          <input
+            id="dateDebut"
+            class="date"
+            type="date"
+            matInput
+            [matDatepicker]="picker1"
+            [(ngModel)]="selectedDateDebutFormation"
+            placeholder="{{ selectedFormation.dateDebutFormation }}"
+          />
+          <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+          <mat-datepicker #picker1></mat-datepicker>
+        </div>
+
+        <!-- Date de fin -->
+        <div class="date-fin">
+          <label class="label" for="dateFin">Fin</label>
+          <input
+            id="dateFin"
+            class="date"
+            type="date"
+            matInput
+            [matDatepicker]="picker2"
+            [(ngModel)]="selectedDateFinFormation"
+          />
+          <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+          <mat-datepicker #picker2></mat-datepicker>
+        </div>
       </div>
     </div>
-    <div class="popup-actions">
-      <button mat-button (click)="closePopup()">Annuler</button>
-      <button mat-raised-button color="primary" (click)="saveFormation()">Sauvegarder</button>
+
+
+    <div class="button-container">
+      <button class="btn cancel" (click)="closePopup()">Annuler</button>
+      <button type="submit" class="btn save" (click)="updateFormation()">Sauvegarder</button>
     </div>
   </div>
 </div>
