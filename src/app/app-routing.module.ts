@@ -13,6 +13,7 @@ import { PreferenceComponent } from './profile-components/preference/preference.
 import { AccueilRestaurantComponent } from './pages/accueil-restau/accueil-restau.component';
 import {FirstPageComponent} from './pages/first-page/first-page.component';
 import {SplashScreenComponent} from './pages/splash-screen/splash-screen.component';
+import {BaseInformationComponent} from './offers-components/base-information/base-information.component';
 
 export const routes: Routes = [
   { path: '', component: FirstPageComponent },
@@ -25,9 +26,10 @@ export const routes: Routes = [
   { path: 'job', component: PreferenceComponent },
   { path: 'accueil', component: AccueilComponent },
   { path: 'accueilRestau', component: AccueilRestaurantComponent },
-  { path: 'settings', component: SettingsComponent },
+  { path: 'settings', component: SettingsComponent, data: { title: 'Paramètres' }},
   { path: 'password', component: SecuriteComponent },
   { path: 'documents', component: DocumentListComponent },
+  { path: 'addPost/base', component: BaseInformationComponent, data: { title: 'Ajouter un poste' }},
 
   { path: '**', redirectTo: '' }, // Redirection vers l'accueil pour les routes inconnues
 

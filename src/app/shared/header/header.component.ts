@@ -1,18 +1,53 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
+import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
+import { filter } from 'rxjs';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrl: './header.component.scss'
+  styleUrls: ['./header.component.scss']
 })
+export class HeaderComponent implements OnInit {
+  title: string = ''; // Valeur par défaut
 
-export class HeaderComponent {
-  title: string = 'Paramètres'; // Vous pouvez modifier cela dynamiquement selon la page
+  constructor(
+    private location: Location,
+    private router: Router,
+    private activatedRoute: ActivatedRoute
+  ) {}
 
-  constructor(private location: Location) {}
+  ngOnInit(): void {
+    // Met à jour le titre lors de la navigation
+    this.router.events.pipe(
+      filter(event => event instanceof NavigationEnd)
+    ).subscribe(() => {
+      this.updateTitle();
+    });
 
+    // Met à jour le titre lors de l'initialisation du composant
+    this.updateTitle();
+  }
+
+  // Méthode pour mettre à jour le titre en fonction de la route
+  private updateTitle(): void {
+    let route = this.activatedRoute.root;
+
+    // Parcours de la hiérarchie des routes pour trouver un titre défini
+    while (route.children.length > 0) {
+      route = route.children[0];
+    }
+
+    // Si la route contient une donnée 'title', l'utiliser comme titre
+    if (route.snapshot.data['title']) {
+      this.title = route.snapshot.data['title'];
+    } else {
+      this.title = ''; // Valeur par défaut
+    }
+  }
+
+  // Fonction pour revenir à la page précédente
   goBack(): void {
-    this.location.back(); // Cette fonction permet de revenir à la page précédente
+    this.location.back();
   }
 }

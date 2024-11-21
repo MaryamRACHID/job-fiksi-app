@@ -7,7 +7,6 @@ import { ProfileComponent } from './profile/profile.component';
 import { AccueilComponent } from './accueil/accueil.component';
 import { AccueilRestaurantComponent } from './accueil-restau/accueil-restau.component';
 import { OffersComponentsModule } from '../offers-components/offers-components.module';
-import { FilterComponent } from '../offers-components/filter/filter.component';
 import { SharedModule } from '../shared/shared.module';
 import { MaterialModule } from '../material.module';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
