@@ -22,7 +22,6 @@
     placeholder="Bac"
     #educationInput
   />
-
   <ul *ngIf="showDropdown && filteredEducationLevels.length > 0" class="dropdown-list">
     <li *ngFor="let level of filteredEducationLevels" (click)="selectLevel(level)">
       {{ level }}

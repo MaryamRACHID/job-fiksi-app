@@ -1,0 +1,19 @@
+<div class="post-container">
+  <app-header/>
+
+  <p class="subtitle-1">Créneaux pour un entretien</p>
+  <div>
+    <label class="form-label">Sélectionner des dates</label>
+    <input type="date" class="form-control" [(ngModel)]="date" />
+    <label class="form-label mt-3">Début de l’entretien</label>
+    <input type="time" class="form-control" [(ngModel)]="startTime" />
+    <label class="form-label mt-3">Fin de l’entretien</label>
+    <input type="time" class="form-control" [(ngModel)]="endTime" />
+  </div>
+
+  <!-- Navigation Buttons -->
+  <div class="button-container row">
+    <button (click)="goToPreviousStep()" class="btn btn-primary col-5 ms-3 me-2">Précédent</button>
+    <button (click)="saveSlot()" class="btn btn-primary col-5">Sauvegarder</button>
+  </div>
+</div>

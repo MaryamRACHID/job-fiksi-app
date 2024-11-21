@@ -47,10 +47,8 @@ export class ProfileComponent {
   @ViewChild(IdentityComponent) identityComponent!: IdentityComponent;
   @ViewChild(BankComponent) bankComponent!: BankComponent;
   @ViewChild(NotificationsComponent) notificationsComponent!: NotificationsComponent;
-  
+
   constructor(private router: Router) {}
-
-
 
   goToNextStep() {
     switch (this.step) {

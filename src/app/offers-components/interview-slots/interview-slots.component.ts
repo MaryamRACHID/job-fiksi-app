@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-interview-slots',
@@ -7,4 +8,19 @@ import { Component } from '@angular/core';
 })
 export class InterviewSlotsComponent {
 
+  slots: string[] = ['', '', '', ''];
+
+  constructor(private router: Router) {}
+
+  editSlot(index: number) {
+    this.router.navigate(['/addPost/chooseSlot', { slotIndex: index }]);
+  }
+
+  goToNextStep() {
+    this.router.navigate(['/addPost/jobAvantages']);
+  }
+
+  goToPreviousStep() {
+    this.router.navigate(['/addPost/prerequisites']);
+  }
 }

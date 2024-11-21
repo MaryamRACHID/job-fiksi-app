@@ -1,0 +1,18 @@
+<div class="post-container">
+  <app-header/>
+
+  <p class="subtitle-1">Aperçu</p>
+  <div>
+    <p>Serveur H/F</p>
+    <p>Lieu: 2 rue azerty 69007 Lyon, France</p>
+    <p>Salaire: 12€/heure</p>
+    <p>Nombre d'heures: 10h/semaine</p>
+    <p>Disponibilités: Lun, Mar, Mer, Jeu, Ven</p>
+  </div>
+
+  <!-- Navigation Buttons -->
+  <div class="button-container row">
+    <button (click)="goToPreviousStep()" class="btn btn-primary col-5 ms-3 me-2">Précédent</button>
+    <button class="btn btn-primary col-5" (click)="goToNextStep()">Publier le poste</button>
+  </div>
+</div>

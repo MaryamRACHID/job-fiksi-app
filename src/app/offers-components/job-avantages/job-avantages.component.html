@@ -1,0 +1,80 @@
+<div class="post-container">
+  <app-header />
+
+  <p class="title-page mt-4">Avantages</p>
+
+  <!-- Champ: Quelle salaire proposez-vous ? -->
+  <div class="row mt-4 mb-3">
+    <div class="col-12 position-relative">
+      <label class="form-label mt-2">Quelle salaire proposez-vous ?</label>
+      <div class="custom-dropdown">
+        <input
+          type="text"
+          class="form-control"
+          [(ngModel)]="salary"
+          placeholder="12€/heure"
+          readonly
+        />
+        <i class="fa fa-chevron-down chevron-icon"></i>
+      </div>
+    </div>
+  </div>
+
+  <!-- Champ: Nombre d’heures de travail -->
+  <div class="row mt-4 mb-3">
+    <div class="col-12 position-relative">
+      <label class="form-label">Nombre d’heures de travail</label>
+      <div class="custom-dropdown">
+        <input
+          type="text"
+          class="form-control"
+          [(ngModel)]="hours"
+          placeholder="10h/semaine"
+          readonly
+        />
+        <i class="fa fa-chevron-down chevron-icon"></i>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section: Quelles sont les avantages -->
+  <div class="row mt-4">
+    <div class="col-12">
+      <label class="form-label">Quelles sont les avantages de votre restaurant ?</label>
+      <div class="d-flex flex-wrap mt-3">
+        <div class="col-6 form-check mb-2" *ngFor="let advantage of advantages">
+          <input
+            type="checkbox"
+            class="form-check-input me-2"
+            [id]="advantage"
+            [(ngModel)]="selectedAdvantages[advantage]"
+          />
+          <label class="form-check-label" [for]="advantage">{{ advantage }}</label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Méthode de paiement -->
+  <div class="row mt-4 mb-3">
+    <div class="col-12 position-relative">
+      <label class="form-label">Méthode de paiement</label>
+      <div class="custom-dropdown">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Par mois"
+          readonly
+        />
+        <i class="fa fa-chevron-down chevron-icon"></i>
+      </div>
+    </div>
+  </div>
+
+  <!-- Boutons Navigation -->
+  <div class="button-container row">
+    <button (click)="goToPreviousStep()" class="btn fixed-button btn-primary col-5 me-2">Précédent</button>
+    <button (click)="goToNextStep()" class="btn fixed-button btn-primary col-5">Continuer</button>
+  </div>
+</div>
+

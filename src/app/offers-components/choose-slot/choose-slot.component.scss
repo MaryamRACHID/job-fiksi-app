@@ -19,47 +19,29 @@
 }
 
 .button-container {
-  position: fixed;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 1000;
+  position: fixed;         // Ou "absolute" si vous préférez
+  bottom: 25px;           // Espace depuis le bas de la page
+  left: 50%;              // Centrer horizontalement
+  transform: translateX(-50%); // Ajuster pour centrer parfaitement
+  z-index: 1000;          // Assurez-vous qu'il soit au-dessus des autres éléments
   background: linear-gradient(to bottom, rgba(255, 255, 255, 0.75), rgb(255, 255, 255, 1));
-  padding: 15px 15px 35px 15px;
+  padding-top: 20px;
   width: 100%;
   text-align: center;
   margin: 0;
   justify-content: center;
-  align-items: center;
 }
+
 .fixed-button {         // Assurez-vous qu'il soit au-dessus des autres éléments
   border-radius: 10px;
   background-color: #ffad00 !important;
   color: #1e1e1e !important;
-  padding: 12px;
+  padding: 7px;
+  margin-bottom: 20px;
+  width: 45%;
 }
 
 .full-width {
   width: 100%;
 }
 
-label{
-  font-weight: 600;
-  font-size: 18px;
-  color: black;
-  margin-top: 5px;
-}
-
-input, select {
-  padding: 18px;
-}
-
-input::placeholder {
-  color: gray;
-  font-size: 16px;
-  opacity: 0.8;
-}
-
-select option[value=""] {
-  color: gray !important;
-}

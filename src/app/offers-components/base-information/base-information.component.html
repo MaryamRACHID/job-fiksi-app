@@ -1,44 +1,39 @@
-<<<<<<< HEAD
-<p>base-information works!</p>
-=======
 <div class="post-container">
   <app-header/>
-
-  <div>
-    <p class="subtitle-1">Informations de base</p>
-    <div class="row mt-4">
-      <div class="col-12">
-        <label for="namePost" class="form-label">Nom du poste *</label>
-        <input type="text" class="form-control" id="namePost" placeholder="Ecrivez l’intitulé du poste">
-      </div>
+  <p class="title-page">Informations de base</p>
+  <div class="row mt-4">
+    <div class="col-12">
+      <label for="namePost" class="form-label">Nom du poste *</label>
+      <input type="text" class="form-control" id="namePost" placeholder="Ecrivez l’intitulé du poste">
     </div>
+  </div>
 
-    <div class="row mt-4">
-      <div class="col-12">
-        <label for="nameRestaurant" class="form-label">Nom du restaurant *</label>
-        <input type="text" class="form-control" id="nameRestaurant" placeholder="Ecrivez le nom du restaurant *">
-      </div>
+  <div class="row mt-4">
+    <div class="col-12">
+      <label for="nameRestaurant" class="form-label">Nom du restaurant *</label>
+      <input type="text" class="form-control" id="nameRestaurant" placeholder="Ecrivez le nom du restaurant *">
     </div>
+  </div>
 
-    <div class="row mt-4">
-      <div class="col-12">
-        <label for="city" class="form-label">Lieu *</label>
-        <input type="text" class="form-control" id="city" placeholder="Ecrivez le lieu de poste">
-      </div>
+  <div class="row mt-4">
+    <div class="col-12">
+      <label for="city" class="form-label">Lieu *</label>
+      <input type="text" class="form-control" id="city" placeholder="Ecrivez le lieu de poste">
     </div>
+  </div>
 
-    <div class="row mt-4 mb-3">
-      <div class="col-12 custom-dropdown">
-        <label for="typeRestaurant" class="form-label">Type du restaurant</label>
-        <input
-          id="typeRestaurant"
-          type="text"
-          class="form-control"
-          placeholder="Type restaurant..."
-        />
-      </div>
+  <div class="row mt-4 mb-3">
+    <div class="col-12 custom-dropdown position-relative">
+      <label for="typeRestaurant" class="form-label">Type du restaurant</label>
+      <select id="typeRestaurant" class="form-control">
+        <option value="" disabled selected>Sélectionnez un type...</option>
+        <option *ngFor="let type of restaurantTypes" [value]="type">{{ type }}</option>
+      </select>
+      <i class="fa fa-chevron-down position-absolute chevron-icon"></i>
     </div>
+  </div>
 
+  <div class="button-container">
+    <button (click)="goToNextStep()" class="fixed-button btn btn-primary full-width">Continuer</button>
   </div>
 </div>
->>>>>>> 268b66c (feat: offres)

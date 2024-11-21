@@ -1,0 +1,99 @@
+.post-container {
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  padding: 30px 20px 150px 20px;
+}
+
+.custom-dropdown {
+  position: relative;
+}
+
+.chevron-icon {
+  position: absolute;
+  right: 25px; /* Ajustez la valeur selon votre design */
+  top: 73%;
+  transform: translateY(-50%);
+  pointer-events: none; /* Empêche l'icône d'être cliquable */
+  color: #ccc; /* Couleur du chevron */
+}
+
+label{
+  font-weight: 600;
+  font-size: 18px;
+  color: black;
+}
+
+.form-check-label{
+  font-size: 15px;
+}
+
+input, select {
+  padding: 10px;
+}
+.form-check-input{
+  padding: 1px !important;
+}
+
+input::placeholder {
+  color: gray;
+  font-size: 16px;
+  opacity: 0.8;
+}
+
+select option[value=""] {
+  color: gray !important;
+}
+
+.button-container {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.75), rgb(255, 255, 255, 1));
+  padding: 15px 15px 35px 15px;
+  width: 100%;
+  text-align: center;
+  margin: 0;
+  justify-content: center;
+  align-items: center;
+}
+
+.fixed-button {         // Assurez-vous qu'il soit au-dessus des autres éléments
+  border-radius: 10px;
+  background-color: #ffad00 !important;
+  color: #1e1e1e !important;
+  padding: 12px;
+  width: 48%;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.input-container {
+  position: relative;
+  flex-grow: 1; /* S'assure que l'input prend tout l'espace restant */
+}
+
+/* Icône de calendrier */
+.calendar-icon {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #d7d7d7; /* Couleur de l'icône */
+  pointer-events: none;
+  font-size: 28px; /* Taille de l'icône */
+}
+
+/* Alignement du label et input */
+.form-label {
+  white-space: nowrap; /* Empêche le retour à la ligne */
+  margin-bottom: 0; /* Supprime la marge inférieure */
+  font-weight: 600;
+  font-size: 16px;
+  color: black;
+}
+

@@ -26,10 +26,6 @@
         <input type="password" class="form-control" id="password-connexion" placeholder="Entrez votre mot de passe" formControlName="passwordConnexion" required>
         <div *ngIf="loginForm.get('passwordConnexion')?.invalid && loginForm.get('passwordConnexion')?.touched">
           <div *ngIf="loginForm.get('passwordConnexion')?.hasError('required')">Le mot de passe est requis.</div>
-<<<<<<< HEAD
-=======
-          <div *ngIf="loginForm.get('passwordConnexion')?.hasError('minlength')">Le mot de passe doit avoir au moins 12 caractères.</div>
->>>>>>> 477d814 (fix: login-register-fields-validator)
         </div>
       </div>
 
@@ -40,19 +36,11 @@
         </div>
         <a href="#" class="forgot-password">Mot de passe oublié ?</a>
       </div>
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
       <a href="" class="forgot-password" (click)="goToPassword($event)">Mot de passe oublié ?</a>
-    </div>
->>>>>>> bff730fc0b41400463910d00e616cd81c235f1ae
-=======
->>>>>>> 477d814 (fix: login-register-fields-validator)
 
       <button type="submit" class="btn btn-primary full-width" [disabled]="loginForm.invalid">Me connecter</button>
     </form>
   </div>
-
   <!-- Inscription Formulaire -->
   <div *ngIf="currentToggle === 'inscription'">
     <form [formGroup]="inscriptionForm" (ngSubmit)="onInscriptionSubmit()">
@@ -66,7 +54,6 @@
       </div>
 
       <div class="form-group">
-<<<<<<< HEAD
         <label for="password-inscription">Mot de passe</label>
         <input type="password" class="form-control" id="password-inscription" placeholder="Créez un mot de passe" formControlName="passwordInscription" required>
         <div *ngIf="inscriptionForm.get('passwordInscription')?.invalid && inscriptionForm.get('passwordInscription')?.touched">
@@ -78,30 +65,6 @@
       </div>
 
 
-=======
-        <label for="passwordInscription">Mot de passe</label>
-        <input type="password" id="passwordInscription" class="form-control" formControlName="passwordInscription" placeholder="Créez un mot de passe" required>
-
-        <!-- Erreurs spécifiques pour le mot de passe -->
-        <div *ngIf="inscriptionForm.get('passwordInscription')?.hasError('noUppercase')">
-          Le mot de passe doit contenir au moins une majuscule.
-        </div>
-
-        <div *ngIf="inscriptionForm.get('passwordInscription')?.hasError('noNumber')">
-          Le mot de passe doit contenir au moins un chiffre.
-        </div>
-
-        <div *ngIf="inscriptionForm.get('passwordInscription')?.hasError('noSpecialChar')">
-          Le mot de passe doit contenir un caractère spécial
-        </div>
-
-        <div *ngIf="inscriptionForm.get('passwordInscription')?.hasError('tooShort')">
-          Le mot de passe doit contenir au moins 12 caractères.
-        </div>
-      </div>
-
-
->>>>>>> 477d814 (fix: login-register-fields-validator)
       <div class="form-group">
         <label for="confirm-password">Confirmer le mot de passe</label>
         <input type="password" class="form-control" id="confirm-password" placeholder="Confirmez le mot de passe" formControlName="confirmPassword" required>

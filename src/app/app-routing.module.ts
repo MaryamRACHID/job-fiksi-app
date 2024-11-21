@@ -14,6 +14,16 @@ import { AccueilRestaurantComponent } from './pages/accueil-restau/accueil-resta
 import {FirstPageComponent} from './pages/first-page/first-page.component';
 import {SplashScreenComponent} from './pages/splash-screen/splash-screen.component';
 import {BaseInformationComponent} from './offers-components/base-information/base-information.component';
+import {JobInformationComponent} from './offers-components/job-information/job-information.component';
+import {PrerequisitesComponent} from './offers-components/prerequisites/prerequisites.component';
+import {ChooseSlotComponent} from './offers-components/choose-slot/choose-slot.component';
+import {JobAvantagesComponent} from './offers-components/job-avantages/job-avantages.component';
+import {InterviewSlotsComponent} from './offers-components/interview-slots/interview-slots.component';
+import {JobPageComponent} from './offers-components/job-page/job-page.component';
+import {SucceedPageComponent} from './offers-components/succeed-page/succeed-page.component';
+import {MessagesListComponent} from './messagerie/messages-list/messages-list.component';
+import {ChatComponent} from './messagerie/chat/chat.component';
+import {NoMessagesComponent} from './messagerie/no-messages/no-messages.component';
 
 export const routes: Routes = [
   { path: '', component: FirstPageComponent },
@@ -30,6 +40,18 @@ export const routes: Routes = [
   { path: 'password', component: SecuriteComponent },
   { path: 'documents', component: DocumentListComponent },
   { path: 'addPost/base', component: BaseInformationComponent, data: { title: 'Ajouter un poste' }},
+  { path: 'addPost/jobInformation', component: JobInformationComponent, data: { title: 'Ajouter un poste' }},
+  { path: 'addPost/prerequisites', component: PrerequisitesComponent, data: { title: 'Ajouter un poste' }},
+  { path: 'addPost/interviewSlots', component: InterviewSlotsComponent, data: { title: 'Ajouter un poste' }},
+  { path: 'addPost/chooseSlot', component: ChooseSlotComponent, data: { title: 'Ajouter un poste' }},
+  { path: 'addPost/jobAvantages', component: JobAvantagesComponent, data: { title: 'Ajouter un poste' }},
+  { path: 'addPost/jobPage', component: JobPageComponent, data: { title: 'Ajouter un poste' }},
+  { path: 'addPost/succeed', component: SucceedPageComponent, data: { title: 'Ajouter un poste' }},
+
+  { path: 'msg', component: MessagesListComponent },
+  { path: 'msgg', component: ChatComponent },
+  { path: 'msggg', component: NoMessagesComponent },
+
 
   { path: '**', redirectTo: '' }, // Redirection vers l'accueil pour les routes inconnues
 

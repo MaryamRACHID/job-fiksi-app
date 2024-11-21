@@ -12,6 +12,9 @@ import {FilterComponent} from './filter/filter.component';
 import {JobListComponent} from './job-list/job-list.component';
 import {JobDetailsComponent} from './job-details/job-details.component';
 import {SearchBarComponent} from './search-bar/search-bar.component';
+import {ChooseSlotComponent} from './choose-slot/choose-slot.component';
+import {JobAvantagesComponent} from './job-avantages/job-avantages.component';
+import {JobPageComponent} from './job-page/job-page.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +22,9 @@ import {SearchBarComponent} from './search-bar/search-bar.component';
     JobInformationComponent,
     PrerequisitesComponent,
     InterviewSlotsComponent,
+    ChooseSlotComponent,
+    JobAvantagesComponent,
+    JobPageComponent,
     FilterComponent,
     JobListComponent,
     JobDetailsComponent,
@@ -29,6 +35,9 @@ import {SearchBarComponent} from './search-bar/search-bar.component';
     JobInformationComponent,
     PrerequisitesComponent,
     InterviewSlotsComponent,
+    ChooseSlotComponent,
+    JobAvantagesComponent,
+    JobPageComponent,
     FilterComponent,
     JobListComponent,
     JobDetailsComponent,

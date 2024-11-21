@@ -1,1 +1,31 @@
-<p>interview-slots works!</p>
+<div class="post-container">
+  <app-header />
+  <p class="title-page">Créneaux pour un entretien</p>
+  <p class="title mt-4 mb-5">Sélectionner des dates</p>
+  <div class="row mt-4 mb-3" *ngFor="let slot of slots; let i = index">
+    <div class="col-12 position-relative d-flex align-items-center">
+      <!-- Label -->
+      <label for="slot-{{ i }}" class="form-label me-3">
+        Créneau {{ i + 1 }}
+      </label>
+
+      <!-- Input avec icône -->
+      <div class="input-container position-relative flex-grow-1">
+        <input
+          id="slot-{{ i }}"
+          type="text"
+          class="form-control"
+          [value]="slot"
+          (click)="editSlot(i)"
+          readonly
+        />
+        <i class="fa fa-calendar position-absolute calendar-icon fw-lighter"></i>
+      </div>
+    </div>
+  </div>
+  <!-- Navigation Buttons -->
+  <div class="button-container row">
+    <button (click)="goToPreviousStep()" class="btn fixed-button btn-primary col-5 me-2">Précédent</button>
+    <button (click)="goToNextStep()" class="btn fixed-button btn-primary col-5">Continuer</button>
+  </div>
+</div>

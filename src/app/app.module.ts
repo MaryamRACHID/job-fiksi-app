@@ -13,11 +13,11 @@ import { MaterialModule } from './material.module';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import {MessagerieModule} from './messagerie/messagerie.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-     // Déclaration du composant racine
   ],
   imports: [
     BrowserModule,
@@ -25,6 +25,7 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
     AppRoutingModule, // Import du module de routage principal
     SharedModule, // Module partagé (importé pour les composants/utilitaires partagés)
     PagesModule, // Module des pages principales
+    MessagerieModule,
     OffersComponentsModule, // Module pour les composants d'offres
     ProfileComponentsModule, // Module pour les composants de profil
     MaterialModule, // Module pour Angular Material

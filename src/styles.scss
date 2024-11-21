@@ -42,6 +42,7 @@ a:focus {
 
 /* Éléments input */
 input:focus,
+select:focus,
 textarea:focus{
   border-color: var(--primary) !important; /* Bordure personnalisée au focus */
   box-shadow: 0 0 0 0.2rem rgba(255, 174, 0, 0.5) !important; /* Ombre au focus */
@@ -79,6 +80,12 @@ label{
 
 .title{
   font-weight: 600;
+}
+
+.title-page{
+  font-size: 24px;
+  font-weight: 600;
+  margin-top: 6%;
 }
 
 .subtitle-1{
@@ -151,7 +158,6 @@ input[type="radio"]{
   width: 100%;
   text-align: justify;
 }
-
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
