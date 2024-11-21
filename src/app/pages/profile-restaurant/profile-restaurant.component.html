@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<div class="header">
+  <mat-toolbar color="primary" class="toolbar">
+    <button mat-icon-button>
+      <mat-icon>arrow_back</mat-icon>
+    </button>
+    <span class="company_name"> Burger King </span>
+    <span class="spacer"></span>
+    <button mat-icon-button>
+      <mat-icon>share</mat-icon>
+    </button>
+    <button mat-icon-button>
+      <mat-icon>settings</mat-icon>
+    </button>
+    <button mat-icon-button *ngIf="showButtonEdit" (click)="onTabEdit()">
+      <mat-icon>edit</mat-icon>
+    </button>
+  </mat-toolbar>
+  <div class="logo"></div>
+</div>
+
+<!-- <mat-tab-group (selectedtabchange)="onTabChange($event)">
+  <mat-tab label="Mes informations personnelles" class="custum"></mat-tab>
+  <mat-tab label="Mes offres" class="custum"></mat-tab>
+  <mat-tab label="Mon planning" class="custum">
+  </mat-tab>
+</mat-tab-group> -->
+
+<mat-tab-group (selectedTabChange)="onTabChange($event)">
+  <mat-tab label="Mes informations personnelles" class="custum"></mat-tab>
+  <mat-tab label="Mes offres" class="custum"></mat-tab>
+  <mat-tab label="Mon planning" class="custum"></mat-tab>
+</mat-tab-group>
+
+
+<!-- ///////////// EDIT PROFIL //////////////////////// -->
+<!-- <div class="editInfosSection" *ngIf="showEditSection">
+  <app-modifier-infos-restaurant [infos]="RestaurantInfos" (cancelEdit)="handleCancel()"></app-modifier-infos-restaurant>
+</div> -->
+
+<!-- /////////////////// RESTAURANT INFOS ///////////////////// -->
+<div class="restaurantInfos" *ngIf="showInfos && !showOffreSection">
+  <app-restaurant-infos [infos]="RestaurantInfos"></app-restaurant-infos>
+</div>
+
+<!-- ////////////////////////AFFICHAGE OFFRE EMPLOI ////////////////////////////// -->
+<div class="contentOffre" *ngIf="showTitle && !showOffreSection">
+  <h2>Mes offres d'emplois</h2>
+  <button class="addOffre" type="button" id="addOffre">Ajouter une offre</button>
+<div *ngFor="let job of jobList">
+  <app-offre-description [job]="job" *ngIf="!job.show"
+    (viewCandidatures)="viewJobApplications(job)"></app-offre-description>
+</div>
+<button class="postOffre" type="button">Publier une offre d'emploi</button>
+</div>
+
+<!-- ///////////////////////// AFFICHAGE CANDIDATURES //////////////////////////////////// -->
+<div *ngFor="let job of jobList">
+<div class="contentOffre" *ngIf="job.show && showOffreSection && showTitle">
+  <div class="candidature-header">
+    <span class="back-arrow" (click)="backToJobList()">←</span>
+    <h2 class="candidature-title">Candidatures pour {{ job.title }}</h2>
+  </div>
+      <div *ngFor="let candidate of job.candidatures">
+        <app-candidat-description [candidate]="candidate"></app-candidat-description>
+      </div>
+
+  </div>
+
+</div>
+
+<!-- /////////////////////////////////// AFFICHAGE PLANNING ///////////////////////////////////// -->
+<div class="contentPlanning" *ngIf="showPlanning">
+  <app-planning *ngIf="showPlanning" [jobList]="jobList"></app-planning>
+</div>
+

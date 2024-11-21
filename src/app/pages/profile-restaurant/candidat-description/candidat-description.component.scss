@@ -1,0 +1,144 @@
+.poste-container{
+  width: 300px;
+  // height: 15rem;
+  margin: 10px;
+  background-color: #e7e2e257;
+  border: 1px solid #ffffff;
+  box-shadow: 1rem 1rem 1rem 1rem rgb(245, 243, 243);
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+
+.poste-header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.2rem;
+  background-color: #e7e2e257;
+  font-weight: 500;
+}
+
+.poste-description {
+  padding: 10px;
+  background-color: #e7e2e257;
+  justify-items: center;
+}
+.contentOffre h2{
+  margin: 1rem;
+}
+.table-infos{
+  display: flex;
+  flex-direction: row;
+}
+.icon-edit{
+  font-size: 1rem;
+  color: #f7b11c;
+  margin: 0;
+  padding: 0;
+}
+.btn-edit{
+  padding: 0;
+  margin: 0;
+  // background-color: aqua;
+}
+
+.table-items{
+  display: flex;
+  flex-direction: column;
+}
+
+.table-infos p, .table-items p, .table-items a{
+  font-size: 0.8rem;
+}
+.table-items:nth-child(1) p{
+ font-weight: bold;
+}
+.button-modif{
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  margin-top: 1rem;
+}
+.button-modif button{
+  background-color: #f7b11c;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  border-color: transparent;
+  font-size: 0.6rem;
+}
+.poste-description .worning{
+  font-size: 0.5rem;
+}
+.dialog-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+
+.worning {
+  color: red;
+  font-style: italic;
+}
+
+// ########################
+//pop up
+.popup-statut
+{
+  margin: auto;
+  padding: auto;
+}
+
+.popup-title{
+  font-size: 0.9rem;
+  // color: #f7b11c;
+  margin: auto;
+  margin-left: 1rem;
+  margin-top: 1.5rem;
+}
+
+.items{
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  margin: auto;
+  margin-left: 1rem;
+  margin-bottom: 1rem;
+}
+
+.dialog-actions{
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  // width: 100%;
+  margin: auto;
+  margin-bottom: 1rem;
+  margin-top: 0.8rem;
+}
+.dateEntretien{
+  justify-content: center;
+  justify-items: center;
+  text-align: center;
+  border-radius: 0.8rem;
+  font-weight: 500;
+}
+
+.popup-button{
+  background-color: #f7b11c;
+  padding: 0.1rem 1.8rem;
+  border-radius: 5px;
+  border-color: transparent;
+  font-size: 0.6rem;
+  color: #000;
+}
+
+.plage-horaire{
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  justify-content: center;
+  justify-items: center;
+  margin: 1rem;
+  margin-bottom: 0.4rem;
+}

@@ -30,6 +30,18 @@ import { ProfileCandidatComponent } from './profile-candidat/profile-candidat.co
 import { ProfileCandidatVuRecruteurComponent } from './profile-candidat/profile-candidat-vu-recruteur/profile-candidat-vu-recruteur.component';
 import { ModifierProfileCandidatComponent } from './profile-candidat/modifier-profile-candidat/modifier-profile-candidat.component';
 import { ButtonContactCandidatComponent } from './profile-candidat/button-contact-candidat/button-contact-candidat.component';
+import { ProfileRestaurantComponent } from './profile-restaurant/profile-restaurant.component';
+import { MatTabChangeEvent } from '@angular/material/tabs';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatDialogModule } from '@angular/material/dialog';
+import { RestaurantInfosComponent } from './profile-restaurant/restaurant-infos/restaurant-infos.component';
+import { OffreDescriptionComponent } from './profile-restaurant/offre-description/offre-description.component';
+import { CandidatDescriptionComponent } from './profile-restaurant/candidat-description/candidat-description.component';
+
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { PlanningComponent } from './profile-restaurant/planning/planning.component';
+import { MatCalendarCellClassFunction } from '@angular/material/datepicker';
 
 @NgModule({
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
@@ -45,7 +57,12 @@ import { ButtonContactCandidatComponent } from './profile-candidat/button-contac
     ProfileCandidatComponent,
     ProfileCandidatVuRecruteurComponent,
     ModifierProfileCandidatComponent,
-    ButtonContactCandidatComponent
+    ButtonContactCandidatComponent,
+    ProfileRestaurantComponent,
+    RestaurantInfosComponent,
+    OffreDescriptionComponent,
+    CandidatDescriptionComponent,
+    PlanningComponent
   ],
   exports: [
     LoginComponent,
@@ -59,7 +76,11 @@ import { ButtonContactCandidatComponent } from './profile-candidat/button-contac
     ProfileCandidatComponent,
     ProfileCandidatVuRecruteurComponent,
     ModifierProfileCandidatComponent,
-    ButtonContactCandidatComponent
+    ProfileRestaurantComponent,
+    RestaurantInfosComponent,
+    OffreDescriptionComponent,
+    CandidatDescriptionComponent,
+    PlanningComponent
   ],
   imports: [
     CommonModule,
@@ -80,7 +101,15 @@ import { ButtonContactCandidatComponent } from './profile-candidat/button-contac
     MatCardModule,
     ProfileComponentsModule,
     ReactiveFormsModule,
-    OffersComponentsModule
-  ]
+    OffersComponentsModule,
+    MatTabsModule,
+    MatRadioModule,
+    MatDialogModule,
+    MatDatepickerModule,
+    MatNativeDateModule
+  ],
+  providers: [
+    MatDatepickerModule, // Nécessaire pour fournir le service du datepicker
+  ],
 })
 export class PagesModule {}

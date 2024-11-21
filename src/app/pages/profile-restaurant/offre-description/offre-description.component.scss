@@ -1,0 +1,90 @@
+
+.poste-container{
+  width: 300px;
+  // height: 15rem;
+  margin: 10px;
+  border: 1px solid #ffffff;
+  box-shadow: 1rem 1rem 1rem 1rem rgb(245, 243, 243);
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.poste-header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.2rem;
+  background-color: #e7e2e257;
+  font-weight: 500;
+}
+
+.poste-description {
+  padding: 10px;
+  background-color: #e7e2e257;
+  justify-items: center;
+}
+
+.arrow-down::before,
+.arrow-up::before {
+  content: '⮟';
+  font-size: 1.2em;
+  color: #333;
+}
+
+.arrow-up::before {
+  content: '▲';
+}
+.contentOffre h2{
+  margin: 1rem;
+}
+.table-infos{
+  display: flex;
+  flex-direction: row;
+}
+
+
+.table-items{
+  display: flex;
+  flex-direction: column;
+}
+
+.table-infos p, .table-items p{
+  font-size: 0.8rem;
+}
+.table-items:nth-child(1) p{
+ font-weight: bold;
+}
+
+.table-items a{
+  // text-decoration: none;
+  color: #f7b11c;
+  font-weight: bold;
+}
+.button-modif{
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  margin-top: 1rem;
+}
+.button-modif button{
+  background-color: #f7b11c;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  border-color: transparent;
+}
+
+.header-title{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  margin-top: 3rem;
+}
+.header-title h2{
+  font-size: 1rem;
+}
+.back-arrow {
+  margin-right: 10px;
+  font-size: 1.2em;
+  cursor: pointer;
+}
