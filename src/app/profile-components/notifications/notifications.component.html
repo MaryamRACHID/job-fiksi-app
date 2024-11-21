@@ -1,1 +1,57 @@
-<p>notifications works!</p>
+<h2 class="title">Complétez votre profil</h2>
+
+<p class="subtitle-1">Notifications</p>
+<p>être alerté des offres disponible près de chez vous ?</p>
+
+<div class="form-group mt-2">
+  <div class="d-flex justify-content-center align-items-center check-exp">
+    <div class="form-check me-3 text-center">
+      <input
+        type="radio"
+        id="yesNotifications"
+        name="notifications"
+        class="form-check-input"
+        [(ngModel)]="notificationsPreference"
+        [value]="'yes'" />
+      <label class="form-check-label" for="yesNotifications">Oui</label>
+    </div>
+    <div class="form-check text-center">
+      <input
+        type="radio"
+        id="noNotifications"
+        name="notifications"
+        class="form-check-input"
+        [(ngModel)]="notificationsPreference"
+        [value]="'no'" />
+      <label class="form-check-label" for="noNotifications">Non</label>
+    </div>
+  </div>
+</div>
+
+<p class="subtitle-1">Autres</p>
+<p>Souhaitez-vous rendre votre profil public ?</p>
+
+<div class="form-group mt-2">
+  <div class="d-flex justify-content-center align-items-center check-exp">
+    <div class="form-check me-3 text-center">
+      <input
+        type="radio"
+        id="yesPublicProfile"
+        name="publicProfile"
+        class="form-check-input"
+        [(ngModel)]="publicProfile"
+        [value]="'yes'" />
+      <label class="form-check-label" for="yesPublicProfile">Oui</label>
+    </div>
+    <div class="form-check text-center">
+      <input
+        type="radio"
+        id="noPublicProfile"
+        name="publicProfile"
+        class="form-check-input"
+        [(ngModel)]="publicProfile"
+        [value]="'no'" />
+      <label class="form-check-label" for="noPublicProfile">Non</label>
+    </div>
+  </div>
+</div>

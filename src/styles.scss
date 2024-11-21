@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /* You can add global styles to this file, and also import other style files */
 @import '@angular/material/prebuilt-themes/indigo-pink.css';
 
@@ -7,3 +8,133 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+=======
+/* styles.css */
+
+/* Personnaliser la couleur primaire de Bootstrap */
+:root {
+  --primary: #ffae00; /* Couleur jaune personnalisée */
+  --primary-hover: #e09e00; /* Couleur pour l'état hover */
+  --primary-active: #c68e00; /* Couleur pour l'état active */
+  --primary-focus: #b58d00; /* Couleur pour l'état focus */
+}
+
+/* Exemple de style pour le bouton primaire */
+.btn-primary {
+  background-color: var(--primary) !important;
+  border-color: var(--primary) !important;
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-hover) !important; /* Couleur au survol */
+}
+
+.btn-primary:active {
+  background-color: var(--primary-active) !important; /* Couleur active */
+  border-color: var(--primary-active) !important;
+}
+
+.btn-primary:focus {
+  box-shadow: 0 0 0 0.2rem rgba(255, 174, 0, 0.5) !important; /* Ombre personnalisée au focus */
+}
+
+/* Styles pour les liens */
+a {
+  color: var(--primary) !important; /* Couleur des liens */
+}
+
+a:hover {
+  color: var(--primary-hover) !important; /* Couleur au survol */
+}
+
+a:focus {
+  color: var(--primary-focus) !important; /* Couleur au focus */
+}
+
+/* Éléments input */
+input:focus,
+textarea:focus {
+  border-color: var(--primary) !important; /* Bordure personnalisée au focus */
+  box-shadow: 0 0 0 0.2rem rgba(255, 174, 0, 0.5) !important; /* Ombre au focus */
+}
+
+input::placeholder{
+  color: #b9b9b9;
+}
+
+/* Autres styles globaux */
+body {
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background-color: #f8f9fa; /* Couleur de fond */
+}
+
+.container {
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.form-group{
+  margin-bottom: 20px;
+}
+
+label{
+  margin-bottom: 3%;
+  color: #8c8c8c;
+}
+
+.btn-primary{
+  margin-top: 5%;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.title{
+  font-weight: 600;
+}
+
+.subtitle-1{
+  font-size: 16px;
+  font-weight: 700;
+  margin-top: 10%;
+}
+
+.subtitle-2{
+  font-size: 14px;
+  color: #8c8c8c;
+}
+
+.form-control::placeholder{
+  color: #ffad00;
+}
+
+/* styles.scss ou dans le fichier CSS global de votre projet */
+
+input[type="checkbox"] {
+  /* Utilisez accent-color pour changer la couleur de la case à cocher */
+  accent-color: #eeae00; /* Changez cette couleur par votre couleur principale */
+
+  /* Optionnel : Si vous souhaitez personnaliser davantage l'apparence */
+  appearance: none; /* Supprime le style par défaut */
+  width: 20px; /* Largeur personnalisée */
+  height: 20px; /* Hauteur personnalisée */
+  border: 2px solid #eeae00; /* Couleur de la bordure */
+  border-radius: 7px; /* Coins arrondis */
+
+  &:checked {
+    background-color: #eeae00; /* Couleur d'arrière-plan lorsque sélectionné */
+    border: 2px solid #eeae00; /* Couleur de la bordure */
+    border-radius: 5px; /* Coins arrondis */
+  }
+}
+
+input[type="radio"]{
+  /* Utilisez accent-color pour changer la couleur de la case à cocher */
+  accent-color: #eeae00;
+  appearance: none; /* Supprime le style par défaut */
+  border: 2px solid #eeae00; /* Couleur de la bordure */
+  &:checked {
+    background-color: #eeae00; /* Couleur d'arrière-plan lorsque sélectionné */
+    border: 2px solid #eeae00; /* Couleur de la bordure */
+  }
+}
+>>>>>>> 166d589d120ad970d479fd813bbb51f86d9c5763

@@ -1,0 +1,43 @@
+<h2 class="title">Complétez votre profil</h2>
+<p class="subtitle-1">Préférences professionnelles</p>
+
+<div class="job-preferences">
+  <p>Type de poste recherché</p>
+  <div class="d-flex flex-wrap">
+    <div class="form-check me-4 mb-3 mt-2 d-flex justify-content-center align-items-center"> <!-- Ajoutez 'mb-3' pour la marge en bas -->
+      <input type="checkbox" class="form-check-input me-2" [(ngModel)]="jobPreferences.server">
+      <label class="form-check-label">Serveur</label>
+    </div>
+    <div class="form-check me-4 mb-3 mt-2 d-flex justify-content-center align-items-center">
+      <input type="checkbox" class="form-check-input me-2" [(ngModel)]="jobPreferences.cook">
+      <label class="form-check-label">Cuisinier</label>
+    </div>
+    <div class="form-check me-4 mb-3 mt-2 d-flex justify-content-center align-items-center">
+      <input type="checkbox" class="form-check-input me-2" [(ngModel)]="jobPreferences.dishwasher">
+      <label class="form-check-label">Plongeur</label>
+    </div>
+    <div class="form-check me-4 mb-3 mt-2 d-flex justify-content-center align-items-center">
+      <input type="checkbox" class="form-check-input me-2" [(ngModel)]="jobPreferences.other">
+      <label *ngIf="!jobPreferences.other" class="form-check-label">Autre</label>
+      <div *ngIf="jobPreferences.other" class=""> <!-- Ajoutez une marge en haut pour séparer l'input -->
+        <input type="text" [(ngModel)]="jobPreferences.otherType" placeholder="Autre" class="form-control input-autre">
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="location-preference mt-4">
+  <label>Préférence de lieu</label>
+  <input type="text" class="form-control" [(ngModel)]="locationPreference" placeholder="Ex: Paris">
+</div>
+
+<div class="salary-preference mt-4">
+  <p>Préférence de salaire</p>
+  <ngx-slider
+    [(value)]="salaryPreference.min"
+    [(highValue)]="salaryPreference.max"
+    [options]="salarySliderOptions">
+  </ngx-slider>
+  <div class="salary-range">
+  </div>
+</div>

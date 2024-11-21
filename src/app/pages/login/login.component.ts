@@ -4,19 +4,18 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrl: './login.component.scss'
+  styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent {
+  currentToggle: string = 'inscription'; // Valeur par défaut
+
   constructor(private router: Router) {}
-  goToHome() {
-    this.router.navigate(['/home']);
+
+  goToProfil() {
+    this.router.navigate(['/profil']);
   }
 
-  switchToRegister(event: Event) {
-    event.preventDefault();
-    const group = document.querySelector('mat-button-toggle-group');
-    if (group) {
-      group.setAttribute('value', 'inscription');
-    }
+  setToggle(value: string) {
+    this.currentToggle = value;
   }
 }

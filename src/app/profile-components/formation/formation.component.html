@@ -1,0 +1,48 @@
+<h2 class="title">Complétez votre profil</h2>
+<p class="subtitle-1">Formation</p>
+
+<div class="form-group">
+  <label for="educationLevel">Dernier niveau de formation</label>
+  <select class="form-control" id="educationLevel" [(ngModel)]="education.level">
+    <option value="Bac" selected>Bac</option>
+    <option *ngFor="let level of educationLevels" [value]="level">{{ level }}</option>
+  </select>
+</div>
+
+<p>Diplômes ou certifications en lien avec la restauration</p>
+
+<div *ngFor="let diploma of diplomas; let i = index" class="diploma mb-3">
+  <h5>Formation {{ i + 1 }}</h5>
+
+  <div class="form-group">
+    <label for="diplomaName{{i}}">Nom de la formation</label>
+    <input type="text" class="form-control" id="diplomaName{{i}}" [(ngModel)]="diploma.name" placeholder="Entrez le nom de la formation">
+  </div>
+
+  <div class="form-group">
+    <label for="institution{{i}}">Établissement</label>
+    <input type="text" class="form-control" id="institution{{i}}" [(ngModel)]="diploma.institution" placeholder="Entrez le nom de l'établissement">
+  </div>
+
+  <div class="form-group">
+    <label>Période *</label>
+    <div class="row">
+      <div class="col">
+        <label for="startDate{{i}}">Début</label>
+        <input type="date" class="form-control" id="startDate{{i}}" [(ngModel)]="diploma.startDate" placeholder="Sélectionnez une date">
+      </div>
+      <div class="col">
+        <label for="endDate{{i}}">Fin</label>
+        <input type="date" class="form-control" id="endDate{{i}}" [(ngModel)]="diploma.endDate" placeholder="Sélectionnez une date">
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Conteneur pour le bouton et le texte -->
+<div class="d-flex align-items-center justify-content-center mt-4 mb-4">
+  <!-- Bouton circulaire avec icône -->
+  <button class="btn btn-primary me-2 mt-0" (click)="addDiploma()" style="border-radius: 30%; width: 25px; height: 25px; padding: 0;">
+    <i class="fa fa-plus" aria-hidden="true"></i>
+  </button>
+  <span class="text-dark" (click)="addDiploma()" style="cursor: pointer;">Ajouter une formation</span>
+</div>
