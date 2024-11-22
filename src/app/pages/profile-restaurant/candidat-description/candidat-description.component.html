@@ -66,19 +66,11 @@
     <button mat-button (click)="closeDialog()" class="popup-button">Annuler</button>
   </div>
 </ng-template>
-
 <!-- ///////////////////////////////pop up modif date entretien ///////////////////////////////////// -->
 <ng-template class="popup-dateEntretien" #editDialogEntretien>
   <h2 class="popup-title">Date et heure de l'entretien</h2>
-
   <!-- Plage d'horaire pour fixer la date d'entretien -->
   <div class="plage-horaire">
-    <!-- <mat-form-field appearance="fill">
-      <mat-label>Date de l'entretien</mat-label>
-      <input matInput [matDatepicker]="picker" [(ngModel)]="selectedDateEntretien">
-      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-      <mat-datepicker #picker></mat-datepicker>
-    </mat-form-field> -->
     <mat-form-field appearance="fill">
       <input matInput [matDatepicker]="picker" [(ngModel)]="selectedDateEntretien" placeholder="Choisissez une date">
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
@@ -90,12 +82,10 @@
       <input matInput type="time" [(ngModel)]="selectedTimeEntretien">
     </mat-form-field>
   </div>
-
   <!-- Statut de l'entretien -->
   <mat-radio-group class="radio" [(ngModel)]="selectedStatusEntretien">
     <mat-radio-button value="Entretien réalisé">Entretien réalisé</mat-radio-button>
   </mat-radio-group>
-
   <!-- Boutons d'action -->
   <div class="dialog-actions">
     <button mat-button (click)="updateStatus_entretien()" class="popup-button">Enregistrer</button>

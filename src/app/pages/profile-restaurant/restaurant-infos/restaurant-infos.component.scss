@@ -42,17 +42,25 @@ p{
   margin-top: 1.5rem;
   margin-bottom: 1rem;
 }
-// .advantages mat-chip {
-//   margin: 4px;
-//   background-color: #fbbc04;
-//   color: #fff;
-//   border: 2px solid #333;
-// }
-::ng-deep mat-chip.avant{
-  background-color: #f6bd1076 !important; /* Exemple de couleur de fond personnalisée */
-  color: white !important; /* Couleur du texte */
-  // font-size: 0.9rem; /* Taille de la police */
-  padding: 0 12px;
+
+.advantages-container {
+  display: flex;
+  gap: 1rem; /* Espacement entre les cartes */
+  flex-wrap: wrap;
+  // flex-direction: column;
+}
+
+.advantage-card {
+  background-color: #fff7db; /* Couleur de fond semblable au design */
+  color: #ff8c00; /* Couleur du texte */
+  padding: 0.6rem;
+  border-radius: 8px;
+  text-align: center;
+  font-size: 0.7rem;
+  font-weight: bold;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* Ombre légère */
+  cursor: pointer; /* Optionnel : rend les cartes cliquables */
+  margin-bottom: 1rem;
 }
 
 
@@ -210,4 +218,64 @@ p{
 // .candidature-title {
 //   font-weight: 500;
 // }
+
+.popup-statut
+{
+  margin: auto;
+  padding: auto;
+}
+
+.popup-title{
+  font-size: 0.9rem;
+  // color: #f7b11c;
+  margin: auto;
+  margin-left: 1rem;
+  margin-top: 1.5rem;
+}
+
+.items{
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  margin: auto;
+  margin-left: 1rem;
+  margin-bottom: 1rem;
+}
+
+.dialog-actions{
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  // width: 100%;
+  margin: auto;
+  margin-bottom: 1rem;
+  margin-top: 0.8rem;
+}
+.dateEntretien{
+  justify-content: center;
+  justify-items: center;
+  text-align: center;
+  border-radius: 0.8rem;
+  font-weight: 500;
+}
+
+.popup-button{
+  background-color: #f7b11c;
+  padding: 0.1rem 1.8rem;
+  border-radius: 5px;
+  border-color: transparent;
+  font-size: 0.6rem;
+  color: #000;
+}
+
+.plage-horaire{
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  justify-content: center;
+  justify-items: center;
+  margin: 1rem;
+  margin-bottom: 0.4rem;
+}
+
 

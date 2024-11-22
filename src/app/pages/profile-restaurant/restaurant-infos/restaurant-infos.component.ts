@@ -11,4 +11,5 @@ export class RestaurantInfosComponent {
   @Input()
   // infos!: { nomEntreprise: string; email: string, tel: string, adresse: string, typeRestaurant: string, description:string,avantages:[],siteInternet:string,linkdin:string};
   infos!:any;
+showPopupEditOffre: any;
 }

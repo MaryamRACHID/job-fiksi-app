@@ -21,9 +21,35 @@
     </div>
     <div class="button-modif">
       <button type="button">Supprimer</button>
-      <button type="button">Modifier</button>
+      <button type="button" (click)="showPopupEditOffre()">Modifier</button>
     </div>
   </div>
 </div>
 <!-- ################################################ -->
+
+
+<!-- ##########################modifier poste#############################"" -->
+<ng-template class="popup-dateEntretien" #editDialogEntretien>
+  <h2 class="popup-title">Modifier le poste</h2>
+  <div class="inputGroup">
+    <label>Poste *</label>
+    <input type="text"/>
+  </div>
+  <div class="inputGroup">
+    <label>Type de poste *</label>
+    <input type="text"/>
+  </div>
+  <div class="inputGroup">
+    <label>Lieu *</label>
+    <input type="text"/>
+  </div>
+  <div class="inputGroup">
+    <label>Nombre de candidature</label>
+    <input type="text" readonly/>
+  </div>
+  <div class="dialog-actions">
+    <button mat-button class="popup-button">Enregistrer</button>
+    <button mat-button class="popup-button">Annuler</button>
+  </div>
+</ng-template>
 

@@ -45,11 +45,6 @@ export class CandidatDescriptionComponent {
     this.closeDialog();
   }
 
-  // @Input() job!: { title: string; typePoste: string; lieu: string; nombreCandidature: string; datePublication: string; show: boolean; candidatures: { name: string; Cv: string; Email: string; Telephone: string; Disponibilite: string; _Statut: string; DateEntretien: string }[] };
-
-  // showCandidate: boolean = true;
-  // isOpen: any;
-
   @ViewChild('editDialogEntretien') editDialogEntretien!: TemplateRef<any>;
   selectedStatusEntretien: string = '';
   selectedDateEntretien: Date | null = null; // Variable pour la date d'entretien sélectionnée
@@ -77,7 +72,7 @@ export class CandidatDescriptionComponent {
       var date = this.selectedDateEntretien.toLocaleDateString(); // Formate la date
       const dateTime = `${date} ${this.selectedTimeEntretien}`; // Combine la date et l'heure
 
-      this.candidate.DateEntretien = date; // Met à jour la date et l'heure de l'entretien
+      this.candidate.DateEntretien = this.selectedDateEntretien.toLocaleDateString(); // Met à jour la date et l'heure de l'entretien
       this.candidate.HeureEntretien = this.selectedTimeEntretien;
     }
     this.candidate.DateEntretien = this.selectedStatusEntretien;

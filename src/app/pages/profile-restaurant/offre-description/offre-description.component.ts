@@ -1,15 +1,16 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output, TemplateRef, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ProfileRestaurantComponent } from '../profile-restaurant.component';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { Url } from 'url';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-offre-description',
   // standalone: true,
   // imports: [CommonModule, CandidatDescriptionComponent],
   templateUrl: './offre-description.component.html',
-  styleUrl: './offre-description.component.scss',
+  styleUrls: ['./offre-description.component.scss'],
   animations: [
     trigger('slideToggle', [
       state('void', style({ height: '0px', opacity: 0 })),
@@ -27,6 +28,9 @@ export class OffreDescriptionComponent {
   showOffre:boolean=true;
   candidate : any;
   @Output() viewCandidatures = new EventEmitter<void>();
+  showEditOffre: boolean = false;
+  @ViewChild('editDialogEntretien') editDialogEntretien!: TemplateRef<any>;
+  constructor(private dialog: MatDialog) {}
 
 showCandidatures() {
   this.viewCandidatures.emit(); // Émettre l'événement pour afficher les candidatures
@@ -42,5 +46,11 @@ showCandidatureContainer: any;
     this.showOffre = true;
 
     // this.backToOffers.emit();
+  }
+  editOffre(){}
+
+  showPopupEditOffre(){
+    this.dialog.open(this.editDialogEntretien);
+    console.log("test");
   }
 }
