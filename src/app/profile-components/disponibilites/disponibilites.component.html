@@ -6,6 +6,7 @@
   <div class="d-flex flex-wrap justify-content-center mt-4">
     <div class="form-check day-checkbox mx-auto" *ngFor="let day of days">
       <input
+        name="disponibilite"
         type="checkbox"
         class="form-check-input"
         [id]="day"
@@ -19,6 +20,7 @@
 <p>Plages horaires disponibles</p>
 <div class="form-check">
   <input
+    name="plage_horaire"
     type="checkbox"
     class="form-check-input"
     id="morning"
@@ -27,6 +29,7 @@
 </div>
 <div class="form-check">
   <input
+    name="plage_horaire"
     type="checkbox"
     class="form-check-input"
     id="afternoon"
@@ -35,6 +38,7 @@
 </div>
 <div class="form-check">
   <input
+    name="plage_horaire"
     type="checkbox"
     class="form-check-input"
     id="evening"

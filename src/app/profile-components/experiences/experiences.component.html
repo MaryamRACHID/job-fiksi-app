@@ -6,12 +6,12 @@
 
   <div class="form-group">
     <label for="jobTitle{{i}}">Poste occupé</label>
-    <input type="text" class="form-control" id="jobTitle{{i}}" [(ngModel)]="experience.title" placeholder="Entrez le nom du poste">
+    <input name="poste_occupe" type="text" class="form-control" id="jobTitle{{i}}" [(ngModel)]="experience.title" placeholder="Entrez le nom du poste">
   </div>
 
   <div class="form-group mt-4 mb-4">
     <label for="companyName{{i}}">Nom de la structure *</label>
-    <input type="text" class="form-control" id="companyName{{i}}" [(ngModel)]="experience.company" placeholder="Entrez le nom de la structure">
+    <input name="entreprise" type="text" class="form-control" id="companyName{{i}}" [(ngModel)]="experience.company" placeholder="Entrez le nom de la structure">
   </div>
 
   <div class="form-group">
@@ -21,7 +21,7 @@
         <label for="startDate{{i}}">Début</label>
       </div>
       <div class="col-9">
-        <input type="date" class="form-control" id="startDate{{i}}" [(ngModel)]="experience.startDate" placeholder="Sélectionnez une date">
+        <input name="date_debut" type="date" class="form-control" id="startDate{{i}}" [(ngModel)]="experience.startDate" placeholder="Sélectionnez une date">
       </div>
     </div>
     <div class="row">
@@ -29,7 +29,7 @@
         <label for="endDate{{i}}">Fin</label>
       </div>
       <div class="col-9">
-        <input type="date" class="form-control" id="endDate{{i}}" [(ngModel)]="experience.endDate" placeholder="Sélectionnez une date">
+        <input name="date_fin" type="date" class="form-control" id="endDate{{i}}" [(ngModel)]="experience.endDate" placeholder="Sélectionnez une date">
       </div>
     </div>
   </div>
@@ -46,14 +46,14 @@
 <label class="title mt-4">Langues parlées</label>
 <div class="form-group d-flex align-items-center">
   <div class="form-check me-3">
-    <input type="checkbox" class="form-check-input" id="french" [(ngModel)]="spokenLanguages.french">
+    <input name="langue" type="checkbox" class="form-check-input" id="french" [(ngModel)]="spokenLanguages.french">
     <label class="form-check-label" for="french">Français</label>
   </div>
   <div class="form-check me-3">
-    <input type="checkbox" class="form-check-input" id="english" [(ngModel)]="spokenLanguages.english">
+    <input name="langue" type="checkbox" class="form-check-input" id="english" [(ngModel)]="spokenLanguages.english">
     <label class="form-check-label" for="english">Anglais</label>
   </div>
   <div class="input-group">
-    <input type="text" class="form-control" id="otherLanguages" [(ngModel)]="spokenLanguages.other" placeholder="Autres langues">
+    <input name="langue" type="text" class="form-control" id="otherLanguages" [(ngModel)]="spokenLanguages.other" placeholder="Autres langues">
   </div>
 </div>

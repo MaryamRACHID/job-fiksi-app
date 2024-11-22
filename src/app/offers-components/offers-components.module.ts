@@ -16,6 +16,8 @@ import {ChooseSlotComponent} from './choose-slot/choose-slot.component';
 import {JobAvantagesComponent} from './job-avantages/job-avantages.component';
 import {JobPageComponent} from './job-page/job-page.component';
 import {SucceedPageComponent} from './succeed-page/succeed-page.component';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatNativeDateModule} from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -51,7 +53,9 @@ import {SucceedPageComponent} from './succeed-page/succeed-page.component';
     FormsModule,
     SharedModule,
     MaterialModule,
-    NgxSliderModule
+    NgxSliderModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ]
 })
 export class OffersComponentsModule { }

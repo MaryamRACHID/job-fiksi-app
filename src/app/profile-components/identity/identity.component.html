@@ -4,7 +4,7 @@
 <!-- Section pour la piece d'identité -->
 <div class="mb-4">
   <label class="form-label">Pièce d’identité</label>
-  <input type="file" class="d-none" #identityUploadInput (change)="onFileChange($event, 'identity')" />
+  <input name="identite" type="file" class="d-none" #identityUploadInput (change)="onFileChange($event, 'identity')" />
   <div class="custom-upload" (click)="identityUploadInput.click()">
     <i class="fa-solid fa-upload me-2"></i>
     <span>Ajouter une pièce d’identité (CNI, titre de séjour, ...)</span>
@@ -14,7 +14,7 @@
 <!-- Section pour la carte vitale -->
 <div class="mb-4">
   <label class="form-label">Carte vitale</label>
-  <input type="file" class="d-none" #vitaleUploadInput (change)="onFileChange($event, 'carteVitale')" />
+  <input name="carte_vitale" type="file" class="d-none" #vitaleUploadInput (change)="onFileChange($event, 'carteVitale')" />
   <div class="custom-upload" (click)="vitaleUploadInput.click()">
     <i class="fa-solid fa-upload me-2"></i>
     <span>Ajouter ma carte vitale</span>
@@ -25,7 +25,7 @@
 
 <div class="form-group mt-2">
   <label for="securiteSocial">Sécurité Social</label>
-  <input type="text" class="form-control" id="securiteSocial" placeholder="13 chiffres">
+  <input name="secu_social" type="text" class="form-control" id="securiteSocial" placeholder="13 chiffres">
 </div>
 
 

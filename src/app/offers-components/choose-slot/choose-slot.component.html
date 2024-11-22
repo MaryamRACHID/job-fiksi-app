@@ -1,19 +1,27 @@
 <div class="post-container">
-  <app-header/>
+  <app-header></app-header>
 
   <p class="subtitle-1">Créneaux pour un entretien</p>
+
+  <!-- Calendrier -->
   <div>
-    <label class="form-label">Sélectionner des dates</label>
-    <input type="date" class="form-control" [(ngModel)]="date" />
-    <label class="form-label mt-3">Début de l’entretien</label>
+    <label class="form-label">Sélectionner une date</label>
+    <mat-calendar [(selected)]="selectedDate"></mat-calendar>
+  </div>
+
+  <!-- Sélection des heures -->
+  <div class="mt-3">
+    <label class="form-label">Début de l’entretien</label>
     <input type="time" class="form-control" [(ngModel)]="startTime" />
-    <label class="form-label mt-3">Fin de l’entretien</label>
+  </div>
+  <div class="mt-3">
+    <label class="form-label">Fin de l’entretien</label>
     <input type="time" class="form-control" [(ngModel)]="endTime" />
   </div>
 
-  <!-- Navigation Buttons -->
+  <!-- Boutons de navigation -->
   <div class="button-container row">
-    <button (click)="goToPreviousStep()" class="btn btn-primary col-5 ms-3 me-2">Précédent</button>
-    <button (click)="saveSlot()" class="btn btn-primary col-5">Sauvegarder</button>
+    <button (click)="goToPreviousStep()" class="btn fixed-button ms-2">Précédent</button>
+    <button (click)="saveSlot()" class="btn fixed-button">Sauvegarder</button>
   </div>
 </div>

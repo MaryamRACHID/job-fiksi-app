@@ -7,13 +7,16 @@ import {Router} from '@angular/router';
   styleUrl: './choose-slot.component.scss'
 })
 export class ChooseSlotComponent {
-  date: string = '';
+  selectedDate: Date = new Date(); // Date sélectionnée par défaut : aujourd'hui
   startTime: string = '';
   endTime: string = '';
 
   constructor(private router: Router) {}
 
   saveSlot() {
+    console.log('Date sélectionnée:', this.selectedDate);
+    console.log('Heure de début:', this.startTime);
+    console.log('Heure de fin:', this.endTime);
     this.router.navigate(['/addPost/interviewSlots']);
   }
 

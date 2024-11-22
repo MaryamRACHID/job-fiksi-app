@@ -6,18 +6,18 @@
 
   <div class="form-group my-3 mt-5">
     <label for="phone">Numéro de téléphone</label>
-    <input type="tel" class="form-control" id="phone" [(ngModel)]="contact.phone" placeholder="Numéro de téléphone">
+    <input type="tel" name="tel" class="form-control" id="phone" [(ngModel)]="contact.phone" placeholder="Numéro de téléphone">
   </div>
   <div class="form-group">
     <label for="address">N° et rue</label>
-    <input type="text" class="form-control" id="address" [(ngModel)]="contact.address" placeholder="N° et rue">
+    <input type="text" name="rue" class="form-control" id="address" [(ngModel)]="contact.address" placeholder="N° et rue">
   </div>
   <div class="form-group">
     <label for="postalCode">Code postal</label>
-    <input type="text" class="form-control" id="postalCode" [(ngModel)]="contact.postalCode" placeholder="Code postal">
+    <input type="text" name="code_postal" class="form-control" id="postalCode" [(ngModel)]="contact.postalCode" placeholder="Code postal">
   </div>
   <div class="form-group">
     <label for="city">Ville</label>
-    <input type="text" class="form-control" id="city" [(ngModel)]="contact.city" placeholder="Ville">
+    <input type="text" name="ville" class="form-control" id="city" [(ngModel)]="contact.city" placeholder="Ville">
   </div>
 </div>

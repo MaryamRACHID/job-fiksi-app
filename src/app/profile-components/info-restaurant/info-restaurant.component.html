@@ -5,26 +5,26 @@
 
   <div class="form-group my-3 mt-5">
     <label for="phone">Nom de l’établissement</label>
-    <input type="tel" class="form-control" id="phone" [(ngModel)]="infoRestaurant.name" placeholder="Numéro de téléphone">
+    <input name="nom_restaurant" type="tel" class="form-control" id="phone" [(ngModel)]="infoRestaurant.name" placeholder="Numéro de téléphone">
   </div>
   <div class="form-group">
     <label for="address">Type de restauration</label>
-    <input type="text" class="form-control" id="address" [(ngModel)]="infoRestaurant.type" placeholder="N° et rue">
+    <input name="type_restaurant" type="text" class="form-control" id="address" [(ngModel)]="infoRestaurant.type" placeholder="N° et rue">
   </div>
   <div class="form-group">
     <label for="postalCode">Adresse de l’établissement</label>
-    <input type="text" class="form-control" id="postalCode" [(ngModel)]="infoRestaurant.address" placeholder="Code postal">
+    <input name="code_postal" type="text" class="form-control" id="postalCode" [(ngModel)]="infoRestaurant.address" placeholder="Code postal">
   </div>
   <div class="form-group">
-    <label for="city">Téléphone de contact</label>
-    <input type="text" class="form-control" id="city" [(ngModel)]="infoRestaurant.GSM" placeholder="Ville">
+    <label for="tel">Téléphone de contact</label>
+    <input name="tel" type="text" class="form-control" id="tel" [(ngModel)]="infoRestaurant.GSM" placeholder="telephone">
   </div>
   <div class="form-group">
-    <label for="city">Email de l’établissement</label>
-    <input type="text" class="form-control" id="city" [(ngModel)]="infoRestaurant.email" placeholder="Ville">
+    <label for="email">Email de l’établissement</label>
+    <input name="email" type="text" class="form-control" id="email" [(ngModel)]="infoRestaurant.email" placeholder="email">
   </div>
   <div class="form-group">
-    <label for="city">Site web</label>
-    <input type="text" class="form-control" id="city" [(ngModel)]="infoRestaurant.website" placeholder="Ville">
+    <label for="website">Site web</label>
+    <input name="website" type="text" class="form-control" id="website" [(ngModel)]="infoRestaurant.website" placeholder="website">
   </div>
 </div>

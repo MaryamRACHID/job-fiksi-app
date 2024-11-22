@@ -2,37 +2,26 @@
   width: 100%;
   height: 100%;
   margin: 0 auto;
-  padding: 30px 20px 30px 20px;
+  padding: 30px 20px 150px 20px;
 }
 
-.custom-dropdown {
-  position: relative;
-}
-
-.chevron-icon {
-  position: absolute;
-  right: 25px; /* Ajustez la valeur selon votre design */
-  top: 73%;
-  transform: translateY(-50%);
-  pointer-events: none; /* Empêche l'icône d'être cliquable */
-  color: #ccc; /* Couleur du chevron */
+.mat-calendar {
+  width: 100%;
+  margin-bottom: 20px;
 }
 
 .button-container {
-  position: fixed;         // Ou "absolute" si vous préférez
-  bottom: 25px;           // Espace depuis le bas de la page
-  left: 50%;              // Centrer horizontalement
-  transform: translateX(-50%); // Ajuster pour centrer parfaitement
-  z-index: 1000;          // Assurez-vous qu'il soit au-dessus des autres éléments
+  position: fixed;
+  bottom: 25px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
   background: linear-gradient(to bottom, rgba(255, 255, 255, 0.75), rgb(255, 255, 255, 1));
-  padding-top: 20px;
   width: 100%;
   text-align: center;
-  margin: 0;
-  justify-content: center;
 }
 
-.fixed-button {         // Assurez-vous qu'il soit au-dessus des autres éléments
+.fixed-button {
   border-radius: 10px;
   background-color: #ffad00 !important;
   color: #1e1e1e !important;
@@ -41,7 +30,46 @@
   width: 45%;
 }
 
-.full-width {
-  width: 100%;
+
+/* Réduction de la taille globale du calendrier */
+.mat-calendar {
+  width: 100%; /* ou une taille fixe si nécessaire, ex : 300px */
+  max-width: 300px; /* Limiter la largeur */
+  font-size: 0.85rem; /* Réduire la taille globale de la police */
 }
 
+/* Réduction de la taille des jours */
+.mat-calendar-body-cell-content {
+  width: 20px; /* Ajustez la taille selon vos besoins */
+  height: 20px; /* Ajustez pour un cercle parfait */
+  line-height: 20px; /* Alignez le texte verticalement */
+  font-size: 0.5rem; /* Taille de police plus petite pour les jours */
+  margin: 0 auto; /* Centrer les cercles */
+  border-radius: 50%; /* Assurez-vous qu'ils restent en forme de cercle */
+  transition: background-color 0.3s ease, color 0.3s ease;
+  padding: 0;
+}
+
+/* Style pour le jour sélectionné */
+.mat-calendar-body-selected {
+  background-color: #ffad00 !important; /* Couleur de surbrillance personnalisée */
+  color: #ffffff !important; /* Couleur du texte pour le jour sélectionné */
+}
+
+/* Style pour le jour en survol */
+.mat-calendar-body-cell-content:hover {
+  background-color: rgba(255, 173, 0, 0.2); /* Couleur de survol */
+}
+
+/* Réduction de la taille des boutons de navigation (mois/année) */
+.mat-calendar-previous-button,
+.mat-calendar-next-button {
+  width: 28px;
+  height: 28px;
+  line-height: 28px;
+}
+
+/* Réduction de la taille des titres (mois, année) */
+.mat-calendar-period-button {
+  font-size: 0.85rem;
+}

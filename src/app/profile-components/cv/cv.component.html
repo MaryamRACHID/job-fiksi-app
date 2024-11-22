@@ -4,7 +4,7 @@
 <!-- Section pour le CV -->
 <div class="mb-4">
   <label class="form-label">CV *</label>
-  <input type="file" class="d-none" #cvUploadInput (change)="onFileChange($event, 'cv')" />
+  <input type="file" name="cv" class="d-none" #cvUploadInput (change)="onFileChange($event, 'cv')" />
   <div class="custom-upload" (click)="cvUploadInput.click()">
     <i class="fa-solid fa-upload me-2"></i>
     <span>Ajouter mon CV</span>
@@ -14,7 +14,7 @@
 <!-- Section pour la lettre de motivation -->
 <div class="mb-4">
   <label class="form-label">Lettre de motivation</label>
-  <input type="file" class="d-none" #coverLetterUploadInput (change)="onFileChange($event, 'coverLetter')" />
+  <input type="file" name="lettre_motivation" class="d-none" #coverLetterUploadInput (change)="onFileChange($event, 'coverLetter')" />
   <div class="custom-upload" (click)="coverLetterUploadInput.click()">
     <i class="fa-solid fa-upload me-2"></i>
     <span>Ajouter ma lettre de motivation</span>
@@ -24,7 +24,7 @@
 <!-- Section pour les autres documents -->
 <div class="mb-4">
   <label class="form-label">Autres documents (certificats de scolarité, etc)</label>
-  <input type="file" class="d-none" #otherDocUploadInput (change)="onFileChange($event, 'otherDoc')" />
+  <input type="file" name="autres_documents" class="d-none" #otherDocUploadInput (change)="onFileChange($event, 'otherDoc')" />
   <div class="custom-upload" (click)="otherDocUploadInput.click()">
     <i class="fa-solid fa-upload me-2"></i>
     <span>Ajouter un autre document</span>
