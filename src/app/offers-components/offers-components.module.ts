@@ -15,6 +15,7 @@ import {SearchBarComponent} from './search-bar/search-bar.component';
 import {ChooseSlotComponent} from './choose-slot/choose-slot.component';
 import {JobAvantagesComponent} from './job-avantages/job-avantages.component';
 import {JobPageComponent} from './job-page/job-page.component';
+import {SucceedPageComponent} from './succeed-page/succeed-page.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import {JobPageComponent} from './job-page/job-page.component';
     InterviewSlotsComponent,
     ChooseSlotComponent,
     JobAvantagesComponent,
+    SucceedPageComponent,
     JobPageComponent,
     FilterComponent,
     JobListComponent,
@@ -38,6 +40,7 @@ import {JobPageComponent} from './job-page/job-page.component';
     ChooseSlotComponent,
     JobAvantagesComponent,
     JobPageComponent,
+    SucceedPageComponent,
     FilterComponent,
     JobListComponent,
     JobDetailsComponent,
