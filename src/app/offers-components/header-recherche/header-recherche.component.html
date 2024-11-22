@@ -1,23 +1,23 @@
 <div class="container">
   <header class="header">
     <div class="top-bar">
-      <!-- Logo on the left -->
-      <img src="assets/BurKing.jpg" alt="Burger King Logo" class="logo" />
-
-      <!-- Search section in the center -->
-      <div class="search-section">
-        <div class="search-bar">
-          <mat-icon class="search-icon">search</mat-icon>
-          <input type="text" placeholder="Rechercher" />
-          <button class="filter-icon-button" (click)="toggleFilter()">
-            <img src="assets/Filter.png" alt="filtre" class="filtre" />
-          </button>
-        </div>
-      </div>
-      <!-- Menu button on the right -->
-      <button class="menu-button" (click)="toggleAccueil()">
-        <img src="assets/menu.png" alt="Menu Icon" class="menu-icon" />
+      <img src="assets/BurKing.jpg" alt="Logo" class="logo" />
+      <button class="menu-button">
+        <img src="assets/menu.png" alt="Menu" class="logo" />
       </button>
     </div>
+
+    <div class="search-section">
+      <div class="search-bar">
+        <mat-icon class="search-icon">search</mat-icon>
+        <input type="text" placeholder="Rechercher" />
+        <button class="filter-icon-button" (click)="toggleFilter()">
+          <img src="assets/Filter.png" alt="filtre" class="filtre" />
+        </button>
+      </div>
+    </div>
   </header>
+
+
+
 </div>
