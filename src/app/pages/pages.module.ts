@@ -51,7 +51,6 @@ import { MatCalendarCellClassFunction } from '@angular/material/datepicker';
     SecuriteComponent,
     DocumentListComponent,
     AccueilRestaurantComponent,
-
     ProfileRestaurantComponent,
     RestaurantInfosComponent,
     OffreDescriptionComponent,
