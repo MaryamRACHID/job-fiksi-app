@@ -26,9 +26,6 @@ import {ProfileComponentsModule} from '../profile-components/profile-components.
 import {SettingsComponent} from './settings/settings.component';
 import {SecuriteComponent} from './securite/securite.component';
 import {DocumentListComponent} from './document-list/document-list.component';
-import { ProfileCandidatComponent } from './profile-candidat/profile-candidat.component';
-import { ProfileCandidatVuRecruteurComponent } from './profile-candidat/profile-candidat-vu-recruteur/profile-candidat-vu-recruteur.component';
-import { ModifierProfileCandidatComponent } from './profile-candidat/modifier-profile-candidat/modifier-profile-candidat.component';
 import { ProfileRestaurantComponent } from './profile-restaurant/profile-restaurant.component';
 
 import { MatTabChangeEvent } from '@angular/material/tabs';
@@ -54,9 +51,6 @@ import { MatCalendarCellClassFunction } from '@angular/material/datepicker';
     SecuriteComponent,
     DocumentListComponent,
     AccueilRestaurantComponent,
-    ProfileCandidatComponent,
-    ProfileCandidatVuRecruteurComponent,
-    ModifierProfileCandidatComponent,
 
     ProfileRestaurantComponent,
     RestaurantInfosComponent,
@@ -73,9 +67,6 @@ import { MatCalendarCellClassFunction } from '@angular/material/datepicker';
     SecuriteComponent,
     DocumentListComponent,
     AccueilRestaurantComponent,
-    ProfileCandidatComponent,
-    ProfileCandidatVuRecruteurComponent,
-    ModifierProfileCandidatComponent,
 
     ProfileRestaurantComponent,
     RestaurantInfosComponent,
