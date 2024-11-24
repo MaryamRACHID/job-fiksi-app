@@ -22,11 +22,7 @@
 
   .top-bar {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
     width: 100%;
-    max-width: 350px;
-    margin-bottom: 3rem;
   }
 
   .logo {
@@ -68,7 +64,7 @@
     background-color: #fff;
     border-radius: 6px;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-    width: 80%;
+    width: 50%;
 
     .search-icon {
       color: #b0b0b0;
