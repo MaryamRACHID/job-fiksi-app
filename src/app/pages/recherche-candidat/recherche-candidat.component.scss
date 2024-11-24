@@ -1,0 +1,134 @@
+.results-container {
+    font-family: 'Roboto', sans-serif;
+    padding: 1rem;
+    background-color: #f9f9f9;
+  
+    h2 {
+      font-size: 1.5rem;
+      color: #333;
+      margin-bottom: 1.5rem;
+    }
+  
+    .user-toggle {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 1rem;
+  
+      button {
+        background: #f1f1f1;
+        border: none;
+        padding: 0.5rem 1rem;
+        margin: 0 0.5rem;
+        font-size: 1rem;
+        border-radius: 5px;
+        cursor: pointer;
+  
+        &.active {
+          background: #f59609;
+          color: white;
+          font-weight: bold;
+        }
+  
+        &:hover {
+          background: #f1ba00;
+          color: white;
+        }
+      }
+    }
+  
+    .result-card {
+      background: #ffffff;
+      border-radius: 8px;
+      box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+      margin-bottom: 1.5rem;
+      padding: 1rem;
+  
+      .card-header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 1rem;
+  
+        .user-photo {
+          width: 50px;
+          height: 50px;
+          border-radius: 50%;
+          margin-right: 1rem;
+          border: 2px solid #ddd;
+        }
+  
+        h3 {
+          margin: 0;
+          font-size: 1.2rem;
+          color: #333;
+        }
+  
+        p {
+          margin: 0;
+          font-size: 0.9rem;
+          color: #777;
+        }
+      }
+  
+      .card-body {
+        margin-bottom: 1rem;
+  
+        h4 {
+          font-size: 1rem;
+          color: #333;
+          margin-bottom: 0.5rem;
+        }
+  
+        p {
+          font-size: 0.9rem;
+          color: #555;
+          margin-bottom: 1rem;
+        }
+  
+        .tags {
+          display: flex;
+          flex-wrap: wrap;
+  
+          .tag {
+            background-color: #f1f1f1;
+            color: #333;
+            padding: 0.3rem 0.6rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+          }
+        }
+      }
+  
+      .card-footer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+  
+        .rating {
+          display: flex;
+          align-items: center;
+          font-size: 1rem;
+          color: #ffa726;
+  
+          .star-icon {
+            margin-right: 0.3rem;
+            font-size: 1.2rem;
+          }
+        }
+  
+        .save-button {
+          background: none;
+          border: none;
+          color: #333;
+          font-size: 1.5rem;
+          cursor: pointer;
+  
+          mat-icon {
+            font-size: 1.5rem;
+          }
+        }
+      }
+    }
+  }
+  

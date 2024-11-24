@@ -39,6 +39,7 @@ import {AuthInterceptor} from './intercepteurs/auth.interceptor';
   bootstrap: [AppComponent], // Démarrage de l'application avec AppComponent comme composant racine
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+    provideAnimationsAsync()
   ],
 })
 export class AppModule {}

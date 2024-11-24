@@ -1,1 +1,30 @@
-<p>recherche-candidat works!</p>
+<div class="results-container">
+    <h2>Résultats les plus pertinentes</h2>
+    <div class="result-card" *ngFor="let result of results">
+      <div class="card-header">
+        <img [src]="result.photo" alt="User Photo" class="user-photo" />
+        <div>
+          <h3>{{ result.name }}</h3>
+          <p>{{ result.location }}</p>
+          <p>{{ result.phone }}</p>
+        </div>
+      </div>
+      <div class="card-body">
+        <h4>Description</h4>
+        <p>{{ result.description }}</p>
+        <h4>Compétences</h4>
+        <div class="tags">
+          <span class="tag" *ngFor="let skill of result.skills">{{ skill }}</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <div class="rating">
+          <span class="star-icon">★</span>
+          <span>{{ result.rating }}</span>
+        </div>
+        <button class="save-button">
+        </button>
+      </div>
+    </div>
+  </div>
+  
