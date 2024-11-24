@@ -25,7 +25,7 @@ export class ProfileCandidatComponent {
     emailUser: 'inas@gmail.com',
     telUser: '0744740609',
     adresseUser: 'saint priest',
-    disponibilitesUser: ['Lundi', 'Mardi', 'Mercredi'],
+    disponibilitesUser: ['Lun', 'Mer','Ven'],
     descriptionUser:
       'Retrouvez toutes les offres d’emploi, de stage et d’alternance d’EDF, ainsi que toutes les actualités liées au recrutement au sein du Groupe.',
     formationsUser: [
@@ -60,4 +60,14 @@ export class ProfileCandidatComponent {
     linkdin: 'inas.hakkou',
   };
 
+// Liste des jours de la semaine
+daysOfWeek: string[] = ['Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam', 'Dim'];
+
+
+// Disponibilités de l'utilisateur
+
+// Vérifie si un jour est dans les disponibilités de l'utilisateur
+isAvailable(day: string): boolean {
+  return this.user.disponibilitesUser.includes(day);
+}
 }

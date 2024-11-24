@@ -32,6 +32,7 @@ export class ModifierProfileCandidatComponent {
   showPopupexperienceedit = false; // Gestion de la visibilité du popup experience edit
   showPopupformationadd = false; // Gestion de la visibilité du popup formation add
   showPopupexperienceadd = false; // Gestion de la visibilité du popup experience add
+  showdeletePopup=false;
 
   selectedFormation: any = null; // Formation actuellement éditée
   selectedExperience: any = null; // Experience actuelle éditée
@@ -227,4 +228,73 @@ export class ModifierProfileCandidatComponent {
     this.cancelEdit.emit();
   }
 
+  openPopupDelete(){
+    this.showdeletePopup = true;
+  }
+
+
+  closePopupDelete() {
+    this.showdeletePopup=false;
+  }
+  confirmDelete(formation: any) {
+    const index = this.user.formationsUser.findIndex(
+      (f: any) =>
+        f.nomFormation == formation.nomFormation &&
+        f.etablissementFormation == formation.etablissementFormation &&
+        f.dateDebutFormation == formation.dateDebutFormation &&
+        f.dateFinFormation == formation.dateFinFormation
+      );
+
+    if (index !== -1) {
+      // Mise à jour des données de la formation avec le bon format de date
+      this.user.formationsUser.splice(index, 1);
+    }
+    this.closePopupDelete();
+  }
+
+  selectedFile: File | null = null; // Stockera le fichier sélectionné
+  imagePreview: string | ArrayBuffer | null = null;
+
+  // Simule un clic sur le champ fichier
+  openFilePicker(fileInput: HTMLInputElement): void {
+    fileInput.click(); // Ouvre le gestionnaire de fichiers
+  }
+
+  // Gère le fichier sélectionné
+  onFileSelected(event: Event): void {
+    const input = event.target as HTMLInputElement;
+    if (input.files && input.files.length > 0) {
+      this.selectedFile = input.files[0];
+
+      // Générer un aperçu de l'image
+      const reader = new FileReader();
+      reader.onload = () => {
+        this.imagePreview = reader.result; // Contient les données de l'image en base64
+      };
+      reader.readAsDataURL(this.selectedFile);
+    }
+  }
+
+  daysOfWeek: string[] = ['Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam', 'Dim'];
+
+
+// Disponibilités de l'utilisateur
+
+// Vérifie si un jour est dans les disponibilités de l'utilisateur
+isAvailable(day: string): boolean {
+  return this.user.disponibilitesUser.includes(day);
+}
+
+toggleAvailability(day: string): void {
+  // const abbreviation = this.jours[day];
+
+  // Vérifie si le jour est déjà dans les disponibilités
+  if (this.user.disponibilitesUser.includes(day)) {
+    // Retire le jour des disponibilités
+    this.user.disponibilitesUser = this.user.disponibilitesUser.filter((d: string) => d !== day);
+  } else {
+    // Ajoute le jour aux disponibilités
+    this.user.disponibilitesUser.push(day);
+  }
+}
 }

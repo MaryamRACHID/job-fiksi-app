@@ -1,4 +1,37 @@
 <!DOCTYPE html>
+<div class="header">
+  <div class="top-section">
+    <mat-toolbar color="primary" class="toolbar">
+      <button mat-icon-button (click)="cancel()">
+        <mat-icon>arrow_back</mat-icon>
+      </button>
+      <span class="company_name"> {{user.nomUser}} </span>
+      <span class="spacer"></span>
+      <button mat-icon-button>
+        <mat-icon>share</mat-icon>
+      </button>
+      <button mat-icon-button [routerLink]="['/settings']">
+        <mat-icon>settings</mat-icon>
+      </button>
+      <button mat-icon-button>
+        <mat-icon>edit</mat-icon>
+      </button>
+    </mat-toolbar>
+  </div>
+  <div class="logo-container">
+    <img class="logo" [src]="imagePreview">
+  </div>
+  <div class="bottom-section"></div>
+</div>
+
+<button class="edit" (click)="openFilePicker(fileInput)">
+  <mat-icon class="icon-edit">edit</mat-icon>
+</button>
+<input type="file" #fileInput accept="image/*" (change)="onFileSelected($event)" style="display: none;">
+<!-- <div *ngIf="selectedFile">
+  <p>Photo sélectionnée :</p>
+  <img [src]="imagePreview" alt="Aperçu" style="max-width: 200px; max-height: 200px;">
+</div> -->
 
 <div class="content">
   <section class="company-info">
@@ -26,13 +59,26 @@
               <input type="text" name="user-adresse" id="user-adresse" class="grp-input" placeholder="{{user.adresseUser}}" [(ngModel)]="user.adresseUser">
           </div>
       </div>
-      <div class="info-item">
+      <!-- <div class="info-item">
          <mat-icon>event_available</mat-icon>
           <div class="info">
               <p class="label">Disponibilité</p>
               <input type="text" name="user-dispo" id="user-dispo" class="grp-input" placeholder="{{user.disponibilitesUser}}" [(ngModel)]="user.disponibilitesUser">
           </div>
-      </div>
+      </div> -->
+      <div class="info-item">
+        <mat-icon class="iconDispo">event_available</mat-icon>
+         <div class="info">
+             <p class="label">Disponibilité</p>
+             <div class="dispo"> <!--tags-->
+               <span class="days"
+                 *ngFor="let day of daysOfWeek"
+                 [ngClass]="{'highlighted-day': isAvailable(day), 'default-day': !isAvailable(day)}" (click)="toggleAvailability(day)">
+                 {{ day }}
+               </span><!--tag-->
+             </div>
+         </div>
+     </div>
   </div>
 
   </section>
@@ -72,10 +118,18 @@
       <button mat-icon-button (click)="editFormation(formation)">
         <mat-icon class="formation-edit">edit</mat-icon>
       </button>
-      <button mat-icon-button>
+      <button mat-icon-button (click)="openPopupDelete()">
         <mat-icon class="formation-delete">delete</mat-icon>
       </button>
-
+      <div class="logout-popup" *ngIf="showdeletePopup">
+        <div class="logout-content">
+          <hr class="barre">
+          <h3>Êtes-vous sûr de vouloir supprimer?</h3>
+          <!-- <p> ?</p> -->
+          <button class="confirm-button" (click)="confirmDelete(formation)">OUI</button>
+          <button class="cancel-button" (click)="closePopupDelete()">ANNULER</button>
+        </div>
+      </div>
     </div>
     <div class="add-formarions">
       <button mat-raised-button color="primary" class="-btn-add-formation" id="btn-add-formation" (click)="showPopUpAddFormation()">
@@ -132,7 +186,7 @@
     </div>
   </section>
   <div class="button-container">
-    <button class="btn cancel" (click)="cancel()">Annuler</button>
+    <button class="btn cancelP" (click)="cancel()">Annuler</button>
     <button type="submit" class="btn save" (click)="save()">Sauvegarder</button>
   </div>
 </div>
@@ -296,3 +350,6 @@
     </div>
   </div>
 </div>
+
+<!-- ############################# supprimmer  formation #############################"" -->
+

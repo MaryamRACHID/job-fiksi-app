@@ -1,3 +1,13 @@
+.edit{
+  // background-color: #1A0A45;
+  width: 70%;
+  height: 1rem;
+  background-color: transparent !important;
+  border-color: transparent;
+}
+.edit .icon-edit{
+  color:#f7b11c
+}
 h2{
   margin-top: 1rem;
 }
@@ -100,22 +110,26 @@ textarea{
 }
 
 .btn {
-  padding: 10px 20px;
+  padding: 7px 30px;
   border: none;
   border-radius: 0.4rem;
-  font-size: 1rem;
-  font-weight: 500;
+  font-size: 0.8rem;
+  // font-weight: 500;
   cursor: pointer;
 }
 
 .cancel {
-  background-color: #1A0A45; /* Couleur bleu foncé */
+  background-color: #FFC107; /* Couleur bleu foncé */
   color: white;
 }
 
+.button-container .cancelP {
+  background-color: #041145 !important; /* Couleur bleu foncé */
+  color: white;
+}
 .save {
   background-color: #FFC107; /* Couleur jaune */
-  color: black;
+  color: white;
 }
 
 .btn:hover {
@@ -272,6 +286,9 @@ input {
   border: 1px solid #dcdcdc;
   border-radius: 5px;
   font-size: 1rem;
+  color: #000;
+}
+.popup-content label{
   color: #000;
 }
 .Date {
