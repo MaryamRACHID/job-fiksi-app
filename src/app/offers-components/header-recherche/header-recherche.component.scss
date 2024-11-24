@@ -1,3 +1,4 @@
+/* Conteneur principal */
 .container {
   position: relative;
   font-family: 'Roboto', sans-serif;
@@ -8,92 +9,71 @@
   border-radius: 20px;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
   padding: inherit;
-}
 
-.header {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 2rem 1rem 1.5rem;
-  background: linear-gradient(98deg, #f1ba00, #f59609);
-  border-radius: 8px;
-  color: white;
-  text-align: center;
-
-  .top-bar {
+  .header {
     display: flex;
-    width: 100%;
-  }
-
-  .logo {
-    width: 40px;
-    height: 40px;
-    border-radius: 15px;
-  }
-
-  .welcome {
-    font-weight: 200;
-    font-size: 1.0rem;
-    margin-right: 4rem;
-    margin-top: 1rem;
-  }
-
-  .menu-button {
-    background: none;
-    border: none;
-    color: white;
-    font-size: 1.8rem;
-    cursor: pointer;
-  }
-}
-
-.search-section {
-  width: 100%;
-  max-width: 350px;
-
-  h2 {
-    font-size: 1.3rem;
-    font-weight: 500;
-    color: white;
-    margin-bottom: 4rem;
-  }
-
-  .search-bar {
-    display: flex;
+    flex-direction: column;
     align-items: center;
-    background-color: #fff;
-    border-radius: 6px;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-    width: 50%;
+    padding: 1.5rem 1rem;
+    background: linear-gradient(98deg, #f1ba00, #f59609);
+    border-radius: 8px;
+    color: white;
 
-    .search-icon {
-      color: #b0b0b0;
-    }
-
-    input {
-      border: none;
-      outline: none;
-      flex-grow: 1;
-      font-size: 1rem;
-      color: #666;
-      padding: 0.5rem;
-    }
-
-    .filter-icon-button {
+    .top-bar {
       display: flex;
+      width: 100%;
       align-items: center;
-      justify-content: center;
-      width: 40px;
-      height: 40px;
-      border-radius: 8px;
-      background-color: #ffffff;
-      border: none;
-      box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-      cursor: pointer;
+      justify-content: space-between;
 
-      img.filtre {
-        color: #000000;
-        font-size: 24px;
+      .logo {
+        width: 40px;
+        height: 40px;
+        border-radius: 15px;
+      }
+
+      .search-section {
+        max-width: 280px;
+        margin: 0 4px;
+
+        .search-bar {
+          display: flex;
+          align-items: center;
+          background-color: #ffffff;
+          border-radius: 8px;
+          box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+          width: 100%;
+
+          .search-icon {
+            color: #b0b0b0;
+            font-size: 1.5rem;
+            margin-right: 0.5rem;
+          }
+
+          input {
+            border: none;
+            outline: none;
+            flex: 1;
+            font-size: 1rem;
+            color: #666;
+            background: none;
+            padding: 0.5rem 0;
+          }
+        }
+      }
+
+      .filter-icon {
+        //width: 200px;
+        //height: 200px;
+        //margin-left: 8px; /* Espacement avec la barre de recherche */
+        //cursor: pointer;
+        //display: inline-block; /* Assure un alignement propre */
+      }
+
+      .menu-icon {
+        //width: 24px;
+        //height: 24px;
+        //margin-left: 8px;
+        //cursor: pointer;
       }
     }
   }
