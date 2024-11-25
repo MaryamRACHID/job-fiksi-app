@@ -1,24 +1,23 @@
 /* Conteneur principal */
 .container {
   position: relative;
+  bottom: 4rem;
+  right: 0.9rem;
   font-family: 'Roboto', sans-serif;
-  background-color: #f3f4f6;
-  width: 100%;
+  background: linear-gradient(98deg, #f1ba00, #f59609);
+  width: 108%;
   max-width: 400px;
   margin: auto;
-  border-radius: 20px;
+  border-radius: 8px;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-  padding: inherit;
+  padding: 1.5rem 1rem;
+  color: white;
+  align-items: center;
+  
 
-  .header {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 1.5rem 1rem;
-    background: linear-gradient(98deg, #f1ba00, #f59609);
-    border-radius: 8px;
-    color: white;
 
+
+ 
     .top-bar {
       display: flex;
       width: 100%;
@@ -78,4 +77,4 @@
       }
     }
   }
-}
+

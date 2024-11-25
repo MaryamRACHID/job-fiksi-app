@@ -26,6 +26,7 @@ import {ChatComponent} from './messagerie/chat/chat.component';
 import {NoMessagesComponent} from './messagerie/no-messages/no-messages.component';
 import {AuthGuard} from './guards/auth.guard';
 import { HeaderRechercheComponent } from './offers-components/header-recherche/header-recherche.component';
+import { RechercheCandidatComponent } from './pages/recherche-candidat/recherche-candidat.component';
 
 export const routes: Routes = [
   { path: '', component: FirstPageComponent },
@@ -53,6 +54,7 @@ export const routes: Routes = [
   { path: 'conversation', component: ChatComponent },
   { path: 'ajout/message', component: NoMessagesComponent },
   { path: 'header-recherche', component: HeaderRechercheComponent},
+  { path: 'rechercheCandidat', component: RechercheCandidatComponent},
   { path: '**', redirectTo: '' }, // Redirection vers l'accueil pour les routes inconnues
 
 ];

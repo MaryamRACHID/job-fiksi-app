@@ -54,7 +54,9 @@ import { HeaderRechercheComponent } from './header-recherche/header-recherche.co
     MaterialModule,
     NgxSliderModule,
     MatDatepickerModule,
-    MatNativeDateModule
-  ]
+    MatNativeDateModule,
+    NgxSliderModule
+  ],
+  exports: [HeaderRechercheComponent]
 })
 export class OffersComponentsModule { }
