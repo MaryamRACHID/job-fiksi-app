@@ -41,6 +41,7 @@ export class FilterComponent implements OnInit {
       return value + ' ans';
     }
   };
+  router: any;
 
   ngOnInit() {
     console.log("Filter component initialized.");
@@ -52,6 +53,7 @@ export class FilterComponent implements OnInit {
 
   closeFilter() {
     this.dialogRef.close();
+
   }
 
   selectButton(button: string) {

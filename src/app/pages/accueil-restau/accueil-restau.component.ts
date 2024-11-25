@@ -29,11 +29,14 @@ export class AccueilRestaurantComponent implements OnInit {
   }
 
   toggleFilter(): void {
+    console.log("coucou");
     const dialogRef = this.dialog.open(FilterComponent, {});
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed' + result);
     });
+    this.router.navigate(['/rechercheCandidat']);
+
   }
 
   toggleAccueil(): void {
