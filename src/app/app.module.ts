@@ -34,6 +34,9 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
       registrationStrategy: 'registerWhenStable:30000'
     }) // Configuration du Service Worker pour les PWA
   ],
-  bootstrap: [AppComponent] // Démarrage de l'application avec AppComponent comme composant racine
+  bootstrap: [AppComponent],
+  providers: [
+    provideAnimationsAsync()
+  ] // Démarrage de l'application avec AppComponent comme composant racine
 })
 export class AppModule {}

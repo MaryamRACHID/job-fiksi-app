@@ -17,6 +17,9 @@ import { ModifierProfileCandidatComponent } from './pages/profile-candidat/modif
 import { ProfileRestaurantComponent } from './pages/profile-restaurant/profile-restaurant.component';
 import {SplashScreenComponent} from './pages/splash-screen/splash-screen.component';
 import {FirstPageComponent} from './pages/first-page/first-page.component';
+import { HeaderRechercheComponent } from './offers-components/header-recherche/header-recherche.component';
+import { RechercheCandidatComponent } from './pages/recherche-candidat/recherche-candidat.component';
+
 export const routes: Routes = [
   { path: '', component: FirstPageComponent },
   { path: 'splash-screen', component: SplashScreenComponent },
@@ -35,6 +38,8 @@ export const routes: Routes = [
   {path:'profile-candidat-vu-recruteur', component:ProfileCandidatVuRecruteurComponent},
   {path:'modifier-profile-candidat', component:ModifierProfileCandidatComponent},
   {path:'profile-restaurant', component:ProfileRestaurantComponent},
+  { path: 'header-recherche', component: HeaderRechercheComponent},
+  { path: 'rechercheCandidat', component: RechercheCandidatComponent},
   { path: '**', redirectTo: '' }, // Redirection vers l'accueil pour les routes inconnues
 
 ];

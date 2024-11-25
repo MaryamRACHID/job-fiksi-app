@@ -41,6 +41,7 @@ import { PlanningComponent } from './profile-restaurant/planning/planning.compon
 import { MatCalendarCellClassFunction } from '@angular/material/datepicker';
 import {FirstPageComponent} from './first-page/first-page.component';
 import {SplashScreenComponent} from './splash-screen/splash-screen.component';
+import { RechercheCandidatComponent } from './recherche-candidat/recherche-candidat.component';
 @NgModule({
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 
@@ -63,7 +64,8 @@ import {SplashScreenComponent} from './splash-screen/splash-screen.component';
     OffreDescriptionComponent,
     CandidatDescriptionComponent,
     PlanningComponent,
-    AccueilRestaurantComponent
+    AccueilRestaurantComponent,
+    RechercheCandidatComponent
   ],
   exports: [
     FirstPageComponent,
@@ -84,6 +86,7 @@ import {SplashScreenComponent} from './splash-screen/splash-screen.component';
     OffreDescriptionComponent,
     CandidatDescriptionComponent,
     PlanningComponent,
+    RechercheCandidatComponent,
     AccueilRestaurantComponent
   ],
   imports: [
