@@ -21,7 +21,7 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class OffreDescriptionComponent {
   @Input()
-  job!: { title: string; typePoste: string, lieu: string, nombreCandidature: string, datePublication: string, show:boolean,candidatures: { name: string; Cv:string, Email:string, Telephone:string, Disponibilite:string, _Statut:string, DateEntretien:string, HeureEntretien:string}[]};
+  job!: { title: string; typePoste: string, lieu: string, nombreCandidature: string, datePublication: string, show:boolean,candidatures: { name: string; Cv:string, Email:string, Telephone:string, Disponibilite:string[], _Statut:string, DateEntretien:string, HeureEntretien:string}[]};
   isOpen: boolean = false;
   showDetails: boolean = false
   showApplications: boolean = false;

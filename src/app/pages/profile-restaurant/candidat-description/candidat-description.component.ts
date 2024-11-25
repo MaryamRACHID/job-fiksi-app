@@ -15,7 +15,7 @@ import { MatDialog } from '@angular/material/dialog';
   ]
 })
 export class CandidatDescriptionComponent {
-  @Input() candidate!: { name: string; Cv: string; Email: string; Telephone: string; Disponibilite: string; _Statut: string; DateEntretien: string;HeureEntretien:string };
+  @Input() candidate!: { name: string; Cv: string; Email: string; Telephone: string; Disponibilite: string[]; _Statut: string; DateEntretien: string;HeureEntretien:string };
   showCandidate: boolean = true;
 
   isOpen: any;
@@ -68,17 +68,21 @@ export class CandidatDescriptionComponent {
   accepterCandidat(candidate:any){}
 
   updateStatus_entretien() {
+    console.log("test:\n")
     if (this.selectedDateEntretien && this.selectedTimeEntretien) {
-      var date = this.selectedDateEntretien.toLocaleDateString(); // Formate la date
-      const dateTime = `${date} ${this.selectedTimeEntretien}`; // Combine la date et l'heure
+      // var date = this.selectedDateEntretien.toLocaleDateString(); // Formate la date
+      // const dateTime = `${date} ${this.selectedTimeEntretien}`; // Combine la date et l'heure
 
       this.candidate.DateEntretien = this.selectedDateEntretien.toLocaleDateString(); // Met à jour la date et l'heure de l'entretien
       this.candidate.HeureEntretien = this.selectedTimeEntretien;
+      console.log(this.candidate);
+    }else{
+      this.candidate.DateEntretien = this.selectedStatusEntretien;
+      if(this.candidate.DateEntretien == 'Entretien réalisé'){
+        this.candidate.HeureEntretien = '';
+      }
     }
-    this.candidate.DateEntretien = this.selectedStatusEntretien;
-    if(this.candidate.DateEntretien == 'Entretien réalisé'){
-      this.candidate.HeureEntretien = '_';
-    }
+    
     this.closeDialog();
   }
 }

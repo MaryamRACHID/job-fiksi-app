@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <div class="calendar-container border p-3 rounded">
   <div class="contentAgenda">
-      <div class="calendar-header d-flex justify-content-between align-items-center">
-      <button (click)="previousMonth()">&#9664;</button>
+    <div class="calendar-header d-flex  align-items-center">
+      <button (click)="previousMonth()" class="fas fa-chevron-left"></button>
       <h3>{{ currentMonth | date: 'MMMM yyyy' }}</h3>
-      <button (click)="nextMonth()">&#9654;</button>
+      <button (click)="nextMonth()" class="fas fa-chevron-right"></button>
     </div>
 
     <div class="calendar-body">

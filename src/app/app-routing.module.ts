@@ -28,6 +28,7 @@ export const routes: Routes = [
   { path: 'password', component: SecuriteComponent },
   { path: 'documents', component: DocumentListComponent },
   {path:'profile-restaurant', component:ProfileRestaurantComponent},
+  {path:'modifier-infos-restaurant', component: InformationsComponent},
   { path: '**', redirectTo: '' }, // Redirection vers l'accueil pour les routes inconnues
 
 ];

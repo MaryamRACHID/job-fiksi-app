@@ -47,7 +47,6 @@ export class PlanningComponent{
       .flatMap(job => job.candidatures)
       .filter(candidate => candidate.DateEntretien === selectedDateString);
       // console.log(candidate.DateEntretien);
-
   }
 
   previousMonth() {

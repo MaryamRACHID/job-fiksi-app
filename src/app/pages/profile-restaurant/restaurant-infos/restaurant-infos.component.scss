@@ -279,3 +279,21 @@ p{
 }
 
 
+.advantages {
+  margin: 20px 0;
+}
+
+.tags {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.tag {
+  background-color: #ffedcc;
+  color: #ffad00;
+  padding: 7px 15px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: bold;
+}

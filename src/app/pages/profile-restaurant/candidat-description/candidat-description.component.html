@@ -1,33 +1,46 @@
 <div class="poste-container" *ngIf="showCandidate">
   <div class="poste-header" (click)="toggleDescriptionCandidate()">
     <span>{{ candidate.name }}</span>
-    <span [ngClass]="{'rotate-arrow': isOpen}" class="arrow">▼</span>
+    <div class="icon-div">
+      <span class="far fa-star"></span>
+      <span [ngClass]="{'rotate-arrow': isOpen}" class="fas fa-chevron-down"></span>
+    </div>
   </div>
   <div *ngIf="isOpen" class="poste-description">
     <div class="table-infos">
       <div class="table-items">
-        <p>Nom : </p>
-        <p>CV : </p>
-        <p>Email : </p>
-        <p>Téléphone : </p>
-        <p>Disponibilité : </p>
-        <p>Date d'entretien :</p>
-        <p>Heure d'entretien : </p>
-        <p>Status : </p>
+        <p>Nom</p>
+        <p>CV</p>
+        <p>Email</p>
+        <p>Téléphone</p>
+        <p>Disponibilité</p>
+        <p class="Entretien" [ngStyle]="{
+          'display': candidate.DateEntretien !== '' ? 'block' : 'none'
+        }">Date d'entretien</p>
+        <p class="Entretien" [ngStyle]="{
+          'display': candidate.HeureEntretien !== '' ? 'block' : 'none'
+        }">Heure d'entretien</p>
+        <p>Status</p>
       </div>
       <div class="table-items">
         <p>{{candidate.name}}</p>
         <p><a [attr.href]="candidate.Cv" download>Voir CV</a></p>
         <p>{{candidate.Email}}</p>
         <p>{{candidate.Telephone}}</p>
-        <p>{{candidate.Disponibilite}}</p>
-        <p class="dateEntretien" [ngStyle]="{'background-color': candidate.DateEntretien === 'Entretien réalisé' ? '#f7b11c' : 'transparent'}">{{candidate.DateEntretien}}</p>
-        <p>{{candidate.HeureEntretien}}</p>
+        <div class="dispo">
+          <span class="days" *ngFor="let dispo of candidate.Disponibilite">{{dispo}}</span>
+          <!-- <p class="daysUser">{{dispo}}</p> -->
+        </div>
+        <p [ngClass]="{ 'noEntretien': candidate.DateEntretien==='', 'entretienDone': candidate.DateEntretien==='Entretien réalisé', 'entretien-Encours': candidate.DateEntretien!=='Entretien réalisé' && candidate.DateEntretien!==''}">
+          {{candidate.DateEntretien}}
+        </p>
+        <p class="values" [ngClass]="{ 'noEntretien': candidate.HeureEntretien==='', 'entretien-Encours': candidate.HeureEntretien!==''}"
+        >{{candidate.HeureEntretien}}</p>
         <p>
-          {{candidate._Statut}}
-          <button mat-icon-button (click)="openEditDialog(candidate)" class="btn-edit">
+          {{candidate._Statut}}<i class="far fa-edit" style="font-weight: bold; font-size: 1rem;" (click)="openEditDialog(candidate)"></i>
+          <!-- <button mat-icon-button (click)="openEditDialog(candidate)" class="btn-edit">
             <mat-icon class="icon-edit">edit</mat-icon>
-          </button>
+          </button> -->
         </p>
       </div>
     </div>
