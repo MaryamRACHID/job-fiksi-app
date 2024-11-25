@@ -18,6 +18,7 @@ import { HeaderRechercheComponent } from './header-recherche/header-recherche.co
     SharedModule,
     MaterialModule,
     NgxSliderModule
-  ]
+  ],
+  exports: [HeaderRechercheComponent]
 })
 export class OffersComponentsModule { }

@@ -13,6 +13,7 @@ import {DocumentListComponent} from './pages/document-list/document-list.compone
 import { PreferenceComponent } from './profile-components/preference/preference.component';
 import { AccueilRestaurantComponent } from './pages/accueil-restau/accueil-restau.component';
 import { HeaderRechercheComponent } from './offers-components/header-recherche/header-recherche.component';
+import { RechercheCandidatComponent } from './pages/recherche-candidat/recherche-candidat.component';
 
 export const routes: Routes = [
   { path: '', component: LoginComponent }, // Page d'accueil par défaut
@@ -28,6 +29,7 @@ export const routes: Routes = [
   { path: 'password', component: SecuriteComponent },
   { path: 'documents', component: DocumentListComponent },
   { path: 'header-recherche', component: HeaderRechercheComponent},
+  { path: 'rechercheCandidat', component: RechercheCandidatComponent},
   { path: '**', redirectTo: '' }, // Redirection vers l'accueil pour les routes inconnues
   
 ];

@@ -1,5 +1,5 @@
 // src/app/pages/pages.module.ts
-import { NgModule,CUSTOM_ELEMENTS_SCHEMA  } from '@angular/core';
+import { NgModule,CUSTOM_ELEMENTS_SCHEMA, importProvidersFrom  } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
@@ -26,7 +26,7 @@ import {ProfileComponentsModule} from '../profile-components/profile-components.
 import {SettingsComponent} from './settings/settings.component';
 import {SecuriteComponent} from './securite/securite.component';
 import {DocumentListComponent} from './document-list/document-list.component';
-
+import { RechercheCandidatComponent } from './recherche-candidat/recherche-candidat.component';
 @NgModule({
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 
@@ -38,6 +38,7 @@ import {DocumentListComponent} from './document-list/document-list.component';
     SecuriteComponent,
     DocumentListComponent,
     AccueilRestaurantComponent,
+    RechercheCandidatComponent
   ],
   exports: [
     LoginComponent,
@@ -47,7 +48,7 @@ import {DocumentListComponent} from './document-list/document-list.component';
     SettingsComponent,
     SecuriteComponent,
     DocumentListComponent,
-
+    RechercheCandidatComponent,
     AccueilRestaurantComponent
   ],
   imports: [
