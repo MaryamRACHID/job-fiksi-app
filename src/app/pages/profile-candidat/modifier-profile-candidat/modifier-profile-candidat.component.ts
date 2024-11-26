@@ -32,7 +32,9 @@ export class ModifierProfileCandidatComponent {
   showPopupexperienceedit = false; // Gestion de la visibilité du popup experience edit
   showPopupformationadd = false; // Gestion de la visibilité du popup formation add
   showPopupexperienceadd = false; // Gestion de la visibilité du popup experience add
-  showdeletePopup=false;
+  // showdeletePopup=false;
+  showdeletePopupExperience=false;
+  showdeletePopupFormation=false;
 
   selectedFormation: any = null; // Formation actuellement éditée
   selectedExperience: any = null; // Experience actuelle éditée
@@ -228,15 +230,20 @@ export class ModifierProfileCandidatComponent {
     this.cancelEdit.emit();
   }
 
-  openPopupDelete(){
-    this.showdeletePopup = true;
+  openPopupDeleteExperience(){
+    this.showdeletePopupExperience = true;
+  }
+  openPopupDeleteFormation(){
+    this.showdeletePopupFormation = true;
   }
 
-
-  closePopupDelete() {
-    this.showdeletePopup=false;
+  closePopupDeleteExperience() {
+    this.showdeletePopupExperience=false;
   }
-  confirmDelete(formation: any) {
+  closePopupDeleteFormation() {
+    this.showdeletePopupFormation=false;
+  }
+  confirmDeleteFormation(formation: any) {
     const index = this.user.formationsUser.findIndex(
       (f: any) =>
         f.nomFormation == formation.nomFormation &&
@@ -249,7 +256,23 @@ export class ModifierProfileCandidatComponent {
       // Mise à jour des données de la formation avec le bon format de date
       this.user.formationsUser.splice(index, 1);
     }
-    this.closePopupDelete();
+    this.closePopupDeleteFormation();
+  }
+
+  confirmDeleteExperience(experience: any) {
+    const index = this.user.experiencesUser.findIndex(
+      (f: any) =>
+        f.poste == experience.poste &&
+        f.structure == experience.structure &&
+        f.DebutFormation == experience.DebutFormation &&
+        f.FinFormation == experience.FinFormation
+      );
+
+    if (index !== -1) {
+      // Mise à jour des données de la formation avec le bon format de date
+      this.user.experiencesUser.splice(index, 1);
+    }
+    this.closePopupDeleteExperience();
   }
 
   selectedFile: File | null = null; // Stockera le fichier sélectionné

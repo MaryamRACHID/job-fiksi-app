@@ -111,18 +111,21 @@
       <button mat-icon-button (click)="editFormation(formation)">
         <mat-icon class="formation-edit">edit</mat-icon>
       </button>
-      <button mat-icon-button (click)="openPopupDelete()">
+      <button mat-icon-button (click)="openPopupDeleteFormation()">
         <mat-icon class="formation-delete">delete</mat-icon>
       </button>
-      <div class="logout-popup" *ngIf="showdeletePopup">
-        <div class="logout-content">
-          <hr class="barre">
-          <h3>Êtes-vous sûr de vouloir supprimer?</h3>
-          <!-- <p> ?</p> -->
-          <button class="confirm-button" (click)="confirmDelete(formation)">OUI</button>
-          <button class="cancel-button" (click)="closePopupDelete()">ANNULER</button>
+      <div class="popup-overlay" *ngIf="showdeletePopupFormation">
+        <div class="logout-popup" *ngIf="showdeletePopupFormation">
+          <div class="logout-content">
+            <hr class="barre">
+            <h3>Êtes-vous sûr de vouloir supprimer?</h3>
+            <!-- <p> ?</p> -->
+            <button class="confirm-button" (click)="confirmDeleteFormation(formation)">OUI</button>
+            <button class="cancel-button" (click)="closePopupDeleteFormation()">ANNULER</button>
+          </div>
         </div>
       </div>
+      
     </div>
     <div class="add-formarions">
       <button mat-raised-button color="primary" class="-btn-add-formation" id="btn-add-formation" (click)="showPopUpAddFormation()">
@@ -157,8 +160,19 @@
         <mat-icon class="competences-edit" (click)="editExperience(experience)">edit</mat-icon>
       </button>
       <button mat-icon-button>
-        <mat-icon class="competences-delete" (click)="saveExperience()">delete</mat-icon>
+        <mat-icon class="competences-delete" (click)="openPopupDeleteExperience()">delete</mat-icon>
       </button>
+      <div class="popup-overlay" *ngIf="showdeletePopupExperience">
+        <div class="logout-popup" *ngIf="showdeletePopupExperience">
+          <div class="logout-content">
+            <hr class="barre">
+            <h3>Êtes-vous sûr de vouloir supprimer?</h3>
+            <!-- <p> ?</p> -->
+            <button class="confirm-button" (click)="confirmDeleteExperience(experience)">OUI</button>
+            <button class="cancel-button" (click)="closePopupDeleteExperience()">ANNULER</button>
+          </div>
+        </div>
+      </div>
     </div>
     <div class="add-formarions">
       <button mat-raised-button color="primary" class="-btn-add-formation" id="btn-add-formation" (click)="showPopUpAddExperience()">
