@@ -1,5 +1,7 @@
 import {Component, Output, EventEmitter, Input} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {Router} from '@angular/router';
+import {UserService} from '../../services/user.service';
 
 @Component({
   selector: 'app-contact',
@@ -9,29 +11,59 @@ import {HttpClient} from '@angular/common/http';
 export class ContactComponent  {
   @Output() contactInfoChange = new EventEmitter<any>();
 
-  @Input() contactInfo!: { phone: string, address: string, postalCode: string, city: string};
+  @Input() contactInfo!: { phone: string, rue: string, postalCode: string, city: string};
   @Input() userType: string | null = null; // Propriété pour recevoir le type de profil
   contact = {
     phone: '',
-    address: '',
+    rue: '',
     postalCode: '',
     city: ''
   };
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private router: Router, private userService: UserService) {}
+
+  token: string | null = null;
+  userId: string | null = null;
 
   saveContact() {
-    this.contactInfoChange.emit(this.userType);
-    const apiUrl = 'https://your-api-endpoint.com/saveContact'; // Replace with your API endpoint
+    // Mettre à jour contactInfo avec les données de contact avant de l'émettre
+    this.contactInfo = { ...this.contact };
 
-    this.http.post(apiUrl, this.contact)
-      .subscribe(
-        response => {
-          console.log('Contact information saved successfully:', response);
-        },
-        error => {
-          console.error('Error saving contact information:', error);
-        }
-      );
+    // Émettre la mise à jour de contactInfo vers le composant parent
+    this.contactInfoChange.emit(this.contactInfo);
+
+    console.log(this.contactInfo)
+
+    // Faire l'appel HTTP comme précédemment
+    const candidateId = 9; // À ajuster si nécessaire
+    const apiUrl = `https://jobfiksi.ismael-dev.com/api/candidats/${candidateId}/`;  // L'URL avec la barre oblique
+
+    const formData = new FormData();
+
+    if (this.contactInfo.phone) {
+      formData.append('tel', this.contactInfo.phone);
+    }
+    if (this.contactInfo.rue) {
+      formData.append('rue', this.contactInfo.rue);
+    }
+    if (this.contactInfo.postalCode) {
+      formData.append('code_postal', this.contactInfo.postalCode);
+    }
+    if (this.contactInfo.city) {
+      formData.append('ville', this.contactInfo.city);
+    }
+
+    const headers = new HttpHeaders().set('Authorization', `Token ${this.token}`);
+
+    this.http.put(apiUrl, formData, { headers }).subscribe(
+      response => {
+        console.log('Données et fichier enregistrés avec succès:', response);
+      },
+      error => {
+        console.error('Erreur lors de l\'enregistrement des données et du fichier:', error);
+        alert('Une erreur est survenue lors de l\'enregistrement des données.');
+      }
+    );
   }
+
 }

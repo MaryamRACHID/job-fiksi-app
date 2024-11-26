@@ -13,6 +13,7 @@ import {NotificationsComponent} from '../../profile-components/notifications/not
 import {IdentityComponent} from '../../profile-components/identity/identity.component';
 import {BankComponent} from '../../profile-components/bank/bank.component';
 import {InfoRestaurantComponent} from '../../profile-components/info-restaurant/info-restaurant.component';
+import {UserService} from '../../services/user.service';
 
 @Component({
   selector: 'app-profil',
@@ -24,8 +25,35 @@ export class ProfileComponent {
 
   step: number = 1;
   userType: string | null = null;
-  personalInfo = { name: '', firstName: '', birthDate: '', city: '', nationality: '' };
-  contactInfo = { phone: '', address: '', postalCode: '', city: '' };
+  personalInfo = { name: '', firstName: '', birthDate: '', city: '', nationality: '', id: 9};
+  contactInfo = { phone: '', rue: '', postalCode: '', city: '' };
+  preferencesInfo = {
+    jobPreferences: {
+      server: false,
+      cook: false,
+      dishwasher: false,
+      other: false,
+      otherType: ''
+    },
+    locationPreference: '',
+    accessibleByTransport: false,
+    kmPreference: {
+      max: 0
+    },
+    salaryPreference: {
+      min: 1000,
+      max: 2000
+    }
+  };
+  restauInfo = { phone: '', rue: '', postalCode: '', city: '' };
+  disponibilitesInfo = { phone: '', rue: '', postalCode: '', city: '' };
+  notificationsInfo = { phone: '', rue: '', postalCode: '', city: '' };
+  descriptionInfo = { phone: '', rue: '', postalCode: '', city: '' };
+  formationInfo = { phone: '', rue: '', postalCode: '', city: '' };
+  experiencesInfo = { phone: '', rue: '', postalCode: '', city: '' };
+  cvInfo = { phone: '', rue: '', postalCode: '', city: '' };
+  identityInfo = { phone: '', rue: '', postalCode: '', city: '' };
+  bankInfo = { phone: '', rue: '', postalCode: '', city: '' };
   availability: string[] = [];
   references = { hasExperience: false, description: '', skills: '' };
   formation = { level: '', diplomas: [] };
@@ -48,7 +76,36 @@ export class ProfileComponent {
   @ViewChild(BankComponent) bankComponent!: BankComponent;
   @ViewChild(NotificationsComponent) notificationsComponent!: NotificationsComponent;
 
-  constructor(private router: Router) {}
+  token: string | null = null;
+  userId: string | null = null;
+
+  constructor(private router: Router, private userService: UserService) {}
+
+
+  ngOnInit(): void {
+    // Récupérer le token et userId depuis localStorage
+    this.token = localStorage.getItem('token');
+    this.userId = localStorage.getItem('userId');
+
+    // Vérifiez si le token existe, sinon redirigez l'utilisateur
+    if (!this.token) {
+      // L'utilisateur n'est pas authentifié, rediriger vers la page de connexion
+      this.router.navigate(['/login']);
+    } else {
+      console.log('Token récupéré :', this.token);
+      console.log('User ID récupéré :', this.userId);
+
+      // Vous pouvez maintenant utiliser le token pour effectuer des requêtes API
+      this.userService.getUserProfile(Number(this.userId))  // Exemple d'utilisation de l'ID utilisateur
+        .then((profile) => {
+          console.log('Profil utilisateur :', profile);
+        })
+        .catch((error) => {
+          console.error('Erreur lors de la récupération du profil :', error);
+        });
+    }
+  }
+
 
   goToNextStep() {
     switch (this.step) {

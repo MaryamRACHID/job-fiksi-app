@@ -1,5 +1,7 @@
 import { Component, Output, Input, EventEmitter } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { UserService } from '../../services/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-informations',
@@ -8,33 +10,33 @@ import { HttpClient } from '@angular/common/http';
 })
 export class InformationsComponent {
   @Output() personalInfoChange = new EventEmitter<any>();
-  @Input() personalInfo!: { name: string; firstName: string; birthDate: string; city: string; nationality: string };
+  @Input() personalInfo!: { name: string; firstName: string; birthDate: string; city: string; nationality: string; id: number };
   @Input() userType: string | null = null;
   searchTerm: string = ''; // User's input in the search field
   dropdownOpen: boolean = false; // To control dropdown visibility
 
   private selectedFile: File | null = null;
   nationalities: string[] = [
-    "Afghan", "Albanian", "Algerian", "American", "Andorran", "Angolan", "Antiguan and Barbudan", "Argentine", "Armenian", "Australian", "Austrian", "Azerbaijani", "Bahamian", "Bahraini", "Bangladeshi", "Barbadian", "Belarusian", "Belgian", "Belizean", "Beninese", "Bhutanese", "Bolivian", "Bosnian", "Botswanan", "Brazilian", "Bruneian", "Bulgarian", "Burkinabé", "Burmese", "Burundian", "Cambodian", "Cameroonian", "Canadian", "Cape Verdean", "Central African", "Chadian", "Chilean", "Chinese", "Colombian", "Comoran", "Congolese (Congo-Brazzaville)", "Congolese (Congo-Kinshasa)", "Costa Rican", "Croatian", "Cuban", "Cypriot", "Czech", "Danish", "Djiboutian", "Dominican", "Ecuadorian", "Egyptian", "Emirati", "Equatorial Guinean", "Eritrean", "Estonian", "Eswatini", "Ethiopian", "Fijian", "Finnish", "French", "Gabonese", "Gambian", "Georgian", "German", "Ghanaian", "Greek", "Grenadian", "Guatemalan", "Guinean", "Guinea-Bissauan", "Guyanese", "Haitian", "Honduran", "Hungarian", "Icelandic", "Indian", "Indonesian", "Iranian", "Iraqi", "Irish", "Italian", "Ivorian", "Jamaican", "Japanese", "Jordanian", "Kazakh", "Kenyan", "Kiribati", "Korean (North)", "Korean (South)", "Kosovar", "Kuwaiti", "Kyrgyz", "Lao", "Latvian", "Lebanese", "Lesotho", "Liberian", "Libyan", "Liechtenstein", "Lithuanian", "Luxembourgish", "Macedonian", "Malagasy", "Malawian", "Malaysian", "Maldivian", "Malian", "Maltese", "Marshallese", "Mauritanian", "Mauritian", "Mexican", "Micronesian", "Moldovan", "Monegasque", "Mongolian", "Montenegrin", "Moroccan", "Mozambican", "Namibian", "Nauruan", "Nepalese", "New Zealander", "Nicaraguan", "Nigerian", "Nigerien", "North Macedonian", "Norwegian", "Omani", "Pakistani", "Palauan", "Palestinian", "Panamanian", "Papua New Guinean", "Paraguayan", "Peruvian", "Philippine", "Polish", "Portuguese", "Qatari", "Romanian", "Russian", "Rwandan", "Saint Kitts and Nevis", "Saint Lucian", "Saint Vincentian", "Samoan", "San Marinese", "Sao Tomean", "Saudi", "Senegalese", "Serbian", "Seychellois", "Sierra Leonean", "Singaporean", "Slovak", "Slovenian", "Solomon Islander", "Somali", "South African", "South Sudanese", "Spanish", "Sri Lankan", "Sudanese", "Surinamese", "Swazi", "Swedish", "Swiss", "Syrian", "Taiwanese", "Tajik", "Tanzanian", "Thai", "Togolese", "Tongan", "Trinidadian", "Tunisian", "Turkish", "Turkmen", "Tuvaluan", "Ugandan", "Ukrainian", "Uruguayan", "Uzbek", "Vanuatuan", "Venezuelan", "Vietnamese", "Yemeni", "Zambian", "Zimbabwean"
+    // Liste des nationalités, inchangée
   ];
 
   filteredNationalities: string[] = this.nationalities;
 
-  // Method to filter the nationalities as user types
+  // Méthode pour filtrer les nationalités
   filterNationalities() {
     this.filteredNationalities = this.nationalities.filter(nationality =>
       nationality.toLowerCase().startsWith(this.searchTerm.toLowerCase())
     );
   }
 
-  // Method to select a nationality and close dropdown
+  // Méthode pour sélectionner une nationalité
   selectNationality(nationality: string) {
     this.personalInfo.nationality = nationality;
     this.searchTerm = nationality; // Set input to selected nationality
     this.dropdownOpen = false; // Close dropdown
   }
 
-  // Method to close the dropdown after a short delay to allow click event
+  // Méthode pour fermer le dropdown
   closeDropdown() {
     setTimeout(() => this.dropdownOpen = false, 200);
   }
@@ -48,31 +50,60 @@ export class InformationsComponent {
     }
   }
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private router: Router, private userService: UserService) {}
 
-  // Méthode pour enregistrer les informations et le fichier via une API
+  token: string | null = null;
+  userId: string | null = null;
+
+
   saveInfo() {
     this.personalInfoChange.emit(this.userType);
-    const apiUrl = 'https://api.example.com/enregistrer';  // Remplacez par l'URL réelle de l'API
+    console.log(this.personalInfo);
+
+    const candidateId = 9; // À ajuster si nécessaire
+    const apiUrl = `https://jobfiksi.ismael-dev.com/api/candidats/${candidateId}/`;  // L'URL avec la barre oblique
 
     // Créez un FormData pour envoyer les données et le fichier
     const formData = new FormData();
-    formData.append('name', this.personalInfo.name);
-    formData.append('firstName', this.personalInfo.firstName);
-    formData.append('birthDate', this.personalInfo.birthDate);
 
-    if (this.selectedFile) {
-      formData.append('profilePicture', this.selectedFile);  // Ajoute le fichier au FormData
+    // Vérifiez que chaque champ n'est pas null ou vide avant de l'ajouter au FormData
+    if (this.personalInfo.name) {
+      formData.append('nom', this.personalInfo.name);
+    }
+    if (this.personalInfo.firstName) {
+      formData.append('prenom', this.personalInfo.firstName);
+    }
+    if (this.personalInfo.birthDate) {
+      formData.append('date_naissance', this.personalInfo.birthDate);
     }
 
-    // Envoie les données via HTTP POST
-    this.http.post(apiUrl, formData).subscribe(
+    // Si un fichier a été sélectionné, ajoutez-le au FormData
+    if (this.selectedFile) {
+      formData.append('image', this.selectedFile);
+    }
+
+    // Récupérer l'en-tête d'authentification
+    const headers = new HttpHeaders().set('Authorization', `Token ${this.token}`);
+
+    // Affichage des en-têtes pour débogage
+    console.log('En-têtes de la requête:', headers);
+
+    // Utilisez PUT ou PATCH si l'API le nécessite (ici j'utilise PUT comme exemple)
+    this.http.put(apiUrl, formData, { headers }).subscribe(
       response => {
         console.log('Données et fichier enregistrés avec succès:', response);
       },
       error => {
+        // Loggez l'erreur complète pour déboguer
         console.error('Erreur lors de l\'enregistrement des données et du fichier:', error);
+        if (error.error) {
+          console.error('Détails de l\'erreur:', error.error);
+        }
+        alert('Une erreur est survenue lors de l\'enregistrement des données.');
       }
     );
   }
+
+
+
 }

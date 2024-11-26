@@ -2,7 +2,6 @@
 import { NgModule, isDevMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module'; // Module de routage principal
 import { SharedModule } from './shared/shared.module';
@@ -14,6 +13,8 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import {MessagerieModule} from './messagerie/messagerie.module';
+import {HTTP_INTERCEPTORS} from '@angular/common/http';
+import {AuthInterceptor} from './intercepteurs/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,9 @@ import {MessagerieModule} from './messagerie/messagerie.module';
       registrationStrategy: 'registerWhenStable:30000'
     }) // Configuration du Service Worker pour les PWA
   ],
-  bootstrap: [AppComponent] // Démarrage de l'application avec AppComponent comme composant racine
+  bootstrap: [AppComponent], // Démarrage de l'application avec AppComponent comme composant racine
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+  ],
 })
 export class AppModule {}

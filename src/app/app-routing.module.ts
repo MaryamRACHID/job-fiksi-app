@@ -24,13 +24,14 @@ import {SucceedPageComponent} from './offers-components/succeed-page/succeed-pag
 import {MessagesListComponent} from './messagerie/messages-list/messages-list.component';
 import {ChatComponent} from './messagerie/chat/chat.component';
 import {NoMessagesComponent} from './messagerie/no-messages/no-messages.component';
+import {AuthGuard} from './guards/auth.guard';
 
 export const routes: Routes = [
   { path: '', component: FirstPageComponent },
   { path: 'splash-screen', component: SplashScreenComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'profil', component: ProfileComponent },
-  { path: 'info', component: InformationsComponent },
+  { path: 'profil', component: ProfileComponent, canActivate: [AuthGuard] },
+  { path: 'info', component: InformationsComponent, canActivate: [AuthGuard] },
   { path: 'contact', component: ContactComponent },
   { path: 'cv', component: CvComponent },
   { path: 'job', component: PreferenceComponent },

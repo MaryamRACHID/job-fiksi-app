@@ -1,44 +1,50 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
-import { Options } from '@angular-slider/ngx-slider';
-import {HttpClient} from '@angular/common/http';
+import { Component, EventEmitter, Input, Output, OnInit } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-preference',
   templateUrl: './preference.component.html',
   styleUrls: ['./preference.component.scss']
 })
-export class PreferenceComponent {
+export class PreferenceComponent implements OnInit {
   @Output() preferencesInfoChange = new EventEmitter<any>();
+  @Input() preferencesInfo!: {
+    jobPreferences: {
+      server: boolean;
+      cook: boolean;
+      dishwasher: boolean;
+      other: boolean;
+      otherType: string;
+    };
+    locationPreference: string;
+    accessibleByTransport: boolean;
+    kmPreference: {
+      max: number;
+    };
+    salaryPreference: {
+      min: number;
+      max: number;
+    };
+  };
   @Input() userType: string | null = null;
 
-  jobPreferences = {
-    server: false,
-    cook: false,
-    dishwasher: false,
-    other: false,
-    otherType: ''
-  };
+  token: string | null = null; // Déclarer le token ici
+  filteredCities: string[] = [];
+  cities: string[] = ['Paris', 'Lyon', 'Lille']; // Liste des villes pour la recherche
 
-  locationPreference: string = '';
-  kmPreference = { max: 0 }; // Valeur maximale par défaut
-  kmSliderOptions = {
-    floor: 0,  // Valeur minimale fixée à 0
-    ceil: 100, // Valeur maximale
-    step: 1,   // Incrément du slider
-    showTicks: false, // Afficher des repères de valeur
-    showTicksValues: false, // Afficher les valeurs des ticks
-    translate: (value: number) => `${value} km`, // Ajouter "km" après la valeur
-    showTicksTooltip: false, // Désactive les tooltips
+  kmSliderOptions: any = {
+    floor: 0,
+    ceil: 100,
+    step: 1,
+    showTicks: false,
+    showTicksValues: false,
+    translate: (value: number) => `${value} km`,
+    showTicksTooltip: false,
     highlightedBarColor: '#eeae00',
   };
-  cities: string[] = ['Paris', 'Lyon', 'Lille']; // Liste des villes
-  filteredCities: string[] = this.cities;  // Villes filtrées selon la saisie
 
-  salaryPreference = {
-    min: 1000,
-    max: 2000
-  };
-  salarySliderOptions: Options = {
+  salarySliderOptions: any = {
     floor: 0,
     ceil: 4000,
     step: 50,
@@ -47,45 +53,70 @@ export class PreferenceComponent {
     }
   };
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private userService: UserService) {}
 
-  selectCity(city: string) {
-    // Sélectionner une ville et la mettre dans l'input
-    this.locationPreference = city;
-    this.filteredCities = [];  // Masquer la liste déroulante après sélection
+  ngOnInit() {
+    // Récupérer le token depuis le localStorage
+    this.token = localStorage.getItem('token'); // Si le token est stocké dans localStorage
   }
 
   filterCities() {
-    const searchTerm = this.locationPreference.toLowerCase();
-    if (searchTerm) {  // Vérifiez que la saisie n'est pas vide
+    const searchTerm = this.preferencesInfo.locationPreference.toLowerCase();
+    if (searchTerm) {
       this.filteredCities = this.cities.filter(city =>
         city.toLowerCase().includes(searchTerm)
       );
     } else {
-      this.filteredCities = [];  // Masque la liste si aucune saisie
+      this.filteredCities = []; // Masquer la liste si aucune saisie
     }
   }
 
+  selectCity(city: string) {
+    this.preferencesInfo.locationPreference = city;
+    this.filteredCities = []; // Masquer la liste déroulante après sélection
+    this.emitPreferencesInfo(); // Émettre les informations des préférences modifiées
+  }
+
+  emitPreferencesInfo() {
+    this.preferencesInfoChange.emit(this.preferencesInfo);
+  }
+
   savePreference() {
-    this.preferencesInfoChange.emit(this.userType);
-    const apiUrl = 'https://endpoint.com/savePreferences';
+    this.preferencesInfo = { ...this.preferencesInfo };
+    this.preferencesInfoChange.emit(this.preferencesInfo);
 
-    const preferencesPayload = {
-      jobPreferences: this.jobPreferences,
-      locationPreference: this.locationPreference,
-      kmPreference: this.kmPreference.max,
-      salaryPreferenceMin: this.salaryPreference.min,
-      salaryPreferenceMax: this.salaryPreference.max
-    };
+    console.log(this.preferencesInfo);
 
-    this.http.post(apiUrl, preferencesPayload)
-      .subscribe(
-        response => {
-          console.log('Preferences saved successfully:', response);
-        },
-        error => {
-          console.error('Error saving preferences:', error);
-        }
-      );
+    const candidateId = 9;
+    const apiUrl = `https://jobfiksi.ismael-dev.com/api/candidats/${candidateId}/`;
+
+    const formData = new FormData();
+
+    if (this.preferencesInfo.locationPreference) {
+      formData.append('preference_lieu', this.preferencesInfo.locationPreference);
+    }
+
+    if (this.preferencesInfo.salaryPreference.min) {
+      formData.append('preference_salaire', this.preferencesInfo.salaryPreference.min.toString());
+    }
+
+    // Vérifier si le token existe avant de faire l'appel HTTP
+    if (this.token) {
+      const headers = new HttpHeaders().set('Authorization', `Token ${this.token}`);
+
+      this.http.put(apiUrl, formData, { headers })
+        .subscribe(
+          (response) => {
+            console.log('Préférences sauvegardées avec succès:', response);
+          },
+          (error) => {
+            console.error('Erreur lors de l\'enregistrement des préférences:', error);
+            alert('Une erreur est survenue lors de la sauvegarde de vos préférences.');
+          }
+        );
+    } else {
+      console.error('Token non disponible');
+      alert('Le token est introuvable. Veuillez vous reconnecter.');
+    }
   }
 }

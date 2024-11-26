@@ -1,127 +1,131 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { UserService } from '../../services/user.service';
+import {animate, style, transition, trigger} from '@angular/animations';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
+  animations: [
+    trigger('fadeInOut', [
+      transition(':enter', [
+        style({ opacity: 0 }),
+        animate('300ms', style({ opacity: 1 }))
+      ]),
+      transition(':leave', [
+        animate('300ms', style({ opacity: 0 }))
+      ])
+    ])
+  ]
 })
 export class LoginComponent implements OnInit {
-  currentToggle: string = 'connexion'; // Valeur par défaut
-  loginForm!: FormGroup; // Déclaré avec '!' pour dire à TypeScript que ce sera initialisé
-  inscriptionForm!: FormGroup; // Déclaré avec '!' pour dire à TypeScript que ce sera initialisé
+  currentToggle: string = 'connexion'; // Onglet actif (connexion ou inscription)
+  loginForm!: FormGroup;
+  inscriptionForm!: FormGroup;
+  isSuccess = false;
+  isError = false;
+  successMessage = '';
+  errorMessage = '';
+  registrationData = {
+    username: '',
+    email: '',
+    password: '',
+    userType: ''
+  };
+  loginData = {
+    username: '',
+    password: ''
+  };
 
-  constructor(private router: Router, private fb: FormBuilder) {}
+
+  constructor(private router: Router, private fb: FormBuilder, private userService: UserService) {}
 
   ngOnInit(): void {
-    // Formulaire de connexion
+    // Initialisation du formulaire de connexion
     this.loginForm = this.fb.group({
-      emailConnexion: ['', [Validators.required, Validators.email]],
-      passwordConnexion: ['', [Validators.required, Validators.minLength(12)]],
+      username: ['', [Validators.required]],
+      password: ['', [Validators.required, Validators.minLength(6)]],
     });
 
-    // Formulaire d'inscription
+    // Initialisation du formulaire d'inscription
     this.inscriptionForm = this.fb.group(
       {
-        emailInscription: ['', [Validators.required, Validators.email]],
-        passwordInscription: [
-          '',
-          [
-            Validators.required,
-            Validators.minLength(12),
-            this.passwordValidator, // Validateur personnalisé pour mot de passe
-          ],
-        ],
-        confirmPassword: ['', [Validators.required]], // Confirmation du mot de passe
+        username: ['', [Validators.required]],
+        email: ['', [Validators.required, Validators.email]],
+        password: ['', [Validators.required, Validators.minLength(12), this.passwordValidator]],
+        confirmPassword: ['', [Validators.required]],
+        userType: ['', [Validators.required]], // Type d'utilisateur (ajouté comme champ obligatoire)
       },
-      { validators: this.passwordMatchValidator } // Validation pour la correspondance des mots de passe
+      { validators: this.passwordMatchValidator }
     );
   }
 
-  // Méthode pour rediriger l'utilisateur vers la page de profil
-  goToProfil(): void {
-    if (this.loginForm.valid) {
-      this.router.navigate(['/profil']);
-    } else {
-      console.log('Formulaire de connexion invalide');
-    }
-  }
-
-  // Validateur personnalisé pour le mot de passe : au moins une majuscule, un chiffre et un caractère spécial
-  passwordValidator(control: any) {
-    const password = control.value;
-
-    // Si le mot de passe est vide, retourne une erreur
-    if (!password) {
-      return { required: true };
-    }
-
-    // Vérifie chaque critère individuellement et retourne des erreurs spécifiques
-    const errors: any = {};
-
-    // Vérification majuscule
-    if (!/[A-Z]/.test(password)) {
-      errors.noUppercase = true;
-    }
-
-    // Vérification chiffre
-    if (!/\d/.test(password)) {
-      errors.noNumber = true;
-    }
-
-    // Vérification caractère spécial
-    if (!/[^\w\d\s]/.test(password)) {
-      errors.noSpecialChar = true;
-    }
-
-    // Vérification longueur
-    if (password.length < 12) {
-      errors.tooShort = true;
-    }
-
-    // Si des erreurs existent, retourne l'objet d'erreurs
-    if (Object.keys(errors).length > 0) {
-      return errors;
-    }
-
-    return null; // Si aucune erreur
-  }
-
-
-  // Validateur pour vérifier que le mot de passe et la confirmation sont identiques
-  passwordMatchValidator(group: FormGroup) {
-    const password = group.get('passwordInscription')?.value;
-    const confirmPassword = group.get('confirmPassword')?.value;
-    return password === confirmPassword ? null : { passwordsDoNotMatch: true }; // Vérifie que les mots de passe sont identiques
-  }
-
   // Soumettre le formulaire de connexion
-  onLoginSubmit(): void {
+  async onLoginSubmit(): Promise<void> {
     if (this.loginForm.valid) {
-      this.router.navigate(['/profil']); // Redirige l'utilisateur vers le profil
+      const { username, password } = this.loginForm.value;
+
+      try {
+        const response = await this.userService.loginUser({ username, password });
+        this.isSuccess = true;
+        this.successMessage = 'Connexion réussie ! Redirection en cours...';
+
+        setTimeout(() => this.router.navigate(['/profil']), 1500); // Redirection avec délai
+      } catch (error: any) {
+        this.isError = true;
+        this.errorMessage = error?.message || 'Une erreur s\'est produite lors de la connexion.';
+      }
     } else {
-      console.log('Formulaire de connexion invalide');
+      this.isError = true;
+      this.errorMessage = 'Veuillez remplir correctement le formulaire.';
     }
   }
 
   // Soumettre le formulaire d'inscription
-  onInscriptionSubmit(): void {
+  async onInscriptionSubmit(): Promise<void> {
     if (this.inscriptionForm.valid) {
-      console.log('Formulaire d\'inscription soumis');
-      // Traiter l'inscription (par exemple, envoyer les données au backend)
+      const { username, email, password, userType } = this.inscriptionForm.value;
+
+      try {
+        const response = await this.userService.registerUser({ username, email, password, user_type: userType });
+        this.isSuccess = true;
+        this.successMessage = 'Inscription réussie ! Vous pouvez maintenant vous connecter.';
+
+        setTimeout(() => this.setToggle('connexion'), 1500); // Basculer sur le formulaire de connexion
+      } catch (error: any) {
+        this.isError = true;
+        this.errorMessage = error?.message || 'Une erreur s\'est produite lors de l\'inscription.';
+      }
     } else {
-      console.log('Formulaire d\'inscription invalide');
+      this.isError = true;
+      this.errorMessage = 'Veuillez remplir correctement le formulaire.';
     }
   }
 
-  // Gérer l'activation de l'onglet Connexion / Inscription
+  // Gestion des onglets Connexion/Inscription
   setToggle(value: string): void {
     this.currentToggle = value;
   }
 
-  goToPassword(event: Event) {
-    event.preventDefault(); // Empêche le comportement par défaut du lien
-    this.router.navigate(['/password']); // Redirige vers la route /password
+  // Validateur personnalisé pour les mots de passe
+  passwordValidator(control: any): any {
+    const password = control.value;
+    const errors: any = {};
+
+    if (!/[A-Z]/.test(password)) errors.noUppercase = true;
+    if (!/\d/.test(password)) errors.noNumber = true;
+    if (!/[^\w\d\s]/.test(password)) errors.noSpecialChar = true;
+    if (password.length < 12) errors.tooShort = true;
+
+    return Object.keys(errors).length > 0 ? errors : null;
+  }
+
+  // Vérification de la correspondance des mots de passe
+  passwordMatchValidator(group: FormGroup): any {
+    const password = group.get('password')?.value;
+    const confirmPassword = group.get('confirmPassword')?.value;
+    return password === confirmPassword ? null : { passwordsDoNotMatch: true };
   }
 }

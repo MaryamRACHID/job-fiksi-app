@@ -7,18 +7,18 @@
   <div class="component-container">
     <app-profile-type *ngIf="step === 1" (userTypeChange)="updateUserType($event)"></app-profile-type>
     <app-informations *ngIf="step === 2" [userType]="userType" [personalInfo]="personalInfo"></app-informations>
-    <app-contact *ngIf="step === 3" [userType]="userType"></app-contact>
-    <app-preference *ngIf="step === 4 && userType === 'candidat'" [userType]="userType"></app-preference>
-    <app-info-restaurant *ngIf="step === 4 && userType === 'restaurant'" [userType]="userType"></app-info-restaurant>
-    <app-disponibilites *ngIf="step === 5 && userType === 'candidat'" [userType]="userType"></app-disponibilites>
-    <app-notifications *ngIf="step === 5 && userType === 'restaurant'" [userType]="userType"></app-notifications>
-    <app-description *ngIf="step === 6" [userType]="userType"></app-description>
-    <app-formation *ngIf="step === 7" [userType]="userType"></app-formation>
-    <app-experiences *ngIf="step === 8" [userType]="userType"></app-experiences>
-    <app-cv *ngIf="step === 9"  [userType]="userType"></app-cv>
-    <app-identity *ngIf="step === 10"  [userType]="userType"></app-identity>
-    <app-bank *ngIf="step === 11"  [userType]="userType"></app-bank>
-    <app-notifications *ngIf="step === 12" [userType]="userType"></app-notifications>
+    <app-contact *ngIf="step === 3" [userType]="userType" [contactInfo]="contactInfo"></app-contact>
+    <app-preference *ngIf="step === 4 && userType === 'candidat'" [userType]="userType" [preferencesInfo]="preferencesInfo"></app-preference>
+    <app-info-restaurant *ngIf="step === 4 && userType === 'restaurant'" [userType]="userType" [restauInfo]="restauInfo"></app-info-restaurant>
+    <app-disponibilites *ngIf="step === 5 && userType === 'candidat'" [userType]="userType" [disponibilitesInfo]="disponibilitesInfo"></app-disponibilites>
+    <app-notifications *ngIf="step === 5 && userType === 'restaurant'" [userType]="userType" [notificationsInfo]="notificationsInfo"></app-notifications>
+    <app-description *ngIf="step === 6" [userType]="userType" [descriptionInfo]="descriptionInfo"></app-description>
+    <app-formation *ngIf="step === 7" [userType]="userType" [formationInfo]="formationInfo"></app-formation>
+    <app-experiences *ngIf="step === 8" [userType]="userType" [experiencesInfo]="experiencesInfo"></app-experiences>
+    <app-cv *ngIf="step === 9"  [userType]="userType" [cvInfo]="cvInfo"></app-cv>
+    <app-identity *ngIf="step === 10"  [userType]="userType" [identityInfo]="identityInfo"></app-identity>
+    <app-bank *ngIf="step === 11"  [userType]="userType" [bankInfo]="bankInfo"></app-bank>
+    <app-notifications *ngIf="step === 12" [userType]="userType" [notificationsInfo]="notificationsInfo"></app-notifications>
   </div>
   <div class="button-container">
     <button *ngIf="(step != 12  && (userType === null || userType === 'candidat')) || (step != 5 && userType === 'restaurant')" (click)="goToNextStep()" [disabled]="!userType" class="fixed-button btn btn-primary full-width">Continuer</button>
