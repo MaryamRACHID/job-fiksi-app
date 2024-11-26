@@ -1,22 +1,79 @@
 .no-messages {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
+  height: 100vh;
+  background-color: #f9f9f9;
 
-  .icon {
-    font-size: 4rem;
-    color: #ccc;
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px;
+    background-color: #fff;
+    border-bottom: 1px solid #ddd;
+
+    .btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 18px;
+      color: #666;
+    }
+
+    h1 {
+      font-size: 18px;
+      font-weight: bold;
+      color: #333;
+    }
+
+    .new-message-icon {
+      font-size: 18px;
+      color: #f7d06b;
+    }
   }
 
-  p {
-    font-size: 1.2rem;
-    margin: 1rem 0;
-  }
+  .content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    text-align: center;
 
-  button {
-    background-color: #ffcc00;
-    border: none;
+    .illustration {
+      width: 150px;
+      height: auto;
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      font-size: 18px;
+      color: #333;
+      font-weight: bold;
+      margin: 10px 0;
+    }
+
+    p {
+      font-size: 14px;
+      color: #666;
+      margin-bottom: 20px;
+    }
+
+    .new-message-btn {
+      background-color: #f7d06b;
+      color: #fff;
+      font-size: 14px;
+      font-weight: bold;
+      border: none;
+      border-radius: 25px;
+      padding: 10px 20px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+
+      &:hover {
+        background-color: #e5b850;
+      }
+    }
   }
 }

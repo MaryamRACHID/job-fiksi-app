@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-messages-list',
@@ -14,5 +15,11 @@ export class MessagesListComponent {
 
   openChat(conversation: any) {
     // Logic to open the selected chat
+  }
+
+  constructor(private router: Router) {}
+
+  redirectToMessage(userId: string) {
+    this.router.navigate(['msgg']);
   }
 }

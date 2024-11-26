@@ -4,8 +4,8 @@
       <i class="fa fa-arrow-left"></i>
     </button>
     <div class="profile-info">
-      <img src="orlando.jpg" alt="Orlando Diggs" class="profile-pic">
-      <div>
+      <img src="assets/images/1.PNG" alt="Orlando Diggs" class="profile-pic">
+      <div class="profile-text">
         <h2>Orlando Diggs</h2>
         <span class="status">En ligne</span>
       </div>
@@ -19,28 +19,70 @@
       </button>
     </div>
   </header>
+
   <div class="chat-body">
+    <div class="date-label">Aujourd'hui</div>
+
+    <!-- Messages reçus -->
     <div class="message received">
-      <p>Hello sir, Good Morning</p>
-      <span class="time">09:30 am</span>
+      <img src="assets/images/2.PNG" alt="Orlando Diggs" class="message-pic">
+      <div class="message-content">
+        <p>Hello sir, Good Morning</p>
+        <span class="time">09:30 am</span>
+      </div>
     </div>
+
+    <!-- Messages envoyés -->
     <div class="message sent">
-      <p>Morning, Can I help you?</p>
-      <span class="time">09:31 am</span>
+      <div class="message-content">
+        <p>Morning, Can I help you?</p>
+        <span class="time">09:31 am</span>
+      </div>
     </div>
+
+    <!-- Messages reçus -->
     <div class="message received">
-      <p>I saw the UI/UX Designer vacancy...</p>
-      <span class="time">09:33 am</span>
+      <img src="assets/images/2.PNG" alt="Orlando Diggs" class="message-pic">
+      <div class="message-content">
+        <p>
+          I saw the UI/UX Designer vacancy that you uploaded on LinkedIn yesterday
+          and I am interested in joining your company.
+        </p>
+        <span class="time">09:33 am</span>
+      </div>
     </div>
+
+    <!-- Messages envoyés -->
     <div class="message sent">
-      <p>Oh yes, please send your CV/Resume...</p>
-      <i class="fa fa-check-double"></i>
-      <span class="time">09:35 am</span>
+      <div class="message-content">
+        <p>Oh yes, please send your CV/Resume here</p>
+        <i class="fa fa-check-double"></i>
+        <span class="time">09:35 am</span>
+      </div>
+    </div>
+
+    <!-- Messages envoyés avec pièce jointe -->
+    <div class="message sent attachment">
+      <div class="message-content">
+        <div class="file-preview">
+          <i class="fa fa-file-pdf"></i>
+          <div>
+            <span>Jarret - CV - UI/UX Designer.PDF</span>
+            <span class="file-size">867 Kb PDF</span>
+          </div>
+        </div>
+        <span class="time">09:33 am</span>
+      </div>
     </div>
   </div>
+
   <footer>
-    <input type="text" placeholder="Écrivez votre message" [(ngModel)]="newMessage">
-    <button class="btn send-btn">
+    <input
+      type="text"
+      placeholder="Écrivez votre message"
+      [(ngModel)]="newMessage"
+    />
+    <button class="btn send-btn" (click)="sendMessage()">
       <i class="fa fa-paper-plane"></i>
     </button>
   </footer>

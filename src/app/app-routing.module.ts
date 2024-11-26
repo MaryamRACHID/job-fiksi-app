@@ -48,7 +48,7 @@ export const routes: Routes = [
   { path: 'addPost/jobPage', component: JobPageComponent, data: { title: 'Ajouter un poste' }},
   { path: 'addPost/succeed', component: SucceedPageComponent, data: { title: 'Ajouter un poste' }},
 
-  { path: 'msg', component: MessagesListComponent },
+  { path: 'msg', component: MessagesListComponent, data: { title: 'Messagerie' }},
   { path: 'msgg', component: ChatComponent },
   { path: 'msggg', component: NoMessagesComponent },
 

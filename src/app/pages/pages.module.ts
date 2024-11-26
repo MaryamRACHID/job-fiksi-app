@@ -26,6 +26,7 @@ import {SecuriteComponent} from './securite/securite.component';
 import {DocumentListComponent} from './document-list/document-list.component';
 import {FirstPageComponent} from './first-page/first-page.component';
 import {SplashScreenComponent} from './splash-screen/splash-screen.component';
+import {MessagerieModule} from '../messagerie/messagerie.module';
 
 @NgModule({
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
@@ -72,7 +73,8 @@ import {SplashScreenComponent} from './splash-screen/splash-screen.component';
     MatCardModule,
     ProfileComponentsModule,
     ReactiveFormsModule,
-    OffersComponentsModule
+    OffersComponentsModule,
+    MessagerieModule,
   ]
 })
 export class PagesModule {}

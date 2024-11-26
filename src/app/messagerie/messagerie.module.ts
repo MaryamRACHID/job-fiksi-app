@@ -4,6 +4,7 @@ import {MessagesListComponent} from './messages-list/messages-list.component';
 import {ChatComponent} from './chat/chat.component';
 import {NoMessagesComponent} from './no-messages/no-messages.component';
 import {FormsModule} from '@angular/forms';
+import {SharedModule} from '../shared/shared.module';
 
 
 
@@ -20,7 +21,8 @@ import {FormsModule} from '@angular/forms';
   ],
   imports: [
     CommonModule,
-    FormsModule
+    FormsModule,
+    SharedModule
   ]
 })
 export class MessagerieModule { }
