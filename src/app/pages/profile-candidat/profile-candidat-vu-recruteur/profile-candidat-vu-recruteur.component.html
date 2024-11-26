@@ -1,58 +1,65 @@
 <!DOCTYPE html>
 <div class="header">
-  <mat-toolbar color="primary" class="toolbar">
-    <button mat-icon-button>
-      <mat-icon>arrow_back</mat-icon>
-    </button>
-    <span class="company_name"> inas HAKKOU </span>
-    <span class="spacer"></span>
-    <button mat-icon-button>
-      <mat-icon>share</mat-icon>
-    </button>
-    <button mat-icon-button>
-      <mat-icon>phone</mat-icon>
-    </button>
-    <!-- <button mat-icon-button>
-      <mat-icon>edit</mat-icon>
-    </button> -->
-  </mat-toolbar>
-  <div class="logo"></div>
+  <div class="top-section">
+    <mat-toolbar color="primary" class="toolbar">
+      <button mat-icon-button>
+        <mat-icon>arrow_back</mat-icon>
+      </button>
+      <span class="company_name"> {{user.nomUser}} </span>
+      <span class="spacer"></span>
+      <button mat-icon-button>
+        <mat-icon>share</mat-icon>
+      </button>
+      <button mat-icon-button [routerLink]="['/settings']">
+        <mat-icon>settings</mat-icon>
+      </button>
+    </mat-toolbar>
+  </div>
+  <div class="logo-container">
+    <img class="logo">
+  </div>
+  <div class="bottom-section"></div>
 </div>
-<div class="content">
+
+
+
+<div class="showInfosCandidat">
+  <app-button-contact-candidat></app-button-contact-candidat>
+  <div class="content" >
   <section class="company-info">
-    <app-button-contact-candidat></app-button-contact-candidat>
-     <h2>inas HAKKOU</h2>
+     <h2>{{user.nomUser}}</h2>
     <div class="contact-info">
       <div class="info-item">
         <mat-icon>email</mat-icon>
           <div class="info">
               <p class="label">Email</p>
-              <!-- <p class="text">{{infos.email}}</p> -->
-               <p>inas.com</p>
+               <p>{{user.emailUser}}</p>
           </div>
       </div>
       <div class="info-item">
         <mat-icon>phone</mat-icon>
           <div class="info">
               <p class="label">Numéro de téléphone</p>
-              <!-- <p class="text">{{infos.tel}}</p> -->
-               <p>0744740609</p>
+               <p>{{user.telUser}}</p>
           </div>
       </div>
       <div class="info-item">
         <mat-icon>location_on</mat-icon>
           <div class="info">
               <p class="label">Localisation</p>
-              <!-- <p class="text">{{infos.adresse}}</p> -->
-               <p>figuig, maroc</p>
+               <p>{{user.adresseUser}}</p>
           </div>
       </div>
       <div class="info-item">
-         <mat-icon>restaurant</mat-icon>
+         <mat-icon class="iconDispo">event_available</mat-icon>
           <div class="info">
               <p class="label">Disponibilité</p>
-              <!-- <p class="text">{{infos.typeRestaurant}}</p> -->
-               <p>lundi, mardi</p>
+              <div class="dispo"> <!--tags-->
+                <span class="daysUser"
+                  *ngFor="let day of user.disponibilitesUser">
+                  {{ day }}
+                </span><!--tag-->
+              </div>
           </div>
       </div>
   </div>
@@ -61,7 +68,7 @@
   <div class="separator"></div>
   <section class="description">
     <h2>Description</h2>
-     <p>inas ina ina inia ina iania ia ainia hzu db ud bvh chc vyc uczuhdiz</p>
+     <p>{{user.descriptionUser}}</p>
     <a href="#" class="lien">Voir le CV</a>
   </section>
 
@@ -69,15 +76,17 @@
   <div class="separator"></div>
   <section class="formations">
     <h2>Formations</h2>
-    <div class="interview-date">
+    <div class="interview-date" *ngFor="let formation of user.formationsUser">
       <div class="date-label">
-        <span class="showInfosEntretien">2022-2023</span>
+        <span class="showInfosEntretien">
+          {{ formation.dateDebutFormation | date: 'yyyy' }} - {{ formation.dateFinFormation | date: 'yyyy' }}
+        </span>
         <ul class="interview-l">
           <li class="detailsEntretien">
-            <span></span>master1
+            <span></span>{{formation.nomFormation}}
           </li>
           <li class="detailsEntite">
-            <span></span>université lumière lyon 2
+            <span></span>{{formation.etablissementFormation}}
           </li>
         </ul>
       </div>
@@ -87,27 +96,27 @@
   <div class="separator"></div>
   <section class="advantages">
     <h2>Compétences</h2>
-    <mat-chip-listbox>
-      <!-- <mat-chip *ngFor="let avantage of infos.avantages" color="primary" class="avant">
-        {{ avantage }}
-      </mat-chip> -->
-      <mat-chip color="primary" class="avant">responsabilité</mat-chip>
-      <mat-chip color="primary" class="avant">esprit d'équipe</mat-chip>
+    <mat-chip-listbox class="tags">
+      <mat-chip *ngFor="let competence of user.competencesUser" class="tag">
+        {{ competence }}
+      </mat-chip>
+      <!-- <mat-chip color="primary" class="avant">responsabilité</mat-chip>
+      <mat-chip color="primary" class="avant">esprit d'équipe</mat-chip> -->
     </mat-chip-listbox>
   </section>
 
   <div class="separator"></div>
   <section class="experiences">
     <h2>Experiences</h2>
-    <div class="interview-date">
+    <div class="interview-date" *ngFor="let experience of user.experiencesUser">
       <div class="date-label">
-        <span class="showInfosEntretien">2022-2023</span>
+        <span class="showInfosEntretien">{{experience.debutExperience  | date: 'yyyy'}}-{{experience.finExperience  | date: 'yyyy'}}</span>
         <ul class="interview-l">
           <li class="detailsEntretien">
-            <span></span>• Employé polyvalant
+            <span></span>• {{experience.poste}}
           </li>
           <li class="detailsEntite">
-            <span></span>• Lidl
+            <span></span>• {{experience.structure}}
           </li>
         </ul>
       </div>
@@ -117,13 +126,6 @@
   <div class="separator"></div>
   <section class="social-links">
     <h2>Social média</h2>
-    <!-- <div class="info-item">
-      <mat-icon>language</mat-icon>
-        <div class="info">
-          <p class="label">site Internet</p>
-          <a href="" target="_blank"></a><p class="text">site.com</p>
-        </div>
-    </div> -->
     <div class="info-item">
       <mat-icon>linkdIn</mat-icon>
         <div class="info">
@@ -133,3 +135,5 @@
     </div>
   </section>
 </div>
+</div>
+

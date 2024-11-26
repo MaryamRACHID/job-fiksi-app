@@ -1,18 +1,19 @@
 .button-contact{
   display: flex;
   flex-direction: column;
-  gap: 0.2rem;
+  gap: 0.3rem;
   justify-content: space-between;
+  margin-right: 0.7rem;
 }
 .button-contact button{
   padding: 0.3rem 0.1rem;
-  background-color: rgb(255, 221, 0);
+  background-color: #F6BB10;
   width: 50%;
   right: 0;
   margin-left: auto;
-  font-size: 0.7rem;
+  font-size: 0.8rem;
   border-color: transparent;
   border-radius: 0.5rem;
-  color: aliceblue;
-  font-weight: 500;
+  color: rgb(255, 255, 255);
+  // font-weight: 500;
 }
