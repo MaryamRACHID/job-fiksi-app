@@ -22,6 +22,10 @@ export class InformationsComponent {
 
   filteredNationalities: string[] = this.nationalities;
 
+  onInputChange() {
+    this.personalInfoChange.emit(this.personalInfo);
+  }
+
   // Méthode pour filtrer les nationalités
   filterNationalities() {
     this.filteredNationalities = this.nationalities.filter(nationality =>
@@ -58,10 +62,11 @@ export class InformationsComponent {
 
   saveInfo() {
     this.personalInfoChange.emit(this.userType);
+    this.personalInfoChange.emit(this.personalInfo);
     console.log(this.personalInfo);
 
     const candidateId = 9; // À ajuster si nécessaire
-    const apiUrl = `https://jobfiksi.ismael-dev.com/api/candidats/${candidateId}/`;  // L'URL avec la barre oblique
+    const apiUrl = `https://jobfiksi.ismael-dev.com/api/candidats/profile/`;  // L'URL avec la barre oblique
 
     // Créez un FormData pour envoyer les données et le fichier
     const formData = new FormData();

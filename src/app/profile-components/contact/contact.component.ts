@@ -26,17 +26,14 @@ export class ContactComponent  {
   userId: string | null = null;
 
   saveContact() {
-    // Mettre à jour contactInfo avec les données de contact avant de l'émettre
     this.contactInfo = { ...this.contact };
-
-    // Émettre la mise à jour de contactInfo vers le composant parent
     this.contactInfoChange.emit(this.contactInfo);
 
     console.log(this.contactInfo)
 
     // Faire l'appel HTTP comme précédemment
     const candidateId = 9; // À ajuster si nécessaire
-    const apiUrl = `https://jobfiksi.ismael-dev.com/api/candidats/${candidateId}/`;  // L'URL avec la barre oblique
+    const apiUrl = 'https://jobfiksi.ismael-dev.com/api/candidats/profile/';  // L'URL avec la barre oblique
 
     const formData = new FormData();
 

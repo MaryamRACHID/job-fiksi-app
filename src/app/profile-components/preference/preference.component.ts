@@ -88,16 +88,40 @@ export class PreferenceComponent implements OnInit {
     console.log(this.preferencesInfo);
 
     const candidateId = 9;
-    const apiUrl = `https://jobfiksi.ismael-dev.com/api/candidats/${candidateId}/`;
+    const apiUrl = `https://jobfiksi.ismael-dev.com/api/candidats/profile/`;
 
     const formData = new FormData();
+
+    if (this.preferencesInfo.jobPreferences.server) {
+      formData.append('server', 'true');
+    }
+    if (this.preferencesInfo.jobPreferences.cook) {
+      formData.append('cook', 'true');
+    }
+    if (this.preferencesInfo.jobPreferences.dishwasher) {
+      formData.append('dishwasher', 'true');
+    }
+    if (this.preferencesInfo.jobPreferences.other && this.preferencesInfo.jobPreferences.otherType) {
+      formData.append('otherType', this.preferencesInfo.jobPreferences.otherType);
+    }
 
     if (this.preferencesInfo.locationPreference) {
       formData.append('preference_lieu', this.preferencesInfo.locationPreference);
     }
 
+    if (this.preferencesInfo.accessibleByTransport) {
+      formData.append('accessibleByTransport', 'true');
+    }
+
+    if (this.preferencesInfo.kmPreference.max) {
+      formData.append('kmPreference', this.preferencesInfo.kmPreference.max.toString());
+    }
+
     if (this.preferencesInfo.salaryPreference.min) {
       formData.append('preference_salaire', this.preferencesInfo.salaryPreference.min.toString());
+    }
+    if (this.preferencesInfo.salaryPreference.max) {
+      formData.append('preference_salaire', this.preferencesInfo.salaryPreference.max.toString());
     }
 
     // Vérifier si le token existe avant de faire l'appel HTTP
