@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<div class="container">
+  <div class="header">
+    <button mat-icon-button class="btn-icon">
+      <mat-icon class="icon-header">arrow_back</mat-icon>
+    </button>
+    <span class="company_name"> inas </span>
+</div>
+<div class="separato"></div>
+</div>
+<div class="content">
+  <div class="bloc">
+    <div class="title">Note:</div>
+    <div class="stars-container">
+      <span
+        *ngFor="let star of stars; let i = index"
+        class="star"
+        [ngClass]="{'filled': i < rating}"
+        (click)="rate(i + 1)"
+      >
+        ★
+      </span>
+    </div>
+  </div>
+ <div class="bloc">
+  <div class="title">Commentaires:</div>
+  <textarea name="feedback-candiat" id="feedback-candidat" placeholder="Start writing here"></textarea>
+ </div>
+  <button class="btn">envoyer la note</button>
+</div>
+

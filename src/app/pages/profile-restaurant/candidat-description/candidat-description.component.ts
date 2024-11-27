@@ -15,13 +15,15 @@ import { MatDialog } from '@angular/material/dialog';
   ]
 })
 export class CandidatDescriptionComponent {
-  @Input() candidate!: { name: string; Cv: string; Email: string; Telephone: string; Disponibilite: string[]; _Statut: string; DateEntretien: string;HeureEntretien:string };
+
+  @Input() candidate!: { name: string; Cv: string; Email: string; Telephone: string; Disponibilite: string[]; _Statut: string; DateEntretien: string;HeureEntretien:string,note:string };
   showCandidate: boolean = true;
 
   isOpen: any;
   @Input() job: any;
   @ViewChild('editDialog') editDialog!: TemplateRef<any>;
   selectedStatus: string = '';
+  showFeedback: boolean = false;
 
   constructor(private dialog: MatDialog) {}
 
@@ -84,5 +86,12 @@ export class CandidatDescriptionComponent {
     }
     
     this.closeDialog();
+  }
+
+  showfeedback() {
+    this.showFeedback=true;
+  }
+  handleCancelfeedback() {
+    this.showFeedback=false;
   }
 }

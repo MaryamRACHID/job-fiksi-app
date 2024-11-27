@@ -2,7 +2,7 @@
   <div class="poste-header" (click)="toggleDescriptionCandidate()">
     <span>{{ candidate.name }}</span>
     <div class="icon-div">
-      <span class="far fa-star"></span>
+      <span class="far fa-star" (click)="showfeedback()"></span>
       <span [ngClass]="{'rotate-arrow': isOpen}" class="fas fa-chevron-down"></span>
     </div>
   </div>
@@ -105,4 +105,6 @@
     <button mat-button (click)="closeDialog_entretien()" class="popup-button">Annuler</button>
   </div>
 </ng-template>
+
+
 

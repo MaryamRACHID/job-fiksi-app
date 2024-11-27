@@ -102,12 +102,12 @@ export class ProfileRestaurantComponent{
       datePublication: '20/12/2021',
       show:false,
       candidatures: [
-        { name: 'Alice Dupont', Cv: 'cv.pdf', Email: 'alice@example.com', Telephone: '074474748', Disponibilite: ['Lundi', 'Mardi'], _Statut: 'Non évalué',DateEntretien:'2024-11-25', HeureEntretien:'08:00' },
-        { name: 'Jean Martin', Cv: 'cv', Email: 'jean@example.com', Telephone: '075577889', Disponibilite: ['Lundi', 'Mardi'], _Statut: 'En cours',DateEntretien:'', HeureEntretien:'' },
-        { name: 'Claire Bernard', Cv: 'cv', Email: 'claire@example.com', Telephone: '076688990', Disponibilite: ['Lundi', 'Mardi'], _Statut: 'Accepté',DateEntretien:'' , HeureEntretien:''},
-        { name: 'Pierre Durand', Cv: 'cv', Email: 'pierre@example.com', Telephone: '077799001', Disponibilite: ['Lundi', 'Mardi','samedi'], _Statut: 'Non évalué' ,DateEntretien:'', HeureEntretien:''},
-        { name: 'Sophie Leroy', Cv: 'cv', Email: 'sophie@example.com', Telephone: '078800112', Disponibilite: ['Lundi', 'Mardi','vendredi'], _Statut: 'En cours',DateEntretien:'', HeureEntretien:'' },
-        { name: 'Marc Dupuis', Cv: 'cv', Email: 'marc@example.com', Telephone: '079911223', Disponibilite: ['Lundi', 'Mardi','jeudi'], _Statut: 'Non évalué',DateEntretien:'', HeureEntretien:'' },
+        { name: 'Alice Dupont', Cv: 'cv.pdf', Email: 'alice@example.com', Telephone: '074474748', Disponibilite: ['Lundi', 'Mardi'], _Statut: 'Non évalué',DateEntretien:'2024-11-25', HeureEntretien:'08:00',note:'' },
+        { name: 'Jean Martin', Cv: 'cv', Email: 'jean@example.com', Telephone: '075577889', Disponibilite: ['Lundi', 'Mardi'], _Statut: 'En cours',DateEntretien:'', HeureEntretien:'',note:'' },
+        { name: 'Claire Bernard', Cv: 'cv', Email: 'claire@example.com', Telephone: '076688990', Disponibilite: ['Lundi', 'Mardi'], _Statut: 'Accepté',DateEntretien:'' , HeureEntretien:'',note:''},
+        { name: 'Pierre Durand', Cv: 'cv', Email: 'pierre@example.com', Telephone: '077799001', Disponibilite: ['Lundi', 'Mardi','samedi'], _Statut: 'Non évalué' ,DateEntretien:'', HeureEntretien:'',note:''},
+        { name: 'Sophie Leroy', Cv: 'cv', Email: 'sophie@example.com', Telephone: '078800112', Disponibilite: ['Lundi', 'Mardi','vendredi'], _Statut: 'En cours',DateEntretien:'', HeureEntretien:'' ,note:''},
+        { name: 'Marc Dupuis', Cv: 'cv', Email: 'marc@example.com', Telephone: '079911223', Disponibilite: ['Lundi', 'Mardi','jeudi'], _Statut: 'Non évalué',DateEntretien:'', HeureEntretien:'',note:'' },
 
       ]
     },
@@ -119,10 +119,10 @@ export class ProfileRestaurantComponent{
       datePublication: '15/11/2021',
       show:false,
       candidatures: [
-        { name: 'Isabelle Laurent', Cv: 'cv', Email: 'isabelle@example.com', Telephone: '070012345', Disponibilite: ['Lundi', 'Mardi', 'Jeudi'], _Statut: 'Refusé' ,DateEntretien:'', HeureEntretien:''},
-        { name: 'Lucas Garnier', Cv: 'cv', Email: 'lucas@example.com', Telephone: '071123456', Disponibilite: ['Lundi', 'Mardi'], _Statut: 'En cours',DateEntretien:'' , HeureEntretien:''},
-        { name: 'Emma Roche', Cv: 'cv', Email: 'emma@example.com', Telephone: '072234567', Disponibilite: ['Lundi', 'Mardi'], _Statut: 'Accepté',DateEntretien:'', HeureEntretien:'' },
-        { name: 'Paul Millet', Cv: 'cv', Email: 'paul@example.com', Telephone: '073345678', Disponibilite: ['Lundi', 'Mardi'], _Statut: 'Non évalué',DateEntretien:'' , HeureEntretien:''}
+        { name: 'Isabelle Laurent', Cv: 'cv', Email: 'isabelle@example.com', Telephone: '070012345', Disponibilite: ['Lundi', 'Mardi', 'Jeudi'], _Statut: 'Refusé' ,DateEntretien:'', HeureEntretien:'',note:''},
+        { name: 'Lucas Garnier', Cv: 'cv', Email: 'lucas@example.com', Telephone: '071123456', Disponibilite: ['Lundi', 'Mardi'], _Statut: 'En cours',DateEntretien:'' , HeureEntretien:'',note:''},
+        { name: 'Emma Roche', Cv: 'cv', Email: 'emma@example.com', Telephone: '072234567', Disponibilite: ['Lundi', 'Mardi'], _Statut: 'Accepté',DateEntretien:'', HeureEntretien:'',note:'' },
+        { name: 'Paul Millet', Cv: 'cv', Email: 'paul@example.com', Telephone: '073345678', Disponibilite: ['Lundi', 'Mardi'], _Statut: 'Non évalué',DateEntretien:'' , HeureEntretien:'',note:''}
       ]
     },
     // autres postes
