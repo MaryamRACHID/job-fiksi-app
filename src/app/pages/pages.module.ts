@@ -40,6 +40,10 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { PlanningComponent } from './profile-restaurant/planning/planning.component';
 import { MatCalendarCellClassFunction } from '@angular/material/datepicker';
 import { ModifierInfosRestaurantComponent } from './profile-restaurant/modifier-infos-restaurant/modifier-infos-restaurant.component';
+import { ProfilRestoVuParCandidatComponent } from './profil-resto-vu-par-candidat/profil-resto-vu-par-candidat.component';
+import { InfoRestaurantComponent } from '../profile-components/info-restaurant/info-restaurant.component';
+import { InformationsRestoComponent } from './profil-resto-vu-par-candidat/informations-resto/informations-resto.component';
+import { EmploisRestoComponent } from './profil-resto-vu-par-candidat/emplois-resto/emplois-resto.component';
 
 @NgModule({
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
@@ -57,7 +61,11 @@ import { ModifierInfosRestaurantComponent } from './profile-restaurant/modifier-
     OffreDescriptionComponent,
     CandidatDescriptionComponent,
     PlanningComponent,
-    ModifierInfosRestaurantComponent
+    ModifierInfosRestaurantComponent,
+    ProfilRestoVuParCandidatComponent,
+    RestaurantInfosComponent,
+    InformationsRestoComponent,
+    EmploisRestoComponent,
   ],
   exports: [
     LoginComponent,
@@ -74,7 +82,10 @@ import { ModifierInfosRestaurantComponent } from './profile-restaurant/modifier-
     OffreDescriptionComponent,
     CandidatDescriptionComponent,
     PlanningComponent,
-    ModifierInfosRestaurantComponent
+    ModifierInfosRestaurantComponent,
+    ProfilRestoVuParCandidatComponent,
+    InformationsRestoComponent,
+    EmploisRestoComponent,
   ],
   imports: [
     CommonModule,
