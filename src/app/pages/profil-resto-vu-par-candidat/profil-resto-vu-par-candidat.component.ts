@@ -32,7 +32,7 @@ export class ProfilRestoVuParCandidatComponent {
     avantages:["Tickes restaurants","Congé payés", "assurance"],
     siteInternet:'site.com',
     linkdin:'prifil-linkdin',
-    emplois:
+    emplois:[ 
       {
         titre: 'Chef cuisinier',
         poste: 'Responsable de cuisine',
@@ -41,39 +41,41 @@ export class ProfilRestoVuParCandidatComponent {
         description: 'Superviser l’équipe en cuisine et élaborer des menus raffinés.',
         competences: ['Créativité culinaire', 'Gestion d’équipe', 'Maîtrise des techniques culinaires'],
         prixParHeure: '20£'
+      },
+      {
+        titre: 'Serveur',
+        poste: 'Service en salle',
+        entreprise: 'Café de la Place',
+        description: 'Accueillir les clients, prendre les commandes et assurer un service de qualité.',
+        competences: ['Esprit d’équipe', 'Service client', 'Rapidité'],
+        prixParHeure: '15£'
+      },
+      {
+        titre: 'Barman',
+        poste: 'Préparateur de boissons',
+        entreprise: 'Bar Lounge 21',
+        description: 'Préparer des cocktails et servir les clients dans une ambiance conviviale.',
+        competences: ['Créativité', 'Communication', 'Gestion du stress'],
+        prixParHeure: '18£'
+      },
+      {
+        titre: 'Plongeur',
+        poste: 'Hygiène et propreté',
+        entreprise: 'Restaurant Étoile',
+        description: 'Assurer le nettoyage de la vaisselle et des équipements de cuisine.',
+        competences: ['Rigueur', 'Rapidité', 'Organisation'],
+        prixParHeure: '12£'
+      },
+      {
+        titre: 'Assistant Manager',
+        poste: 'Gestion opérationnelle',
+        entreprise: 'Brasserie Lyonnaise',
+        description: 'Coordonner les équipes, gérer les stocks et veiller à la satisfaction client.',
+        competences: ['Leadership', 'Gestion des stocks', 'Polyvalence'],
+        prixParHeure: '22£'
       }
+    
+    ]
   }
 }
 
-// {
-//   titre: 'Serveur',
-//   poste: 'Service en salle',
-//   entreprise: 'Café de la Place',
-//   description: 'Accueillir les clients, prendre les commandes et assurer un service de qualité.',
-//   competences: ['Esprit d’équipe', 'Service client', 'Rapidité'],
-//   prixParHeure: '15£'
-// },
-// {
-//   titre: 'Barman',
-//   poste: 'Préparateur de boissons',
-//   entreprise: 'Bar Lounge 21',
-//   description: 'Préparer des cocktails et servir les clients dans une ambiance conviviale.',
-//   competences: ['Créativité', 'Communication', 'Gestion du stress'],
-//   prixParHeure: '18£'
-// },
-// {
-//   titre: 'Plongeur',
-//   poste: 'Hygiène et propreté',
-//   entreprise: 'Restaurant Étoile',
-//   description: 'Assurer le nettoyage de la vaisselle et des équipements de cuisine.',
-//   competences: ['Rigueur', 'Rapidité', 'Organisation'],
-//   prixParHeure: '12£'
-// },
-// {
-//   titre: 'Assistant Manager',
-//   poste: 'Gestion opérationnelle',
-//   entreprise: 'Brasserie Lyonnaise',
-//   description: 'Coordonner les équipes, gérer les stocks et veiller à la satisfaction client.',
-//   competences: ['Leadership', 'Gestion des stocks', 'Polyvalence'],
-//   prixParHeure: '22£'
-// }

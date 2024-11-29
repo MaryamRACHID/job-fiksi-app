@@ -30,7 +30,9 @@
     <app-informations-resto [infos]="RestaurantInformations"></app-informations-resto>
   </div>
   <div class="emplois" *ngIf="showEmplois">
-    <app-emplois-resto [details]="RestaurantInformations.emplois"></app-emplois-resto>
+    <div class="bloc-emplois" *ngFor="let item of RestaurantInformations.emplois">
+      <app-emplois-resto [details]="item"></app-emplois-resto>
+    </div>
   </div>
 </div>
 
