@@ -8,6 +8,8 @@
   // background: linear-gradient(90deg, #f7b733, #fc4a1a); /* Dégradé jaune/orange */
   margin: 0;
   background-image: url(back.png);
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
   height: 150px;
   display: flex;
   color: white;
