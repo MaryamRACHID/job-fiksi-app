@@ -35,12 +35,16 @@ import { RestaurantInfosComponent } from './profile-restaurant/restaurant-infos/
 import { OffreDescriptionComponent } from './profile-restaurant/offre-description/offre-description.component';
 import { CandidatDescriptionComponent } from './profile-restaurant/candidat-description/candidat-description.component';
 
-import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatNativeDateModule } from '@angular/material/core';
 import { PlanningComponent } from './profile-restaurant/planning/planning.component';
 import { MatCalendarCellClassFunction } from '@angular/material/datepicker';
 import { ModifierInfosRestaurantComponent } from './profile-restaurant/modifier-infos-restaurant/modifier-infos-restaurant.component';
 
+import { ProfileCandidatComponent } from './profile-candidat/profile-candidat.component';
+import { ProfileCandidatVuRecruteurComponent } from './profile-candidat/profile-candidat-vu-recruteur/profile-candidat-vu-recruteur.component';
+import { ModifierProfileCandidatComponent } from './profile-candidat/modifier-profile-candidat/modifier-profile-candidat.component';
+// import { ButtonContactCandidatComponent } from './profile-candidat/button-contact-candidat/button-contact-candidat.component';
+import { MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 @NgModule({
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 
@@ -57,7 +61,10 @@ import { ModifierInfosRestaurantComponent } from './profile-restaurant/modifier-
     OffreDescriptionComponent,
     CandidatDescriptionComponent,
     PlanningComponent,
-    ModifierInfosRestaurantComponent
+    ModifierInfosRestaurantComponent,
+    ProfileCandidatComponent,
+    ProfileCandidatVuRecruteurComponent,
+    ModifierProfileCandidatComponent
   ],
   exports: [
     LoginComponent,
@@ -74,8 +81,12 @@ import { ModifierInfosRestaurantComponent } from './profile-restaurant/modifier-
     OffreDescriptionComponent,
     CandidatDescriptionComponent,
     PlanningComponent,
-    ModifierInfosRestaurantComponent
+    ModifierInfosRestaurantComponent,
+    ProfileCandidatComponent,
+    ProfileCandidatVuRecruteurComponent,
+    ModifierProfileCandidatComponent,
   ],
+
   imports: [
     CommonModule,
     FormsModule,
@@ -104,6 +115,9 @@ import { ModifierInfosRestaurantComponent } from './profile-restaurant/modifier-
   ],
   providers: [
     MatDatepickerModule, // Nécessaire pour fournir le service du datepicker
+    MatNativeDateModule
   ],
+
+
 })
 export class PagesModule {}

@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<div class="header">
+  <div class="top-section">
+    <mat-toolbar color="primary" class="toolbar">
+      <button mat-icon-button (click)="cancel()">
+        <mat-icon>arrow_back</mat-icon>
+      </button>
+      <span class="company_name"> {{user.nomUser}} </span>
+      <span class="spacer"></span>
+      <button mat-icon-button>
+        <mat-icon>share</mat-icon>
+      </button>
+      <button mat-icon-button [routerLink]="['/settings']">
+        <mat-icon>settings</mat-icon>
+      </button>
+      <button mat-icon-button>
+        <mat-icon>edit</mat-icon>
+      </button>
+    </mat-toolbar>
+  </div>
+  <div class="logo-container">
+    <img class="logo" [src]="imagePreview">
+  </div>
+  <div class="bottom-section"></div>
+</div>
+
+<button class="edit" (click)="openFilePicker(fileInput)">
+  <mat-icon class="icon-edit">edit</mat-icon>
+</button>
+<input type="file" #fileInput accept="image/*" (change)="onFileSelected($event)" style="display: none;">
+<!-- <div *ngIf="selectedFile">
+  <p>Photo sélectionnée :</p>
+  <img [src]="imagePreview" alt="Aperçu" style="max-width: 200px; max-height: 200px;">
+</div> -->
+
+<div class="content">
+  <section class="company-info">
+      <input type="text" name="user-name" id="user-name" class="grp-input" placeholder="{{user.nomUser}}" [(ngModel)]="user.nomUser">
+    <div class="contact-info">
+      <div class="info-item">
+        <mat-icon>email</mat-icon>
+          <div class="info">
+              <p class="label">Email</p>
+              <input type="text" name="user-email" id="user-email" class="grp-input" placeholder="{{user.emailUser}}" [(ngModel)]="user.emailUser">
+               <!-- <p>inas.com</p> -->
+          </div>
+      </div>
+      <div class="info-item">
+        <mat-icon>phone</mat-icon>
+          <div class="info">
+              <p class="label">Numéro de téléphone</p>
+              <input type="text" name="user-tel" id="user-tel" class="grp-input" placeholder="{{user.telUser}}" [(ngModel)]="user.telUser">
+          </div>
+      </div>
+      <div class="info-item">
+        <mat-icon>location_on</mat-icon>
+          <div class="info">
+              <p class="label">Localisation</p>
+              <input type="text" name="user-adresse" id="user-adresse" class="grp-input" placeholder="{{user.adresseUser}}" [(ngModel)]="user.adresseUser">
+          </div>
+      </div>
+      <div class="info-item">
+        <mat-icon class="iconDispo">event_available</mat-icon>
+         <div class="info">
+             <p class="label">Disponibilité</p>
+             <div class="dispo"> <!--tags-->
+               <span class="days"
+                 *ngFor="let day of daysOfWeek"
+                 [ngClass]="{'highlighted-day': isAvailable(day), 'default-day': !isAvailable(day)}" (click)="toggleAvailability(day)">
+                 {{ day }}
+               </span><!--tag-->
+             </div>
+         </div>
+     </div>
+  </div>
+
+  </section>
+
+  <div class="separator"></div>
+  <section class="description">
+    <h2>Description</h2>
+    <textarea name="description" class="user-description" id="user-description" placeholder="{{user.descriptionUser}}" [(ngModel)]="user.descriptionUser"></textarea>
+    <div class="cv-section">
+      <a href="#" class="lien">Voir le CV</a>
+      <button mat-icon-button class="cv-edit">
+        <mat-icon class="cv-edit">edit</mat-icon>
+      </button>
+    </div>
+
+  </section>
+
+
+  <div class="separator"></div>
+  <section class="formations">
+    <h2>Formations</h2>
+    <div class="interview-date" *ngFor="let formation of user.formationsUser">
+      <div class="date-label">
+        <span class="showInfosEntretien">
+          {{ formation.dateDebutFormation | date: 'yyyy' }} - {{ formation.dateFinFormation | date: 'yyyy' }}
+        </span>
+
+        <ul class="interview-l">
+          <li class="detailsEntretien">
+            <span></span>{{formation.nomFormation}}
+          </li>
+          <li class="detailsEntite">
+            <span></span>{{formation.etablissementFormation}}
+          </li>
+        </ul>
+      </div>
+      <button mat-icon-button (click)="editFormation(formation)">
+        <mat-icon class="formation-edit">edit</mat-icon>
+      </button>
+      <button mat-icon-button (click)="openPopupDeleteFormation()">
+        <mat-icon class="formation-delete">delete</mat-icon>
+      </button>
+      <div class="popup-overlay" *ngIf="showdeletePopupFormation">
+        <div class="logout-popup" *ngIf="showdeletePopupFormation">
+          <div class="logout-content">
+            <hr class="barre">
+            <h3>Êtes-vous sûr de vouloir supprimer?</h3>
+            <!-- <p> ?</p> -->
+            <button class="confirm-button" (click)="confirmDeleteFormation(formation)">OUI</button>
+            <button class="cancel-button" (click)="closePopupDeleteFormation()">ANNULER</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="add-formarions">
+      <button mat-raised-button color="primary" class="-btn-add-formation" id="btn-add-formation" (click)="showPopUpAddFormation()">
+        <mat-icon class="add-icon">add</mat-icon> Ajouter une formation
+      </button>
+    </div>
+
+  </section>
+
+  <div class="separator"></div>
+  <section class="advantages">
+    <h2>Compétences</h2>
+    <textarea name="user-competences" class="user-competences" id="user-competences" placeholder="{{user.competencesUser}}" [(ngModel)]="user.competencesUser"></textarea>
+  </section>
+
+  <div class="separator"></div>
+  <section class="experiences">
+    <h2>Experiences</h2>
+    <div class="interview-date" *ngFor="let experience of user.experiencesUser">
+      <div class="date-label">
+        <span class="showInfosEntretien">{{experience.debutExperience  | date: 'yyyy'}}-{{experience.finExperience  | date: 'yyyy'}}</span>
+        <ul class="interview-l">
+          <li class="detailsEntretien">
+            <span></span>• {{experience.poste}}
+          </li>
+          <li class="detailsEntite">
+            <span></span>• {{experience.structure}}
+          </li>
+        </ul>
+      </div>
+      <button mat-icon-button>
+        <mat-icon class="competences-edit" (click)="editExperience(experience)">edit</mat-icon>
+      </button>
+      <button mat-icon-button>
+        <mat-icon class="competences-delete" (click)="openPopupDeleteExperience()">delete</mat-icon>
+      </button>
+      <div class="popup-overlay" *ngIf="showdeletePopupExperience">
+        <div class="logout-popup" *ngIf="showdeletePopupExperience">
+          <div class="logout-content">
+            <hr class="barre">
+            <h3>Êtes-vous sûr de vouloir supprimer?</h3>
+            <!-- <p> ?</p> -->
+            <button class="confirm-button" (click)="confirmDeleteExperience(experience)">OUI</button>
+            <button class="cancel-button" (click)="closePopupDeleteExperience()">ANNULER</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="add-formarions">
+      <button mat-raised-button color="primary" class="-btn-add-formation" id="btn-add-formation" (click)="showPopUpAddExperience()">
+        <mat-icon class="add-icon">add</mat-icon> Ajouter une experience
+      </button>
+    </div>
+  </section>
+
+  <div class="separator"></div>
+  <section class="social-links">
+    <h2>Social média</h2>
+    <div class="info-item">
+      <mat-icon>linkdIn</mat-icon>
+        <div class="info">
+          <p class="label">LinkdIn</p>
+          <input type="text" name="user-linkdin" id="user-linkdin" class="grp-input" placeholder="{{user.linkdinUser}}" [(ngModel)]="user.linkdinUser">
+        </div>
+    </div>
+  </section>
+  <div class="button-container">
+    <button class="btn cancelP" (click)="cancel()">Annuler</button>
+    <button type="submit" class="btn save" (click)="save()">Sauvegarder</button>
+  </div>
+</div>
+
+<!-- ///////////////////////////popup edit formation/////////////////////////////// -->
+
+<div class="popup-overlay" *ngIf="showPopupformationedit">
+  <div class="popup-content" #editdialog>
+    <h2>Modifier la formation</h2>
+    <div>
+      <label>Nom de la formation *</label>
+      <input type="text" [(ngModel)]="selectedNomFormation" />
+    </div>
+    <div>
+      <label>Établissement *</label>
+      <input type="text" [(ngModel)]="selectedetablissementFormation" />
+    </div>
+    <div class="bloc-date">
+      <label>Période *</label>
+      <div class="periode-cantainer">
+
+          <div class="dateDebut">
+            <label class="label" for="">Début</label>
+            <input class="Date" matInput [matDatepicker]="picker1" [(ngModel)]="selectedDateDebutFormation" />
+            <!-- <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle> -->
+            <mat-datepicker #picker1></mat-datepicker>
+          </div>
+
+          <div class="dateFin">
+            <label class="label" for="">Fin</label>
+            <input class="Date" matInput [matDatepicker]="picker2" [(ngModel)]="selectedDateFinFormation" />
+            <mat-datepicker #picker2></mat-datepicker>
+          </div>
+
+       </div>
+
+    </div>
+
+    <div class="button-container">
+      <button class="btn cancel" (click)="closePopup()">Annuler</button>
+      <button type="submit" class="btn save" (click)="saveFormation()">Sauvegarder</button>
+    </div>
+  </div>
+</div>
+
+<!-- /////////////////////////////pop up edit experienc/////////////////////////////// -->
+<div class="popup-overlay" *ngIf="showPopupexperienceedit">
+  <div class="popup-content" #editdialog>
+    <h2>Modifier l'experience'</h2>
+    <div>
+      <label>Poste occupé *</label>
+      <input type="text" [(ngModel)]="selectedPosteExperience" />
+    </div>
+    <div>
+      <label>structure d'acceuil *</label>
+      <input type="text" [(ngModel)]="selectedStructureExperience" />
+    </div>
+    <div class="bloc-date">
+      <label>Période *</label>
+      <div class="periode-cantainer">
+
+          <div class="dateDebut">
+            <label class="label" for="">Début</label>
+            <input class="Date" matInput [matDatepicker]="picker1" [(ngModel)]="selectedDateDebutExperience" />
+            <!-- <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle> -->
+            <mat-datepicker #picker1></mat-datepicker>
+          </div>
+
+          <div class="dateFin">
+            <label class="label" for="">Fin</label>
+            <input class="Date" matInput [matDatepicker]="picker2" [(ngModel)]="selectedDateFinExperience" />
+            <mat-datepicker #picker2></mat-datepicker>
+          </div>
+       </div>
+    </div>
+    <div class="button-container">
+      <button class="btn cancel" (click)="closePopup()">Annuler</button>
+      <button type="submit" class="btn save" (click)="saveExperience()">Sauvegarder</button>
+    </div>
+  </div>
+</div>
+
+<!-- //////////////////////add formation pop up/////////////////////// -->
+
+<div class="popup-overlay" *ngIf="showPopupformationadd">
+  <div class="popup-content" #editdialog>
+    <h2>Ajouer une formation</h2>
+    <div>
+      <label>Nom de la formation *</label>
+      <input type="text" [(ngModel)]="selectedNewNomFormation" />
+    </div>
+    <div>
+      <label>Établissement *</label>
+      <input type="text" [(ngModel)]="selectedNewEtablissementFormation" />
+    </div>
+    <div class="bloc-date">
+      <label>Période *</label>
+      <div class="periode-cantainer">
+
+          <div class="dateDebut">
+            <label class="label" for="">Début</label>
+            <input class="Date" matInput [matDatepicker]="picker1" [(ngModel)]="selectedNewDateDebutFormation" />
+            <!-- <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle> -->
+            <mat-datepicker #picker1></mat-datepicker>
+          </div>
+
+          <div class="dateFin">
+            <label class="label" for="">Fin</label>
+            <input class="Date" matInput [matDatepicker]="picker2" [(ngModel)]="selectedNewDateFinFormation" />
+            <mat-datepicker #picker2></mat-datepicker>
+          </div>
+
+       </div>
+
+    </div>
+
+    <div class="button-container">
+      <button class="btn cancel" (click)="closePopup()">Annuler</button>
+      <button type="submit" class="btn save" (click)="addFormation(user)">Ajouter</button>
+    </div>
+  </div>
+</div>
+
+<!-- //////////////////////add formation pop up/////////////////////// -->
+
+<div class="popup-overlay" *ngIf="showPopupexperienceadd">
+  <div class="popup-content" #editdialog>
+    <h2>Ajouer une experience</h2>
+    <div>
+      <label>Poste occupé *</label>
+      <input type="text" [(ngModel)]="selectedNewPosetExperience" />
+    </div>
+    <div>
+      <label>Structure *</label>
+      <input type="text" [(ngModel)]="selectedNewStructureExperience" />
+    </div>
+    <div class="bloc-date">
+      <label>Période *</label>
+      <div class="periode-cantainer">
+
+          <div class="dateDebut">
+            <label class="label" for="">Début</label>
+            <input class="Date" matInput [matDatepicker]="picker1" [(ngModel)]="selectedNewDateDebutExperience" />
+            <!-- <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle> -->
+            <mat-datepicker #picker1></mat-datepicker>
+          </div>
+
+          <div class="dateFin">
+            <label class="label" for="">Fin</label>
+            <input class="Date" matInput [matDatepicker]="picker2" [(ngModel)]="selectedNewDateFinExperience" />
+            <mat-datepicker #picker2></mat-datepicker>
+          </div>
+
+       </div>
+
+    </div>
+
+    <div class="button-container">
+      <button class="btn cancel" (click)="closePopup()">Annuler</button>
+      <button type="submit" class="btn save" (click)="addExperience(user)">Ajouter</button>
+    </div>
+  </div>
+</div>
+
+<!-- ############################# supprimmer  formation #############################"" -->
+

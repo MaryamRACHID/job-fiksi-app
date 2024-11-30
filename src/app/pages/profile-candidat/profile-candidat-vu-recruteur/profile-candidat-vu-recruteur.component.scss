@@ -1,0 +1,30 @@
+.content
+{
+  padding-top: 0 !important;
+  // padding-right: 0.2rem !important;
+}
+
+.spacer {
+  // background-color: aqua;
+  padding: 4rem !important;
+}
+
+.button-contact{
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  justify-content: space-between;
+  margin-right: 0.7rem;
+}
+.button-contact button{
+  padding: 0.3rem 0.1rem;
+  background-color: #F6BB10;
+  width: 50%;
+  right: 0;
+  margin-left: auto;
+  font-size: 0.8rem;
+  border-color: transparent;
+  border-radius: 0.5rem;
+  color: rgb(255, 255, 255);
+  // font-weight: 50
+}

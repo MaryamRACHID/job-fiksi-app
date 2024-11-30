@@ -13,6 +13,9 @@ import {DocumentListComponent} from './pages/document-list/document-list.compone
 import { PreferenceComponent } from './profile-components/preference/preference.component';
 import { AccueilRestaurantComponent } from './pages/accueil-restau/accueil-restau.component';
 import { ProfileRestaurantComponent } from './pages/profile-restaurant/profile-restaurant.component';
+import { ProfileCandidatComponent } from './pages/profile-candidat/profile-candidat.component';
+import { ProfileCandidatVuRecruteurComponent } from './pages/profile-candidat/profile-candidat-vu-recruteur/profile-candidat-vu-recruteur.component';
+import { ModifierProfileCandidatComponent } from './pages/profile-candidat/modifier-profile-candidat/modifier-profile-candidat.component';
 
 export const routes: Routes = [
   { path: '', component: LoginComponent }, // Page d'accueil par défaut
@@ -29,6 +32,9 @@ export const routes: Routes = [
   { path: 'documents', component: DocumentListComponent },
   {path:'profile-restaurant', component:ProfileRestaurantComponent},
   {path:'modifier-infos-restaurant', component: InformationsComponent},
+  {path:'profile-candidat', component: ProfileCandidatComponent},
+  {path:'profileCandidatVuParResto',component: ProfileCandidatVuRecruteurComponent},
+  {path:'modifier-profil-candidat', component: ModifierProfileCandidatComponent},
   { path: '**', redirectTo: '' }, // Redirection vers l'accueil pour les routes inconnues
 
 ];
