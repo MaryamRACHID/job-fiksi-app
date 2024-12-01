@@ -3,7 +3,9 @@
 
 <div class="mb-4">
   <label class="form-label">Relevé d’identité bancaire *</label>
+  <!-- L'input caché pour le téléchargement de fichier -->
   <input name="rib_document" type="file" class="d-none" #otherDocUploadInput (change)="onFileChange($event, 'rib')" />
+
   <div class="custom-upload" (click)="otherDocUploadInput.click()">
     <i class="fa-solid fa-upload me-2"></i>
     <span>Ajouter mon RIB</span>
@@ -14,17 +16,15 @@
 
 <div class="form-group mt-2">
   <label for="rib">RIB</label>
-  <input name="rib" type="text" class="form-control" id="rib" placeholder="RIB">
+  <input name="rib" type="text" class="form-control" id="rib" [(ngModel)]="rib" placeholder="RIB">
 </div>
 <div class="form-group">
   <label for="iban">IBAN</label>
-  <input name="iban" type="text" class="form-control" id="iban" placeholder="IBAN">
+  <input name="iban" type="text" class="form-control" id="iban" [(ngModel)]="iban" placeholder="IBAN">
 </div>
 <div class="form-group">
   <label for="bic">BIC</label>
-  <input name="bic" type="text" class="form-control" id="bic" placeholder="BIC">
+  <input name="bic" type="text" class="form-control" id="bic" [(ngModel)]="bic" placeholder="BIC">
 </div>
 
 <p class="note">* Ces informations sont recueillies pour les besoins administratifs et l’établissement du contrat de travail, et resteront confidentielles.</p>
-
-

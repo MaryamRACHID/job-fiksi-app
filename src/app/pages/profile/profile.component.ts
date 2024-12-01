@@ -25,7 +25,7 @@ export class ProfileComponent {
 
   step: number = 1;
   userType: string | null = null;
-  personalInfo = { name: '', firstName: '', birthDate: '', city: '', nationality: '', id: 9};
+  personalInfo = { gender: '', name: '', firstName: '', birthDate: '', city: '', nationality: '', id: 9};
   contactInfo = { phone: '', rue: '', postalCode: '', city: '' };
   preferencesInfo = {
     jobPreferences: {
@@ -45,7 +45,7 @@ export class ProfileComponent {
       max: 2000
     }
   };
-  restauInfo = { phone: '', rue: '', postalCode: '', city: '' };
+  restauInfo = { name: '', type: '', code_postal: '', tel_pro: '' , email_pro: '' , site_web: '' };
   disponibilitesInfo = { phone: '', rue: '', postalCode: '', city: '' };
   notificationsInfo = { phone: '', rue: '', postalCode: '', city: '' };
   descriptionInfo = { phone: '', rue: '', postalCode: '', city: '' };

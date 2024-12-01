@@ -1,5 +1,5 @@
 import { Component, Output, EventEmitter, Input } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-disponibilites',
@@ -9,6 +9,8 @@ import { HttpClient } from '@angular/common/http';
 export class DisponibilitesComponent {
   @Output() availabilityInfoChange = new EventEmitter<any>();
   @Input() userType: string | null = null;
+
+  token: string | null = null;
 
   days = ['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche'];
   availabilityInfo: { [key: string]: boolean } = {
@@ -20,50 +22,66 @@ export class DisponibilitesComponent {
     'Samedi': false,
     'Dimanche': false
   };
-  morning: boolean = false;
-  afternoon: boolean = false;
-  evening: boolean = false;
+
+  // Convertir timeSlots en tableau, comme days
+  timeSlots: string[] = ['Matin', 'Apres-midi', 'Soir'];
+  timeSlotsInfo: { [key: string]: boolean } = {
+    'Matin': false,
+    'Apres-midi': false,
+    'Soir': false
+  };
 
   constructor(private http: HttpClient) {}
 
   save() {
     this.availabilityInfoChange.emit({
       availability: Object.keys(this.availabilityInfo).filter(day => this.availabilityInfo[day]),
-      morning: this.morning,
-      afternoon: this.afternoon,
-      evening: this.evening
+      timeSlots: this.timeSlots.filter(slot => this.timeSlotsInfo[slot])
     });
   }
 
   onDayChange(day: string) {
     this.availabilityInfo[day] = !this.availabilityInfo[day];
+    this.emitChanges();
+  }
+
+  onTimeSlotChange(slot: string) {
+    this.timeSlotsInfo[slot] = !this.timeSlotsInfo[slot];
+    this.emitChanges();
+  }
+
+  emitChanges() {
     this.availabilityInfoChange.emit({
       availability: this.availabilityInfo,
-      morning: this.morning,
-      afternoon: this.afternoon,
-      evening: this.evening
+      timeSlots: this.timeSlotsInfo
     });
   }
 
   saveDisponibilite() {
-    this.availabilityInfoChange.emit(this.userType);
-    const apiUrl = 'https://your-api-endpoint.com/saveDisponibilite'; // Replace with your API endpoint
+    const apiUrl = 'https://jobfiksi.ismael-dev.com/api/candidats/profile/';
 
-    const availabilityPayload = {
-      availability: Object.keys(this.availabilityInfo).filter(day => this.availabilityInfo[day]),
-      morning: this.morning,
-      afternoon: this.afternoon,
-      evening: this.evening
-    };
+    const formData = new FormData();
 
-    this.http.post(apiUrl, availabilityPayload)
-      .subscribe(
-        response => {
-          console.log('Availability saved successfully:', response);
-        },
-        error => {
-          console.error('Error saving availability:', error);
-        }
-      );
+    const selectedDays = Object.keys(this.availabilityInfo).filter(day => this.availabilityInfo[day]);
+    if (selectedDays.length > 0) {
+      formData.append('disponibilite', JSON.stringify(selectedDays));
+    }
+
+    const selectedTimeSlots = this.timeSlots.filter(slot => this.timeSlotsInfo[slot]);
+    if (selectedTimeSlots.length > 0) {
+      formData.append('plages_horaires', JSON.stringify(selectedTimeSlots));
+    }
+
+    const headers = new HttpHeaders().set('Authorization', `Token ${this.token}`);
+
+    this.http.put(apiUrl, formData, { headers }).subscribe(
+      response => {
+        console.log('Availability saved successfully:', response);
+      },
+      error => {
+        console.error('Error saving availability:', error);
+        alert('Une erreur est survenue lors de l\'enregistrement des disponibilités.');
+      }
+    );
   }
 }

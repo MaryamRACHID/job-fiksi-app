@@ -93,16 +93,16 @@ export class PreferenceComponent implements OnInit {
     const formData = new FormData();
 
     if (this.preferencesInfo.jobPreferences.server) {
-      formData.append('server', 'true');
+      formData.append('type_de_contrat_recherche', 'true');
     }
     if (this.preferencesInfo.jobPreferences.cook) {
-      formData.append('cook', 'true');
+      formData.append('type_de_contrat_recherche', 'true');
     }
     if (this.preferencesInfo.jobPreferences.dishwasher) {
-      formData.append('dishwasher', 'true');
+      formData.append('type_de_contrat_recherche', 'true');
     }
     if (this.preferencesInfo.jobPreferences.other && this.preferencesInfo.jobPreferences.otherType) {
-      formData.append('otherType', this.preferencesInfo.jobPreferences.otherType);
+      formData.append('type_de_contrat_recherche', this.preferencesInfo.jobPreferences.otherType);
     }
 
     if (this.preferencesInfo.locationPreference) {
@@ -118,10 +118,10 @@ export class PreferenceComponent implements OnInit {
     }
 
     if (this.preferencesInfo.salaryPreference.min) {
-      formData.append('preference_salaire', this.preferencesInfo.salaryPreference.min.toString());
+      formData.append('salaire_min', this.preferencesInfo.salaryPreference.min.toString());
     }
     if (this.preferencesInfo.salaryPreference.max) {
-      formData.append('preference_salaire', this.preferencesInfo.salaryPreference.max.toString());
+      formData.append('salaire_max', this.preferencesInfo.salaryPreference.max.toString());
     }
 
     // Vérifier si le token existe avant de faire l'appel HTTP

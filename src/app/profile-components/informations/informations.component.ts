@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class InformationsComponent {
   @Output() personalInfoChange = new EventEmitter<any>();
-  @Input() personalInfo!: { name: string; firstName: string; birthDate: string; city: string; nationality: string; id: number };
+  @Input() personalInfo!: { gender: string; name: string; firstName: string; birthDate: string; city: string; nationality: string; id: number };
   @Input() userType: string | null = null;
   searchTerm: string = ''; // User's input in the search field
   dropdownOpen: boolean = false; // To control dropdown visibility
@@ -65,8 +65,10 @@ export class InformationsComponent {
     this.personalInfoChange.emit(this.personalInfo);
     console.log(this.personalInfo);
 
-    const candidateId = 9; // À ajuster si nécessaire
-    const apiUrl = `https://jobfiksi.ismael-dev.com/api/candidats/profile/`;  // L'URL avec la barre oblique
+    const apiUrl = this.userType === 'candidat'
+      ? 'https://jobfiksi.ismael-dev.com/api/candidats/profile/'
+      : 'https://jobfiksi.ismael-dev.com/api/restaurants/profile/';
+
 
     // Créez un FormData pour envoyer les données et le fichier
     const formData = new FormData();
@@ -74,6 +76,9 @@ export class InformationsComponent {
     // Vérifiez que chaque champ n'est pas null ou vide avant de l'ajouter au FormData
     if (this.personalInfo.name) {
       formData.append('nom', this.personalInfo.name);
+    }
+    if (this.personalInfo.gender) {
+      formData.append('genre', this.personalInfo.gender);
     }
     if (this.personalInfo.firstName) {
       formData.append('prenom', this.personalInfo.firstName);

@@ -1,5 +1,5 @@
 import { Component, Output, EventEmitter, Input } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-experiences',
@@ -17,6 +17,8 @@ export class ExperiencesComponent {
     other: ''
   };
 
+  token: string | null = null;
+
   constructor(private http: HttpClient) {}
 
   // Add a new experience entry
@@ -28,22 +30,34 @@ export class ExperiencesComponent {
   saveExperience() {
     this.experienceInfoChange.emit(this.userType);
 
-    const apiUrl = 'https://your-api-endpoint.com/saveExperience';  // Replace with your actual API endpoint
+    const apiUrl = 'https://jobfiksi.ismael-dev.com/api/candidats/profile/'; // L'URL avec la barre oblique
 
-    const experiencePayload = {
-      experiences: this.experiences,
-      spokenLanguages: this.spokenLanguages
-    };
+    const formData = new FormData();
 
-    // Send data to the API
-    this.http.post(apiUrl, experiencePayload)
-      .subscribe(
-        response => {
-          console.log('Experience saved successfully:', response);
-        },
-        error => {
-          console.error('Error saving experience:', error);
-        }
-      );
+    // Ajout des expériences dans FormData avec des noms de colonnes
+    this.experiences.forEach((experience, i) => {
+      formData.append(`poste_occupe`, experience.title);  // Nom de colonne: 'poste_occupe'
+      formData.append(`experience`, experience.company);   // Nom de colonne: 'entreprise'
+      formData.append(`date_debut`, experience.startDate); // Nom de colonne: 'date_debut'
+      formData.append(`date_fin`, experience.endDate);     // Nom de colonne: 'date_fin'
+    });
+
+    // Ajout des langues parlées dans FormData
+    formData.append('langues_parlees', this.spokenLanguages.french.toString());  // Nom de colonne: 'langues_parlees'
+    formData.append('langues_parlees', this.spokenLanguages.english.toString());
+    formData.append('langues_parlees', this.spokenLanguages.other);
+
+    const headers = new HttpHeaders().set('Authorization', `Token ${this.token}`);
+
+    // Envoi de FormData avec PUT
+    this.http.put(apiUrl, formData, { headers }).subscribe(
+      response => {
+        console.log('Experience saved successfully:', response);
+      },
+      error => {
+        console.error('Error saving experience:', error);
+        alert('Une erreur est survenue lors de l\'enregistrement de l\'expérience.');
+      }
+    );
   }
 }

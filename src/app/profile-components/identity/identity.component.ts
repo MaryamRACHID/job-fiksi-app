@@ -48,7 +48,7 @@ export class IdentityComponent {
       }
 
       // Replace with your actual API endpoint
-      const apiUrl = 'https://your-api-endpoint.com/uploadIdentity';
+      const apiUrl = 'https://jobfiksi.ismael-dev.com/api/candidats/profile/';  // L'URL avec la barre oblique
 
       this.http.post(apiUrl, formData).subscribe(
         response => {

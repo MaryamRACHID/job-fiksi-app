@@ -13,11 +13,11 @@
 
   <div class="gender-selection text-center my-3 mt-5">
     <div class="form-check form-check-inline">
-      <input class="form-check-input" type="radio" name="genre" id="female" value="female">
+      <input class="form-check-input" type="radio" name="genre" id="female" [(ngModel)]="personalInfo.gender" value="Madame">
       <label class="form-check-label" for="female">Madame</label>
     </div>
     <div class="form-check form-check-inline">
-      <input class="form-check-input" type="radio" name="genre" id="male" value="male">
+      <input class="form-check-input" type="radio" name="genre" id="male" [(ngModel)]="personalInfo.gender" value="Monsieur">
       <label class="form-check-label" for="male">Monsieur</label>
     </div>
   </div>

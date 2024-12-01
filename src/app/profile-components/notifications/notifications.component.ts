@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
@@ -8,29 +8,29 @@ import { HttpClient } from '@angular/common/http';
 })
 export class NotificationsComponent {
 
-  notificationsPreference: string = 'yes'; // Default preference for notifications
-  publicProfile: string = 'no'; // Default value for public profile visibility
-  @Input() userType: string | null = null; // Receives user type
-
-  notifications: any = {};
+  notificationsPreference: number = 1; // Valeur par défaut : 'Oui' (1)
+  publicProfile: number = 0; // Valeur par défaut : 'Non' (0)
+  @Input() userType: string | null = null; // Type d'utilisateur passé en entrée
 
   constructor(private http: HttpClient) {}
 
-  // Save notifications preferences (e.g., send data to server)
+  // Sauvegarder les préférences de notifications
   saveNotifications() {
-    const preferences = {
-      notificationsPreference: this.notificationsPreference,
-      publicProfile: this.publicProfile,
-      userType: this.userType
-    };
+    // Créer un FormData
+    const formData = new FormData();
 
-    // You can replace this with an actual HTTP call to save preferences on the server
-    console.log('Saving preferences:', preferences);
+    // Ajouter les préférences dans le FormData
+    formData.append('notification_mail', this.notificationsPreference.toString());
+    formData.append('profil_public', this.publicProfile.toString());
 
-    // Example of sending preferences to a server
-    const apiUrl = 'https://your-api-endpoint.com/saveNotifications'; // Replace with your actual API endpoint
+    // Afficher les préférences dans la console pour vérification
+    console.log(formData.get('notification_mail'));
 
-    this.http.post(apiUrl, preferences)
+    const apiUrl = this.userType === 'candidat'
+      ? 'https://jobfiksi.ismael-dev.com/api/candidats/profile/'
+      : 'https://jobfiksi.ismael-dev.com/api/restaurants/profile/';
+
+    this.http.put(apiUrl, formData)
       .subscribe(
         response => {
           console.log('Preferences saved successfully:', response);

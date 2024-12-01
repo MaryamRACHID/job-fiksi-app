@@ -31,17 +31,19 @@ export class ContactComponent  {
 
     console.log(this.contactInfo)
 
-    // Faire l'appel HTTP comme précédemment
-    const candidateId = 9; // À ajuster si nécessaire
-    const apiUrl = 'https://jobfiksi.ismael-dev.com/api/candidats/profile/';  // L'URL avec la barre oblique
+    const apiUrl = this.userType === 'candidat'
+      ? 'https://jobfiksi.ismael-dev.com/api/candidats/profile/'
+      : 'https://jobfiksi.ismael-dev.com/api/restaurants/profile/';
 
     const formData = new FormData();
+
+    formData.append('nom', 'this.contactInfo.phone');
 
     if (this.contactInfo.phone) {
       formData.append('tel', this.contactInfo.phone);
     }
     if (this.contactInfo.rue) {
-      formData.append('rue', this.contactInfo.rue);
+      formData.append('num_et_rue', this.contactInfo.rue);
     }
     if (this.contactInfo.postalCode) {
       formData.append('code_postal', this.contactInfo.postalCode);

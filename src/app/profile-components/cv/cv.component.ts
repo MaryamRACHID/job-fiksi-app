@@ -41,18 +41,30 @@ export class CvComponent {
   saveCV() {
     this.cvInfoChange.emit(this.userType);
 
+    // Vérifier si un fichier a été sélectionné
     if (this.cvFile || this.coverLetterFile || this.otherDocumentFile) {
       const formData = new FormData();
       if (this.cvFile) formData.append('cv', this.cvFile, this.cvFile.name);
-      if (this.coverLetterFile) formData.append('coverLetter', this.coverLetterFile, this.coverLetterFile.name);
-      if (this.otherDocumentFile) formData.append('otherDocument', this.otherDocumentFile, this.otherDocumentFile.name);
+      if (this.coverLetterFile) formData.append('lettre_motivation', this.coverLetterFile, this.coverLetterFile.name);
+      if (this.otherDocumentFile) formData.append('autres_documents', this.otherDocumentFile, this.otherDocumentFile.name);
 
-      const apiUrl = 'https://your-api-endpoint.com/uploadCV'; // Replace with your actual API endpoint
+      // API URL pour télécharger les fichiers
+      const apiUrl = 'https://jobfiksi.ismael-dev.com/api/candidats/profile/';
 
-      this.http.post(apiUrl, formData)
+      // Envoi des fichiers vers le serveur
+      this.http.put(apiUrl, formData)
         .subscribe(
-          response => {
+          (response: any) => {
             console.log('Files uploaded successfully:', response);
+            // Si les fichiers sont envoyés avec succès, enregistrer les chemins dans la base de données
+            const filePaths = {
+              cv: response?.cvPath, // Assurez-vous que le serveur renvoie ces chemins
+              coverLetter: response?.coverLetterPath,
+              otherDocument: response?.otherDocumentPath
+            };
+
+            // Enregistrez ces chemins dans la base de données (en envoyant une autre requête POST ou PUT à votre API)
+            this.saveFilePaths(filePaths);
           },
           error => {
             console.error('Error uploading files:', error);
@@ -61,5 +73,26 @@ export class CvComponent {
     } else {
       console.log('No files selected for upload.');
     }
+  }
+
+  // Sauvegarder les chemins des fichiers dans la base de données
+  saveFilePaths(filePaths: { cv: string, coverLetter: string, otherDocument: string }) {
+    const data = {
+      cv: filePaths.cv,
+      lettre_motifation: filePaths.coverLetter,
+      autres_documents: filePaths.otherDocument
+    };
+
+    const apiUrl = 'https://jobfiksi.ismael-dev.com/api/candidats/profile/';
+
+    this.http.put(apiUrl, data)
+      .subscribe(
+        response => {
+          console.log('File paths saved successfully in the database:', response);
+        },
+        error => {
+          console.error('Error saving file paths to database:', error);
+        }
+      );
   }
 }

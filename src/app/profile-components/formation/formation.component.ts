@@ -58,15 +58,28 @@ export class FormationComponent {
 
   // Save the education data
   saveFormation() {
+    // Emit the userType value
     this.formationInfoChange.emit(this.userType);
-    const apiUrl = 'https://your-api-endpoint.com/saveFormation';  // Replace with your API endpoint
 
-    const formationPayload = {
-      education: this.education,
-      diplomas: this.diplomas
-    };
+    const apiUrl = 'https://jobfiksi.ismael-dev.com/api/candidats/profile/';  // L'URL avec la barre oblique
 
-    this.http.post(apiUrl, formationPayload)
+    // Create FormData object to send data
+    const formData = new FormData();
+
+    // Add the education data
+    formData.append('niveau_etude', this.education.level);
+    formData.append('certificates', this.education.certificates);
+
+    // Add the diplomas data
+    this.diplomas.forEach((diploma, i) => {
+      formData.append(`formation`, diploma.name);
+      formData.append(`etablissement`, diploma.institution);
+      formData.append(`date_debut`, diploma.startDate);
+      formData.append(`date_fin`, diploma.endDate);
+    });
+
+    // Send the FormData to the API
+    this.http.put(apiUrl, formData)
       .subscribe(
         response => {
           console.log('Formation saved successfully:', response);
