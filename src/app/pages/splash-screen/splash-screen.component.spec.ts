@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SearchBarComponent } from './search-bar.component';
+import { SplashScreenComponent } from './splash-screen.component';
 
-describe('SearchBarComponent', () => {
-  let component: SearchBarComponent;
-  let fixture: ComponentFixture<SearchBarComponent>;
+describe('SplashScreenComponent', () => {
+  let component: SplashScreenComponent;
+  let fixture: ComponentFixture<SplashScreenComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [SearchBarComponent]
+      imports: [SplashScreenComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(SearchBarComponent);
+    fixture = TestBed.createComponent(SplashScreenComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

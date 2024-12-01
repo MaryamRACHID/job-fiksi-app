@@ -1,4 +1,3 @@
-// src/app/app-routing.module.ts
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AccueilComponent } from './pages/accueil/accueil.component';
@@ -16,9 +15,18 @@ import { ProfileRestaurantComponent } from './pages/profile-restaurant/profile-r
 import { ProfileCandidatComponent } from './pages/profile-candidat/profile-candidat.component';
 import { ProfileCandidatVuRecruteurComponent } from './pages/profile-candidat/profile-candidat-vu-recruteur/profile-candidat-vu-recruteur.component';
 import { ModifierProfileCandidatComponent } from './pages/profile-candidat/modifier-profile-candidat/modifier-profile-candidat.component';
+<<<<<<< HEAD
+=======
+import { ProfileRestaurantComponent } from './pages/profile-restaurant/profile-restaurant.component';
+import {SplashScreenComponent} from './pages/splash-screen/splash-screen.component';
+import {FirstPageComponent} from './pages/first-page/first-page.component';
+import { HeaderRechercheComponent } from './offers-components/header-recherche/header-recherche.component';
+import { RechercheCandidatComponent } from './pages/recherche-candidat/recherche-candidat.component';
+>>>>>>> 79a441319036f7fd1d3be09f96537ac975057296
 
 export const routes: Routes = [
-  { path: '', component: LoginComponent }, // Page d'accueil par défaut
+  { path: '', component: FirstPageComponent },
+  { path: 'splash-screen', component: SplashScreenComponent },
   { path: 'login', component: LoginComponent },
   { path: 'profil', component: ProfileComponent },
   { path: 'info', component: InformationsComponent },
@@ -31,10 +39,15 @@ export const routes: Routes = [
   { path: 'password', component: SecuriteComponent },
   { path: 'documents', component: DocumentListComponent },
   {path:'profile-restaurant', component:ProfileRestaurantComponent},
+<<<<<<< HEAD
   {path:'modifier-infos-restaurant', component: InformationsComponent},
   {path:'profile-candidat', component: ProfileCandidatComponent},
   {path:'profileCandidatVuParResto',component: ProfileCandidatVuRecruteurComponent},
   {path:'modifier-profil-candidat', component: ModifierProfileCandidatComponent},
+=======
+  { path: 'header-recherche', component: HeaderRechercheComponent},
+  { path: 'rechercheCandidat', component: RechercheCandidatComponent},
+>>>>>>> 79a441319036f7fd1d3be09f96537ac975057296
   { path: '**', redirectTo: '' }, // Redirection vers l'accueil pour les routes inconnues
 
 ];

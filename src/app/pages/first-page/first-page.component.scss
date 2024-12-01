@@ -1,0 +1,13 @@
+.logo-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #FFC107; // Adjust as per the design
+
+  img {
+    width: 80%;
+  }
+
+}

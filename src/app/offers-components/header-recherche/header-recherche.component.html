@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recherche</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="header-recherche.component.scss">
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <div class="top-bar">
+        <!-- Logo -->
+        <img src="assets/BurKing.jpg" alt="Logo" class="logo" />
+
+        <!-- Barre de recherche -->
+        <div class="search-section">
+          <div class="search-bar">
+            <!-- Icône de recherche -->
+            <mat-icon class="search-icon">search</mat-icon>
+            <!-- Champ de recherche -->
+            <input type="text" placeholder="Rechercher" />
+          </div>
+        </div>
+
+        <!-- Icône de filtre -->
+        <img src="assets/FilterFigma.png" alt="Filtre" class="filter-icon" (click)="toggleFilter()"/>
+
+        <!-- Icône du menu -->
+        <img src="assets/menu.png" alt="Menu" class="menu-icon" (click)=" toggleAccueil()"/>
+      </div>
+    </header>
+  </div>
+</body>
+</html>

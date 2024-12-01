@@ -1,8 +1,6 @@
-// src/app/pages/pages.module.ts
 import { NgModule,CUSTOM_ELEMENTS_SCHEMA  } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
-
 import { LoginComponent } from './login/login.component';
 import { ProfileComponent } from './profile/profile.component';
 import { AccueilComponent } from './accueil/accueil.component';
@@ -26,8 +24,8 @@ import {ProfileComponentsModule} from '../profile-components/profile-components.
 import {SettingsComponent} from './settings/settings.component';
 import {SecuriteComponent} from './securite/securite.component';
 import {DocumentListComponent} from './document-list/document-list.component';
+// import { ButtonContactCandidatComponent } from './profile-candidat/button-contact-candidat/button-contact-candidat.component';
 import { ProfileRestaurantComponent } from './profile-restaurant/profile-restaurant.component';
-
 import { MatTabChangeEvent } from '@angular/material/tabs';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatDialogModule } from '@angular/material/dialog';
@@ -35,20 +33,25 @@ import { RestaurantInfosComponent } from './profile-restaurant/restaurant-infos/
 import { OffreDescriptionComponent } from './profile-restaurant/offre-description/offre-description.component';
 import { CandidatDescriptionComponent } from './profile-restaurant/candidat-description/candidat-description.component';
 
-import { PlanningComponent } from './profile-restaurant/planning/planning.component';
-import { MatCalendarCellClassFunction } from '@angular/material/datepicker';
 import { ModifierInfosRestaurantComponent } from './profile-restaurant/modifier-infos-restaurant/modifier-infos-restaurant.component';
 
 import { ProfileCandidatComponent } from './profile-candidat/profile-candidat.component';
 import { ProfileCandidatVuRecruteurComponent } from './profile-candidat/profile-candidat-vu-recruteur/profile-candidat-vu-recruteur.component';
 import { ModifierProfileCandidatComponent } from './profile-candidat/modifier-profile-candidat/modifier-profile-candidat.component';
 // import { ButtonContactCandidatComponent } from './profile-candidat/button-contact-candidat/button-contact-candidat.component';
-import { MatDatepickerModule} from '@angular/material/datepicker';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { PlanningComponent } from './profile-restaurant/planning/planning.component';
+import { MatCalendarCellClassFunction } from '@angular/material/datepicker';
+import {FirstPageComponent} from './first-page/first-page.component';
+import {SplashScreenComponent} from './splash-screen/splash-screen.component';
+import { RechercheCandidatComponent } from './recherche-candidat/recherche-candidat.component';
 @NgModule({
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 
   declarations: [
+    FirstPageComponent,
+    SplashScreenComponent,
     LoginComponent,
     ProfileComponent,
     AccueilComponent,
@@ -56,26 +59,9 @@ import { MatNativeDateModule } from '@angular/material/core';
     SecuriteComponent,
     DocumentListComponent,
     AccueilRestaurantComponent,
-    ProfileRestaurantComponent,
-    RestaurantInfosComponent,
-    OffreDescriptionComponent,
-    CandidatDescriptionComponent,
-    PlanningComponent,
-    ModifierInfosRestaurantComponent,
     ProfileCandidatComponent,
     ProfileCandidatVuRecruteurComponent,
-    ModifierProfileCandidatComponent
-  ],
-  exports: [
-    LoginComponent,
-    ProfileComponent,
-    AccueilComponent,
-    SettingsComponent,
-    SettingsComponent,
-    SecuriteComponent,
-    DocumentListComponent,
-    AccueilRestaurantComponent,
-
+    ModifierProfileCandidatComponent,
     ProfileRestaurantComponent,
     RestaurantInfosComponent,
     OffreDescriptionComponent,
@@ -85,6 +71,32 @@ import { MatNativeDateModule } from '@angular/material/core';
     ProfileCandidatComponent,
     ProfileCandidatVuRecruteurComponent,
     ModifierProfileCandidatComponent,
+    AccueilRestaurantComponent,
+    RechercheCandidatComponent
+  ],
+  exports: [
+    FirstPageComponent,
+    SplashScreenComponent,
+    LoginComponent,
+    ProfileComponent,
+    AccueilComponent,
+    SettingsComponent,
+    SettingsComponent,
+    SecuriteComponent,
+    DocumentListComponent,
+    ProfileCandidatComponent,
+    ProfileCandidatVuRecruteurComponent,
+    ProfileRestaurantComponent,
+    RestaurantInfosComponent,
+    OffreDescriptionComponent,
+    CandidatDescriptionComponent,
+    PlanningComponent,
+    ModifierInfosRestaurantComponent,
+    ProfileCandidatComponent,
+    ProfileCandidatVuRecruteurComponent,
+    ModifierProfileCandidatComponent,
+    RechercheCandidatComponent,
+    AccueilRestaurantComponent
   ],
 
   imports: [

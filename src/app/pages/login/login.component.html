@@ -9,53 +9,92 @@
     </div>
   </div>
 
+  <!-- Connexion Formulaire -->
   <div *ngIf="currentToggle === 'connexion'">
-    <div class="form-group">
-      <label for="email-connexion">Email</label>
-      <input type="email" class="form-control" id="email-connexion" placeholder="Entrez votre email" required>
-    </div>
-
-    <div class="form-group">
-      <label for="password-connexion">Mot de passe</label>
-      <input type="password" class="form-control" id="password-connexion" placeholder="Entrez votre mot de passe" required>
-    </div>
-
-    <div class="login-row">
-      <div class="form-check">
-        <input type="checkbox" class="form-check-input me-2 mt-0" id="stay-logged-in">
-        <label class="form-check-label" for="stay-logged-in">Rester connecté</label>
+    <form [formGroup]="loginForm" (ngSubmit)="onLoginSubmit()">
+      <div class="form-group">
+        <label for="email-connexion">Email</label>
+        <input type="email" class="form-control" id="email-connexion" placeholder="Entrez votre email" formControlName="emailConnexion" required>
+        <div *ngIf="loginForm.get('emailConnexion')?.invalid && loginForm.get('emailConnexion')?.touched">
+          <div *ngIf="loginForm.get('emailConnexion')?.hasError('required')">L'email est requis.</div>
+          <div *ngIf="loginForm.get('emailConnexion')?.hasError('email')">Entrez un email valide.</div>
+        </div>
       </div>
-      <a href="" class="forgot-password" (click)="goToPassword($event)">Mot de passe oublié ?</a>
-    </div>
 
-    <button class="btn btn-primary full-width" (click)="goToProfil()">Me connecter</button>
+      <div class="form-group">
+        <label for="password-connexion">Mot de passe</label>
+        <input type="password" class="form-control" id="password-connexion" placeholder="Entrez votre mot de passe" formControlName="passwordConnexion" required>
+        <div *ngIf="loginForm.get('passwordConnexion')?.invalid && loginForm.get('passwordConnexion')?.touched">
+          <div *ngIf="loginForm.get('passwordConnexion')?.hasError('required')">Le mot de passe est requis.</div>
+          <div *ngIf="loginForm.get('passwordConnexion')?.hasError('minlength')">Le mot de passe doit avoir au moins 12 caractères.</div>
+        </div>
+      </div>
+
+      <div class="login-row">
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input me-2 mt-0" id="stay-logged-in">
+          <label class="form-check-label" for="stay-logged-in">Rester connecté</label>
+        </div>
+        <a href="#" class="forgot-password">Mot de passe oublié ?</a>
+      </div>
+
+      <button type="submit" class="btn btn-primary full-width" [disabled]="loginForm.invalid">Me connecter</button>
+    </form>
   </div>
 
+  <!-- Inscription Formulaire -->
   <div *ngIf="currentToggle === 'inscription'">
-    <div class="form-group">
-      <label for="email-inscription">Email</label>
-      <input type="email" class="form-control" id="email-inscription" placeholder="Entrez votre email" required>
-    </div>
-
-    <div class="form-group">
-      <label for="password-inscription">Mot de passe</label>
-      <input type="password" class="form-control" id="password-inscription" placeholder="Créez un mot de passe" required>
-    </div>
-
-    <div class="form-group">
-      <label for="confirm-password">Confirmer le mot de passe</label>
-      <input type="password" class="form-control" id="confirm-password" placeholder="Confirmez le mot de passe" required>
-    </div>
-
-    <div class="login-row">
-      <div class="form-check">
-        <input type="checkbox" class="form-check-input me-2 mt-0" id="stay-logged-in-inscription">
-        <label class="form-check-label" for="stay-logged-in-inscription">Rester connecté</label>
+    <form [formGroup]="inscriptionForm" (ngSubmit)="onInscriptionSubmit()">
+      <div class="form-group">
+        <label for="email-inscription">Email</label>
+        <input type="email" class="form-control" id="email-inscription" placeholder="Entrez votre email" formControlName="emailInscription" required>
+        <div *ngIf="inscriptionForm.get('emailInscription')?.invalid && inscriptionForm.get('emailInscription')?.touched">
+          <div *ngIf="inscriptionForm.get('emailInscription')?.hasError('required')">L'email est requis.</div>
+          <div *ngIf="inscriptionForm.get('emailInscription')?.hasError('email')">Entrez un email valide.</div>
+        </div>
       </div>
-    </div>
 
-    <button class="btn btn-primary full-width">M'inscrire</button>
+      <div class="form-group">
+        <label for="passwordInscription">Mot de passe</label>
+        <input type="password" id="passwordInscription" class="form-control" formControlName="passwordInscription" placeholder="Créez un mot de passe" required>
 
-    <p class="subtitle">Vous avez déjà un compte? <span class="span" (click)="setToggle('connexion')">Se connecter</span></p>
+        <!-- Erreurs spécifiques pour le mot de passe -->
+        <div *ngIf="inscriptionForm.get('passwordInscription')?.hasError('noUppercase')">
+          Le mot de passe doit contenir au moins une majuscule.
+        </div>
+
+        <div *ngIf="inscriptionForm.get('passwordInscription')?.hasError('noNumber')">
+          Le mot de passe doit contenir au moins un chiffre.
+        </div>
+
+        <div *ngIf="inscriptionForm.get('passwordInscription')?.hasError('noSpecialChar')">
+          Le mot de passe doit contenir un caractère spécial
+        </div>
+
+        <div *ngIf="inscriptionForm.get('passwordInscription')?.hasError('tooShort')">
+          Le mot de passe doit contenir au moins 12 caractères.
+        </div>
+      </div>
+
+
+      <div class="form-group">
+        <label for="confirm-password">Confirmer le mot de passe</label>
+        <input type="password" class="form-control" id="confirm-password" placeholder="Confirmez le mot de passe" formControlName="confirmPassword" required>
+        <div *ngIf="inscriptionForm.hasError('passwordsDoNotMatch') && inscriptionForm.get('confirmPassword')?.touched">
+          <div>Les mots de passe ne correspondent pas.</div>
+        </div>
+      </div>
+
+      <div class="login-row">
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input me-2 mt-0" id="stay-logged-in-inscription">
+          <label class="form-check-label" for="stay-logged-in-inscription">Rester connecté</label>
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-primary full-width" [disabled]="inscriptionForm.invalid">M'inscrire</button>
+
+      <p class="subtitle">Vous avez déjà un compte? <span class="span" (click)="setToggle('connexion')">Se connecter</span></p>
+    </form>
   </div>
 </div>
