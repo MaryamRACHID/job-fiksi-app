@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <div class="header bg-gradient d-flex align-items-center justify-content-between p-3">
+    <img src="/assets/inas.png" alt="user Logo" class="logo">
+    <div class="search-bar d-flex align-items-center">
+      <i class="material-icons text-muted">search</i>
+      <input type="text" class="form-control" placeholder="Rechercher">
+    </div>
+    <!-- <i class="material-icons text-dark">tune</i> -->
+     <!-- Icône de filtre -->
+     <img src="assets/FilterFigma.png" alt="Filtre" class="filter-icon" (click)="toggleFilter() "/>
+
+     <!-- Icône du menu -->
+     <img src="assets/menu.png" alt="Menu" class="menu-icon"/>
+  </div>
+
+<section class="container">
+  <h2>Résultats les plus pertinentes</h2>
+  <div class="content-emplois">
+    <div class="emplois">
+      <div class="bloc-emplois" *ngFor="let item of emplois">
+        <app-emplois-pertinents [details]="item"></app-emplois-pertinents>
+      </div>
+    </div>
+  </div>
+
+
+</section>
+
+
+

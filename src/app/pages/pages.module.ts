@@ -46,6 +46,9 @@ import { MatCalendarCellClassFunction } from '@angular/material/datepicker';
 import {FirstPageComponent} from './first-page/first-page.component';
 import {SplashScreenComponent} from './splash-screen/splash-screen.component';
 import { RechercheCandidatComponent } from './recherche-candidat/recherche-candidat.component';
+import { RechercheDesCandidatsComponent } from './recherche-des-candidats/recherche-des-candidats.component';
+import { EmploisPertinentsComponent } from './recherche-des-candidats/emplois-pertinents/emplois-pertinents.component';
+import { FilterForCandidatComponent } from './recherche-des-candidats/filter-for-candidat/filter-for-candidat.component';
 @NgModule({
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 
@@ -72,7 +75,10 @@ import { RechercheCandidatComponent } from './recherche-candidat/recherche-candi
     ProfileCandidatVuRecruteurComponent,
     ModifierProfileCandidatComponent,
     AccueilRestaurantComponent,
-    RechercheCandidatComponent
+    RechercheCandidatComponent,
+    RechercheDesCandidatsComponent,
+    EmploisPertinentsComponent,
+    FilterForCandidatComponent
   ],
   exports: [
     FirstPageComponent,
@@ -96,7 +102,10 @@ import { RechercheCandidatComponent } from './recherche-candidat/recherche-candi
     ProfileCandidatVuRecruteurComponent,
     ModifierProfileCandidatComponent,
     RechercheCandidatComponent,
-    AccueilRestaurantComponent
+    AccueilRestaurantComponent,
+    RechercheDesCandidatsComponent,
+    EmploisPertinentsComponent,
+    FilterForCandidatComponent
   ],
 
   imports: [
