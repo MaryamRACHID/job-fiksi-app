@@ -7,7 +7,7 @@
     <div class="row mt-4 mb-3">
       <div class="col-12 position-relative">
         <label for="minAge" class="form-label">Âge minimal des candidats *</label>
-        <select id="minAge" class="form-control" [(ngModel)]="education.level" name="minAge" required>
+        <select id="minAge" class="form-control" [(ngModel)]="ageMins" name="minAge" required>
           <option value="" disabled selected>Sélectionnez l'âge...</option>
           <option *ngFor="let age of ageMins" [value]="age">{{ age }}</option>
         </select>
@@ -48,7 +48,7 @@
           class="form-control"
           rows="4"
           placeholder="Veuillez les séparer par des points-virgules"
-          [(ngModel)]="education.certificates"
+          [(ngModel)]="competences"
           name="skills"
           required
         ></textarea>

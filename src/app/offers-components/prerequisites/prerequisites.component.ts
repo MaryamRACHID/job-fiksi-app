@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import {FormDataService} from '../../services/form-data.service';
 
 @Component({
   selector: 'app-prerequisites',
@@ -8,7 +8,6 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
   styleUrls: ['./prerequisites.component.scss']
 })
 export class PrerequisitesComponent {
-
   ageMins: string[] = [
     '16 ans',
     '18 ans',
@@ -22,6 +21,7 @@ export class PrerequisitesComponent {
   ];
 
   education = { level: '', certificates: '' };
+  competences: string = '';
   educationLevels = ['Bac', 'Bac+2', 'Bac+3', 'Bac+5', 'Doctorat'];
   filteredEducationLevels: string[] = [...this.educationLevels];
   showDropdown: boolean = false;
@@ -39,10 +39,18 @@ export class PrerequisitesComponent {
     { id: 'autre', label: 'Autre', selected: false }
   ];
 
-  apiUrl = 'https://jobfiksi.ismael-dev.com/api/annonces/'; // Remplacez par l'API appropriée
-  token: string | null = 'your_token_here'; // Remplacez par un token valide
+  constructor(private router: Router, private formDataService: FormDataService) {}
 
-  constructor(private router: Router, private http: HttpClient) {}
+  ngOnInit() {
+    // Charger les données déjà saisies
+    const savedData = this.formDataService.getFormData('prerequisitesInfo');
+    if (savedData) {
+      this.education = savedData.education || this.education;
+      this.competences = savedData.competences || this.competences;
+      this.availabilityInfo = savedData.availabilityInfo || this.availabilityInfo;
+      this.timeSlots = savedData.timeSlots || this.timeSlots;
+    }
+  }
 
   // Filtrage des niveaux d'éducation en fonction de l'entrée de l'utilisateur
   filterEducationLevels() {
@@ -69,28 +77,17 @@ export class PrerequisitesComponent {
     this.availabilityInfo[day] = !this.availabilityInfo[day];
   }
 
-  // Envoi des données et passage à l'étape suivante
+  // Passer à l'étape suivante
   goToNextStep() {
-    const formData = new FormData();
-    formData.append('age_min', this.education.level);
-    formData.append('education_level', this.education.level);
-    formData.append('skills', this.education.certificates);  // Certificats ou compétences
-    formData.append('availability', JSON.stringify(this.availabilityInfo));  // Disponibilité
-    formData.append('time_slots', JSON.stringify(this.timeSlots.filter(slot => slot.selected))); // Plages horaires sélectionnées
+    // Stocker les données saisies dans le service
+    this.formDataService.setFormData('prerequisitesInfo', {
+      education: this.education,
+      availabilityInfo: this.availabilityInfo,
+      timeSlots: this.timeSlots,
+    });
 
-    const headers = new HttpHeaders().set('Authorization', `Token ${this.token}`);
-
-    this.http.post(this.apiUrl, formData, { headers }).subscribe(
-      response => {
-        console.log('Données enregistrées avec succès:', response);
-        //this.router.navigate(['/addPost/interviewSlots']);
-      },
-      error => {
-        console.error('Erreur lors de l\'enregistrement des données:', error);
-        this.router.navigate(['/addPost/interviewSlots']);
-        //alert('Une erreur est survenue lors de l\'enregistrement.');
-      }
-    );
+    // Naviguer vers l'étape suivante
+    this.router.navigate(['/addPost/interviewSlots']);
   }
 
   goToPreviousStep() {

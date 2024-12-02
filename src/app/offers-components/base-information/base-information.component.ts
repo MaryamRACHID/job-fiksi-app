@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import {FormDataService} from '../../services/form-data.service';
 
 @Component({
   selector: 'app-base-information',
@@ -8,7 +8,6 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
   styleUrls: ['./base-information.component.scss']
 })
 export class BaseInformationComponent {
-  step: number = 1;
   restaurantTypes: string[] = [
     'Italien',
     'Indien',
@@ -48,40 +47,20 @@ export class BaseInformationComponent {
     statut: '',
     contractType: '',
     salary: '',
-    //restaurantName: '',
-    //location: '',
-    //restaurantType: ''
   };
 
-  apiUrl = 'https://jobfiksi.ismael-dev.com/api/annonces/';
-  token: string | null = ''; // Remplacez par un token valide
+  constructor(private router: Router, private formDataService: FormDataService) {}
 
+  ngOnInit() {
+    // Charger les données déjà saisies (si elles existent)
+    this.baseInfo = this.formDataService.getFormData('baseInfo');
+  }
 
+  nextStep() {
+    // Stocker les données dans le service
+    this.formDataService.setFormData('baseInfo', this.baseInfo);
 
-  constructor(private router: Router, private http: HttpClient) {}
-
-  save() {
-
-    const formData = new FormData();
-    formData.append('titre', this.baseInfo.jobTitle);
-    formData.append('description', this.baseInfo.description);
-    formData.append('temps_travail', this.baseInfo.jobType);
-    formData.append('statut', this.baseInfo.statut);
-    formData.append('type_contrat', this.baseInfo.contractType);
-    formData.append('salaire', this.baseInfo.salary);
-
-    const headers = new HttpHeaders().set('Authorization', `Token ${this.token}`);
-
-    this.http.post(this.apiUrl, formData, { headers }).subscribe(
-      response => {
-        console.log('Données enregistrées avec succès :', response);
-        this.router.navigate(['/addPost/prerequisites']);
-      },
-      error => {
-        //this.router.navigate(['/addPost/jobInformation']);
-        console.error('Erreur lors de l\'enregistrement des données :', error);
-        //alert('Une erreur est survenue lors de l\'enregistrement.');
-      }
-    );
+    // Naviguer vers la prochaine étape
+    this.router.navigate(['/addPost/prerequisites']);
   }
 }

@@ -6,56 +6,68 @@
   <div class="post-preview p-3 pt-0">
     <div class="row">
       <div class="col-8">
-        <p class="job-title mt-3">nomRestaurant</p>
-        <p class="job-role">Serveur H/F</p>
+        <p class="job-title mt-3">{{ restaurantName }}</p>
+        <p class="job-role">{{ jobTitle }}</p>
       </div>
       <div class="col-4">
-        <img src="assets/images/img.PNG" alt="Image du poste" class="post-image"/>
+        <img src="assets/images/img.PNG" alt="Image du poste" class="post-image" />
       </div>
     </div>
 
     <div class="details ps-3 pe-3 mt-2">
+      <!-- Affichage du lieu -->
       <div class="row">
         <div class="col-2"><i class="fa fa-map-marker-alt mt-2"></i></div>
         <div class="col-10">
           <span>Lieu</span>
-          <p class="mt-2">2 rue azerty 69007 Lyon, France</p>
+          <p class="mt-2">{{ location }}</p>
         </div>
       </div>
+
+      <!-- Affichage du salaire -->
       <div class="row">
         <div class="col-2"><i class="fa fa-coins mt-2"></i></div>
         <div class="col-10">
           <span>Salaire</span>
-          <p class="mt-2">12€/heure</p>
+          <p class="mt-2">{{ salary }}€/heure</p>
         </div>
       </div>
+
+      <!-- Affichage du nombre d'heures -->
       <div class="row">
         <div class="col-2"><i class="fa fa-clock mt-2"></i></div>
         <div class="col-10">
           <span>Nombre d'heures</span>
-          <p class="mt-2">10h/semaine</p>
+          <p class="mt-2">{{ hours }}h/semaine</p>
         </div>
       </div>
+
+      <!-- Affichage des disponibilités -->
       <div class="row">
         <div class="col-2"><i class="fa fa-calendar-alt mt-2"></i></div>
         <div class="col-10">
           <span>Disponibilités</span>
-          <p class="mt-2">Lun | Mar | Mer | Jeu | Ven</p>
+          <p class="mt-2">{{ selectedDays.join(' | ') }}</p>
         </div>
       </div>
     </div>
   </div>
 
+  <!-- Affichage des compétences -->
   <div class="skills p-3 pt-0">
     <label>Compétences</label>
     <div class="tags">
-      <span class="tag">Service à la clientèle</span>
-      <span class="tag">Communication</span>
-      <span class="tag">Travail en équipe</span>
-      <span class="tag" style="background-color: inherit; text-decoration: underline; font-weight: 500">+ afficher plus</span>
+      <span class="tag">{{ competences }}</span>
     </div>
   </div>
 
+  <!-- Affichage de la description -->
+  <div class="job-description p-3 pt-0">
+    <label>Description</label>
+    <p>{{ jobDescription }}</p>
+  </div>
+
+  <!-- Boutons de navigation -->
   <div class="button-container row">
     <button (click)="goToPreviousStep()" class="btn fixed-button btn-primary col-5 me-2">
       Précédent
