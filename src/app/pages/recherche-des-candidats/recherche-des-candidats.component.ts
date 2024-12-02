@@ -73,6 +73,11 @@ export class RechercheDesCandidatsComponent {
       prixParHeure: '22£'
     }
   ];
+
+  toggleAccueil(): void {
+    // Rediriger vers /accueil
+    this.router.navigate(['/accueil']);
+  }
 }
 function style(arg0: {
   transform: string; // Complètement en bas

@@ -46,48 +46,48 @@
   </div>
   <mat-divider></mat-divider>
 
-    <!-- dernière mise à jour -->
-    <div class="filter-section">
-      <h3 class="filter-header" (click)="toggleSection('sortBy')">
-        Dernière mise à jour
-        <span class="toggle-icon">
-          <mat-icon>{{ sectionStates['sortBy'] ? 'expand_less' : 'expand_more' }}</mat-icon>
-        </span>
-      </h3>
-      <div *ngIf="sectionStates['sortBy']" class="filter-content">
-        <ul class="filter-list">
-          <li>
-            <label class="radio-label">
-              <input type="radio" name="filterBy" value="recent" />
-              <span class="radio-custom"></span>
-              Récemment
-            </label>
-          </li>
-          <li>
-            <label class="radio-label">
-              <input type="radio" name="filterBy" value="semaineDerniere" />
-              <span class="radio-custom"></span>
-              Semaine dernière
-            </label>
-          </li>
-          <li>
-            <label class="radio-label">
-              <input type="radio" name="filterBy" value="moisDernier" />
-              <span class="radio-custom"></span>
-              Mois dernier
-            </label>
-          </li>
-          <li>
-            <label class="radio-label">
-              <input type="radio" name="filterBy" value="ttmoment" />
-              <span class="radio-custom"></span>
-              à tout moment
-            </label>
-          </li>
-        </ul>
-      </div>
+  <!-- dernière mise à jour -->
+  <div class="filter-section">
+    <h3 class="filter-header" (click)="toggleSection('sortBy')">
+      Dernière mise à jour
+      <span class="toggle-icon">
+        <mat-icon>{{ sectionStates['sortBy'] ? 'expand_less' : 'expand_more' }}</mat-icon>
+      </span>
+    </h3>
+    <div *ngIf="sectionStates['sortBy']" class="filter-content">
+      <ul class="filter-list">
+        <li>
+          <label class="radio-label">
+            <input type="radio" name="filterBy" value="recent" />
+            <span class="radio-custom"></span>
+            Récemment
+          </label>
+        </li>
+        <li>
+          <label class="radio-label">
+            <input type="radio" name="filterBy" value="semaineDerniere" />
+            <span class="radio-custom"></span>
+            Semaine dernière
+          </label>
+        </li>
+        <li>
+          <label class="radio-label">
+            <input type="radio" name="filterBy" value="moisDernier" />
+            <span class="radio-custom"></span>
+            Mois dernier
+          </label>
+        </li>
+        <li>
+          <label class="radio-label">
+            <input type="radio" name="filterBy" value="ttmoment" />
+            <span class="radio-custom"></span>
+            à tout moment
+          </label>
+        </li>
+      </ul>
     </div>
-    <mat-divider></mat-divider>
+  </div>
+  <mat-divider></mat-divider>
 
       <!-- Type de restaurnat-->
   <div class="filter-section">
@@ -232,104 +232,76 @@
         </button>
       </div>
     </div>
-  <mat-divider></mat-divider>
-
-  <!-- Disponibilité -->
-  <div class="filter-section">
-    <h3 class="filter-header" (click)="toggleSection('availability')">
-      Disponibilité
-      <span class="toggle-icon">
-        <mat-icon>{{ sectionStates['availability'] ? 'expand_less' : 'expand_more' }}</mat-icon>
-      </span>
-    </h3>
-    <div *ngIf="sectionStates['availability']" class="filter-content">
-      <ul class="filter-list">
-        <li>
-          <label class="checkbox-label">
-            <input type="checkbox" name="availability" value="immediate" />
-            <span class="checkbox-custom"></span> Tout de suite
-          </label>
-        </li>
-        <li>
-          <label class="checkbox-label">
-            <input type="checkbox" name="availability" value="3_days" />
-            <span class="checkbox-custom"></span> Dans les 3 prochains jours
-          </label>
-        </li>
-        <li>
-          <label class="checkbox-label">
-            <input type="checkbox" name="availability" value="weeks" />
-            <span class="checkbox-custom"></span> Prochaines semaines
-          </label>
-        </li>
-        <li>
-          <label class="checkbox-label">
-            <input type="checkbox" name="availability" value="next_month" />
-            <span class="checkbox-custom"></span> Prochain mois
-          </label>
-        </li>
-      </ul>
-    </div>
   </div>
   <mat-divider></mat-divider>
 
-  <!-- Age -->
-  <div class="age-preference mt-4">
+
+  <!-- Salaire-->
+  <!-- <div class="salary-preference mt-4">
     <div class="filter-section">
-      <h3 class="filter-header" (click)="toggleSection('age')">
-        Age
+      <h3 class="filter-header" (click)="toggleSection('salary')">
+        Salaire
         <span class="toggle-icon">
-          <mat-icon>{{ sectionStates['age'] ? 'expand_less' : 'expand_more' }}</mat-icon>
+          <mat-icon>{{ sectionStates['salary'] ? 'expand_less' : 'expand_more' }}</mat-icon>
         </span>
       </h3>
-      <div *ngIf="sectionStates['age']" class="filter-content">
+      <div *ngIf="sectionStates['salary']" class="filter-content">
         <ngx-slider
-          [(value)]="agePreference.min"
-          [(highValue)]="agePreference.max"
-          [options]="ageSliderOptions">
+          [(value)]="salaryPreference.min"
+          [(highValue)]="salaryPreference.max"
+          [options]="salarySliderOptions">
         </ngx-slider>
-        <div class="age-range"></div>
+        <div class="salary-range">
+          <span>{{ salaryPreference.min }} €</span> - <span>{{ salaryPreference.max }} €</span>
+        </div>
       </div>
     </div>
   </div>
-  <mat-divider></mat-divider>
+  <mat-divider></mat-divider> -->
 
-  <!-- Spécialisation -->
+
+  <!-- Experience-->
   <div class="filter-section">
-    <h3 class="filter-header" (click)="toggleSection('specialization')">
-      Spécialisation
+    <h3 class="filter-header" (click)="toggleSection('experiences')">
+      Expérience
       <span class="toggle-icon">
-        <mat-icon>{{ sectionStates['specialization'] ? 'expand_less' : 'expand_more' }}</mat-icon>
+        <mat-icon>{{ sectionStates['experiences'] ? 'expand_less' : 'expand_more' }}</mat-icon>
       </span>
     </h3>
-    <div *ngIf="sectionStates['specialization']" class="filter-content">
+    <div *ngIf="sectionStates['experiences']" class="filter-content">
       <ul class="filter-list">
-        <li>
-          <label class="checkbox-label">
-            <input type="checkbox" name="specialization" value="serveur" />
-            <span class="checkbox-custom"></span> Serveur
-          </label>
-        </li>
-        <li>
-          <label class="checkbox-label">
-            <input type="checkbox" name="specialization" value="livreur" />
-            <span class="checkbox-custom"></span> Livreur
-          </label>
-        </li>
-        <li>
-          <label class="checkbox-label">
-            <input type="checkbox" name="specialization" value="nettoyage" />
-            <span class="checkbox-custom"></span> Nettoyage
-          </label>
-        </li>
-        <li>
-          <label class="checkbox-label">
-            <input type="checkbox" name="specialization" value="chef" />
-            <span class="checkbox-custom"></span> Chef
+        <li *ngFor="let experience of experiences">
+          <label class="radio-label">
+            <input type="radio" name="filterBy"/>
+            <span class="radio-custom"></span>
+            {{experience}}
           </label>
         </li>
       </ul>
     </div>
   </div>
+  <mat-divider></mat-divider>
+  
+<!-- Heure de travail -->
+<div class="filter-section">
+  <h3 class="filter-header" (click)="toggleSection('heureDeTravail')">
+    Lieu
+    <span class="toggle-icon">
+      <mat-icon>{{ sectionStates['heureDeTravail'] ? 'expand_less' : 'expand_more' }}</mat-icon>
+    </span>
+  </h3>
+  <div class="filter-content ville">
+    <ul class="filter-list- grid">
+      <li *ngFor="let heure of heureDeTravail" class="grid-item">
+        <label class="checkbox-label">
+          <input type="checkbox" name="location" value="{{ heure }}" />
+          <span class="checkbox-custom"></span> {{ heure }}
+        </label>
+      </li>
+    </ul>
+  </div>
+<mat-divider></mat-divider>
+
+
   <button class="apply-button" (click)="closeFilter()">Appliquer</button>
 </div>

@@ -20,7 +20,10 @@ export class FilterForCandidatComponent implements OnInit{
     location: true,
     availability: true,
     specialization: true,
-    age: true
+    age: true,
+    experiences: true,
+    heureDeTravail:true,
+    salary:false
   };
 
   // educationLevels = ['Master1/Master2', 'BAC+3', 'BAC+2', 'Licence', 'BAC', '+'];
@@ -30,12 +33,34 @@ export class FilterForCandidatComponent implements OnInit{
   villes=['Paris', 'Lyon', 'aix', 'Marseille', 'Lille', 'Nice', 'Bordeaux', 'Toulouse', 'Limoges', 'Strasbourg','Nantes', 'Toulon', 'Montpellier', 'Grenoble', 'Brest', 'Rouen'];
   availabilityOptions = ['Tout de suite', 'Dans les 3 prochains jours', 'Prochaines semaines', 'Prochain mois'];
   specializations = ['Serveur', 'Livreur', 'Nettoyage', 'Chef'];
+  experiences = ["pas d'expérience","Moins d'un an", "1 à 3 ans", "3 à 5 ans", "5 ans et plus"];
+  heureDeTravail=['journée','soirée','matinée','8h à 10h', '10h à 12h', '13h à 15h', '18h à 20h','20h à 22h','22h à 00h'];
 
   selectedButton: string = '';
   agePreference = {
     min: 18,
     max: 25
   };
+
+  salairePreference = {
+    min: 0,
+    max: 3500
+  };
+
+
+
+  salaryPreference = {
+    min: 20000, // Salaire minimum par défaut
+    max: 80000, // Salaire maximum par défaut
+  };
+
+  salarySliderOptions: any = {
+    floor: 10000, // Valeur minimum possible
+    ceil: 150000, // Valeur maximum possible
+    step: 1000,   // Pas de l'intervalle
+    translate: (value: number): string => `${value} €`,
+  };
+
   ageSliderOptions: Options = {
     floor: 16,
     ceil: 65,
