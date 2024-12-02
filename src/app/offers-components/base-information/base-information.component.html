@@ -1,39 +1,156 @@
 <div class="post-container">
-  <app-header/>
+  <app-header></app-header>
   <p class="title-page">Informations de base</p>
-  <div class="row mt-4">
-    <div class="col-12">
-      <label for="namePost" class="form-label">Nom du poste *</label>
-      <input type="text" class="form-control" id="namePost" placeholder="Ecrivez l’intitulé du poste">
-    </div>
-  </div>
 
-  <div class="row mt-4">
-    <div class="col-12">
-      <label for="nameRestaurant" class="form-label">Nom du restaurant *</label>
-      <input type="text" class="form-control" id="nameRestaurant" placeholder="Ecrivez le nom du restaurant *">
+  <form>
+    <div class="row mt-4">
+      <div class="col-12">
+        <label for="namePost" class="form-label">Titre du poste *</label>
+        <input
+          type="text"
+          class="form-control"
+          id="namePost"
+          [(ngModel)]="baseInfo.jobTitle"
+          name="jobTitle"
+          placeholder="Ecrivez l’intitulé du poste"
+          required
+        />
+      </div>
     </div>
-  </div>
-
-  <div class="row mt-4">
-    <div class="col-12">
-      <label for="city" class="form-label">Lieu *</label>
-      <input type="text" class="form-control" id="city" placeholder="Ecrivez le lieu de poste">
+    <div class="row mt-4">
+      <div class="col-12">
+        <label for="description" class="form-label">Description de l'offre *</label>
+        <textarea
+          class="form-control"
+          id="description"
+          [(ngModel)]="baseInfo.description"
+          name="description"
+          rows="8"
+          placeholder="Listez les compétences..."
+          required
+        ></textarea>
+      </div>
     </div>
-  </div>
-
-  <div class="row mt-4 mb-3">
-    <div class="col-12 custom-dropdown position-relative">
-      <label for="typeRestaurant" class="form-label">Type du restaurant</label>
-      <select id="typeRestaurant" class="form-control">
-        <option value="" disabled selected>Sélectionnez un type...</option>
-        <option *ngFor="let type of restaurantTypes" [value]="type">{{ type }}</option>
-      </select>
-      <i class="fa fa-chevron-down position-absolute chevron-icon"></i>
+    <div class="row mt-4 mb-3">
+      <div class="col-12 custom-dropdown position-relative">
+        <label for="jobType" class="form-label">Type du job</label>
+        <select
+          id="jobType"
+          class="form-control"
+          [(ngModel)]="baseInfo.jobType"
+          name="jobType"
+          required
+        >
+          <option value="" disabled selected>Sélectionnez un type...</option>
+          <option *ngFor="let type of jobTypes" [value]="type">{{ type }}</option>
+        </select>
+        <i class="fa fa-chevron-down position-absolute chevron-icon"></i>
+      </div>
     </div>
-  </div>
+    <div class="row mt-4 mb-3">
+      <div class="col-12 custom-dropdown position-relative">
+        <label for="statut" class="form-label">Statut</label>
+        <select
+          id="statut"
+          class="form-control"
+          [(ngModel)]="baseInfo.statut"
+          name="jobType"
+          required
+        >
+          <option value="" disabled selected>Sélectionnez un statut...</option>
+          <option *ngFor="let statut of statuts" [value]="statut">{{ statut }}</option>
+        </select>
+        <i class="fa fa-chevron-down position-absolute chevron-icon"></i>
+      </div>
+    </div>
+    <div class="row mt-4 mb-3">
+      <div class="col-12 custom-dropdown position-relative">
+        <label for="typeContrat" class="form-label">Type contrat</label>
+        <select
+          id="typeContrat"
+          class="form-control"
+          [(ngModel)]="baseInfo.contractType"
+          name="jobType"
+          required
+        >
+          <option value="" disabled selected>Sélectionnez un statut...</option>
+          <option *ngFor="let type of contractTypes" [value]="type">{{ type }}</option>
+        </select>
+        <i class="fa fa-chevron-down position-absolute chevron-icon"></i>
+      </div>
+    </div>
+    <div class="row mt-4 mb-3">
+      <div class="col-12 position-relative">
+        <label class="form-label mt-2">Quel salaire proposez-vous ?</label>
+        <div class="custom-dropdown">
+          <select
+            id="salary"
+            class="form-control"
+            [(ngModel)]="baseInfo.salary"
+            name="jobType"
+            required
+          >
+            <option value="" disabled selected>Sélectionnez un salaire par heure...</option>
+            <option *ngFor="let salary of salaires" [value]="salary">{{ salary }}</option>
+          </select>
+          <i class="fa fa-chevron-down position-absolute chevron-icon"></i>
+        </div>
+      </div>
+    </div>
 
-  <div class="button-container">
-    <button (click)="goToNextStep()" class="fixed-button btn btn-primary full-width">Continuer</button>
-  </div>
+    <!--<div class="row mt-4">
+      <div class="col-12">
+        <label for="nameRestaurant" class="form-label">Nom du restaurant *</label>
+        <input
+          type="text"
+          class="form-control"
+          id="nameRestaurant"
+          [(ngModel)]="baseInfo.restaurantName"
+          name="restaurantName"
+          placeholder="Ecrivez le nom du restaurant"
+          required
+        />
+      </div>
+    </div>
+    <div class="row mt-4">
+      <div class="col-12">
+        <label for="city" class="form-label">Lieu *</label>
+        <input
+          type="text"
+          class="form-control"
+          id="city"
+          [(ngModel)]="baseInfo.location"
+          name="location"
+          placeholder="Ecrivez le lieu de poste"
+          required
+        />
+      </div>
+    </div>
+    <div class="row mt-4 mb-3">
+      <div class="col-12 custom-dropdown position-relative">
+        <label for="typeRestaurant" class="form-label">Type du restaurant</label>
+        <select
+          id="typeRestaurant"
+          class="form-control"
+          [(ngModel)]="baseInfo.restaurantType"
+          name="restaurantType"
+          required
+        >
+          <option value="" disabled selected>Sélectionnez un type...</option>
+          <option *ngFor="let type of restaurantTypes" [value]="type">{{ type }}</option>
+        </select>
+        <i class="fa fa-chevron-down position-absolute chevron-icon"></i>
+      </div>
+    </div>-->
+
+    <div class="button-container">
+      <button
+        type="button"
+        (click)="save()"
+        class="fixed-button btn btn-primary full-width"
+      >
+        Continuer
+      </button>
+    </div>
+  </form>
 </div>

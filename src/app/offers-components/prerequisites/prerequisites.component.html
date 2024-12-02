@@ -3,10 +3,11 @@
   <div>
     <p class="title-page">Pré-requis</p>
 
+    <!-- Âge minimal des candidats -->
     <div class="row mt-4 mb-3">
       <div class="col-12 position-relative">
         <label for="minAge" class="form-label">Âge minimal des candidats *</label>
-        <select id="minAge" class="form-control">
+        <select id="minAge" class="form-control" [(ngModel)]="education.level" name="minAge" required>
           <option value="" disabled selected>Sélectionnez l'âge...</option>
           <option *ngFor="let age of ageMins" [value]="age">{{ age }}</option>
         </select>
@@ -14,6 +15,7 @@
       </div>
     </div>
 
+    <!-- Niveau d'études -->
     <div class="row mt-4 mb-3">
       <div class="col-12 position-relative">
         <label for="educationLevel" class="form-label">Niveau d’étude minimal des candidats *</label>
@@ -26,6 +28,8 @@
           (focus)="showDropdown = true"
           (blur)="hideDropdown()"
           placeholder="Bac"
+          name="educationLevel"
+          required
         />
         <ul *ngIf="showDropdown && filteredEducationLevels.length > 0" class="dropdown-list">
           <li *ngFor="let level of filteredEducationLevels" (click)="selectLevel(level)">
@@ -35,18 +39,23 @@
       </div>
     </div>
 
+    <!-- Compétences attendues -->
     <div class="row mt-4 mb-4">
       <div class="col-12">
-        <label for="skills" class="form-label">
-          Qu’attendez-vous des candidats au niveau des compétences ? *
-        </label>
+        <label for="skills" class="form-label">Qu’attendez-vous des candidats au niveau des compétences ? *</label>
         <textarea
           id="skills"
           class="form-control"
           rows="4"
-          placeholder="Veuillez les séparer par des points-virgules"></textarea>
+          placeholder="Veuillez les séparer par des points-virgules"
+          [(ngModel)]="education.certificates"
+          name="skills"
+          required
+        ></textarea>
       </div>
     </div>
+
+    <!-- Disponibilité -->
     <div class="row mt-4">
       <h5>Disponibilité</h5>
       <div class="col-12 mt-3">
@@ -59,8 +68,8 @@
               type="checkbox"
               class="form-check-input me-2"
               [id]="day"
-              [checked]="availabilityInfo[day]"
-              (change)="onDayChange(day)"
+              [(ngModel)]="availabilityInfo[day]"
+              name="availability"
             />
             <label class="form-check-label" [for]="day">{{ day }}</label>
           </div>
@@ -68,7 +77,7 @@
       </div>
     </div>
 
-    <!-- Plages horaires disponibles -->
+    <!-- Plages horaires -->
     <div class="row mt-4">
       <div class="col-12">
         <h6>Plages horaires disponibles :</h6>
@@ -78,12 +87,14 @@
             class="form-check-input col"
             [id]="timeSlot.id"
             [(ngModel)]="timeSlot.selected"
+            name="timeSlots"
           />
           <label class="form-check-label" [for]="timeSlot.id">{{ timeSlot.label }}</label>
         </div>
       </div>
     </div>
 
+    <!-- Entretien -->
     <div class="row mt-4">
       <div class="col-12">
         <h6>Comment se passe l’entretien ?</h6>
@@ -95,8 +106,8 @@
               type="checkbox"
               class="form-check-input me-2"
               [id]="mode"
-              [checked]="availabilityInfo[mode]"
-              (change)="onDayChange(mode)"
+              [(ngModel)]="availabilityInfo[mode]"
+              name="interviewModes"
             />
             <label class="form-check-label" [for]="mode">{{ mode }}</label>
           </div>
@@ -106,7 +117,7 @@
 
   </div>
 
-  <!-- Boutons de navigation -->
+  <!-- Navigation -->
   <div class="button-container row">
     <button (click)="goToPreviousStep()" class="btn btn-primary fixed-button col-5 me-2">Précédent</button>
     <button (click)="goToNextStep()" class="btn btn-primary fixed-button col-5">Continuer</button>

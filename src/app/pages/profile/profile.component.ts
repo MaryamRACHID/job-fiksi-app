@@ -82,7 +82,7 @@ export class ProfileComponent {
   constructor(private router: Router, private userService: UserService) {}
 
 
-  ngOnInit(): void {
+  /*ngOnInit(): void {
     // Récupérer le token et userId depuis localStorage
     this.token = localStorage.getItem('token');
     this.userId = localStorage.getItem('userId');
@@ -104,7 +104,7 @@ export class ProfileComponent {
           console.error('Erreur lors de la récupération du profil :', error);
         });
     }
-  }
+  }*/
 
 
   goToNextStep() {

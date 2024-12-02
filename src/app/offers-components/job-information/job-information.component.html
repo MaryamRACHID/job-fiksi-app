@@ -1,42 +1,70 @@
 <div class="post-container">
-  <app-header/>
+  <app-header></app-header>
   <p class="title-page">Informations sur le job</p>
 
-  <div class="row mt-4 mb-3">
-    <div class="col-12 custom-dropdown position-relative">
-      <label for="typeRestaurant" class="form-label">Type du job</label>
-      <select id="typeRestaurant" class="form-control">
-        <option value="" disabled selected>Sélectionnez un type...</option>
-        <option *ngFor="let type of jobTypes" [value]="type">{{ type }}</option>
-      </select>
-      <i class="fa fa-chevron-down position-absolute chevron-icon"></i>
+  <form>
+    <div class="row mt-4 mb-3">
+      <div class="col-12 custom-dropdown position-relative">
+        <label for="typeRestaurant" class="form-label">Type du job</label>
+        <select
+          id="typeRestaurant"
+          class="form-control"
+          [(ngModel)]="jobInfo.jobType"
+          name="jobType"
+          required
+        >
+          <option value="" disabled selected>Sélectionnez un type...</option>
+          <option *ngFor="let type of jobTypes" [value]="type">{{ type }}</option>
+        </select>
+        <i class="fa fa-chevron-down position-absolute chevron-icon"></i>
+      </div>
     </div>
-  </div>
 
-  <div class="row mt-4">
-    <div class="col-12">
-      <label for="description" class="form-label">Description de l'offre *</label>
-      <textarea
-        class="form-control"
-        id="description"
-        rows="8"
-        placeholder="Listez les compétences..."></textarea>
+    <div class="row mt-4">
+      <div class="col-12">
+        <label for="description" class="form-label">Description de l'offre *</label>
+        <textarea
+          class="form-control"
+          id="description"
+          [(ngModel)]="jobInfo.description"
+          name="description"
+          rows="8"
+          placeholder="Listez les compétences..."
+          required
+        ></textarea>
+      </div>
     </div>
-  </div>
-  <div class="row mt-4">
-    <div class="col-12">
-      <label for="autre" class="form-label">Autres *</label>
-      <textarea
-        class="form-control"
-        id="autre"
-        rows="6"
-        placeholder="Listez les compétences..."></textarea>
+
+    <div class="row mt-4">
+      <div class="col-12">
+        <label for="autre" class="form-label">Autres *</label>
+        <textarea
+          class="form-control"
+          id="autre"
+          [(ngModel)]="jobInfo.autres"
+          name="autres"
+          rows="6"
+          placeholder="Listez les compétences..."
+          required
+        ></textarea>
+      </div>
     </div>
-  </div>
 
-  <div class="button-container row justify-content-center text-center">
-    <button (click)="goToPreviousStep()" class="fixed-button btn btn-primary col-4 me-2">Précédent</button>
-    <button (click)="goToNextStep()" class="fixed-button btn btn-primary col-4">Continuer</button>
-  </div>
-
+    <div class="button-container row justify-content-center text-center">
+      <button
+        type="button"
+        (click)="goToPreviousStep()"
+        class="fixed-button btn btn-primary col-4 me-2"
+      >
+        Précédent
+      </button>
+      <button
+        type="button"
+        (click)="goToNextStep()"
+        class="fixed-button btn btn-primary col-4"
+      >
+        Continuer
+      </button>
+    </div>
+  </form>
 </div>

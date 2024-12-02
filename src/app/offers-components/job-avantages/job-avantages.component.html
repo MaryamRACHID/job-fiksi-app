@@ -1,12 +1,12 @@
 <div class="post-container">
-  <app-header />
+  <app-header></app-header>
 
   <p class="title-page mt-4">Avantages</p>
 
   <!-- Champ: Quelle salaire proposez-vous ? -->
   <div class="row mt-4 mb-3">
     <div class="col-12 position-relative">
-      <label class="form-label mt-2">Quelle salaire proposez-vous ?</label>
+      <label class="form-label mt-2">Quel salaire proposez-vous ?</label>
       <div class="custom-dropdown">
         <input
           type="text"
@@ -37,10 +37,10 @@
     </div>
   </div>
 
-  <!-- Section: Quelles sont les avantages -->
+  <!-- Section: Quels sont les avantages -->
   <div class="row mt-4">
     <div class="col-12">
-      <label class="form-label">Quelles sont les avantages de votre restaurant ?</label>
+      <label class="form-label">Quels sont les avantages de votre restaurant ?</label>
       <div class="d-flex flex-wrap mt-3">
         <div class="col-6 form-check mb-2" *ngFor="let advantage of advantages">
           <input
@@ -77,4 +77,3 @@
     <button (click)="goToNextStep()" class="btn fixed-button btn-primary col-5">Continuer</button>
   </div>
 </div>
-
