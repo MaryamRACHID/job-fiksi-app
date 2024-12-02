@@ -98,6 +98,7 @@ export class ProfileComponent {
       // Vous pouvez maintenant utiliser le token pour effectuer des requêtes API
       this.userService.getUserProfile(Number(this.userId))  // Exemple d'utilisation de l'ID utilisateur
         .then((profile) => {
+          this.userType = profile.user_type;
           console.log('Profil utilisateur :', profile);
         })
         .catch((error) => {
@@ -234,7 +235,10 @@ export class ProfileComponent {
 
   skip() {
     // Logique pour abandonner
-    this.router.navigate(['/accueil']);
-
+    if(this.userType === "candidat"){
+      this.router.navigate(['/login']);
+    } else {
+      this.router.navigate(['/accueil']);
+    }
   }
 }
