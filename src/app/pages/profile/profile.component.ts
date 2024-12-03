@@ -81,6 +81,13 @@ export class ProfileComponent {
 
   constructor(private router: Router, private userService: UserService) {}
 
+  ngOnInit(): void {
+    const savedContactInfo = localStorage.getItem('contactInfo');
+    if (savedContactInfo) {
+      this.contactInfo = JSON.parse(savedContactInfo);
+    }
+  }
+
 
   /*ngOnInit(): void {
     // Récupérer le token et userId depuis localStorage
@@ -107,7 +114,6 @@ export class ProfileComponent {
     }
   }*/
 
-
   goToNextStep() {
     switch (this.step) {
       case 1:
@@ -115,6 +121,7 @@ export class ProfileComponent {
           return;
         }
         this.profileTypeComponent.saveType();
+        //localStorage.setItem('personalInfo', JSON.stringify(this.personalInfo));
         break;
       case 2:
         this.informationsComponent.saveInfo();

@@ -109,7 +109,7 @@ export class InformationsComponent {
         if (error.error) {
           console.error('Détails de l\'erreur:', error.error);
         }
-        alert('Une erreur est survenue lors de l\'enregistrement des données.');
+        //alert('Une erreur est survenue lors de l\'enregistrement des données.');
       }
     );
   }

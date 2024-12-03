@@ -49,9 +49,9 @@ export const routes: Routes = [
   { path: 'addPost/jobPage', component: JobPageComponent, data: { title: 'Ajouter un poste' }},
   { path: 'addPost/succeed', component: SucceedPageComponent, data: { title: 'Ajouter un poste' }},
 
-  { path: 'msg', component: MessagesListComponent, data: { title: 'Messagerie' }},
-  { path: 'msgg', component: ChatComponent },
-  { path: 'msggg', component: NoMessagesComponent },
+  { path: 'messagerie', component: MessagesListComponent, data: { title: 'Messagerie' }},
+  { path: 'conversation', component: ChatComponent },
+  { path: 'ajout/message', component: NoMessagesComponent },
 
 
   { path: '**', redirectTo: '' }, // Redirection vers l'accueil pour les routes inconnues
