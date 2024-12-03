@@ -14,17 +14,5 @@ export class AppComponent {
 
   token: string | null = ''; // Remplacez par un token valide
 
-  ngOnInit(): void {
-    // Récupérer le token et userId depuis localStorage
-    this.token = localStorage.getItem('token');
-
-    // Vérifiez si le token existe, sinon redirigez l'utilisateur
-    if (!this.token) {
-      // L'utilisateur n'est pas authentifié, rediriger vers la page de connexion
-      this.router.navigate(['/login']);
-    } else {
-      console.log('Token récupéré :', this.token);
-    }
-  }
 
 }

@@ -41,7 +41,7 @@ export class DescriptionComponent {
       },
       error => {
         console.error('Error saving description:', error);
-        alert('Une erreur est survenue lors de l\'enregistrement de la description.');
+        //alert('Une erreur est survenue lors de l\'enregistrement de la description.');
       }
     );
   }

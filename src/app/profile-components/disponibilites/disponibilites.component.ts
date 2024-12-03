@@ -80,7 +80,7 @@ export class DisponibilitesComponent {
       },
       error => {
         console.error('Error saving availability:', error);
-        alert('Une erreur est survenue lors de l\'enregistrement des disponibilités.');
+        //alert('Une erreur est survenue lors de l\'enregistrement des disponibilités.');
       }
     );
   }

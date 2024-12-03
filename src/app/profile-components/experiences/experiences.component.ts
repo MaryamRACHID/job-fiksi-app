@@ -56,7 +56,7 @@ export class ExperiencesComponent {
       },
       error => {
         console.error('Error saving experience:', error);
-        alert('Une erreur est survenue lors de l\'enregistrement de l\'expérience.');
+        //alert('Une erreur est survenue lors de l\'enregistrement de l\'expérience.');
       }
     );
   }

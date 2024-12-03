@@ -60,7 +60,7 @@ export class ContactComponent  {
       },
       error => {
         console.error('Erreur lors de l\'enregistrement des données et du fichier:', error);
-        alert('Une erreur est survenue lors de l\'enregistrement des données.');
+        //alert('Une erreur est survenue lors de l\'enregistrement des données.');
       }
     );
   }

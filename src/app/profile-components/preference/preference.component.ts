@@ -135,12 +135,12 @@ export class PreferenceComponent implements OnInit {
           },
           (error) => {
             console.error('Erreur lors de l\'enregistrement des préférences:', error);
-            alert('Une erreur est survenue lors de la sauvegarde de vos préférences.');
+            //alert('Une erreur est survenue lors de la sauvegarde de vos préférences.');
           }
         );
     } else {
       console.error('Token non disponible');
-      alert('Le token est introuvable. Veuillez vous reconnecter.');
+      //alert('Le token est introuvable. Veuillez vous reconnecter.');
     }
   }
 }
