@@ -40,4 +40,10 @@ export class AccueilRestaurantComponent implements OnInit {
     // Rediriger vers /accueil
     this.router.navigate(['/accueil']);
   }
+
+  /*toogleRechercheCandidat(){
+    this.toggleFilter();
+  }*/
+
+  
 }
