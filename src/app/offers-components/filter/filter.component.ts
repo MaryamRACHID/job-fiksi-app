@@ -9,6 +9,10 @@ import { Options } from '@angular-slider/ngx-slider';
 })
 export class FilterComponent implements OnInit {
 
+selectButton(level: string) {
+  this.selectedButton = level; 
+  console.log('Niveau d\'étude sélectionné :', this.selectedButton);
+}
   readonly dialogRef = inject(MatDialogRef<FilterComponent>);
 
   sectionStates: Record<string, boolean> = {
@@ -20,8 +24,8 @@ export class FilterComponent implements OnInit {
     age: true
   };
 
-  educationLevels = ['Master1/Master2', 'BAC+3', 'BAC+2', 'Licence', 'BAC', '+'];
-  locations = ['Paris', 'Lyon', 'Rennes', 'Nantes'];
+  educationLevels = ['Master', 'BAC+3', 'BAC+2', 'Licence', 'BAC'];
+  locations = ['Paris', 'Lyon', 'Nice', 'Nantes'];
   availabilityOptions = ['Tout de suite', 'Dans les 3 prochains jours', 'Prochaines semaines', 'Prochain mois'];
   specializations = ['Serveur', 'Livreur', 'Nettoyage', 'Chef'];
 
@@ -34,12 +38,7 @@ export class FilterComponent implements OnInit {
     floor: 16,
     ceil: 65,
     step: 1,
-    translate: (value: number): string => {
-      if (value === 16 || value === 65) {
-        return ''; // Cache les valeurs des bornes
-      }
-      return value + ' ans';
-    }
+    translate: (value: number): string => `${value} ans`
   };
   selectedFilterBy: string = '';
   selectedLocations: string[] = [];
@@ -58,29 +57,17 @@ export class FilterComponent implements OnInit {
     this.dialogRef.close();
   }
 
-  selectButton(button: string) {
-    this.selectedButton = button;
-  }
-
   applyFilters() {
-    console.log('Filtres à appliquer :', {
-      filterBy: this.selectedFilterBy,
-      educationLevel: this.selectedButton,
-      location: this.selectedLocations, // Vérifiez que vous collectez bien les valeurs
-      availability: this.selectedAvailability,
-      age: this.agePreference,
-      specialization: this.selectedSpecializations
-    });
-  
-    this.dialogRef.close({
+    const filters = {
       filterBy: this.selectedFilterBy,
       educationLevel: this.selectedButton,
       location: this.selectedLocations,
       availability: this.selectedAvailability,
       age: this.agePreference,
       specialization: this.selectedSpecializations
-    });
+    };
+    
+    this.dialogRef.close(filters);
+    console.log(filters);
   }
-  
-  
 }

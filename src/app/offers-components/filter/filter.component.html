@@ -44,22 +44,34 @@
       <div class="filter-option">
         <button class="filter-button" 
                 [ngClass]="{'selected': selectedButton === 'Master/Master 2'}" 
-                (click)="selectButton('Master/Master 2')">Master/Master 2</button>
+                (click)="selectButton('Master/Master 2')">
+          Master/Master 2
+        </button>
         <button class="filter-button" 
                 [ngClass]="{'selected': selectedButton === 'BAC+3'}" 
-                (click)="selectButton('BAC+3')">BAC+3</button>
+                (click)="selectButton('BAC+3')">
+          BAC+3
+        </button>
         <button class="filter-button" 
                 [ngClass]="{'selected': selectedButton === 'BAC+2'}" 
-                (click)="selectButton('BAC+2')">BAC+2</button>
+                (click)="selectButton('BAC+2')">
+          BAC+2
+        </button>
         <button class="filter-button" 
                 [ngClass]="{'selected': selectedButton === 'Licence'}" 
-                (click)="selectButton('Licence')">Licence</button>
+                (click)="selectButton('Licence')">
+          Licence
+        </button>
         <button class="filter-button" 
                 [ngClass]="{'selected': selectedButton === 'BAC'}" 
-                (click)="selectButton('BAC')">BAC</button>
+                (click)="selectButton('BAC')">
+          BAC
+        </button>
         <button class="filter-button" 
                 [ngClass]="{'selected': selectedButton === '+'}" 
-                (click)="selectButton('+')">+</button>
+                (click)="selectButton('+')">
+          +
+        </button>
       </div>
     </div>
   </div>
@@ -144,22 +156,19 @@
   <mat-divider></mat-divider>
 
   <!-- Age -->
-  <div class="age-preference mt-4">
-    <div class="filter-section">
-      <h3 class="filter-header" (click)="toggleSection('age')">
-        Age
-        <span class="toggle-icon">
-          <mat-icon>{{ sectionStates['age'] ? 'expand_less' : 'expand_more' }}</mat-icon>
-        </span>
-      </h3>
-      <div *ngIf="sectionStates['age']" class="filter-content">
-        <ngx-slider
-          [(value)]="agePreference.min"
-          [(highValue)]="agePreference.max"
-          [options]="ageSliderOptions">
-        </ngx-slider>
-        <div class="age-range"></div>
-      </div>
+  <div class="filter-section">
+    <h3 class="filter-header" (click)="toggleSection('age')">
+      Âge
+      <span class="toggle-icon">
+        <mat-icon>{{ sectionStates['age'] ? 'expand_less' : 'expand_more' }}</mat-icon>
+      </span>
+    </h3>
+    <div *ngIf="sectionStates['age']" class="filter-content">
+      <ngx-slider
+        [(value)]="agePreference.min"
+        [(highValue)]="agePreference.max"
+        [options]="ageSliderOptions">
+      </ngx-slider>
     </div>
   </div>
   <mat-divider></mat-divider>
