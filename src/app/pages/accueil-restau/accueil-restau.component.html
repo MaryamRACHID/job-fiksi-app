@@ -32,18 +32,21 @@
       <a href="#" class="view-all">Voir tout</a>
     </div>
 
-    <div class="candidat-card" *ngFor="let candidat of candidats">
+    <div class="candidat-card" *ngFor="let candidat of filteredCandidats">
       <div class="profile-icon-container">
         <img src="assets/profil.png" alt="profil" class="profil" />
       </div>
       <div class="candidat-info">
         <p class="candidat-name">{{ candidat.name }}</p>
         <p class="candidat-location">{{ candidat.location }}</p>
+        <p class="candidat-specialization">{{ candidat.specialization }}</p>
         <a href="#" class="view-profile">Voir le profil</a>
       </div>
       <button mat-icon-button class="bookmark-button">
         <mat-icon>bookmark_border</mat-icon>
       </button>
     </div>
+    
+    
   </section>
 </div>

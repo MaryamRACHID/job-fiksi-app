@@ -41,6 +41,10 @@ export class FilterComponent implements OnInit {
       return value + ' ans';
     }
   };
+  selectedFilterBy: string = '';
+  selectedLocations: string[] = [];
+  selectedAvailability: string[] = [];
+  selectedSpecializations: string[] = [];
 
   ngOnInit() {
     console.log("Filter component initialized.");
@@ -57,4 +61,26 @@ export class FilterComponent implements OnInit {
   selectButton(button: string) {
     this.selectedButton = button;
   }
+
+  applyFilters() {
+    console.log('Filtres à appliquer :', {
+      filterBy: this.selectedFilterBy,
+      educationLevel: this.selectedButton,
+      location: this.selectedLocations, // Vérifiez que vous collectez bien les valeurs
+      availability: this.selectedAvailability,
+      age: this.agePreference,
+      specialization: this.selectedSpecializations
+    });
+  
+    this.dialogRef.close({
+      filterBy: this.selectedFilterBy,
+      educationLevel: this.selectedButton,
+      location: this.selectedLocations,
+      availability: this.selectedAvailability,
+      age: this.agePreference,
+      specialization: this.selectedSpecializations
+    });
+  }
+  
+  
 }
