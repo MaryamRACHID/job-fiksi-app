@@ -40,6 +40,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { PlanningComponent } from './profile-restaurant/planning/planning.component';
 import { MatCalendarCellClassFunction } from '@angular/material/datepicker';
 import { ModifierInfosRestaurantComponent } from './profile-restaurant/modifier-infos-restaurant/modifier-infos-restaurant.component';
+import { MenuBarComponent } from './menu-bar/menu-bar.component';
 
 @NgModule({
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
@@ -57,7 +58,8 @@ import { ModifierInfosRestaurantComponent } from './profile-restaurant/modifier-
     OffreDescriptionComponent,
     CandidatDescriptionComponent,
     PlanningComponent,
-    ModifierInfosRestaurantComponent
+    ModifierInfosRestaurantComponent,
+    MenuBarComponent
   ],
   exports: [
     LoginComponent,
@@ -74,7 +76,8 @@ import { ModifierInfosRestaurantComponent } from './profile-restaurant/modifier-
     OffreDescriptionComponent,
     CandidatDescriptionComponent,
     PlanningComponent,
-    ModifierInfosRestaurantComponent
+    ModifierInfosRestaurantComponent,
+    MenuBarComponent
   ],
   imports: [
     CommonModule,

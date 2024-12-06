@@ -1,3 +1,9 @@
+.body {
+  height: calc(100% - 2rem); /* Ajustez 4rem en fonction de la hauteur de la barre de navigation */
+  overflow-y: auto; /* Assurez un défilement si nécessaire */
+  margin: 0;
+  padding: 0;
+}
 
 .header {
   position: relative;
@@ -65,6 +71,10 @@ p{
   padding: 2rem;
   justify-content: center;
   justify-items: center;
+}
+.content-offre{
+  justify-content: center;
+  align-content: center;
 }
 .bloc-info{
   display: flex;
@@ -186,7 +196,11 @@ p{
 .arrow-up::before {
   content: '▲';
 }
-
+.contentOffre{
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
 .contentOffre h2{
   margin: 1rem;
 }
@@ -204,10 +218,10 @@ p{
 }
 
 .postOffre {
-  width: 300px;
+  width: 80%;
   // height: 15rem;
   background-color: #ffffff;
-  margin: 10px;
+  margin: auto;
   padding: 1.5rem;
   border: 2px solid #fbd40f;
   box-shadow: 1rem 1rem 1rem 1rem rgb(245, 245, 243);

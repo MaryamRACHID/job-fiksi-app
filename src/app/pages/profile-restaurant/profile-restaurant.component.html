@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+<div class="body">
+
 <div class="header">
   <div class="top-section">
     <mat-toolbar color="primary" class="toolbar">
@@ -25,9 +27,9 @@
 </div>
 
 <mat-tab-group (selectedTabChange)="onTabChange($event)">
-  <mat-tab label="Mes informations personnelles" class="custum"></mat-tab>
-  <mat-tab label="Mes offres" class="custum"></mat-tab>
-  <mat-tab label="Mon planning" class="custum"></mat-tab>
+  <mat-tab label="Informations" class="custum"></mat-tab>
+  <mat-tab label="Offres" class="custum"></mat-tab>
+  <mat-tab label="Planning" class="custum"></mat-tab>
 </mat-tab-group>
 
 
@@ -44,12 +46,12 @@
 <!-- ////////////////////////AFFICHAGE OFFRE EMPLOI ////////////////////////////// -->
 <div class="contentOffre" *ngIf="showTitle && !showOffreSection">
   <h2>Mes offres d'emplois</h2>
-  <button class="addOffre" type="button" id="addOffre">Ajouter une offre</button>
-<div *ngFor="let job of jobList">
-  <app-offre-description [job]="job" *ngIf="!job.show"
-    (viewCandidatures)="viewJobApplications(job)"></app-offre-description>
-</div>
-<button class="postOffre" type="button">Publier une offre d'emploi</button>
+  <!-- <button class="addOffre" type="button" id="addOffre">Ajouter une offre</button> -->
+  <div *ngFor="let job of jobList">
+    <app-offre-description [job]="job" *ngIf="!job.show"
+      (viewCandidatures)="viewJobApplications(job)"></app-offre-description>
+  </div>
+  <button class="postOffre" type="button">Publier une offre d'emploi</button>
 </div>
 
 <!-- ///////////////////////// AFFICHAGE CANDIDATURES //////////////////////////////////// -->
@@ -59,16 +61,19 @@
     <span class="back-arrow" (click)="backToJobList()">←</span>
     <h2 class="candidature-title">Candidatures pour {{ job.title }}</h2>
   </div>
-      <div *ngFor="let candidate of job.candidatures">
-        <app-candidat-description [candidate]="candidate"></app-candidat-description>
-      </div>
+    <div *ngFor="let candidate of job.candidatures">
+      <app-candidat-description [candidate]="candidate"></app-candidat-description>
+
+  </div>
+
 
   </div>
 </div>
-
-
 <!-- /////////////////////////////////// AFFICHAGE PLANNING ///////////////////////////////////// -->
 <div class="contentPlanning" *ngIf="showPlanning">
   <app-planning *ngIf="showPlanning" [jobList]="jobList"></app-planning>
 </div>
 
+<app-menu-bar></app-menu-bar>
+
+</div>
