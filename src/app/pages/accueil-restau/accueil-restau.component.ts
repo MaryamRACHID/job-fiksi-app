@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { FilterComponent } from '../../offers-components/filter/filter.component';
 
 interface Candidat {
+  dateCreation : string;
   name: string;
   location: string;
   specialization: string;
@@ -33,13 +34,14 @@ export class AccueilRestaurantComponent implements OnInit {
     age: { min: 16, max: 65 },
     specialization: [] as string[]
   };
+  
 
   constructor(private dialog: MatDialog, private router: Router) {}
 
   ngOnInit(): void {
     this.candidats = [
-
       {
+        dateCreation: '2024/05/24',
         name: 'John Doe',
         location: 'Paris, France',
         specialization: 'Serveur',
@@ -53,6 +55,7 @@ export class AccueilRestaurantComponent implements OnInit {
         educationLevel: 'BAC+2'
       },
       {
+        dateCreation: '2024/12/03',
         name: 'Sabrine Yoan',
         location: 'Nantes, France',
         specialization: 'Nettoyage',
@@ -71,49 +74,85 @@ export class AccueilRestaurantComponent implements OnInit {
 
   toggleFilter(): void {
     const dialogRef = this.dialog.open(FilterComponent, {});
-    console.log("coucou je suis filtre ");
     dialogRef.afterClosed().subscribe((result) => {
+      console.log('Filtres reçus depuis la boîte de dialogue :', result); // Log pour débogage
       if (result) {
         this.selectedFilters = {
           ...this.selectedFilters,
           ...result
         };
+        console.log('Filtres combinés appliqués :', this.selectedFilters); // Log après fusion des filtres
         this.applyFilters();
       }
     });
   }
+  
 
   applyFilters(): void {
+    console.log('Filtres appliqués avant filtrage :', this.selectedFilters);
     this.filteredCandidats = this.candidats.filter((candidat) => {
       return this.filterCandidat(candidat);
     });
+    // Appliquez le tri par "Les plus récents" si sélectionné
+    if (this.selectedFilters.filterBy.includes('Les plus récents')) {
+      this.filteredCandidats.sort((a, b) =>
+        new Date(b.dateCreation).getTime() - new Date(a.dateCreation).getTime()
+      );
+    }
+
+    console.log('Candidats après filtrage :', this.filteredCandidats);
+
   }
+  
 
   private filterCandidat(candidat: Candidat): boolean {
-    const matchesEducation = this.selectedFilters.educationLevel
-      ? candidat.educationLevel === this.selectedFilters.educationLevel
-      : true;
+    const { educationLevel, location, availability, age, specialization } = this.selectedFilters;
+    console.log(educationLevel);
 
-    const matchesLocation = this.selectedFilters.location.length > 0
-      ? this.selectedFilters.location.some((loc) =>
-          candidat.location.includes(loc)
+    // Filtre par niveau d'éducation
+    const matchesEducation = Array.isArray(educationLevel) && educationLevel.length > 0
+    ? educationLevel.some((level) =>
+      level.toLowerCase() === candidat.educationLevel.toLowerCase()
+    )
+    : true;
+
+  
+    // Filtre par localisation (exactement la ville, insensible à la casse)
+    const matchesLocation = location.length > 0
+      ? location.some((loc) =>
+          loc.toLowerCase().trim() === candidat.location.split(',')[0].toLowerCase().trim()
         )
       : true;
-
-    const matchesAvailability = this.selectedFilters.availability.length > 0
-      ? this.selectedFilters.availability.includes(candidat.availability)
+  
+    // Filtre par disponibilité
+    const matchesAvailability = availability.length > 0
+      ? availability.some((avail) =>
+          avail.toLowerCase().trim() === candidat.availability.toLowerCase().trim()
+        )
       : true;
-
-    const matchesAge =
-      candidat.age >= this.selectedFilters.age.min &&
-      candidat.age <= this.selectedFilters.age.max;
-
-    const matchesSpecialization = this.selectedFilters.specialization.length > 0
-      ? this.selectedFilters.specialization.includes(candidat.specialization)
+  
+    // Filtre par tranche d'âge
+    const matchesAge = age.min !== undefined && age.max !== undefined
+      ? candidat.age >= age.min && candidat.age <= age.max
       : true;
-      
-    console.log("coucou je suis dans filtre");
-
+  
+    // Filtre par spécialisation
+    const matchesSpecialization = specialization.length > 0
+      ? specialization.some((spec) =>
+          spec.toLowerCase().trim() === candidat.specialization.toLowerCase().trim()
+        )
+      : true;
+  
+    // Affiche les résultats de chaque critère pour débogage
+    console.log(`Candidat: ${candidat.name}`, {
+      matchesEducation,
+      matchesLocation,
+      matchesAvailability,
+      matchesAge,
+      matchesSpecialization
+    });
+  
+    // Retourne true uniquement si tous les critères définis sont satisfaits
     return (
       matchesEducation &&
       matchesLocation &&
@@ -122,7 +161,9 @@ export class AccueilRestaurantComponent implements OnInit {
       matchesSpecialization
     );
   }
-
+  
+  
+  
   toggleAccueil(): void {
     this.router.navigate(['/accueil']);
   }
