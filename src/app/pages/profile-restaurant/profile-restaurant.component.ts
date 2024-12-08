@@ -35,6 +35,7 @@ export class ProfileRestaurantComponent{
   showButtonEdit : boolean = true;
   showDescription = false;
   showDetails: boolean = false;
+  showContrat=false;
 
   job: any;
   infos: any = {};
@@ -168,6 +169,28 @@ export class ProfileRestaurantComponent{
     }
   ];
 
+  contrat=[
+    {
+      nom: 'inas',
+      fichier_contrat: 'inas_contrat.pdf',
+    },
+    {
+      nom: 'jules',
+      fichier_contrat: 'jules_contrat.pdf',
+    },
+    {
+      nom: 'camille',
+      fichier_contrat: 'camille_contrat.pdf',
+    },
+    {
+      nom: 'sarah',
+      fichier_contrat: 'sarah_contrat.pdf',
+    },
+    {
+      nom: 'nina',
+      fichier_contrat: 'nina_contrat.pdf',
+    }
+  ];
   RestaurantInfos = {
     nomEntreprise:'Burger King',
     email:'burger@gmail.com',
@@ -179,7 +202,8 @@ export class ProfileRestaurantComponent{
     avantages:["Tickes restaurants","Congé payés", "assurance"],
     siteInternet:'site.com',
     linkdin:'prifil-linkdin',
-    offreEmploi:this.jobList
+    offreEmploi:this.jobList,
+    contratResto:this.contrat,
   }
   activeTab: string = 'informations';
 
@@ -191,16 +215,21 @@ export class ProfileRestaurantComponent{
   afficheOffre(){
     this.showTitle = true;
     this.showPlanning=false;
+    this.showContrat=false;
   }
   afficheInfo(){
     this.showTitle = false;
     this.showPlanning=false;
+    this.showContrat=false;
   }
   affichePlanning(){
     this.showTitle=false;
     this.showPlanning=true;
+    this.showContrat=false;
+
   }
   afficheContrat(){
+    this.showContrat=true;
     this.showTitle=false;
     this.showPlanning=false;
   }
