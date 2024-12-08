@@ -34,6 +34,7 @@ import { HeaderRechercheComponent } from './header-recherche/header-recherche.co
     JobListComponent,
     JobDetailsComponent,
     SearchBarComponent,
+    HeaderRechercheComponent
   ],
   exports: [
     BaseInformationComponent,
@@ -56,7 +57,6 @@ import { HeaderRechercheComponent } from './header-recherche/header-recherche.co
     MatDatepickerModule,
     MatNativeDateModule,
     NgxSliderModule
-  ],
-  exports: [HeaderRechercheComponent]
+  ]
 })
 export class OffersComponentsModule { }

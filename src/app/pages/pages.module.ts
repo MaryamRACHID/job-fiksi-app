@@ -1,9 +1,4 @@
-<<<<<<< HEAD
-import { NgModule,CUSTOM_ELEMENTS_SCHEMA  } from '@angular/core';
-=======
-// src/app/pages/pages.module.ts
 import { NgModule,CUSTOM_ELEMENTS_SCHEMA, importProvidersFrom  } from '@angular/core';
->>>>>>> c32644e (rechercheCandidat statique)
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
