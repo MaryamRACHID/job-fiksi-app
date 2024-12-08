@@ -13,6 +13,7 @@ import {DocumentListComponent} from './pages/document-list/document-list.compone
 import { PreferenceComponent } from './profile-components/preference/preference.component';
 import { AccueilRestaurantComponent } from './pages/accueil-restau/accueil-restau.component';
 import { ProfileRestaurantComponent } from './pages/profile-restaurant/profile-restaurant.component';
+import { GenereContratComponent } from './pages/profile-restaurant/genere-contrat/genere-contrat.component';
 
 export const routes: Routes = [
   { path: '', component: LoginComponent }, // Page d'accueil par défaut
@@ -29,7 +30,7 @@ export const routes: Routes = [
   { path: 'documents', component: DocumentListComponent },
   {path:'profile-restaurant', component:ProfileRestaurantComponent},
   {path:'modifier-infos-restaurant', component: InformationsComponent},
-  {path:'genereContrat, component: GenereContratComponent'},
+  {path:'genereContrat',component: GenereContratComponent},
   { path: '**', redirectTo: '' }, // Redirection vers l'accueil pour les routes inconnues
 
 ];

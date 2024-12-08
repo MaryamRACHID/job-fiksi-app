@@ -129,7 +129,7 @@
       <div *ngFor="let contrat_users of contrat">
         <app-contrat [contrat_users]="contrat_users"></app-contrat>
       </div>
-      <button class="postOffre" type="button">Générer une contrat</button>
+      <button class="postOffre" type="button" [routerLink]="['/genereContrat']">Générer une contrat</button>
 
     </div>
   </div>
