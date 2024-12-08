@@ -42,6 +42,7 @@ import { MatCalendarCellClassFunction } from '@angular/material/datepicker';
 import { ModifierInfosRestaurantComponent } from './profile-restaurant/modifier-infos-restaurant/modifier-infos-restaurant.component';
 import { MenuBarComponent } from '../shared/menu-bar/menu-bar.component';
 import { ContratComponent } from './profile-restaurant/contrat/contrat.component';
+import { GenereContratComponent } from './profile-restaurant/genere-contrat/genere-contrat.component';
 
 @NgModule({
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
@@ -61,7 +62,8 @@ import { ContratComponent } from './profile-restaurant/contrat/contrat.component
     PlanningComponent,
     ModifierInfosRestaurantComponent,
     MenuBarComponent,
-    ContratComponent
+    ContratComponent,
+    GenereContratComponent
   ],
   exports: [
     LoginComponent,
@@ -80,7 +82,8 @@ import { ContratComponent } from './profile-restaurant/contrat/contrat.component
     PlanningComponent,
     ModifierInfosRestaurantComponent,
     MenuBarComponent,
-    ContratComponent
+    ContratComponent,
+    GenereContratComponent
   ],
   imports: [
     CommonModule,

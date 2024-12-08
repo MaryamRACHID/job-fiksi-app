@@ -122,12 +122,12 @@
     <div
       class="offres"
       [class.show]="activeTab === 'contrats'"
-      [class.active]="activeTab === 'contrats'">
+      [class.active]="activeTab === 'contrats'" *ngIf="showContrat">
       <!-- <p>Contenu de l'onglet Contrats.</p> -->
       <h2>Mes contrats</h2>
 
       <div *ngFor="let contrat_users of contrat">
-        <app-contrat  *ngIf="showContrat" [contrat_users]="contrat_users"></app-contrat>
+        <app-contrat [contrat_users]="contrat_users"></app-contrat>
       </div>
       <button class="postOffre" type="button">Générer une contrat</button>
 
