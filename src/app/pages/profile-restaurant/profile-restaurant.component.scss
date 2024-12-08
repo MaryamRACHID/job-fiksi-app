@@ -9,6 +9,10 @@
   position: relative;
   width: 100%;
 }
+mat-tab{
+  padding-left: 10px !important;
+  padding-right: 0 !important;
+}
 
 .top-section {
   // background: linear-gradient(90deg, #f7b733, #fc4a1a); /* Dégradé jaune/orange */
@@ -22,9 +26,9 @@
 }
 
 .bottom-section {
-  background-color: white; /* Section blanche en bas */
-  height: 2.7rem;
-  margin-bottom: 1rem;
+  background-color: #d9d9d962; /* Section blanche en bas */
+  height: 5rem;
+  // margin-bottom: 1rem;
 }
 
 .logo-container {
@@ -51,11 +55,13 @@
 }
 .spacer {
   flex: 1 1 auto;
-  padding: 1rem;
+  padding: 4rem;
 }
 h2{
   font-size: 1.1rem;
   font-weight: 500;
+  margin-bottom: 2rem;
+  margin-top: 2rem;
 }
 p{
   font-size: 0.9rem;
@@ -222,6 +228,7 @@ p{
   // height: 15rem;
   background-color: #ffffff;
   margin: auto;
+  margin-top: 1rem;
   padding: 1.5rem;
   border: 2px solid #fbd40f;
   box-shadow: 1rem 1rem 1rem 1rem rgb(245, 245, 243);
@@ -277,5 +284,36 @@ p{
   font-size: 1rem;
 }
 
+.container_resto{
+  height: 100vh;
+  background-color: #d9d9d962;
+  margin-top: 0 !important;
+}
+.offres{
+  margin: 1rem;
+  justify-content:center;
+  text-align: center;
+}
+.nav{
+  background-color: #ffffff;
+  padding: 0.4rem;
+  border-radius: 0.5rem;
+  box-shadow: 4px 4px 4px 4px rgba(191, 191, 191, 0.1);
+  width: 93%;
+  margin: auto;
+}
+.custom-tabs .nav-link {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #495057;
+  border-radius: 0;
 
+}
+
+.custom-tabs .nav-link.active {
+  color: #fff;
+  background-color: #F6BB10;
+  border-color: #F6BB10;
+  border-radius: 0.4rem;
+}
 

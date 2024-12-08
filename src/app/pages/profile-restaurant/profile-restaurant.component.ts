@@ -13,6 +13,7 @@ import { CommonModule } from '@angular/common';
 import { DescriptionComponent } from '../../profile-components/description/description.component';
 import { MatDialogModule } from '@angular/material/dialog'; // Ajoute ceci si tu utilises des dialogues
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import { RestaurantService } from '../../services/restaurant.service';
 @Component({
   selector: 'app-profile-restaurant',
   templateUrl: './profile-restaurant.component.html',
@@ -36,6 +37,21 @@ export class ProfileRestaurantComponent{
   showDetails: boolean = false;
 
   job: any;
+  infos: any = {};
+
+  // constructor(private restaurantService: RestaurantService) {}
+
+  // ngOnInit(): void {
+  //   this.restaurantService.getRestaurantProfile().subscribe(
+  //     (data) => {
+  //       this.infos = data;
+  //       console.log(this.infos);
+  //     },
+  //     (error) => {
+  //       console.error('Erreur lors de la récupération des données:', error);
+  //     }
+  //   );
+  // }
   onTabEdit(){
     this.showEditSection=true;
     this.showInfos = false;
@@ -165,6 +181,31 @@ export class ProfileRestaurantComponent{
     linkdin:'prifil-linkdin',
     offreEmploi:this.jobList
   }
+  activeTab: string = 'informations';
+
+  changeTab(tab: string): void {
+    this.activeTab = tab;
+    console.log(`Onglet actif : ${tab}`);
+  }
+
+  afficheOffre(){
+    this.showTitle = true;
+    this.showPlanning=false;
+  }
+  afficheInfo(){
+    this.showTitle = false;
+    this.showPlanning=false;
+  }
+  affichePlanning(){
+    this.showTitle=false;
+    this.showPlanning=true;
+  }
+  afficheContrat(){
+    this.showTitle=false;
+    this.showPlanning=false;
+  }
+
+
 
 }
 

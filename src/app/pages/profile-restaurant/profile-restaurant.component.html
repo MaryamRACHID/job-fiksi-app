@@ -26,12 +26,107 @@
   <div class="bottom-section"></div>
 </div>
 
-<mat-tab-group (selectedTabChange)="onTabChange($event)">
+<!-- <mat-tab-group (selectedTabChange)="onTabChange($event)">
   <mat-tab label="Informations" class="custum"></mat-tab>
   <mat-tab label="Offres" class="custum"></mat-tab>
   <mat-tab label="Planning" class="custum"></mat-tab>
-</mat-tab-group>
+  <mat-tab label="Contrats" class="custum"></mat-tab>
+</mat-tab-group> -->
 
+<div class="container_resto mt-4">
+  <ul class="nav nav-tabs custom-tabs" role="tablist">
+    <li class="nav-item" role="presentation">
+      <button
+        class="nav-link"
+        [class.active]="activeTab === 'informations'"
+        (click)="changeTab('informations'); afficheInfo()"
+        type="button"
+        role="tab">
+        Informations
+      </button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button
+        class="nav-link"
+        [class.active]="activeTab === 'offres'"
+        (click)="changeTab('offres'); afficheOffre()"
+        type="button"
+        role="tab">
+        Offres
+      </button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button
+        class="nav-link"
+        [class.active]="activeTab === 'planning'"
+        (click)="changeTab('planning'); affichePlanning()"
+        type="button"
+        role="tab">
+        Planning
+      </button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button
+        class="nav-link"
+        [class.active]="activeTab === 'contrats'"
+        (click)="changeTab('contrats') ; afficheContrat()"
+        type="button"
+        role="tab">
+        Contrats
+      </button>
+    </li>
+  </ul>
+
+  <div class="tab-content mt-3">
+    <div
+      class="tab-pane fade"
+      [class.show]="activeTab === 'informations'"
+      [class.active]="activeTab === 'informations'">
+      <!-- <p>Contenu de l'onglet Informations.</p> -->
+      <app-restaurant-infos [infos]="RestaurantInfos"></app-restaurant-infos>
+    </div>
+    <div
+      class="offres"
+      [class.show]="activeTab === 'offres'"
+      [class.active]="activeTab === 'offres'">
+        <div class="offreSection" *ngIf="showTitle && !showOffreSection">
+          <h2>Mes offres d'emplois</h2>
+          <!-- <button class="addOffre" type="button" id="addOffre">Ajouter une offre</button> -->
+          <div *ngFor="let job of jobList">
+            <app-offre-description [job]="job" *ngIf="!job.show"
+              (viewCandidatures)="viewJobApplications(job)"></app-offre-description>
+          </div>
+          <button class="postOffre" type="button">Publier une offre d'emploi</button>
+        </div>
+      <div *ngFor="let job of jobList">
+        <div class="contentOffre" *ngIf="job.show && showOffreSection && showTitle">
+          <div class="candidature-header">
+            <span class="back-arrow" (click)="backToJobList()">←</span>
+            <h2 class="candidature-title">Candidatures pour {{ job.title }}</h2>
+          </div>
+            <div *ngFor="let candidate of job.candidatures">
+              <app-candidat-description [candidate]="candidate"></app-candidat-description>
+        
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="offres"
+      [class.show]="activeTab === 'planning'"
+      [class.active]="activeTab === 'planning'">
+      <!-- <p>Contenu de l'onglet Planning.</p> -->
+       <app-planning *ngIf="showPlanning" [jobList]="jobList"></app-planning>
+
+    </div>
+    <div
+      class="tab-pane fade"
+      [class.show]="activeTab === 'contrats'"
+      [class.active]="activeTab === 'contrats'">
+      <p>Contenu de l'onglet Contrats.</p>
+    </div>
+  </div>
+</div>
 
 <!-- ///////////// EDIT PROFIL //////////////////////// -->
 <div class="editInfosSection" *ngIf="showEditSection">
@@ -39,23 +134,22 @@
 </div>
 
 <!-- /////////////////// RESTAURANT INFOS ///////////////////// -->
-<div class="restaurantInfos" *ngIf="showInfos && !showOffreSection">
+<!-- <div class="restaurantInfos" *ngIf="showInfos && !showOffreSection">
   <app-restaurant-infos [infos]="RestaurantInfos"></app-restaurant-infos>
-</div>
+</div> -->
 
 <!-- ////////////////////////AFFICHAGE OFFRE EMPLOI ////////////////////////////// -->
-<div class="contentOffre" *ngIf="showTitle && !showOffreSection">
+<!-- <div class="contentOffre" *ngIf="showTitle && !showOffreSection">
   <h2>Mes offres d'emplois</h2>
-  <!-- <button class="addOffre" type="button" id="addOffre">Ajouter une offre</button> -->
   <div *ngFor="let job of jobList">
     <app-offre-description [job]="job" *ngIf="!job.show"
       (viewCandidatures)="viewJobApplications(job)"></app-offre-description>
   </div>
   <button class="postOffre" type="button">Publier une offre d'emploi</button>
-</div>
+</div> -->
 
 <!-- ///////////////////////// AFFICHAGE CANDIDATURES //////////////////////////////////// -->
-<div *ngFor="let job of jobList">
+<!-- <div *ngFor="let job of jobList">
 <div class="contentOffre" *ngIf="job.show && showOffreSection && showTitle">
   <div class="candidature-header">
     <span class="back-arrow" (click)="backToJobList()">←</span>
@@ -68,11 +162,11 @@
 
 
   </div>
-</div>
+</div> -->
 <!-- /////////////////////////////////// AFFICHAGE PLANNING ///////////////////////////////////// -->
-<div class="contentPlanning" *ngIf="showPlanning">
+<!-- <div class="contentPlanning" *ngIf="showPlanning">
   <app-planning *ngIf="showPlanning" [jobList]="jobList"></app-planning>
-</div>
+</div> -->
 
 <app-menu-bar></app-menu-bar>
 
