@@ -19,11 +19,10 @@
 
   <section class="section1">
     <div class="bloc1">
-      <span class="nomEntreprise">Burger King</span>
-      <span class="poste">Serveur H/F</span>
+      <span class="nomEntreprise">{{emploiDetails.entreprise}}</span>
+      <span class="poste">{{emploiDetails.poste}}</span>
     </div>
-    <div class="bloc2">
-    </div>
+    <img class="bloc2" src="{{emploiDetails.logo}}">
   </section>
 
   <section class="section2">
@@ -33,7 +32,7 @@
             <mat-icon>location_on</mat-icon>
               <div class="info">
                   <p class="label">Lieu</p>
-                  <p class="text">Lyon, France</p>
+                  <p class="text">{{emploiDetails.adresse}}</p>
               </div>
           </div>
 
@@ -42,7 +41,7 @@
             <mat-icon>attach_money</mat-icon> <!-- Icône pour le salaire -->
             <div class="info">
                 <p class="label">Salaire</p>
-                <p class="text">2 500 € / mois</p>
+                <p class="text">{{emploiDetails.prixParHeure}}</p>
             </div>
           </div>
 
@@ -51,7 +50,7 @@
             <mat-icon>event_available</mat-icon> <!-- Icône pour la disponibilité -->
             <div class="info">
                 <p class="label">Disponibilité</p>
-                <p class="text">Immédiate</p>
+                <p class="text">{{emploiDetails.disponibilites}}</p>
             </div>
           </div>
         </div>
@@ -65,10 +64,9 @@
       <h2>Avantages</h2>
     </div>
     <mat-chip-listbox class="tags">
-      <mat-chip class="tag">responsabilité</mat-chip>
-      <mat-chip class="tag">esprit équipe</mat-chip>
-      <mat-chip class="tag">qualité</mat-chip>
-      <mat-chip class="tag">service clientèle</mat-chip>
+      <mat-chip *ngFor="let avantage of emploiDetails.avantages" class="tag">
+        {{ avantage }}
+      </mat-chip>
     </mat-chip-listbox>
   </section>
 
@@ -78,7 +76,7 @@
       <div class="iconDesc"></div>
       <h2>Description du poste</h2>
     </div>
-    <p class="Texte">Burger King est une entreprise de restauration, spécialisée dans le cuisine burger et les sandwiches. Située au c��ur de Lyon, elle propose un large choix de produits et services pour répondre aux attentes des consommateurs.</p>
+    <p class="Texte">{{emploiDetails.description}}</p>
   </section>
 
   <button class="btnPostuler">Postuler</button>

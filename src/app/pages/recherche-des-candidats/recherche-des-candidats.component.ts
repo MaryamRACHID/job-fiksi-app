@@ -30,47 +30,60 @@ export class RechercheDesCandidatsComponent {
       entreprise: 'Le Gourmet Parisien',
       description: 'Superviser l’équipe en cuisine et élaborer des menus raffinés.',
       competences: ['Créativité culinaire', 'Gestion d’équipe', 'Maîtrise des techniques culinaires'],
-      prixParHeure: '20£'
+      prixParHeure: '20£',
+      disponibilites:['Lundi', 'Mardi'],
+      avantages: ['tickets resto','congé']
     },
     {
       logo:'/assets/MCD.png',
       titre: 'Serveur',
       poste: 'Service en salle',
       adresse: 'lyon, france',
-      entreprise: 'Café de la Place',
+      entreprise: 'MCD',
       description: 'Accueillir les clients, prendre les commandes et assurer un service de qualité.',
       competences: ['Esprit d’équipe', 'Service client', 'Rapidité'],
-      prixParHeure: '15£'
+      prixParHeure: '15£',
+      disponibilites:['Lundi', 'Jeudi'],
+      avantages: ['tickets resto','congé']
     },
     {
       logo:'/assets/otacos.jpg',
       titre: 'Barman',
       poste: 'Préparateur de boissons',
       adresse: 'lyon, france',
-      entreprise: 'Bar Lounge 21',
+      entreprise: 'Otacos',
       description: 'Préparer des cocktails et servir les clients dans une ambiance conviviale.',
       competences: ['Créativité', 'Communication', 'Gestion du stress'],
-      prixParHeure: '18£'
+      prixParHeure: '18£',
+      disponibilites:['Lundi', 'Mardi','Jeurdi','Samedi'],
+      avantages: ['tickets resto','congé']
     },
     {
       logo:'/assets/BurKing.jpg',
       titre: 'Plongeur',
       poste: 'Hygiène et propreté',
       adresse: 'lyon, france',
-      entreprise: 'Restaurant Étoile',
+      entreprise: 'Burger King',
       description: 'Assurer le nettoyage de la vaisselle et des équipements de cuisine.',
       competences: ['Rigueur', 'Rapidité', 'Organisation'],
-      prixParHeure: '12£'
+      prixParHeure: '12£',
+      disponibilites:['Lundi', 'Mardi'],
+      avantages: ['tickets resto','congé']
+
+
     },
     {
       logo:'/assets/MCD.png',
       titre: 'Assistant Manager',
       poste: 'Gestion opérationnelle',
       adresse: 'lyon, france',
-      entreprise: 'Brasserie Lyonnaise',
+      entreprise: 'MCD',
       description: 'Coordonner les équipes, gérer les stocks et veiller à la satisfaction client.',
       competences: ['Leadership', 'Gestion des stocks', 'Polyvalence'],
-      prixParHeure: '22£'
+      prixParHeure: '22£',
+      disponibilites:['Lundi', 'Mardi', 'Mercredi'],
+      avantages: ['tickets resto','congé']
+
     }
   ];
 

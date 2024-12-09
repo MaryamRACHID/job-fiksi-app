@@ -40,6 +40,8 @@
                 </mat-chip>
               </mat-chip-listbox>
           </div>
+          <span style="display: none;">{{details.disponibilites}}</span>
+          <span style="display: none;">{{details.avantages}}</span>
         </div>
 
       </div>
@@ -48,9 +50,7 @@
         <div class="prix">
           <p class="price">{{details.prixParHeure}}</p><p class="heure">/Heurs</p>
         </div>
-        <button class="share">
-          <!-- <img class="icon-share"> -->
-        </button>
+        <button class="share" (click)="showPosteDetails()"></button>
       </div>
     </div>
 </div>
