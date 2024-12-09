@@ -1,0 +1,202 @@
+.container-details{
+  margin: 0;
+  padding: 1rem;
+}
+.top-section {
+  // background: linear-gradient(90deg, #f7b733, #fc4a1a); /* Dégradé jaune/orange */
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  display: flex;
+  // color: white;
+  font-size: 1.5rem;
+  font-weight: bold;
+  justify-content: space-between;
+}
+
+.spacer {
+  flex: 1 1 auto;
+  padding: 1rem;
+}
+
+.section1{
+  display: flex;
+  flex-direction: row;
+  margin: auto;
+  margin-top: 2rem;
+  width: 100%;
+  justify-content: space-between;
+  padding: 1rem;
+}
+
+.bloc1{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.bloc2{
+  background-image: url(/assets/OIP.jpg);
+  background-position: center;
+  background-size: cover;
+  width: 100px;
+  height: 100px;
+  margin: 0;
+
+}
+
+.section2{
+  justify-content: center;
+}
+
+.poste{
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+.nomEntreprise{
+  font-weight: 500;
+}
+
+.company_name{
+  font-size: 1.7rem;
+}
+.select{
+  width: 30px;
+  height: 30px;
+  background-image: url(/assets/select.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.selected{
+  width: 30px;
+  height: 30px;
+  background-image: url(/assets/checked.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+.item2{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.company-info mat-icon {
+  font-size: 2.5rem;
+  color: #fbbc04;
+  // margin-right: 8px;
+  width: 3rem;
+  height: 3rem;
+}
+.company-info{
+  margin-top: 1.7rem;
+  justify-content: center;
+  // justify-items: center;
+  margin-left: 3rem;
+}
+.content {
+  padding: 2rem;
+  justify-content: center;
+  justify-items: center;
+}
+.info-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  gap: 2rem;
+}
+
+.info-item:last-child {
+  margin-bottom: 0;
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+  margin-right: 12px;
+  color: #f6b400;
+}
+
+.label {
+  font-size: 0.9em;
+  color: #888;
+  margin: 0;
+}
+.text {
+  font-size: 1.1em;
+  font-weight: 500;
+  color: #333;
+  margin: 0;
+}
+
+.separator{
+  height: 0.07rem;
+  background-color:#d3d3d3;
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.advantages {
+  margin: 20px 0;
+}
+
+.tags {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.tag {
+  background-color: #ffedcc;
+  color: #ffad00;
+  padding: 7px 15px;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.blocTitle{
+  display: flex;
+  flex-direction: row;
+  gap:0.7rem;
+  margin-bottom: 1rem;
+  // align-items: center;
+}
+
+
+.iconDesc{
+  width:30px;
+  height: 30px;
+  background-image: url(/assets/Medical.jpg);
+  background-position: center;
+  background-size: cover;
+}
+
+.iconAvant{
+  width:30px;
+  height: 30px;
+  background-image: url(/assets/Solution.jpg);
+  background-position: center;
+  background-size: cover;
+}
+.Texte{
+  margin-left:40px;
+}
+
+.btnPostuler{
+  position: fixed; /* Fixe le bouton par rapport à la fenêtre */
+    margin: auto;
+    left: 25%;
+    bottom: 20px; /* Distance du bas de la page */ /* Distance du côté droit de la page */
+    padding: 10px 60px; /* Taille interne */
+    background-color: #f6b400; /* Couleur du bouton */
+    color: white; /* Couleur du texte */
+    font-size: 1.7rem; /* Taille du texte */
+    border: none; /* Supprime la bordure par défaut */
+    border-radius: 10px; /* Coins arrondis */
+    cursor: pointer; /* Curseur interactif */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Ombre subtile */
+    transition: background-color 0.3s ease;
+}
+
