@@ -14,6 +14,7 @@ import {IdentityComponent} from '../../profile-components/identity/identity.comp
 import {BankComponent} from '../../profile-components/bank/bank.component';
 import {InfoRestaurantComponent} from '../../profile-components/info-restaurant/info-restaurant.component';
 import {UserService} from '../../services/user.service';
+import {AppComponent} from '../../app.component';
 
 @Component({
   selector: 'app-profil',
@@ -25,7 +26,7 @@ export class ProfileComponent {
 
   step: number = 1;
   userType: string | null = null;
-  personalInfo = { gender: '', name: '', firstName: '', birthDate: '', city: '', nationality: '', id: 9};
+  personalInfo = { gender: '', name: '', firstName: '', birthDate: '', city: '', nationality: '', id: 9, imageUrl: ''};
   contactInfo = { phone: '', rue: '', postalCode: '', city: '' };
   preferencesInfo = {
     jobPreferences: {
@@ -45,7 +46,7 @@ export class ProfileComponent {
       max: 2000
     }
   };
-  restauInfo = { name: '', type: '', code_postal: '', tel_pro: '' , email_pro: '' , site_web: '' };
+  restauInfo = { name: '', type: '', code_postal: '', tel_pro: '' , email_pro: '' , site_web: ''};
   disponibilitesInfo = { phone: '', rue: '', postalCode: '', city: '' };
   notificationsInfo = { phone: '', rue: '', postalCode: '', city: '' };
   descriptionInfo = { phone: '', rue: '', postalCode: '', city: '' };
@@ -82,53 +83,29 @@ export class ProfileComponent {
   constructor(private router: Router, private userService: UserService) {}
 
 
-  /*ngOnInit(): void {
-    // Récupérer le token et userId depuis localStorage
-    this.token = localStorage.getItem('token');
-    this.userId = localStorage.getItem('userId');
-
-    // Vérifiez si le token existe, sinon redirigez l'utilisateur
-    if (!this.token) {
-      // L'utilisateur n'est pas authentifié, rediriger vers la page de connexion
-      this.router.navigate(['/login']);
-    } else {
-      console.log('Token récupéré :', this.token);
-      console.log('User ID récupéré :', this.userId);
-
-      // Vous pouvez maintenant utiliser le token pour effectuer des requêtes API
-      this.userService.getUserProfile(Number(this.userId))  // Exemple d'utilisation de l'ID utilisateur
-        .then((profile) => {
-          console.log('Profil utilisateur :', profile);
-        })
-        .catch((error) => {
-          console.error('Erreur lors de la récupération du profil :', error);
-        });
-    }
-  }*/
-
+  ngOnInit() {
+    this.userService.userType$.subscribe(userType => {
+      this.userType = userType;
+      console.log("hheeeeeeeeee : ", this.userType)
+    });
+  }
 
   goToNextStep() {
     switch (this.step) {
       case 1:
-        if (this.step === 1 && !this.userType) {
-          return;
-        }
-        this.profileTypeComponent.saveType();
-        break;
-      case 2:
         this.informationsComponent.saveInfo();
         break;
-      case 3:
+      case 2:
         this.contactComponent.saveContact();
         break;
-      case 4:
+      case 3:
         if (this.userType == 'candidat'){
           this.preferenceComponent.savePreference();
         } else {
           this.infoRestaurantComponent.saveRestaurantInfo();
         }
         break;
-      case 5:
+      case 4:
         if (this.userType == 'candidat'){
           this.disponibilitesComponent.saveDisponibilite();
         } else {
@@ -137,25 +114,25 @@ export class ProfileComponent {
           return;
         }
         break;
-      case 6:
+      case 5:
         this.descriptionComponent.saveDescription();
         break;
-      case 7:
+      case 6:
         this.formationComponent.saveFormation();
         break;
-      case 8:
+      case 7:
         this.experiencesComponent.saveExperience();
         break;
-      case 9:
+      case 8:
         this.cvComponent.saveCV();
         break;
-      case 10:
+      case 9:
         this.identityComponent.saveIdentity();
         break;
-      case 11:
+      case 10:
         this.bankComponent.saveBank();
         break;
-      case 12:
+      case 11:
         this.notificationsComponent.saveNotifications();
         this.router.navigate(['/accueil']);
         return;

@@ -1,14 +1,22 @@
 <nav class="bottom-menu">
-  <a mat-icon-button routerLink="/home" routerLinkActive="active">
-    <i class="fas fa-house"></i>
+  <a class="menu-item" routerLink="/addPost/base" routerLinkActive="active">
+    <span class="material-icons-outlined">home</span>
+    <span>Accueil</span>
   </a>
-  <a mat-icon-button routerLink="/location" routerLinkActive="active">
-    <i class="fas fa-map-marker-alt"></i>
+  <a class="menu-item" routerLink="/saved" routerLinkActive="active">
+    <span class="material-icons-outlined">bookmark_border</span>
+    <span>Mes favoris</span>
   </a>
-  <a mat-icon-button routerLink="/saved" routerLinkActive="active">
-    <i class="fa-regular fa-bookmark"></i>
+  <a class="menu-item" routerLink="/posts" routerLinkActive="active">
+    <span class="material-icons-outlined">work_outline</span>
+    <span>Mes postes</span>
   </a>
-  <a mat-icon-button routerLink="/settings" routerLinkActive="active">
-    <i class="fas fa-user"></i>
+  <a class="menu-item" routerLink="/messages" routerLinkActive="active">
+    <span class="material-icons-outlined">chat</span>
+    <span>Messagerie</span>
+  </a>
+  <a class="menu-item" routerLink="/profile" routerLinkActive="active">
+    <span class="material-icons-outlined">person_outline</span>
+    <span>Mon profil</span>
   </a>
 </nav>

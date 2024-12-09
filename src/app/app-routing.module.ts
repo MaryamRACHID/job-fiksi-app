@@ -30,7 +30,7 @@ export const routes: Routes = [
   { path: '', component: FirstPageComponent },
   { path: 'splash-screen', component: SplashScreenComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'profil', component: ProfileComponent, canActivate: [AuthGuard] },
+  { path: 'profil', component: ProfileComponent, canActivate: [AuthGuard]},
   { path: 'info', component: InformationsComponent, canActivate: [AuthGuard] },
   { path: 'contact', component: ContactComponent },
   { path: 'cv', component: CvComponent },

@@ -8,8 +8,18 @@ import {BehaviorSubject, Observable} from 'rxjs';
 export class UserService {
   private apiUrl = 'https://jobfiksi.ismael-dev.com/api/users/';
   private authStatus = new BehaviorSubject<boolean>(false);
+  private userTypeSubject = new BehaviorSubject<string | null>(null);
+  userType$ = this.userTypeSubject.asObservable();
 
   constructor() {}
+
+  setUserType(userType: string | null) {
+    this.userTypeSubject.next(userType);
+  }
+
+  getUserType(): string | null {
+    return this.userTypeSubject.getValue();
+  }
 
   isAuthenticated(): Observable<boolean> {
     const token = localStorage.getItem('token');
@@ -58,13 +68,14 @@ export class UserService {
     const headers = { Authorization: `Token ${token}` };
 
     try {
-      const response = await axios.get(`${this.apiUrl}${id}/`, { headers });
+      const response = await axios.get(`${this.apiUrl}${1}/`, { headers });
       return response.data;
     } catch (error: any) {
       console.error('Erreur lors de la récupération du profil utilisateur :', error);
       throw new Error('Impossible de récupérer le profil utilisateur.');
     }
   }
+
 
   logout(): void {
     localStorage.removeItem('token');

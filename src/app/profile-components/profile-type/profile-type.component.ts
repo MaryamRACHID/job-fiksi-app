@@ -24,7 +24,7 @@ export class ProfileTypeComponent {
 
   saveType() {
     this.userType = this.selectedType;
-    this.userTypeChange.emit(this.userType);
+    //this.userTypeChange.emit(this.userType);
 
     console.log(this.userType);
 

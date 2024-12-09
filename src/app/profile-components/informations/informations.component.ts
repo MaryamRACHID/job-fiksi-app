@@ -2,6 +2,7 @@ import { Component, Output, Input, EventEmitter } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { UserService } from '../../services/user.service';
 import { Router } from '@angular/router';
+import {AppComponent} from '../../app.component';
 
 @Component({
   selector: 'app-informations',
@@ -10,10 +11,13 @@ import { Router } from '@angular/router';
 })
 export class InformationsComponent {
   @Output() personalInfoChange = new EventEmitter<any>();
-  @Input() personalInfo!: { gender: string; name: string; firstName: string; birthDate: string; city: string; nationality: string; id: number };
+  @Input() personalInfo!: { gender: string; name: string; firstName: string; birthDate: string; city: string; nationality: string; id: number, imageUrl: string };
   @Input() userType: string | null = null;
   searchTerm: string = ''; // User's input in the search field
   dropdownOpen: boolean = false; // To control dropdown visibility
+
+  token: string | null = null;
+  userId: string | null = null;
 
   private selectedFile: File | null = null;
   nationalities: string[] = [
@@ -25,6 +29,23 @@ export class InformationsComponent {
   onInputChange() {
     this.personalInfoChange.emit(this.personalInfo);
   }
+
+  async ngOnInit() {
+    try {
+      this.userId = localStorage.getItem('userId');
+
+      const data = await this.userService.getUserProfile(Number(this.userId)); // Appel à la méthode asynchrone
+      console.log('test : ', data)
+      this.personalInfo = {
+        ...data,
+        imageUrl: data.image // Assurez-vous que 'image' contient l'URL complète de l'image
+      };
+    } catch (error) {
+      console.error('Erreur lors du chargement des informations utilisateur :', error);
+    }
+  }
+
+
 
   // Méthode pour filtrer les nationalités
   filterNationalities() {
@@ -49,15 +70,13 @@ export class InformationsComponent {
   onFileSelected(event: Event): void {
     const input = event.target as HTMLInputElement;
     if (input.files && input.files.length > 0) {
-      this.selectedFile = input.files[0];  // Stocke le fichier sélectionné
+      this.selectedFile = input.files[0];
       console.log('Fichier sélectionné:', this.selectedFile);
     }
   }
 
   constructor(private http: HttpClient, private router: Router, private userService: UserService) {}
 
-  token: string | null = null;
-  userId: string | null = null;
 
 
   saveInfo() {
@@ -72,6 +91,10 @@ export class InformationsComponent {
 
     // Créez un FormData pour envoyer les données et le fichier
     const formData = new FormData();
+
+    if (this.selectedFile) {
+      formData.append('image', this.selectedFile);
+    }
 
     // Vérifiez que chaque champ n'est pas null ou vide avant de l'ajouter au FormData
     if (this.personalInfo.name) {
