@@ -36,9 +36,10 @@ export class ProfileRestaurantComponent{
   showDescription = false;
   showDetails: boolean = false;
   showContrat=false;
-
+  showProfile: boolean=true;
   job: any;
   infos: any = {};
+
 
   // constructor(private restaurantService: RestaurantService) {}
 
@@ -55,7 +56,7 @@ export class ProfileRestaurantComponent{
   // }
   onTabEdit(){
     this.showEditSection=true;
-    this.showInfos = false;
+    this.showProfile = false;
   }
   onTabChange(event: MatTabChangeEvent) {
     if(event.index === 0){
@@ -107,7 +108,7 @@ export class ProfileRestaurantComponent{
   }
   handleCancel() {
     this.showEditSection = false;
-    this.showInfos = true;
+    this.showProfile = true;
   }
 
   jobList = [

@@ -25,15 +25,7 @@
   </div>
   <div class="bottom-section"></div>
 </div>
-
-<!-- <mat-tab-group (selectedTabChange)="onTabChange($event)">
-  <mat-tab label="Informations" class="custum"></mat-tab>
-  <mat-tab label="Offres" class="custum"></mat-tab>
-  <mat-tab label="Planning" class="custum"></mat-tab>
-  <mat-tab label="Contrats" class="custum"></mat-tab>
-</mat-tab-group> -->
-
-<div class="container_resto mt-4">
+<div class="container_resto mt-4" *ngIf="showProfile">
   <ul class="nav nav-tabs custom-tabs" role="tablist">
     <li class="nav-item" role="presentation">
       <button
@@ -106,7 +98,7 @@
           </div>
             <div *ngFor="let candidate of job.candidatures">
               <app-candidat-description [candidate]="candidate"></app-candidat-description>
-        
+
           </div>
         </div>
       </div>

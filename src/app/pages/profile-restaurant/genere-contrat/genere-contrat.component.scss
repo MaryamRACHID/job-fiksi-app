@@ -1,4 +1,10 @@
-.section{
+.body {
+  height: calc(100% - 3rem); /* Ajustez 4rem en fonction de la hauteur de la barre de navigation */
+  overflow-y: auto; /* Assurez un défilement si nécessaire */
+  margin: 0;
+  padding: 0;
+}
+.section1, .section2, .section3, .section4{
   display: flex;
   flex-direction: column;
   // justify-content: flex-start;
@@ -7,8 +13,25 @@
   padding: 1rem;
   // padding-top: 1rem;
   width: 100%;
-  height: 100vh;
-  background-color: rgb(255, 255, 255);
+  // height: 100vh;
+  background-color: #F9F9F9;
+  height: calc(100% - 4rem); /* Ajustez 4rem en fonction de la hauteur de la barre de navigation */
+  overflow-y: auto;
+}
+
+.section2{
+  display: flex;
+  flex-direction: column;
+  // justify-content: flex-start;
+  gap:1rem;
+  margin: 0;
+  padding: 1rem;
+  // padding-top: 1rem;
+  width: 100%;
+  // height: 100vh;
+  background-color: #F9F9F9;
+  height: 100vh; /* Ajustez 4rem en fonction de la hauteur de la barre de navigation */
+  // overflow-y: auto;
 }
 
 .form1{
@@ -17,9 +40,26 @@
   gap: 2rem;
 }
 
+.form2{
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  height: 100%;
+}
+
+.form3{
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  height: 100%;
+}
+
 .abandonne{
   display: flex;
   justify-content: flex-end;
+}
+.abandonne a{
+  color: #bebaba !important;
 }
 .flechBack{
   display: flex;
@@ -49,10 +89,22 @@ h3{
 
 .inputGroup input{
   padding: 0.7rem;
-  // border: 7px bold #9f9f9f;
-  // border-color:rgb(198, 202, 202);
   border: 3px solid #bebaba;
   width: 100%;
+  border-radius: 0.3rem;
+}
+
+.inputGroup select{
+  padding: 0.7rem;
+  border: 3px solid #bebaba;
+  width: 100%;
+  border-radius: 0.3rem;
+}
+.inputGroup textarea{
+  // padding: 0.7rem;
+  border: 3px solid #bebaba;
+  width: 100%;
+  height: 100px !important;
   border-radius: 0.3rem;
 }
 
@@ -66,8 +118,91 @@ h3{
 }
 
 
+
 .content{
   display: flex;
   flex-direction: column;
   gap: 1rem;
+}
+
+.blocDate{
+  display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Deux colonnes de taille égale */
+    grid-template-rows: repeat(2, auto); /* Deux lignes, hauteur automatique */
+    gap: 10px; /* Espacement entre les cellules (facultatif) */
+    width: 100%; /* Largeur du conteneur */
+    max-width: 500px; /* Limite de largeur (facultatif) */
+    margin: 0 auto; /* Centre le tableau horizontalement */
+    // border: 1px solid #ccc;
+}
+
+.grid-items{
+  // background-color: #f0f0f0;
+  padding: 20px;
+  text-align: end;
+  // border: 1px solid #ddd;
+}
+
+.imgContrat{
+  width: 100%;
+  height: 25rem;
+  background-image: url(/assets/contrat.png);
+  background-position: center;
+  background-size: cover;
+  border: none !important;
+}
+
+.blocMidle{
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+  align-items: center;
+}
+
+.blocMidle span{
+  font-size: 1.1rem;
+  font-weight: 500;
+  width: 60%;
+  text-align: center;
+}
+
+.bloc-souhait{
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.items{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-left: 1.5rem;
+}
+
+.custom-radio .mat-radio-outer-circle {
+  border-color: #ccc; /* Couleur du cercle externe non sélectionné */
+}
+
+.custom-radio .mat-radio-inner-circle {
+  background-color:  #FF9228 !important; /* Couleur du cercle interne lorsqu'il est coché */
+}
+
+.custom-radio.mat-radio-checked .mat-radio-outer-circle {
+  border-color: #FF9228 !important; /* Couleur du cercle externe lorsqu'il est coché */
+}
+
+.custom-radio .mat-radio-ripple {
+  background-color: rgba(255, 255, 0, 0.3); /* Effet ripple en jaune clair */
+}
+
+.btnValider{
+  background-color: #F6BB10;
+  color: white;
+  padding: 0.3rem 0.5rem;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  width: 50%;
+  margin: auto;
 }

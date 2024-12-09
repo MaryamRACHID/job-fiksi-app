@@ -1,16 +1,15 @@
 <!DOCTYPE html>
-<div class="section">
+<div class="section1" *ngIf="showForm1">
   <div class="flechBack">
-    <mat-icon class="icon-header">arrow_back</mat-icon>
+    <mat-icon class="icon-header" [routerLink]="['/profile-restaurant']">arrow_back</mat-icon>
   </div>
   <div class="abandonne">
-    <a>Abandinner</a>
+    <a href="#" [routerLink]="['/profile-restaurant']">Abandonner</a>
   </div>
   <div class="content">
     <h2>Génére un contrat</h2>
-    <h3>Informations employeur</h3>
-
     <div class="form1">
+      <h3>Informations employeur</h3>
       <div class="inputGroup">
         <label for="nomEtablissement">Nom de l'établissement *</label>
         <input type="text" name="nomEtablissement">
@@ -36,9 +35,126 @@
         <input type="text" name="nomEtablissement">
       </div>
 
-      <button class="btn">Continue</button>
-    </div>
+      <button class="btn" (click)="showSection2()">Continue</button>
+  </div>
   </div>
 </div>
+  <!-- ##### 2eme page ####### -->
+
+<div class="section2" *ngIf="showForm2">
+  <div class="flechBack">
+    <mat-icon class="icon-header" (click)="backForm1()">arrow_back</mat-icon>
+  </div>
+  <div class="abandonne">
+    <a href="#">Abandonner</a>
+  </div>
+  <div class="form2">
+    <h3>Informations employé</h3>
+    <div class="inputGroup">
+      <label for="nomEtablissement">Nom et prénom du candidat *</label>
+      <input type="text" name="nomEtablissement">
+    </div>
+
+    <div class="inputGroup">
+      <label for="adresseEtablissement">Date de naissance *</label>
+      <input type="text" name="adresseEtablissement">
+    </div>
+
+    <div class="inputGroup">
+      <label for="nomEmployeur">Adresse du candidat *</label>
+      <input type="text" name="nomEmployeur">
+    </div>
+
+    <div class="inputGroup">
+      <label for="tel">NNuméro de téléphone *</label>
+      <input type="text" name="nomEtablissement">
+    </div>
+
+    <button class="btn" (click)="showSection3()">Continue</button>
+  </div>
+</div>
+
+  <!-- ##### 3eme page ####### -->
+<div class="section3"  *ngIf="showForm3">
+  <div class="flechBack">
+    <mat-icon class="icon-header" (click)="backForm2()">arrow_back</mat-icon>
+  </div>
+  <div class="abandonne">
+    <a href="#">Abandonner</a>
+  </div>
+  <div class="form3">
+    <h3>Conditions du contrat</h3>
+    <div class="inputGroup">
+      <label for="titreDePoste">Titre de poste *</label>
+      <select name="titreDePoste" id="">
+        <option value="">Mes postes</option>
+        <option value="">Titre 1</option>
+        <option value="">Titre 2</option>
+        <option value="">Titre 3</option>
+        <option value="">Titre 4</option>
+      </select>
+    </div>
+
+    <div class="inputGroup">
+      <label for="missions">Description des missions *</label>
+      <textarea name="descriptionDesMissions" id=""></textarea>
+    </div>
+
+    <div class="inputGroup">
+      <label for="dureeTravail">Durée de travail *</label>
+      <div class="blocDate">
+        <label for="dateDebut" class="grid-items">Date de début *</label>
+        <input type="date" class="inputDate" name="dateDebut">
+        <label for="dateFin" class="grid-items">Date de fin *</label>
+        <input type="date" class="inputDate" name="dateFin">
+      </div>
+    </div>
+
+    <div class="inputGroup">
+      <label for="nomEmployeur">Nombre d'heures par semaine *</label>
+      <input type="number" name="nombreHeure">
+    </div>
+
+    <div class="inputGroup">
+      <label for="remuniration">Rémunération horaire *</label>
+      <input type="number" name="remuniration">
+    </div>
+
+    <button class="btn btn2" (click)="showSection4()">Continue</button>
+  </div>
+</div>
+
+<!-- ##### 4eme page ####### -->
+<div class="section4" *ngIf="showForm4">
+  <div class="flechBack">
+    <mat-icon class="icon-header" (click)="backForm3()">arrow_back</mat-icon>
+  </div>
+  <div class="abandonne">
+    <a href="#">Abandonner</a>
+  </div>
+
+  <h2>Générer un contrat</h2>
+  <div class="imgContrat"></div>
+  <div class="blocMidle">
+    <span class="titleDown">Votre contrat a bien été générée</span>
+    <a href="" [routerLink]="['./profile-restaurant']">Retour au profil</a>
+  </div>
+  <div class="bloc-souhait">
+    <h3>Vous souhaitez:</h3>
+    <div class="items">
+      <mat-radio-button class="custom-radio" value="download">
+        Le télécharger
+      </mat-radio-button>
+      <mat-radio-button class="custom-radio" value="download">
+        L'envoyer par mail
+      </mat-radio-button>
+    </div>
+  </div>
+
+  <button class="btnValider">Valider</button>
+</div>
+
+
+
 
 <app-menu-bar></app-menu-bar>
