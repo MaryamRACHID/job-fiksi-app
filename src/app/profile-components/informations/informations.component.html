@@ -6,8 +6,9 @@
     <label class="btn btn-outline-secondary icon-container">
       <p class="text-img mb-0">Ajouter une photo de profil</p>
       <input type="file" name="image" accept="image/png, image/jpeg" style="display: none;" (change)="onFileSelected($event)">
-      <i class="fas fa-pen icon"></i> <!-- Icône de caméra de Font Awesome -->
+      <i class="fas fa-pen icon"></i>
     </label>
+    <img *ngIf="personalInfo.imageUrl" [src]="personalInfo.imageUrl" alt="Photo de profil" class="img-thumbnail mt-3">
   </div>
 
   <div class="gender-selection text-center my-3 mt-5">
@@ -39,7 +40,7 @@
 
   <div class="row mt-4">
     <div class="col-12">
-      <label for="firstName" class="form-label">Ville de naissance</label>
+      <label for="city" class="form-label">Ville de naissance</label>
       <input type="text" name="ville_naissance" class="form-control" id="city" [(ngModel)]="personalInfo.city" placeholder="Ville de naissance">
     </div>
   </div>
@@ -47,7 +48,6 @@
   <div class="row mt-4 mb-3">
     <div class="col-12 custom-dropdown">
       <label for="nationality" class="form-label">Nationalité</label>
-      <!-- Input field for typing -->
       <input
         type="text"
         id="nationality"
@@ -59,8 +59,6 @@
         (focus)="dropdownOpen = true"
         (blur)="closeDropdown()"
       />
-
-      <!-- Dropdown list that filters based on the searchTerm -->
       <ul *ngIf="dropdownOpen" class="dropdown-list">
         <li
           *ngFor="let nationality of filteredNationalities"
@@ -71,7 +69,6 @@
       </ul>
     </div>
   </div>
-
 </div>
 
 <div *ngIf="userType === 'restaurant'">
@@ -81,18 +78,18 @@
     <label class="btn btn-outline-secondary icon-container">
       <p class="text-img mb-0">Ajouter une photo de profil</p>
       <input type="file" name="image" accept="image/png, image/jpeg" style="display: none;" (change)="onFileSelected($event)">
-      <i class="fas fa-pen icon"></i> <!-- Icône de caméra de Font Awesome -->
+      <i class="fas fa-pen icon"></i>
     </label>
     <img *ngIf="personalInfo.imageUrl" [src]="personalInfo.imageUrl" alt="Photo de profil" class="img-thumbnail mt-3">
   </div>
 
   <div class="gender-selection text-center my-3 mt-5">
     <div class="form-check form-check-inline">
-      <input class="form-check-input" type="radio" name="genre" id="female" value="female">
+      <input class="form-check-input" type="radio" name="genre" id="female" [(ngModel)]="personalInfo.gender" value="female">
       <label class="form-check-label" for="female">Madame</label>
     </div>
     <div class="form-check form-check-inline">
-      <input class="form-check-input" type="radio" name="genre" id="male" value="male">
+      <input class="form-check-input" type="radio" name="genre" id="male" [(ngModel)]="personalInfo.gender" value="male">
       <label class="form-check-label" for="male">Monsieur</label>
     </div>
   </div>
@@ -113,4 +110,3 @@
     <input type="date" name="date_naissance" class="form-control mt-2" id="birthDate" [(ngModel)]="personalInfo.birthDate">
   </div>
 </div>
-

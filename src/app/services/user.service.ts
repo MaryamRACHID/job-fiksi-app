@@ -68,7 +68,7 @@ export class UserService {
     const headers = { Authorization: `Token ${token}` };
 
     try {
-      const response = await axios.get(`${this.apiUrl}${1}/`, { headers });
+      const response = await axios.get(`${this.apiUrl}${id}/`, { headers });
       return response.data;
     } catch (error: any) {
       console.error('Erreur lors de la récupération du profil utilisateur :', error);
