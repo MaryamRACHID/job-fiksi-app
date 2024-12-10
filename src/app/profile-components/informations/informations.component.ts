@@ -125,6 +125,9 @@ export class InformationsComponent {
       },
       error => {
         console.error('Erreur lors de l\'enregistrement des données et du fichier:', error);
+        if (error.error) {
+          console.error('Détails de l\'erreur:', error.error);
+        }
       }
     );
   }

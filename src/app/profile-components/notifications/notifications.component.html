@@ -1,4 +1,8 @@
+<h2 class="title">Complétez votre profil</h2>
+
 <div *ngIf="userType === 'candidat'">
+  <p class="subtitle-1">Notifications</p>
+
   <p>être alerté des offres disponible près de chez vous ?</p>
   <div class="form-group mt-2">
     <div class="d-flex justify-content-center align-items-center check-exp">
@@ -52,6 +56,8 @@
   </div>
 </div>
 <div *ngIf="userType === 'restaurant'">
+  <p class="subtitle-1">Notifications</p>
+
   <p>être alerté des candidats disponible ?</p>
   <div class="form-group mt-2">
     <div class="d-flex justify-content-center align-items-center check-exp">

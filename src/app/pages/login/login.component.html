@@ -22,53 +22,53 @@
   <!-- Formulaire de Connexion -->
   <div *ngIf="currentToggle === 'connexion'">
     <form [formGroup]="loginForm" (ngSubmit)="onLoginSubmit()">
-      <div class="form-group">
-        <label for="username-connexion">Nom d'utilisateur</label>
+      <div class="form-group mt-4">
+        <label for="username-connexion" class="label">Nom d'utilisateur</label>
         <input type="text" class="form-control" id="username-connexion" placeholder="Entrez votre nom d'utilisateur" formControlName="username" required>
       </div>
 
       <div class="form-group">
-        <label for="password-connexion">Mot de passe</label>
+        <label for="password-connexion"  class="label">Mot de passe</label>
         <input type="password" class="form-control" id="password-connexion" placeholder="Entrez votre mot de passe" formControlName="password" required>
       </div>
 
       <div class="login-row">
-        <div class="form-check">
+        <div class="form-check mt-1">
           <input type="checkbox" class="form-check-input me-2 mt-0" id="stay-logged-in">
-          <label class="form-check-label" for="stay-logged-in">Rester connecté</label>
+          <label class="form-check-label label" for="stay-logged-in">Rester connecté</label>
         </div>
-        <a href="#" class="forgot-password">Mot de passe oublié ?</a>
+        <a href="#" class="forgot-password label">Mot de passe oublié ?</a>
       </div>
 
-      <button class="btn btn-primary full-width" type="submit">Me connecter</button>
+      <button class="btn btn-primary full-width label mt-3" type="submit">Me connecter</button>
     </form>
   </div>
 
   <!-- Formulaire d'Inscription -->
   <div *ngIf="currentToggle === 'inscription'">
     <form [formGroup]="inscriptionForm" (ngSubmit)="onInscriptionSubmit()">
-      <div class="form-group">
-        <label for="username-inscription">Nom d'utilisateur</label>
+      <div class="form-group mt-4">
+        <label for="username-inscription" class="label">Nom d'utilisateur</label>
         <input type="text" class="form-control" id="username-inscription" placeholder="Créez un nom d'utilisateur" formControlName="username" required>
       </div>
 
       <div class="form-group">
-        <label for="email-inscription">Email</label>
+        <label for="email-inscription" class="label">Email</label>
         <input type="email" class="form-control" id="email-inscription" placeholder="Entrez votre email" formControlName="email" required>
       </div>
 
       <div class="form-group">
-        <label for="password-inscription">Mot de passe</label>
+        <label for="password-inscription" class="label">Mot de passe</label>
         <input type="password" class="form-control" id="password-inscription" placeholder="Créez un mot de passe" formControlName="password" required>
       </div>
 
       <div class="form-group">
-        <label for="confirm-password-inscription">Confirmer le mot de passe</label>
+        <label for="confirm-password-inscription" class="label">Confirmer le mot de passe</label>
         <input type="password" class="form-control" id="confirm-password-inscription" placeholder="Confirmez votre mot de passe" formControlName="confirmPassword" required>
       </div>
 
       <div class="form-group">
-        <label for="user-type">Type d'utilisateur</label>
+        <label for="user-type"  class="label">Type d'utilisateur</label>
         <select class="form-select" id="user-type" formControlName="userType" required>
           <option value="" disabled selected>Choisissez un type d'utilisateur</option>
           <option value="candidat">Candidat</option>
@@ -76,9 +76,9 @@
         </select>
       </div>
 
-      <button class="btn btn-primary full-width" type="submit">M'inscrire</button>
+      <button class="btn btn-primary full-width label mt-3" type="submit">M'inscrire</button>
     </form>
   </div>
 
-  <p class="subtitle">Vous avez déjà un compte? <span class="span" (click)="setToggle('connexion')">Se connecter</span></p>
+  <p class="subtitle">Vous avez déjà un compte? <span class="span label" (click)="setToggle('connexion')">Se connecter</span></p>
 </div>

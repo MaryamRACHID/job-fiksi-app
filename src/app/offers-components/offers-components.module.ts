@@ -18,6 +18,7 @@ import {JobPageComponent} from './job-page/job-page.component';
 import {SucceedPageComponent} from './succeed-page/succeed-page.component';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
+import { HeaderRechercheComponent } from './header-recherche/header-recherche.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import {MatNativeDateModule} from '@angular/material/core';
     JobListComponent,
     JobDetailsComponent,
     SearchBarComponent,
+    HeaderRechercheComponent
   ],
   exports: [
     BaseInformationComponent,
@@ -44,9 +46,7 @@ import {MatNativeDateModule} from '@angular/material/core';
     JobPageComponent,
     SucceedPageComponent,
     FilterComponent,
-    JobListComponent,
-    JobDetailsComponent,
-    SearchBarComponent,
+    HeaderRechercheComponent
   ],
   imports: [
     CommonModule,
@@ -55,7 +55,8 @@ import {MatNativeDateModule} from '@angular/material/core';
     MaterialModule,
     NgxSliderModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    NgxSliderModule
   ]
 })
 export class OffersComponentsModule { }

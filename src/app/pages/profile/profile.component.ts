@@ -82,6 +82,12 @@ export class ProfileComponent {
 
   constructor(private router: Router, private userService: UserService) {}
 
+  ngOnInit(): void {
+    const savedContactInfo = localStorage.getItem('contactInfo');
+    if (savedContactInfo) {
+      this.contactInfo = JSON.parse(savedContactInfo);
+    }
+  }
 
   ngOnInit() {
     this.userService.userType$.subscribe(userType => {
@@ -89,6 +95,30 @@ export class ProfileComponent {
       console.log("hheeeeeeeeee : ", this.userType)
     });
   }
+  /*ngOnInit(): void {
+    // Récupérer le token et userId depuis localStorage
+    this.token = localStorage.getItem('token');
+    this.userId = localStorage.getItem('userId');
+
+    // Vérifiez si le token existe, sinon redirigez l'utilisateur
+    if (!this.token) {
+      // L'utilisateur n'est pas authentifié, rediriger vers la page de connexion
+      this.router.navigate(['/login']);
+    } else {
+      console.log('Token récupéré :', this.token);
+      console.log('User ID récupéré :', this.userId);
+
+      // Vous pouvez maintenant utiliser le token pour effectuer des requêtes API
+      this.userService.getUserProfile(Number(this.userId))  // Exemple d'utilisation de l'ID utilisateur
+        .then((profile) => {
+          this.userType = profile.user_type;
+          console.log('Profil utilisateur :', profile);
+        })
+        .catch((error) => {
+          console.error('Erreur lors de la récupération du profil :', error);
+        });
+    }
+  }*/
 
   goToNextStep() {
     switch (this.step) {
@@ -211,7 +241,10 @@ export class ProfileComponent {
 
   skip() {
     // Logique pour abandonner
-    this.router.navigate(['/accueil']);
-
+    if(this.userType === "candidat"){
+      this.router.navigate(['/login']);
+    } else {
+      this.router.navigate(['/accueil']);
+    }
   }
 }

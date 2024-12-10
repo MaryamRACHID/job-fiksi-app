@@ -1,4 +1,3 @@
-// src/app/app.module.ts
 import { NgModule, isDevMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -39,6 +38,7 @@ import {AuthInterceptor} from './intercepteurs/auth.interceptor';
   bootstrap: [AppComponent], // Démarrage de l'application avec AppComponent comme composant racine
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+    provideAnimationsAsync()
   ],
 })
 export class AppModule {}

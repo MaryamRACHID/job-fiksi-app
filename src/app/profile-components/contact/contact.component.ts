@@ -20,14 +20,19 @@ export class ContactComponent  {
     city: ''
   };
 
-  constructor(private http: HttpClient, private router: Router, private userService: UserService) {}
-
   token: string | null = null;
   userId: string | null = null;
 
-  saveContact() {
-    this.contactInfo = { ...this.contact };
+  constructor(private http: HttpClient, private router: Router, private userService: UserService) {}
+
+  onInputChange() {
     this.contactInfoChange.emit(this.contactInfo);
+  }
+
+  saveContact() {
+    this.contactInfo = { ...this.contact }; // Synchronisation
+    localStorage.setItem('contactInfo', JSON.stringify(this.contactInfo)); // Sauvegarde locale
+    this.contactInfoChange.emit(this.contactInfo); // Émission des données mises à jour
 
     console.log(this.contactInfo)
 

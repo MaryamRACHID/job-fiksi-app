@@ -1,4 +1,4 @@
-import { NgModule,CUSTOM_ELEMENTS_SCHEMA  } from '@angular/core';
+import { NgModule,CUSTOM_ELEMENTS_SCHEMA, importProvidersFrom  } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
@@ -27,7 +27,7 @@ import {DocumentListComponent} from './document-list/document-list.component';
 import {FirstPageComponent} from './first-page/first-page.component';
 import {SplashScreenComponent} from './splash-screen/splash-screen.component';
 import {MessagerieModule} from '../messagerie/messagerie.module';
-
+import { RechercheCandidatComponent } from './recherche-candidat/recherche-candidat.component';
 @NgModule({
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 
@@ -40,7 +40,9 @@ import {MessagerieModule} from '../messagerie/messagerie.module';
     SettingsComponent,
     SecuriteComponent,
     DocumentListComponent,
-    AccueilRestaurantComponent
+    AccueilRestaurantComponent,
+    AccueilRestaurantComponent,
+    RechercheCandidatComponent
   ],
   exports: [
     FirstPageComponent,
@@ -52,6 +54,7 @@ import {MessagerieModule} from '../messagerie/messagerie.module';
     SettingsComponent,
     SecuriteComponent,
     DocumentListComponent,
+    RechercheCandidatComponent,
     AccueilRestaurantComponent
   ],
   imports: [

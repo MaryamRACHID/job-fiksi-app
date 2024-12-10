@@ -20,6 +20,6 @@ export class MessagesListComponent {
   constructor(private router: Router) {}
 
   redirectToMessage(userId: string) {
-    this.router.navigate(['msgg']);
+    this.router.navigate(['conversation']);
   }
 }

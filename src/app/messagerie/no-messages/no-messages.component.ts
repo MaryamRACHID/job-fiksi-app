@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-no-messages',
@@ -6,5 +7,11 @@ import { Component } from '@angular/core';
   styleUrl: './no-messages.component.scss'
 })
 export class NoMessagesComponent {
+
+  constructor(private router: Router) {}
+
+  messagerie(){
+    this.router.navigate(['/messagerie']);
+  }
 
 }
