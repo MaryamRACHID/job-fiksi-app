@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { FilterComponent } from '../../offers-components/filter/filter.component';
+import { FiltreCandidatService } from '../../services/filtreCandidat.service';
 
 interface Candidat {
   dateCreation : string;
@@ -36,7 +37,7 @@ export class AccueilRestaurantComponent implements OnInit {
   };
   
 
-  constructor(private dialog: MatDialog, private router: Router) {}
+  constructor(private dialog: MatDialog, private router: Router, private filtreCandidatService: FiltreCandidatService) {}
 
   ngOnInit(): void {
     this.candidats = [
@@ -75,94 +76,42 @@ export class AccueilRestaurantComponent implements OnInit {
   toggleFilter(): void {
     const dialogRef = this.dialog.open(FilterComponent, {});
     dialogRef.afterClosed().subscribe((result) => {
-      console.log('Filtres reçus depuis la boîte de dialogue :', result); // Log pour débogage
       if (result) {
         this.selectedFilters = {
           ...this.selectedFilters,
           ...result
         };
-        console.log('Filtres combinés appliqués :', this.selectedFilters); // Log après fusion des filtres
         this.applyFilters();
       }
     });
   }
   
-
-  applyFilters(): void {
-    console.log('Filtres appliqués avant filtrage :', this.selectedFilters);
-    this.filteredCandidats = this.candidats.filter((candidat) => {
-      return this.filterCandidat(candidat);
-    });
-    // Appliquez le tri par "Les plus récents" si sélectionné
-    if (this.selectedFilters.filterBy.includes('Les plus récents')) {
-      this.filteredCandidats.sort((a, b) =>
-        new Date(b.dateCreation).getTime() - new Date(a.dateCreation).getTime()
-      );
+    async applyFilters(): Promise<void> {
+      try {
+        // Appel au service pour récupérer les candidats filtrés
+        const candidats = await this.filtreCandidatService.getCandidatsByFiltre(this.selectedFilters);
+        
+        // Mise à jour de l'objet filteredCandidats avec les données récupérées
+        this.filteredCandidats = candidats.map((candidat: any) => ({
+          dateCreation: candidat.dateCreation,
+          name: candidat.name,
+          location: candidat.location,
+          specialization: candidat.specialization,
+          age: candidat.age,
+          phone: candidat.phone,
+          description: candidat.description,
+          skills: candidat.skills || [], // Défaut : tableau vide si aucune compétence
+          availability: candidat.availability,
+          rating: candidat.rating,
+          photo: candidat.photo,
+          educationLevel: candidat.educationLevel,
+        }));
+        
+        console.log('Liste des candidats filtrés :', this.filteredCandidats);
+      } catch (error) {
+        console.error('Erreur lors de l\'application des filtres :', error);
+      }
     }
-
-    console.log('Candidats après filtrage :', this.filteredCandidats);
-
-  }
-  
-
-  private filterCandidat(candidat: Candidat): boolean {
-    const { educationLevel, location, availability, age, specialization } = this.selectedFilters;
-    console.log(educationLevel);
-
-    // Filtre par niveau d'éducation
-    const matchesEducation = Array.isArray(educationLevel) && educationLevel.length > 0
-    ? educationLevel.some((level) =>
-      level.toLowerCase() === candidat.educationLevel.toLowerCase()
-    )
-    : true;
-
-  
-    // Filtre par localisation (exactement la ville, insensible à la casse)
-    const matchesLocation = location.length > 0
-      ? location.some((loc) =>
-          loc.toLowerCase().trim() === candidat.location.split(',')[0].toLowerCase().trim()
-        )
-      : true;
-  
-    // Filtre par disponibilité
-    const matchesAvailability = availability.length > 0
-      ? availability.some((avail) =>
-          avail.toLowerCase().trim() === candidat.availability.toLowerCase().trim()
-        )
-      : true;
-  
-    // Filtre par tranche d'âge
-    const matchesAge = age.min !== undefined && age.max !== undefined
-      ? candidat.age >= age.min && candidat.age <= age.max
-      : true;
-  
-    // Filtre par spécialisation
-    const matchesSpecialization = specialization.length > 0
-      ? specialization.some((spec) =>
-          spec.toLowerCase().trim() === candidat.specialization.toLowerCase().trim()
-        )
-      : true;
-  
-    // Affiche les résultats de chaque critère pour débogage
-    console.log(`Candidat: ${candidat.name}`, {
-      matchesEducation,
-      matchesLocation,
-      matchesAvailability,
-      matchesAge,
-      matchesSpecialization
-    });
-  
-    // Retourne true uniquement si tous les critères définis sont satisfaits
-    return (
-      matchesEducation &&
-      matchesLocation &&
-      matchesAvailability &&
-      matchesAge &&
-      matchesSpecialization
-    );
-  }
-  
-  
   
   toggleAccueil(): void {
     this.router.navigate(['/accueil']);

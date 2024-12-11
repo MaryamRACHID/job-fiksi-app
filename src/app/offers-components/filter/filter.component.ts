@@ -125,7 +125,7 @@ toggleButton(educationLevel: string) {
   }
 
   applyFilters() {
-    console.log("applyFilters");
+    //console.log("applyFilters");
     const filters = {
       filterBy: this.selectedFilterBy,
       educationLevel: this.selectedButton,
@@ -134,9 +134,9 @@ toggleButton(educationLevel: string) {
       age: this.agePreference,
       specialization: this.selectedSpecializations
     };
-    console.log("filters : ", this.selectedButton);
+    //console.log("filters : ", this.selectedButton);
 
     this.dialogRef.close(filters);
-    console.log(filters);
+    //console.log(filters);
   }
 }
