@@ -21,6 +21,7 @@ import { HeaderRechercheComponent } from './offers-components/header-recherche/h
 import { RechercheCandidatComponent } from './pages/recherche-candidat/recherche-candidat.component';
 import { RechercheDesCandidatsComponent } from './pages/recherche-des-candidats/recherche-des-candidats.component';
 import { DetailsComponent } from './pages/recherche-des-candidats/details/details.component';
+import { PostulerComponent } from './pages/recherche-des-candidats/postuler/postuler.component';
 
 export const routes: Routes = [
   { path: '', component: FirstPageComponent },
@@ -45,6 +46,7 @@ export const routes: Routes = [
   { path: 'rechercheCandidat', component: RechercheCandidatComponent},
   {path:'rechercheDesCandidats', component: RechercheDesCandidatsComponent},
   {path:'details', component: DetailsComponent},
+  {path:'postuler', component: PostulerComponent},
   { path: '**', redirectTo: '' }, // Redirection vers l'accueil pour les routes inconnues
 
 ];
