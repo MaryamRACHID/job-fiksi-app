@@ -107,3 +107,42 @@
     border-radius: 10px; /* Coins arrondis */
     cursor: pointer; /* Curseur interactif */
 }
+
+.container-done{
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  // height: 100vh;
+  padding-top: 5rem;
+  gap: 1.5rem;
+  margin: 0;
+  // padding: 0;
+}
+
+.container-done p{
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.container-done a{
+  text-decoration: underline;
+  font-size: 1.2rem;
+}
+
+
+.image-container {
+  display: flex;
+  justify-content: center; /* Centre horizontalement */
+  align-items: center;    /* Centre verticalement */
+  height: 300px;          /* Hauteur du conteneur */
+  overflow: hidden;       /* Cache les parties de l'image trop grandes */
+}
+
+.image-container img {
+  max-width: 100%;        /* Réduit la largeur si nécessaire */
+  max-height: 100%;       /* Réduit la hauteur si nécessaire */
+  object-fit: contain;    /* Adapte l'image sans la déformer */
+}

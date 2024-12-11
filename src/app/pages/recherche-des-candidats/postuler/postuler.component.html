@@ -8,8 +8,8 @@
       <span class="company_name"> Postuler </span>
     </div>
   </div>
-
-  <div class="form-section">
+<!-- ######### form pour postuler ####################### -->
+  <div class="form-section" *ngIf="showDone" style="display: flex;">
     <form>
 
       <div class="form-group">
@@ -93,9 +93,18 @@
         </label>
       </div>
       <div class="btn-postuler">
-        <button type="submit" class="btn btn-primary">Postuler</button>
+        <button type="submit" class="btn btn-primary" (click)="toggleDivs()">Postuler</button>
       </div>
     </form>
 
 </div>
 
+<!-- #################### valider la candidature ####################### -->
+  <div class="container-done" *ngIf="!showDone" style="display: flex;">
+    <div class="image-container">
+      <img src="/assets/picture-postuler-done.jpg" alt="Description">
+    </div>
+    <p>Votre candidature a bien été postulée.</p>
+    <a mat-button routerLink="/rechercheDesCandidats">Retour à la page d'accueil</a>
+   </div>
+</div>

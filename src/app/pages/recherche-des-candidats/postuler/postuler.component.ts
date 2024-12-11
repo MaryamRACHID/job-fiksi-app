@@ -44,4 +44,9 @@ export class PostulerComponent {
       cren.isHighlighted = !cren.isHighlighted; // Inverse l'état pour le créneau cliqué du jour spécifique
     }
 
+  showDone: boolean = true; // Par défaut, Div 1 est visible
+
+  toggleDivs(): void {
+    this.showDone = !this.showDone; // Inverse la valeur
+  }
 }
