@@ -51,6 +51,7 @@ import { EmploisPertinentsComponent } from './recherche-des-candidats/emplois-pe
 import { FilterForCandidatComponent } from './recherche-des-candidats/filter-for-candidat/filter-for-candidat.component';
 import { DetailsComponent } from './recherche-des-candidats/details/details.component';
 import { PostulerComponent } from './recherche-des-candidats/postuler/postuler.component';
+import { MesFavoriesComponent } from './recherche-des-candidats/mes-favories/mes-favories.component';
 @NgModule({
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 
@@ -82,7 +83,8 @@ import { PostulerComponent } from './recherche-des-candidats/postuler/postuler.c
     EmploisPertinentsComponent,
     FilterForCandidatComponent,
     DetailsComponent,
-    PostulerComponent
+    PostulerComponent,
+    MesFavoriesComponent
   ],
   exports: [
     FirstPageComponent,
@@ -111,7 +113,8 @@ import { PostulerComponent } from './recherche-des-candidats/postuler/postuler.c
     EmploisPertinentsComponent,
     FilterForCandidatComponent,
     DetailsComponent,
-    PostulerComponent
+    PostulerComponent,
+    MesFavoriesComponent
   ],
 
   imports: [

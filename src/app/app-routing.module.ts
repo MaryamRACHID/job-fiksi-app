@@ -22,6 +22,7 @@ import { RechercheCandidatComponent } from './pages/recherche-candidat/recherche
 import { RechercheDesCandidatsComponent } from './pages/recherche-des-candidats/recherche-des-candidats.component';
 import { DetailsComponent } from './pages/recherche-des-candidats/details/details.component';
 import { PostulerComponent } from './pages/recherche-des-candidats/postuler/postuler.component';
+import { MesFavoriesComponent } from './pages/recherche-des-candidats/mes-favories/mes-favories.component';
 
 export const routes: Routes = [
   { path: '', component: FirstPageComponent },
@@ -47,6 +48,7 @@ export const routes: Routes = [
   {path:'rechercheDesCandidats', component: RechercheDesCandidatsComponent},
   {path:'details', component: DetailsComponent},
   {path:'postuler', component: PostulerComponent},
+  {path:'mesFavories', component:MesFavoriesComponent },
   { path: '**', redirectTo: '' }, // Redirection vers l'accueil pour les routes inconnues
 
 ];
