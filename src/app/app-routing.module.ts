@@ -23,6 +23,7 @@ import { RechercheDesCandidatsComponent } from './pages/recherche-des-candidats/
 import { DetailsComponent } from './pages/recherche-des-candidats/details/details.component';
 import { PostulerComponent } from './pages/recherche-des-candidats/postuler/postuler.component';
 import { MesFavoriesComponent } from './pages/recherche-des-candidats/mes-favories/mes-favories.component';
+import { MesCandidaturesComponent } from './pages/recherche-des-candidats/mes-candidatures/mes-candidatures.component';
 
 export const routes: Routes = [
   { path: '', component: FirstPageComponent },
@@ -49,6 +50,7 @@ export const routes: Routes = [
   {path:'details', component: DetailsComponent},
   {path:'postuler', component: PostulerComponent},
   {path:'mesFavories', component:MesFavoriesComponent },
+  {path:'mesCandidatures', component: MesCandidaturesComponent},
   { path: '**', redirectTo: '' }, // Redirection vers l'accueil pour les routes inconnues
 
 ];
