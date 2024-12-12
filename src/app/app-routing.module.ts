@@ -14,6 +14,8 @@ import { PreferenceComponent } from './profile-components/preference/preference.
 import { AccueilRestaurantComponent } from './pages/accueil-restau/accueil-restau.component';
 import { ProfileRestaurantComponent } from './pages/profile-restaurant/profile-restaurant.component';
 import { GenereContratComponent } from './pages/profile-restaurant/genere-contrat/genere-contrat.component';
+import { FeedbackCandidatComponent } from './pages/profile-restaurant/feedback-candidat/feedback-candidat.component';
+import { MesFavoriesCandidatsComponent } from './pages/profile-restaurant/mes-favories-candidats/mes-favories-candidats.component';
 
 export const routes: Routes = [
   { path: '', component: LoginComponent }, // Page d'accueil par défaut
@@ -31,8 +33,9 @@ export const routes: Routes = [
   {path:'profile-restaurant', component:ProfileRestaurantComponent},
   {path:'modifier-infos-restaurant', component: InformationsComponent},
   {path:'genereContrat',component: GenereContratComponent},
+  {path:'feedbackCandidat',component:FeedbackCandidatComponent},
+  {path:'mesFavorisCandidats',component:MesFavoriesCandidatsComponent},
   { path: '**', redirectTo: '' }, // Redirection vers l'accueil pour les routes inconnues
-
 ];
 
 @NgModule({

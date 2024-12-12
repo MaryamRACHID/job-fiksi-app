@@ -43,6 +43,8 @@ import { ModifierInfosRestaurantComponent } from './profile-restaurant/modifier-
 import { MenuBarComponent } from '../shared/menu-bar/menu-bar.component';
 import { ContratComponent } from './profile-restaurant/contrat/contrat.component';
 import { GenereContratComponent } from './profile-restaurant/genere-contrat/genere-contrat.component';
+import { FeedbackCandidatComponent } from './profile-restaurant/feedback-candidat/feedback-candidat.component';
+import { MesFavoriesCandidatsComponent } from './profile-restaurant/mes-favories-candidats/mes-favories-candidats.component';
 
 @NgModule({
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
@@ -63,7 +65,9 @@ import { GenereContratComponent } from './profile-restaurant/genere-contrat/gene
     ModifierInfosRestaurantComponent,
     MenuBarComponent,
     ContratComponent,
-    GenereContratComponent
+    GenereContratComponent,
+    FeedbackCandidatComponent,
+    MesFavoriesCandidatsComponent
   ],
   exports: [
     LoginComponent,
@@ -83,7 +87,9 @@ import { GenereContratComponent } from './profile-restaurant/genere-contrat/gene
     ModifierInfosRestaurantComponent,
     MenuBarComponent,
     ContratComponent,
-    GenereContratComponent
+    GenereContratComponent,
+    FeedbackCandidatComponent,
+    MesFavoriesCandidatsComponent
   ],
   imports: [
     CommonModule,

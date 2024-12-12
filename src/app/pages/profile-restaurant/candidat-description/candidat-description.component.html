@@ -2,7 +2,7 @@
   <div class="poste-header" (click)="toggleDescriptionCandidate()">
     <span>{{ candidate.name }}</span>
     <div class="icon-div">
-      <span class="far fa-star"></span>
+      <span class="far fa-star" [routerLink]="['/feedbackCandidat']" [queryParams]="{ name: candidate.name }"></span>
       <span [ngClass]="{'rotate-arrow': isOpen}" class="fas fa-chevron-down"></span>
     </div>
   </div>
