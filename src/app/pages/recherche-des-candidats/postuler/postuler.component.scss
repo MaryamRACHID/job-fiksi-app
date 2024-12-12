@@ -1,0 +1,148 @@
+.container-postuler{
+  margin: 0;
+  padding: 1rem;
+}
+.top-section {
+  // background: linear-gradient(90deg, #f7b733, #fc4a1a); /* Dégradé jaune/orange */
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  display: flex;
+  // color: white;
+  font-size: 1.5rem;
+  font-weight: bold;
+  justify-content: space-between;
+}
+
+.blocCreneaux{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.blocCreneaux span{
+  font-size: 1rem;
+  font-weight: 500;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.grid-items{
+  display: flex;
+  flex-direction: row;
+  gap: 0.7rem;
+  justify-content: center;
+  justify-items: center;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+.items{
+  background-color: rgb(241, 241, 241);
+  font-size: 0.8rem;
+  padding: 0.2rem 0.4rem;
+  border-radius: 0.2rem;
+  font-weight: 500;
+  margin: auto;
+}
+.separator{
+  height: 0.07rem;
+  background-color:#d3d3d3;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+.form-group{
+  margin-top: 1rem;
+}
+.form-group label{
+  color: #000 !important;
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+.form-group input{
+  padding: 1rem;
+  border-radius: 0.2rem;
+  border: 2px solid #aaaaaa;
+  margin-bottom: 1rem;
+}
+.crenaux{
+  margin-bottom: 2rem !important;
+}
+
+.cv{
+  // border-color: transparent !important;
+  padding: 0.7rem !important;
+  border: 2px solid #e8e8e8 !important;
+
+}
+
+.highlighted-creneaux {
+  background-color: #F6BB10; /* Jaune pour les jours disponibles */
+  color: #fff;
+}
+
+.default-creneaux {
+  background-color: #f5f5f5; /* Gris clair pour les jours non disponibles */
+  color: #000;
+}
+.btn-postuler{
+  width: 100%;
+  margin: 0;
+  align-content: center;
+  padding: auto;
+  text-align: center;
+  margin-top: 1rem;
+}
+.btn{
+  margin: auto !important;
+    // left: 25%;
+    bottom: 20px; /* Distance du bas de la page */ /* Distance du côté droit de la page */
+    padding: 10px 60px; /* Taille interne */
+    background-color: #f6b400; /* Couleur du bouton */
+    color: white; /* Couleur du texte */
+    font-size: 1.7rem; /* Taille du texte */
+    border: none; /* Supprime la bordure par défaut */
+    border-radius: 10px; /* Coins arrondis */
+    cursor: pointer; /* Curseur interactif */
+}
+
+.container-done{
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  // height: 100vh;
+  padding-top: 5rem;
+  gap: 1.5rem;
+  margin: 0;
+  // padding: 0;
+}
+
+.container-done p{
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.container-done a{
+  text-decoration: underline;
+  font-size: 1.2rem;
+}
+
+
+.image-container {
+  display: flex;
+  justify-content: center; /* Centre horizontalement */
+  align-items: center;    /* Centre verticalement */
+  height: 300px;          /* Hauteur du conteneur */
+  overflow: hidden;       /* Cache les parties de l'image trop grandes */
+}
+
+.image-container img {
+  max-width: 100%;        /* Réduit la largeur si nécessaire */
+  max-height: 100%;       /* Réduit la hauteur si nécessaire */
+  object-fit: contain;    /* Adapte l'image sans la déformer */
+}

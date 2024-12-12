@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { UserService } from '../../services/user.service';
-import {animate, style, transition, trigger} from '@angular/animations';
+import { animate, style, transition, trigger } from '@angular/animations';
 
 @Component({
   selector: 'app-login',
@@ -12,35 +12,28 @@ import {animate, style, transition, trigger} from '@angular/animations';
     trigger('fadeInOut', [
       transition(':enter', [
         style({ opacity: 0 }),
-        animate('300ms', style({ opacity: 1 }))
+        animate('300ms', style({ opacity: 1 })),
       ]),
       transition(':leave', [
-        animate('300ms', style({ opacity: 0 }))
-      ])
-    ])
-  ]
+        animate('300ms', style({ opacity: 0 })),
+      ]),
+    ]),
+  ],
 })
 export class LoginComponent implements OnInit {
-  currentToggle: string = 'connexion'; // Onglet actif (connexion ou inscription)
+  currentToggle: string = 'connexion'; // Onglet actif
   loginForm!: FormGroup;
   inscriptionForm!: FormGroup;
   isSuccess = false;
   isError = false;
   successMessage = '';
   errorMessage = '';
-  registrationData = {
-    username: '',
-    email: '',
-    password: '',
-    userType: ''
-  };
-  loginData = {
-    username: '',
-    password: ''
-  };
 
-
-  constructor(private router: Router, private fb: FormBuilder, private userService: UserService) {}
+  constructor(
+    private router: Router,
+    private fb: FormBuilder,
+    private userService: UserService
+  ) {}
 
   ngOnInit(): void {
     // Initialisation du formulaire de connexion
@@ -54,9 +47,16 @@ export class LoginComponent implements OnInit {
       {
         username: ['', [Validators.required]],
         email: ['', [Validators.required, Validators.email]],
-        password: ['', [Validators.required, Validators.minLength(12), this.passwordValidator]],
+        password: [
+          '',
+          [
+            Validators.required,
+            Validators.minLength(12),
+            this.passwordValidator,
+          ],
+        ],
         confirmPassword: ['', [Validators.required]],
-        userType: ['', [Validators.required]], // Type d'utilisateur (ajouté comme champ obligatoire)
+        userType: ['', [Validators.required]], // Type d'utilisateur
       },
       { validators: this.passwordMatchValidator }
     );
@@ -68,14 +68,18 @@ export class LoginComponent implements OnInit {
       const { username, password } = this.loginForm.value;
 
       try {
-        const response = await this.userService.loginUser({ username, password });
+        const response = await this.userService.loginUser({
+          username,
+          password,
+        });
         this.isSuccess = true;
         this.successMessage = 'Connexion réussie ! Redirection en cours...';
 
-        setTimeout(() => this.router.navigate(['/profil']), 1500); // Redirection avec délai
+        setTimeout(() => this.router.navigate(['/profil']), 1500); // Redirection
       } catch (error: any) {
         this.isError = true;
-        this.errorMessage = error?.message || 'Une erreur s\'est produite lors de la connexion.';
+        this.errorMessage =
+          error?.message || 'Une erreur s\'est produite lors de la connexion.';
       }
     } else {
       this.isError = true;
@@ -86,17 +90,24 @@ export class LoginComponent implements OnInit {
   // Soumettre le formulaire d'inscription
   async onInscriptionSubmit(): Promise<void> {
     if (this.inscriptionForm.valid) {
-      const { username, email, password, userType } = this.inscriptionForm.value;
+      const { username, email, password, userType } =
+        this.inscriptionForm.value;
 
       try {
-        const response = await this.userService.registerUser({ username, email, password, user_type: userType });
+        const response = await this.userService.registerUser({
+          username,
+          email,
+          password,
+          user_type: userType,
+        });
         this.isSuccess = true;
-        this.successMessage = 'Inscription réussie ! Vous pouvez maintenant vous connecter.';
-
-        setTimeout(() => this.setToggle('connexion'), 1500); // Basculer sur le formulaire de connexion
+        this.successMessage =
+          'Inscription réussie ! Vous pouvez maintenant vous connecter.';
+        setTimeout(() => this.setToggle('connexion'), 1500); // Basculer vers connexion
       } catch (error: any) {
         this.isError = true;
-        this.errorMessage = error?.message || 'Une erreur s\'est produite lors de l\'inscription.';
+        this.errorMessage =
+          error?.message || 'Une erreur s\'est produite lors de l\'inscription.';
       }
     } else {
       this.isError = true;
@@ -109,7 +120,7 @@ export class LoginComponent implements OnInit {
     this.currentToggle = value;
   }
 
-  // Validateur personnalisé pour les mots de passe
+  // Validateur personnalisé pour le mot de passe
   passwordValidator(control: any): any {
     const password = control.value;
     const errors: any = {};

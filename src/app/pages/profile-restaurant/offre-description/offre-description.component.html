@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<div class="poste-container" *ngIf="showOffre">
+  <div class="poste-header" (click)="toggleDescription()">
+    <span>{{ job.title }}</span>
+    <span [ngClass]="{'rotate-arrow': isOpen}" class="arrow">▼</span>
+  </div>
+  <div *ngIf="isOpen" class="poste-description">
+    <div class="table-infos">
+      <div class="table-items">
+        <p class="first-p">Type de poste</p>
+        <p class="first-p">Lieu</p>
+        <p class="first-p">Nombre de candidature</p>
+        <p class="first-p">Date de publication</p>
+      </div>
+      <div class="table-items">
+        <p>{{job.typePoste}}</p>
+        <p>{{job.lieu}}</p>
+        <p>{{job.nombreCandidature}}<a (click)="showCandidatures()">  voir candidature  </a></p>
+        <p>{{job.datePublication}}</p>
+      </div>
+    </div>
+    <div class="button-modif">
+      <button type="button">Supprimer</button>
+      <button type="button" (click)="showPopupEditOffre()">Modifier</button>
+    </div>
+  </div>
+</div>
+<!-- ################################################ -->
+
+
+<!-- ##########################modifier poste#############################"" -->
+<ng-template class="popup-dateEntretien" #editDialogEntretien>
+  <h2 class="popup-title">Modifier le poste</h2>
+  <div class="inputGroup">
+    <label>Poste *</label>
+    <input type="text"/>
+  </div>
+  <div class="inputGroup">
+    <label>Type de poste *</label>
+    <input type="text"/>
+  </div>
+  <div class="inputGroup">
+    <label>Lieu *</label>
+    <input type="text"/>
+  </div>
+  <div class="inputGroup">
+    <label>Nombre de candidature</label>
+    <input type="text" readonly/>
+  </div>
+  <div class="dialog-actions">
+    <button mat-button class="popup-button">Enregistrer</button>
+    <button mat-button class="popup-button">Annuler</button>
+  </div>
+</ng-template>
+

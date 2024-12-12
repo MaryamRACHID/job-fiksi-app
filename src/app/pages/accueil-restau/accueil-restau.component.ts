@@ -34,7 +34,8 @@ export class AccueilRestaurantComponent implements OnInit {
     age: { min: 16, max: 65 },
     specialization: [] as string[]
   };
-  
+
+  isFilterVisible = false;
 
   constructor(private dialog: MatDialog, private router: Router) {}
 
@@ -73,6 +74,7 @@ export class AccueilRestaurantComponent implements OnInit {
   }
 
   toggleFilter(): void {
+    console.log("coucou");
     const dialogRef = this.dialog.open(FilterComponent, {});
     dialogRef.afterClosed().subscribe((result) => {
       console.log('Filtres reçus depuis la boîte de dialogue :', result); // Log pour débogage
@@ -86,7 +88,7 @@ export class AccueilRestaurantComponent implements OnInit {
       }
     });
   }
-  
+
 
   applyFilters(): void {
     console.log('Filtres appliqués avant filtrage :', this.selectedFilters);
@@ -103,7 +105,7 @@ export class AccueilRestaurantComponent implements OnInit {
     console.log('Candidats après filtrage :', this.filteredCandidats);
 
   }
-  
+
 
   private filterCandidat(candidat: Candidat): boolean {
     const { educationLevel, location, availability, age, specialization } = this.selectedFilters;
@@ -116,33 +118,33 @@ export class AccueilRestaurantComponent implements OnInit {
     )
     : true;
 
-  
+
     // Filtre par localisation (exactement la ville, insensible à la casse)
     const matchesLocation = location.length > 0
       ? location.some((loc) =>
           loc.toLowerCase().trim() === candidat.location.split(',')[0].toLowerCase().trim()
         )
       : true;
-  
+
     // Filtre par disponibilité
     const matchesAvailability = availability.length > 0
       ? availability.some((avail) =>
           avail.toLowerCase().trim() === candidat.availability.toLowerCase().trim()
         )
       : true;
-  
+
     // Filtre par tranche d'âge
     const matchesAge = age.min !== undefined && age.max !== undefined
       ? candidat.age >= age.min && candidat.age <= age.max
       : true;
-  
+
     // Filtre par spécialisation
     const matchesSpecialization = specialization.length > 0
       ? specialization.some((spec) =>
           spec.toLowerCase().trim() === candidat.specialization.toLowerCase().trim()
         )
       : true;
-  
+
     // Affiche les résultats de chaque critère pour débogage
     console.log(`Candidat: ${candidat.name}`, {
       matchesEducation,
@@ -151,7 +153,7 @@ export class AccueilRestaurantComponent implements OnInit {
       matchesAge,
       matchesSpecialization
     });
-  
+
     // Retourne true uniquement si tous les critères définis sont satisfaits
     return (
       matchesEducation &&
@@ -161,10 +163,16 @@ export class AccueilRestaurantComponent implements OnInit {
       matchesSpecialization
     );
   }
-  
-  
-  
+
+
+
+  // toggleAccueil(): void {
+  //   this.router.navigate(['/rechercheCandidat']);
+
+  // }
+
   toggleAccueil(): void {
+    // Rediriger vers /accueil
     this.router.navigate(['/accueil']);
   }
 }

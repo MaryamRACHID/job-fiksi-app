@@ -1,0 +1,146 @@
+import { Component } from '@angular/core';
+import { MatIconModule } from '@angular/material/icon';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatTabChangeEvent } from '@angular/material/tabs';
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { trigger, state, style, transition, animate } from '@angular/animations';
+// import { OffreDescriptionComponent } from './offre-description/offre-description.component';
+// import { ModifierInfosRestaurantComponent } from './modifier-infos-restaurant/modifier-infos-restaurant.component';
+import { CommonModule } from '@angular/common';
+import { DescriptionComponent } from '../../profile-components/description/description.component';
+import { MatDialogModule } from '@angular/material/dialog'; // Ajoute ceci si tu utilises des dialogues
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+@Component({
+  selector: 'app-profile-restaurant',
+  templateUrl: './profile-restaurant.component.html',
+  styleUrl: './profile-restaurant.component.scss',
+  animations: [
+    trigger('slideToggle', [
+      state('void', style({ height: '0px', opacity: 0 })),
+      state('*', style({ height: '*', opacity: 1 })),
+      transition('void <=> *', animate('300ms ease-in-out')),
+    ])
+  ]
+})
+export class ProfileRestaurantComponent{
+  showTitle: boolean = false;
+  showInfos: boolean=true;
+  showPlanning : boolean = false;
+  showOffreSection: boolean = false;
+  showEditSection : boolean = false;
+  showButtonEdit : boolean = true;
+  showDescription = false;
+  showDetails: boolean = false;
+
+  job: any;
+  onTabEdit(){
+    this.showEditSection=true;
+    this.showInfos = false;
+  }
+  onTabChange(event: MatTabChangeEvent) {
+    if(event.index === 0){
+      this.showInfos = true;
+      this.showOffreSection = false;
+      this.jobList.forEach(job => job.show = false);
+      this.showTitle = false;
+      this.showPlanning = false;
+      this.showButtonEdit = true;
+      console.log(this.showInfos, this.showOffreSection, this.showTitle, this.showPlanning);
+    }else if(event.index === 1){
+      this.showInfos = false;
+      this.showOffreSection = false;
+      this.showTitle = true;
+      this.showPlanning = false;
+      this.showButtonEdit = false;
+      console.log(this.showInfos, this.showOffreSection, this.showTitle, this.showPlanning);
+
+    }else if(event.index === 2){
+      this.showInfos = false;
+      this.showOffreSection = false;
+      this.jobList.forEach(job => job.show = false);
+      this.showTitle = false;
+      this.showPlanning = true;
+      this.showButtonEdit = false;
+      console.log(this.showInfos, this.showOffreSection, this.showTitle, this.showPlanning);
+
+    }
+  }
+
+  toggleDescription() {
+    this.showDescription = !this.showDescription;
+  }
+  // Méthode pour revenir à la liste des offres
+  backToJobList() {
+    this.jobList.forEach(job => job.show = false); // Réinitialiser `show` pour tous les jobs
+    this.showOffreSection = false;                  // Afficher la section offres
+    this.showTitle = true;
+  }
+  toggleDetails() {
+    this.showDetails = !this.showDetails;
+  }
+
+  // Méthode pour afficher uniquement les candidatures de l'offre sélectionnée
+  viewJobApplications(selectedJob: any) {
+    this.jobList.forEach(job => job.show = false); // Réinitialiser `show` pour tous les jobs
+    selectedJob.show = true;                       // Activer `show` pour le job sélectionné
+    this.showOffreSection = true;           // Cacher la section offres
+  }
+  handleCancel() {
+    this.showEditSection = false;
+    this.showInfos = true;
+  }
+
+  jobList = [
+    {
+      title: 'Serveur H/F',
+      typePoste: 'Temps partiel',
+      lieu: 'Lyon',
+      nombreCandidature: '20',
+      datePublication: '20/12/2021',
+      show:false,
+      candidatures: [
+        { name: 'Alice Dupont', Cv: 'cv.pdf', Email: 'alice@example.com', Telephone: '074474748', Disponibilite: ['Lundi', 'Mardi'], _Statut: 'Non évalué',DateEntretien:'2024-11-25', HeureEntretien:'08:00' },
+        { name: 'Jean Martin', Cv: 'cv', Email: 'jean@example.com', Telephone: '075577889', Disponibilite: ['Lundi', 'Mardi'], _Statut: 'En cours',DateEntretien:'', HeureEntretien:'' },
+        { name: 'Claire Bernard', Cv: 'cv', Email: 'claire@example.com', Telephone: '076688990', Disponibilite: ['Lundi', 'Mardi'], _Statut: 'Accepté',DateEntretien:'' , HeureEntretien:''},
+        { name: 'Pierre Durand', Cv: 'cv', Email: 'pierre@example.com', Telephone: '077799001', Disponibilite: ['Lundi', 'Mardi','samedi'], _Statut: 'Non évalué' ,DateEntretien:'', HeureEntretien:''},
+        { name: 'Sophie Leroy', Cv: 'cv', Email: 'sophie@example.com', Telephone: '078800112', Disponibilite: ['Lundi', 'Mardi','vendredi'], _Statut: 'En cours',DateEntretien:'', HeureEntretien:'' },
+        { name: 'Marc Dupuis', Cv: 'cv', Email: 'marc@example.com', Telephone: '079911223', Disponibilite: ['Lundi', 'Mardi','jeudi'], _Statut: 'Non évalué',DateEntretien:'', HeureEntretien:'' },
+
+      ]
+    },
+    {
+      title: 'Cuisinier',
+      typePoste: 'Temps plein',
+      lieu: 'Paris',
+      nombreCandidature: '10',
+      datePublication: '15/11/2021',
+      show:false,
+      candidatures: [
+        { name: 'Isabelle Laurent', Cv: 'cv', Email: 'isabelle@example.com', Telephone: '070012345', Disponibilite: ['Lundi', 'Mardi', 'Jeudi'], _Statut: 'Refusé' ,DateEntretien:'', HeureEntretien:''},
+        { name: 'Lucas Garnier', Cv: 'cv', Email: 'lucas@example.com', Telephone: '071123456', Disponibilite: ['Lundi', 'Mardi'], _Statut: 'En cours',DateEntretien:'' , HeureEntretien:''},
+        { name: 'Emma Roche', Cv: 'cv', Email: 'emma@example.com', Telephone: '072234567', Disponibilite: ['Lundi', 'Mardi'], _Statut: 'Accepté',DateEntretien:'', HeureEntretien:'' },
+        { name: 'Paul Millet', Cv: 'cv', Email: 'paul@example.com', Telephone: '073345678', Disponibilite: ['Lundi', 'Mardi'], _Statut: 'Non évalué',DateEntretien:'' , HeureEntretien:''}
+      ]
+    },
+    // autres postes
+  ];
+  RestaurantInfos = {
+    nomEntreprise:'Burger King',
+    email:'burger@gmail.com',
+    tel:'0674859612',
+    adresse:'Lyon, 69003',
+    horaireRestaurant:'10h-23h',
+    typeRestaurant:'Fast-Food',
+    description:'Lorem ipsum dolor sit amet, consectetur adipiscing elit...',
+    avantages:["Tickes restaurants","Congé payés", "assurance"],
+    siteInternet:'site.com',
+    linkdin:'prifil-linkdin',
+    offreEmploi:this.jobList
+  }
+
+}
+
+

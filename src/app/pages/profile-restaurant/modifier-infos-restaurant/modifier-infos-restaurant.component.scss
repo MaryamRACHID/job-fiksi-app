@@ -1,0 +1,276 @@
+.spacer {
+  flex: 1 1 auto;
+}
+h2{
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin-top: 1rem;
+}
+p{
+  font-size: 0.9rem;
+}
+.custum{
+  font-size: 12px;
+}
+.company-info{
+  justify-content: center;
+  // justify-items: center;
+}
+.content {
+  padding: 2rem;
+}
+.bloc-info{
+  display: flex;
+  flex-direction: row;
+}
+.infos{
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.infos-input{
+  width: 100%;
+  padding: 0.3rem;
+  border: 2px solid #b4b3b3;
+  background-color: #fbfbfb;
+  border-radius: 0.3rem;
+}
+.group-avantage{
+  display: flex;
+  flex-direction: row;
+  gap: 0.4rem;
+  margin-bottom: 1rem;
+}
+.group-avantage .addAvantage{
+  // background-color: #f7f7f7;
+  background-color: #f6b400;
+  border-color: transparent;
+  border-radius: 0.3rem;
+  // margin-bottom: 1rem;
+}
+.infos-description{
+  width: 100%;
+  height: 4rem;
+  border: 2px solid #b4b3b3;
+  background-color: #f7f5f5;
+  border-radius: 0.3rem;
+}
+
+.company-info mat-icon {
+  color: #fbbc04;
+  margin-right: 8px;
+}
+.company_name{
+  font-size: 1.2rem;
+}
+.separator{
+  height: 0.07rem;
+  background-color:#d3d3d3;
+  margin-top: 1.5rem;
+}
+// .advantages mat-chip {
+//   margin: 4px;
+//   background-color: #fbbc04;
+//   color: #fff;
+//   border: 2px solid #333;
+// }
+::ng-deep mat-chip.avant{
+  background-color: #f6bd1076 !important; /* Exemple de couleur de fond personnalisée */
+  color: white !important; /* Couleur du texte */
+  // font-size: 0.9rem; /* Taille de la police */
+  padding: 0 12px;
+}
+
+
+.social-links mat-icon {
+  color: #fbbc04;
+  margin-right: 8px;
+}
+.contact-info {
+  width: 100%;
+  // background-color: #c04444;
+  padding: 0.5rem;
+  margin: auto;
+  // margin-top: 0;
+  border-radius: 8px;
+  // box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.info-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.info-item:last-child {
+  margin-bottom: 0;
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+  margin-right: 12px;
+  color: #f6b400;
+}
+
+.label {
+  font-size: 0.9em;
+  color: #888;
+  margin: 0;
+}
+
+.text {
+  font-size: 0.9em;
+  font-weight: 500;
+  color: #333;
+  margin: 0;
+}
+.lien{
+  text-decoration: none;
+  font-weight: bold;
+  color: #f6b400;
+  font-size: 0.9rem;
+}
+.poste-container {
+  width: 300px;
+  // height: 15rem;
+  margin: 10px;
+  border: 1px solid #f6efef90;
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.poste-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.2rem;
+  background-color: #e7e2e257;
+  font-weight: 500;
+}
+
+.poste-description {
+  padding: 10px;
+  background-color: #e7e2e257;
+}
+
+.arrow-down::before,
+.arrow-up::before {
+  content: '⮟';
+  font-size: 1.2em;
+  color: #333;
+}
+
+.arrow-up::before {
+  content: '▲';
+}
+
+.contentOffre h2{
+  margin: 1rem;
+}
+.contentOffre .addOffre{
+  background-color: #f6b400;
+  border: 2px solid transparent;
+  padding: 0.5rem;
+  border-radius: 10px;
+  float: right;
+  margin: 1rem;
+  margin-top: 0;
+}
+
+.postOffre {
+  width: 300px;
+  // height: 15rem;
+  background-color: #ffffff;
+  margin: 10px;
+  padding: 1.5rem;
+  border: 2px solid #fbd40f;
+  box-shadow: 1rem 1rem 1rem 1rem rgb(245, 245, 243);
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 20px;
+}
+
+.poste-details {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin: 10px 0;
+  background-color: #f9f9f9;
+  border-radius: 5px;
+}
+
+.poste-details-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+.arrow-up {
+  cursor: pointer;
+  font-size: 1.5rem;
+  transition: transform 0.3s ease;
+}
+
+.arrow-up:hover {
+  transform: translateY(-2px);
+}
+.candidature-header {
+  display: flex;
+  align-items: center;
+  font-family: Arial, sans-serif;
+  font-size: 20px;
+  color: #333;
+}
+
+.back-arrow {
+  font-size: 24px;
+  margin-right: 8px;
+  cursor: pointer;
+}
+
+.candidature-title {
+  font-weight: 500;
+}
+.button-container {
+  display: flex;
+  gap: 1rem; /* espace entre les boutons */
+  margin: auto;
+  margin-top: 1rem;
+}
+
+.btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 0.4rem;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.cancel {
+  background-color: #1A0A45; /* Couleur bleu foncé */
+  color: white;
+}
+
+.save {
+  background-color: #FFC107; /* Couleur jaune */
+  color: black;
+}
+
+.btn:hover {
+  opacity: 0.9; /* Effet hover pour les deux boutons */
+}
+
+.description textarea{
+  height: 6rem;
+  background-color: #f7f5f5;
+}
+
+.avantages textarea{
+  height: 9rem;
+}

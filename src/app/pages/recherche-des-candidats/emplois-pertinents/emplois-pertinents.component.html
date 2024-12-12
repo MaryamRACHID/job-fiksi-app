@@ -1,0 +1,56 @@
+<div class="container">
+  <div class="content">
+    <div class="select">
+      <button>
+        <!-- <div class="favorite" [ngClass]=""></div> -->
+        <div
+        class="favorite"
+        [ngClass]="{'selected': isSelected}"
+        (click)="toggleSelection()">
+      </div>
+
+      </button>
+    </div>
+    <div class="first-content">
+      <div class="logo-container">
+        <img class="logo-img" src="{{details.logo}}">
+      </div>
+      <div class="content-container">
+        <div class="infos">
+          <h2>{{details.poste}}</h2>
+          <div class="info-container">
+            <div class="info-item">
+              <div class="icon-entreprise"></div>
+              <span>{{details.entreprise}}</span>
+            </div>
+            <div class="info-item">
+              <div class="icon-loc"></div>
+              <span>{{details.adresse}}</span>
+            </div>
+          </div>
+          <div class="description">
+            <h2>Description</h2>
+            <p class="description">{{details.description}}</p>
+          </div>
+          <div class="competence">
+            <h2>Compétences</h2>
+              <mat-chip-listbox class="tags">
+                <mat-chip *ngFor="let competence of details.competences" class="tag">
+                  {{ competence }}
+                </mat-chip>
+              </mat-chip-listbox>
+          </div>
+          <span style="display: none;">{{details.disponibilites}}</span>
+          <span style="display: none;">{{details.avantages}}</span>
+        </div>
+
+      </div>
+    </div>
+    <div class="second-content">
+        <div class="prix">
+          <p class="price">{{details.prixParHeure}}</p><p class="heure">/Heurs</p>
+        </div>
+        <button class="share" (click)="showPosteDetails()"></button>
+      </div>
+    </div>
+</div>
