@@ -3,7 +3,14 @@
   position: relative;
   width: 100%;
 }
-
+.showInfosCandidat{
+  height: calc(100% - 4rem); /* Ajustez 4rem en fonction de la hauteur de la barre de navigation */
+  overflow-y: auto;
+}
+.editInfosSection{
+  height: calc(100% - 4rem); /* Ajustez 4rem en fonction de la hauteur de la barre de navigation */
+  overflow-y: auto;
+}
 .top-section {
   // background: linear-gradient(90deg, #f7b733, #fc4a1a); /* Dégradé jaune/orange */
   margin: 0;
@@ -47,7 +54,7 @@ mat-icon{
 
 .spacer {
   flex: 1 1 auto;
-  padding: 1.9rem;
+  padding: 6rem;
 }
 h2{
   font-size: 1.1rem;

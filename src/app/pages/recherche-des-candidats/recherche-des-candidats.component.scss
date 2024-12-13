@@ -1,6 +1,9 @@
 /* Background gradient */
 
-
+.content-emplois{
+  height: calc(100% - 8rem); /* Ajustez 4rem en fonction de la hauteur de la barre de navigation */
+  overflow-y: auto;
+}
 .bg-gradient {
   background: linear-gradient(98deg, #f1ba00, #f59609) !important;
   border-radius: 8px;
@@ -51,6 +54,8 @@
   padding: 0 !important;
   padding-top: 1rem !important;
   background-color: #f1f1f18e;
+  height: calc(100% - 4rem); /* Ajustez 4rem en fonction de la hauteur de la barre de navigation */
+  overflow-y: auto;
   // display: flex;
 }
 h2{
@@ -60,6 +65,8 @@ h2{
 .container{
 background-color: #f1f1f18e;
 padding-top: 4rem;
+height: calc(100% - 4rem); /* Ajustez 4rem en fonction de la hauteur de la barre de navigation */
+  overflow-y: auto;
 }
 
 .filter-container {

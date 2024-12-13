@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { ProfileCandidatComponent } from '../profile-candidat.component';
+import { ProfileCandidatComponent } from '../../profile-candidat/profile-candidat.component';
 @Component({
   selector: 'app-profile-candidat-vu-recruteur',
   // standalone: true,

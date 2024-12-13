@@ -1,3 +1,7 @@
+.content{
+  height: calc(100% - 4rem); /* Ajustez 4rem en fonction de la hauteur de la barre de navigation */
+  overflow-y: auto;
+}
 .edit{
   // background-color: #1A0A45;
   width: 70%;

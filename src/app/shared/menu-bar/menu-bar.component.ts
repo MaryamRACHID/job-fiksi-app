@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-menu-bar',
@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrl: './menu-bar.component.scss'
 })
 export class MenuBarComponent {
-
+  @Input() acceuil: string = '';
+  @Input() favorie: string = '';
+  @Input() posteoucandidature: string = '';
+  @Input() messagerie: string = '';
+  @Input() profil: string = '';
 }

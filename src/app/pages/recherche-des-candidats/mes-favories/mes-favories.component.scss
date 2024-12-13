@@ -1,6 +1,8 @@
 .mesFavories{
   margin: 0;
   padding: 1rem;
+  // height: calc(100% - 4rem); /* Ajustez 4rem en fonction de la hauteur de la barre de navigation */
+  overflow-y: auto;
 }
 .top-section {
   // background: linear-gradient(90deg, #f7b733, #fc4a1a); /* Dégradé jaune/orange */

@@ -77,7 +77,7 @@ export const routes: Routes = [
   {path:'rechercheDesCandidats', component: RechercheDesCandidatsComponent},
   {path:'details', component: DetailsComponent},
   {path:'postuler', component: PostulerComponent},
-  {path:'mesFavories', component:MesFavoriesComponent },
+  {path:'mesFavoriesOffre', component:MesFavoriesComponent },
   {path:'mesCandidatures', component: MesCandidaturesComponent},
   {path:'genereContrat',component: GenereContratComponent},
   {path:'feedbackCandidat',component:FeedbackCandidatComponent},

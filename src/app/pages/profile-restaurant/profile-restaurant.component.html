@@ -167,6 +167,12 @@
   <app-planning *ngIf="showPlanning" [jobList]="jobList"></app-planning>
 </div> -->
 
-<app-menu-bar></app-menu-bar>
+<app-menu-bar
+[acceuil]="'/rechercheCandidat'"
+[favorie]="'/mesFavorisCandidats'"
+[posteoucandidature]="'/profile-restaurant'"
+[messagerie]="'/messagerie'"
+[profil]="'/profile-restaurant'">
+</app-menu-bar>
 
 </div>
