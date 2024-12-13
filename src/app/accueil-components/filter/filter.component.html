@@ -1,0 +1,139 @@
+<div class="filter-modal">
+  <div class="filter-icon-bar"></div>
+  <h2>Filtrer</h2>
+  <mat-divider></mat-divider>
+
+  <div *ngIf="data.userType === 'restaurant'">
+    <!-- Filtrer par -->
+    <div class="filter-section">
+      <h3 class="filter-header" (click)="toggleSection('sortBy')">
+        Filtrer par
+        <span class="toggle-icon">
+        <mat-icon>{{ sectionStates['sortBy'] ? 'expand_less' : 'expand_more' }}</mat-icon>
+      </span>
+      </h3>
+      <div *ngIf="sectionStates['sortBy']" class="filter-content">
+        <ul class="filter-list">
+          <li *ngFor="let sortBy of sortsBy">
+            <label class="radio-label">
+              <input
+                type="radio"
+                [value]="sortBy"
+                [checked]="selectedFilterBy.includes(sortBy)"
+                (change)="toggleSortBy(sortBy, $event)" />
+              <span class="radio-custom"></span> {{ sortBy }}
+            </label>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <mat-divider></mat-divider>
+    <!-- Niveau d'étude -->
+    <div class="filter-section">
+      <h3 class="filter-header" (click)="toggleSection('educationLevel')">
+        Niveau d'étude
+        <span class="toggle-icon">
+        <mat-icon>{{ sectionStates['educationLevel'] ? 'expand_less' : 'expand_more' }}</mat-icon>
+      </span>
+      </h3>
+      <div *ngIf="sectionStates['educationLevel']" class="filter-content">
+        <div class="filter-option">
+          <button
+            class="filter-button"
+            *ngFor="let educationLevel of educationLevels"
+            [ngClass]="{ 'selected': selectedButton.includes(educationLevel) }"
+            (click)="toggleButton(educationLevel)">
+            {{ educationLevel }}
+          </button>
+        </div>
+      </div>
+
+    </div>
+    <mat-divider></mat-divider>
+    <!-- Lieu -->
+    <div class="filter-section">
+      <h3 class="filter-header" (click)="toggleSection('location')">
+        Lieu
+        <span class="toggle-icon">
+      <mat-icon>{{ sectionStates['location'] ? 'expand_less' : 'expand_more' }}</mat-icon>
+    </span>
+      </h3>
+      <div *ngIf="sectionStates['location']" class="filter-content">
+        <ul class="filter-list">
+          <li *ngFor="let location of locations">
+            <label class="checkbox-label">
+              <input
+                type="checkbox"
+                [value]="location"
+                [checked]="selectedLocations.includes(location)"
+                (change)="toggleLocation(location, $event)" />
+              <span class="checkbox-custom"></span> {{ location }}
+            </label>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <!-- Disponibilité -->
+    <div class="filter-section">
+      <h3 class="filter-header" (click)="toggleSection('availability')">
+        Disponibilité
+      </h3>
+      <div *ngIf="sectionStates['availability']" class="filter-content">
+        <ul class="filter-list">
+          <li *ngFor="let availability of availabilityOptions">
+            <label class="checkbox-label">
+              <input
+                type="checkbox"
+                [value]="availability"
+                [checked]="selectedAvailability.includes(availability)"
+                (change)="toggleAvailability(availability, $event)" />
+              <span class="checkbox-custom"></span> {{ availability }}
+            </label>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <mat-divider></mat-divider>
+    <!-- Age -->
+    <div class="filter-section">
+      <h3 class="filter-header" (click)="toggleSection('age')">
+        Âge
+      </h3>
+      <div *ngIf="sectionStates['age']" class="filter-content">
+        <ngx-slider
+          [(value)]="agePreference.min"
+          [(highValue)]="agePreference.max"
+          [options]="ageSliderOptions">
+        </ngx-slider>
+      </div>
+    </div>
+    <mat-divider></mat-divider>
+    <!-- Spécialisation -->
+    <div class="filter-section">
+      <h3 class="filter-header" (click)="toggleSection('specialization')">
+        Spécialisation
+      </h3>
+      <div *ngIf="sectionStates['specialization']" class="filter-content">
+        <ul class="filter-list">
+          <li *ngFor="let specialization of specializations">
+            <label class="checkbox-label">
+              <input
+                type="checkbox"
+                [value]="specialization"
+                [checked]="selectedSpecializations.includes(specialization)"
+                (change)="toggleSpecialization(specialization, $event)" />
+              <span class="checkbox-custom"></span> {{ specialization }}
+            </label>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="data.userType === 'candidat'" class="filter-container">
+
+  </div>
+
+
+  <button class="apply-button" (click)="applyFilters()">Appliquer</button>
+</div>

@@ -73,9 +73,7 @@ export class LoginComponent implements OnInit {
         this.successMessage = 'Connexion réussie ! Redirection en cours...';
 
         setTimeout(() => {
-          this.router.navigate(['/profil']).then(() => {
-            window.location.reload();  // Recharger la page après la navigation
-          });
+          this.router.navigate(['/profil']);
         }, 1500); // Redirection avec délai
       } catch (error: any) {
         this.isError = true;

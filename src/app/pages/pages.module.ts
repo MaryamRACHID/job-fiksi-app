@@ -1,10 +1,8 @@
 import { NgModule,CUSTOM_ELEMENTS_SCHEMA, importProvidersFrom  } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
-
 import { LoginComponent } from './login/login.component';
 import { ProfileComponent } from './profile/profile.component';
-import { AccueilComponent } from './accueil/accueil.component';
 import { AccueilRestaurantComponent } from './accueil-restau/accueil-restau.component';
 import { OffersComponentsModule } from '../offers-components/offers-components.module';
 import { SharedModule } from '../shared/shared.module';
@@ -28,6 +26,8 @@ import {FirstPageComponent} from './first-page/first-page.component';
 import {SplashScreenComponent} from './splash-screen/splash-screen.component';
 import {MessagerieModule} from '../messagerie/messagerie.module';
 import { RechercheCandidatComponent } from './recherche-candidat/recherche-candidat.component';
+import {AccueilComponent} from './accueil/accueil.component';
+import {AccueilComponentsModule} from '../accueil-components/accueil-components.module';
 @NgModule({
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 
@@ -35,21 +35,21 @@ import { RechercheCandidatComponent } from './recherche-candidat/recherche-candi
     FirstPageComponent,
     SplashScreenComponent,
     LoginComponent,
-    ProfileComponent,
     AccueilComponent,
+    ProfileComponent,
     SettingsComponent,
     SecuriteComponent,
     DocumentListComponent,
     AccueilRestaurantComponent,
     AccueilRestaurantComponent,
-    RechercheCandidatComponent
+    RechercheCandidatComponent,
   ],
   exports: [
     FirstPageComponent,
     SplashScreenComponent,
     LoginComponent,
-    ProfileComponent,
     AccueilComponent,
+    ProfileComponent,
     SettingsComponent,
     SettingsComponent,
     SecuriteComponent,
@@ -78,6 +78,7 @@ import { RechercheCandidatComponent } from './recherche-candidat/recherche-candi
     ReactiveFormsModule,
     OffersComponentsModule,
     MessagerieModule,
+    AccueilComponentsModule
   ]
 })
 export class PagesModule {}

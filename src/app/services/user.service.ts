@@ -52,6 +52,8 @@ export class UserService {
       if (user && user.token) {
         localStorage.setItem('token', user.token);
         localStorage.setItem('userId', user.id.toString());
+        localStorage.setItem('userType', user.user_type.toString());
+
         this.setAuthenticated(true);
         return user; // Retourne les données utilisateur
       } else {

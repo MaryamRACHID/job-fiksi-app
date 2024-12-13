@@ -1,33 +1,6 @@
-<div class="accueil-container">
-  <div class="logo">
-    <img src="assets/logo.png" alt="JobFiksi Logo" />
-  </div>
-  <div class="menu">
-    <button mat-button class="menu-item selected" (click)="navigateToAccueil()" >
-      <mat-icon>home</mat-icon> Accueil
-    </button>
-    <mat-divider></mat-divider>
-    <button mat-button class="menu-item">
-      <mat-icon>location_on</mat-icon> Recherche
-    </button>
-    <mat-divider></mat-divider>
-    <button mat-button class="menu-item">
-      <mat-icon>bookmark_outline</mat-icon> Mes favoris
-    </button>
-    <mat-divider></mat-divider>
-    <button mat-button class="menu-item">
-      <mat-icon>work_outline</mat-icon> Mes postes
-    </button>
-    <mat-divider></mat-divider>
-    <button mat-button class="menu-item">
-      <mat-icon>message</mat-icon> Messagerie
-    </button>
-    <mat-divider></mat-divider>
-    <button mat-button class="menu-item" (click)="navigateToProfil()">
-      <mat-icon>person_outline</mat-icon> Mon profil
-    </button>
-  </div>
-  <button mat-icon-button class="close-btn">
-    <mat-icon>close</mat-icon>
-  </button>
+<app-accueil-header [userType]="userType"></app-accueil-header>
+<div class="container">
+  <h1>Bienvenue sur la page d'accueil</h1>
+  <app-body [restaurants]="restaurants" [candidats]="candidats" [userType]="userType"></app-body>
 </div>
+<app-menu [userType]="userType"></app-menu>

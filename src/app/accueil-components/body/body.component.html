@@ -1,0 +1,39 @@
+<div class="container">
+  <div class="row" *ngIf="userType === 'restaurant'">
+    <div class="col-md-4" *ngFor="let candidat of candidats">
+      <div class="card">
+        <img *ngIf="candidat.image" [src]="candidat.image" class="card-img-top" alt="{{ candidat.nom }} {{ candidat.prenom }}">
+        <div class="card-body">
+          <h5 class="card-title">{{ candidat.nom }} {{ candidat.prenom }}</h5>
+          <p class="card-text">Spécialisation: {{ candidat.specilaite }}</p>
+          <p class="card-text">Ville: {{ candidat.ville }}</p>
+          <p class="card-text">Téléphone: {{ candidat.tel }}</p>
+          <p class="card-text">Disponibilité: {{ candidat.disponibilite }}</p>
+          <p class="card-text">Niveau d'étude: {{ candidat.niveau_etude }}</p>
+          <p class="card-text">Salaire souhaité: {{ candidat.preference_salaire | currency }}</p>
+          <a href="#" class="btn btn-primary">Voir plus</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row" *ngIf="userType === 'candidat'">
+    <div class="col-md-4" *ngFor="let restaurant of restaurants">
+      <div class="card">
+        <img *ngIf="restaurant.image" [src]="restaurant.image" class="card-img-top" alt="{{ restaurant.nom }}">
+        <div class="card-body">
+          <h5 class="card-title">{{ restaurant.nom }}</h5>
+          <p class="card-text">Type de restaurant: {{ restaurant.type_de_restaurant }}</p>
+          <p class="card-text">Ville: {{ restaurant.ville }}</p>
+          <p class="card-text">Téléphone: {{ restaurant.tel }}</p>
+          <p class="card-text">Code postal: {{ restaurant.code_postal }}</p>
+          <p class="card-text">Adresse: {{ restaurant.num_et_rue }}</p>
+          <p class="card-text">Pays: {{ restaurant.pays }}</p>
+          <p class="card-text">Site web:
+            <a *ngIf="restaurant.site_web" [href]="restaurant.site_web" target="_blank">{{ restaurant.site_web }}</a>
+          </p>
+          <a href="#" class="btn btn-primary">Voir plus</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

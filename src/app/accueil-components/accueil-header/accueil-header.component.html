@@ -1,0 +1,51 @@
+<div class="header" *ngIf="userType === 'candidat'">
+  <div class="logo">
+    <img src="assets/logo.png" alt="Logo" class="logo-image">
+    <span class="welcome-message">Bonjour, <strong>Candidat</strong></span>
+  </div>
+
+  <div>
+    <h1>Trouve vite votre prochain candidat !</h1>
+  </div>
+
+  <div class="search-section">
+    <div class="search-input-wrapper">
+      <i class="fas fa-search"></i>
+      <input
+        type="text"
+        placeholder="Rechercher"
+        class="search-input"
+      />
+    </div>
+    <button (click)="openFilter()" class="filter-button">
+      <span class="material-icons">tune</span>
+    </button>
+  </div>
+
+</div>
+<div class="header" *ngIf="userType === 'restaurant'">
+  <div class="logo">
+    <img src="assets/logo.png" alt="Logo" class="logo-image">
+    <span class="welcome-message">Bonjour, <strong>Restaurant</strong></span>
+  </div>
+
+  <div>
+    <h1>Trouve vite votre prochain candidat !</h1>
+  </div>
+
+  <div class="search-section">
+    <div class="search-input-wrapper">
+      <i class="fas fa-search"></i>
+      <input
+        type="text"
+        placeholder="Rechercher"
+        class="search-input"
+      />
+    </div>
+    <button (click)="openFilter()" class="filter-button">
+      <span class="material-icons">tune</span>
+    </button>
+  </div>
+
+</div>
+

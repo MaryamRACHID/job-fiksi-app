@@ -23,7 +23,6 @@ export class AppComponent {
     this.token = localStorage.getItem('token');
     this.userId = localStorage.getItem('userId');
 
-
     if (!this.token) {
       this.router.navigate(['/login']);
     } else {

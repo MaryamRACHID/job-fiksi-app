@@ -1,0 +1,34 @@
+.recommendations {
+  padding: 20px;
+
+  .card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #f9f9f9;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+
+    .card-content {
+      display: flex;
+      align-items: center;
+
+      .avatar {
+        width: 40px;
+        height: 40px;
+        background: #ddd;
+        border-radius: 50%;
+        margin-right: 10px;
+      }
+    }
+
+    .save-btn {
+      background: none;
+      border: none;
+      color: #FFAA00;
+      cursor: pointer;
+    }
+  }
+}

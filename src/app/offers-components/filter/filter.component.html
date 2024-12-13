@@ -15,10 +15,10 @@
       <ul class="filter-list">
         <li *ngFor="let sortBy of sortsBy">
           <label class="radio-label">
-            <input 
-              type="radio" 
-              [value]="sortBy" 
-              [checked]="selectedFilterBy.includes(sortBy)" 
+            <input
+              type="radio"
+              [value]="sortBy"
+              [checked]="selectedFilterBy.includes(sortBy)"
               (change)="toggleSortBy(sortBy, $event)" />
             <span class="radio-custom"></span> {{ sortBy }}
           </label>
@@ -38,8 +38,8 @@
     </h3>
     <div *ngIf="sectionStates['educationLevel']" class="filter-content">
       <div class="filter-option">
-        <button 
-          class="filter-button" 
+        <button
+          class="filter-button"
           *ngFor="let educationLevel of educationLevels"
           [ngClass]="{ 'selected': selectedButton.includes(educationLevel) }"
           (click)="toggleButton(educationLevel)">
@@ -47,7 +47,7 @@
         </button>
       </div>
     </div>
-    
+
   </div>
   <mat-divider></mat-divider>
 <!-- Lieu -->
@@ -62,10 +62,10 @@
     <ul class="filter-list">
       <li *ngFor="let location of locations">
         <label class="checkbox-label">
-          <input 
-            type="checkbox" 
-            [value]="location" 
-            [checked]="selectedLocations.includes(location)" 
+          <input
+            type="checkbox"
+            [value]="location"
+            [checked]="selectedLocations.includes(location)"
             (change)="toggleLocation(location, $event)" />
           <span class="checkbox-custom"></span> {{ location }}
         </label>
@@ -74,7 +74,7 @@
   </div>
 </div>
 
-  
+
 
   <!-- Disponibilité -->
   <div class="filter-section">
@@ -85,10 +85,10 @@
       <ul class="filter-list">
         <li *ngFor="let availability of availabilityOptions">
           <label class="checkbox-label">
-            <input 
-              type="checkbox" 
-              [value]="availability" 
-              [checked]="selectedAvailability.includes(availability)" 
+            <input
+              type="checkbox"
+              [value]="availability"
+              [checked]="selectedAvailability.includes(availability)"
               (change)="toggleAvailability(availability, $event)" />
             <span class="checkbox-custom"></span> {{ availability }}
           </label>
@@ -122,10 +122,10 @@
       <ul class="filter-list">
         <li *ngFor="let specialization of specializations">
           <label class="checkbox-label">
-            <input 
-              type="checkbox" 
-              [value]="specialization" 
-              [checked]="selectedSpecializations.includes(specialization)" 
+            <input
+              type="checkbox"
+              [value]="specialization"
+              [checked]="selectedSpecializations.includes(specialization)"
               (change)="toggleSpecialization(specialization, $event)" />
             <span class="checkbox-custom"></span> {{ specialization }}
           </label>

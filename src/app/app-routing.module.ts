@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AccueilComponent } from './pages/accueil/accueil.component';
 import { LoginComponent } from './pages/login/login.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { InformationsComponent } from './profile-components/informations/informations.component';
@@ -27,6 +26,7 @@ import {NoMessagesComponent} from './messagerie/no-messages/no-messages.componen
 import {AuthGuard} from './guards/auth.guard';
 import { HeaderRechercheComponent } from './offers-components/header-recherche/header-recherche.component';
 import { RechercheCandidatComponent } from './pages/recherche-candidat/recherche-candidat.component';
+import {AccueilComponent} from './pages/accueil/accueil.component';
 
 export const routes: Routes = [
   { path: '', component: FirstPageComponent },
