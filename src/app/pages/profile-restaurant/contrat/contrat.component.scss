@@ -1,0 +1,33 @@
+.poste-container{
+  width: 90%;
+  // height: 15rem;
+  margin: auto;
+  background-color: #ffffff !important;
+  border: 1px solid #ffffff;
+  box-shadow: 1rem 1rem 1rem 1rem transparent;
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  margin-bottom: 0.7rem !important;
+
+}
+
+
+.poste-header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.2rem;
+  background-color: #ffffff;
+  font-weight: 500;
+}
+.icon-div{
+  display: flex;
+  flex-direction: row;
+  gap:0.7rem;
+  align-items: center;
+  margin-right: 10px;
+}
+.icon-div span{
+  color:gray;
+}

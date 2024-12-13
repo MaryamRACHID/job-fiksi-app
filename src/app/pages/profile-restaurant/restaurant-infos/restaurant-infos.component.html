@@ -1,27 +1,27 @@
 <!DOCTYPE html>
 <div class="content">
   <section class="company-info">
-    <h2>{{infos.nomEntreprise}}</h2>
+    <h2 name="nom">{{infos.nomEntreprise}}</h2>
     <div class="contact-info">
       <div class="info-item">
         <mat-icon>email</mat-icon>
           <div class="info">
               <p class="label">Email</p>
-              <p class="text">{{infos.email}}</p>
+              <p class="text" name="email_pro">{{infos.email}}</p>
           </div>
       </div>
       <div class="info-item">
         <mat-icon>phone</mat-icon>
           <div class="info">
               <p class="label">Numéro de téléphone</p>
-              <p class="text">{{infos.tel}}</p>
+              <p class="text" name="tel">{{infos.tel}}</p>
           </div>
       </div>
       <div class="info-item">
         <mat-icon>location_on</mat-icon>
           <div class="info">
               <p class="label">Localisation</p>
-              <p class="text">{{infos.adresse}}</p>
+              <p class="text" name="num_et_rue">{{infos.adresse}}</p>
           </div>
       </div>
       <div class="info-item">
@@ -35,7 +35,7 @@
          <mat-icon>restaurant</mat-icon>
           <div class="info">
               <p class="label">Type de restaurant</p>
-              <p class="text">{{infos.typeRestaurant}}</p>
+              <p class="text" name="type_de_restaurant">{{infos.typeRestaurant}}</p>
           </div>
       </div>
   </div>
@@ -43,7 +43,7 @@
 <div class="separator"></div>
   <section class="description">
     <h2>Description</h2>
-    <p>{{infos.description}}</p>
+    <p name="description">{{infos.description}}</p>
     <a href="#" class="lien">Voir les postes</a>
   </section>
   <div class="separator"></div>
@@ -64,14 +64,14 @@
       <mat-icon>language</mat-icon>
         <div class="info">
           <p class="label">site Internet</p>
-          <a href="{{infos.siteInternet}}" target="_blank"></a><p class="text">{{infos.siteInternet}}</p>
+          <a href="{{infos.siteInternet}}" target="_blank"></a><p class="text" name="site_web">{{infos.siteInternet}}</p>
         </div>
     </div>
     <div class="info-item">
       <mat-icon>linkdIn</mat-icon>
         <div class="info">
           <p class="label">LinkdIn</p>
-          <a href="https://www.LinkdIn.com" target="_blank"></a><p class="text">{{infos.linkdin}}</p>
+          <a href="https://www.LinkdIn.com" target="_blank"></a><p class="text" name="linkdin">{{infos.linkdin}}</p>
         </div>
     </div>
   </section>

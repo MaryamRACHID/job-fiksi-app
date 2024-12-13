@@ -33,7 +33,6 @@ import { RestaurantInfosComponent } from './profile-restaurant/restaurant-infos/
 import { OffreDescriptionComponent } from './profile-restaurant/offre-description/offre-description.component';
 import { CandidatDescriptionComponent } from './profile-restaurant/candidat-description/candidat-description.component';
 
-import { ModifierInfosRestaurantComponent } from './profile-restaurant/modifier-infos-restaurant/modifier-infos-restaurant.component';
 
 import { ProfileCandidatComponent } from './profile-candidat/profile-candidat.component';
 import { ProfileCandidatVuRecruteurComponent } from './profile-candidat/profile-candidat-vu-recruteur/profile-candidat-vu-recruteur.component';
@@ -53,6 +52,13 @@ import { DetailsComponent } from './recherche-des-candidats/details/details.comp
 import { PostulerComponent } from './recherche-des-candidats/postuler/postuler.component';
 import { MesFavoriesComponent } from './recherche-des-candidats/mes-favories/mes-favories.component';
 import { MesCandidaturesComponent } from './recherche-des-candidats/mes-candidatures/mes-candidatures.component';
+import { ModifierInfosRestaurantComponent } from './profile-restaurant/modifier-infos-restaurant/modifier-infos-restaurant.component';
+import { MenuBarComponent } from '../shared/menu-bar/menu-bar.component';
+import { ContratComponent } from './profile-restaurant/contrat/contrat.component';
+import { GenereContratComponent } from './profile-restaurant/genere-contrat/genere-contrat.component';
+import { FeedbackCandidatComponent } from './profile-restaurant/feedback-candidat/feedback-candidat.component';
+import { MesFavoriesCandidatsComponent } from './profile-restaurant/mes-favories-candidats/mes-favories-candidats.component';
+
 @NgModule({
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 
@@ -87,7 +93,12 @@ import { MesCandidaturesComponent } from './recherche-des-candidats/mes-candidat
     DetailsComponent,
     PostulerComponent,
     MesFavoriesComponent,
-    MesCandidaturesComponent
+    MesCandidaturesComponent,
+    MenuBarComponent,
+    ContratComponent,
+    GenereContratComponent,
+    FeedbackCandidatComponent,
+    MesFavoriesCandidatsComponent
   ],
   exports: [
     FirstPageComponent,
@@ -118,7 +129,12 @@ import { MesCandidaturesComponent } from './recherche-des-candidats/mes-candidat
     DetailsComponent,
     PostulerComponent,
     MesFavoriesComponent,
-    MesCandidaturesComponent
+    MesCandidaturesComponent,
+    MenuBarComponent,
+    ContratComponent,
+    GenereContratComponent,
+    FeedbackCandidatComponent,
+    MesFavoriesCandidatsComponent
   ],
 
   imports: [

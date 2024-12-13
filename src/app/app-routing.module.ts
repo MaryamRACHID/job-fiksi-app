@@ -36,6 +36,9 @@ import { DetailsComponent } from './pages/recherche-des-candidats/details/detail
 import { PostulerComponent } from './pages/recherche-des-candidats/postuler/postuler.component';
 import { MesFavoriesComponent } from './pages/recherche-des-candidats/mes-favories/mes-favories.component';
 import { MesCandidaturesComponent } from './pages/recherche-des-candidats/mes-candidatures/mes-candidatures.component';
+import { GenereContratComponent } from './pages/profile-restaurant/genere-contrat/genere-contrat.component';
+import { FeedbackCandidatComponent } from './pages/profile-restaurant/feedback-candidat/feedback-candidat.component';
+import { MesFavoriesCandidatsComponent } from './pages/profile-restaurant/mes-favories-candidats/mes-favories-candidats.component';
 
 export const routes: Routes = [
   { path: '', component: FirstPageComponent },
@@ -76,8 +79,10 @@ export const routes: Routes = [
   {path:'postuler', component: PostulerComponent},
   {path:'mesFavories', component:MesFavoriesComponent },
   {path:'mesCandidatures', component: MesCandidaturesComponent},
+  {path:'genereContrat',component: GenereContratComponent},
+  {path:'feedbackCandidat',component:FeedbackCandidatComponent},
+  {path:'mesFavorisCandidats',component:MesFavoriesCandidatsComponent},
   { path: '**', redirectTo: '' }, // Redirection vers l'accueil pour les routes inconnues
-
 ];
 
 @NgModule({

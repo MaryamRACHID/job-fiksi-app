@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<div class="container-fluid">
+  <nav class="nav d-flex justify-content-around bg-light py-3">
+      <a [routerLink]="['/rechercheCandidat']" class="nav-icon">
+          <i class="material-icons">home</i>
+          <span>Accueil</span>
+      </a>
+      <a [routerLink]="['/mesFavorisCandidats']" class="nav-icon">
+          <i class="material-icons">bookmark</i>
+          <span>Mes favoris</span>
+      </a>
+      <a [routerLink]="['/profile-restaurant']" class="nav-icon active">
+          <i class="material-icons">work</i>
+          <span>Mes postes</span>
+      </a>
+      <a [routerLink]="['/Messagerie']" class="nav-icon">
+          <i class="material-icons">chat</i>
+          <span>Messagerie</span>
+      </a>
+      <a [routerLink]="['/profile-restaurant']" class="nav-icon">
+          <i class="material-icons">person</i>
+          <span>Mon profil</span>
+      </a>
+  </nav>
+</div>

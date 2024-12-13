@@ -105,6 +105,9 @@ p{
 .info-item:last-child {
   margin-bottom: 0;
 }
+.info-item :nth-child(2){
+  flex-grow: 1;
+}
 
 .icon {
   width: 24px;
@@ -241,6 +244,7 @@ p{
   gap: 1rem; /* espace entre les boutons */
   margin: auto;
   margin-top: 1rem;
+  justify-content: center
 }
 
 .btn {
