@@ -10,6 +10,7 @@ import { FilterComponent } from '../../offers-components/filter/filter.component
 })
 export class HeaderRechercheComponent {
   toggleFilter(): void {
+    console.log("coucou");
     const dialogRef = this.dialog.open(FilterComponent, {});
 
     dialogRef.afterClosed().subscribe(result => {

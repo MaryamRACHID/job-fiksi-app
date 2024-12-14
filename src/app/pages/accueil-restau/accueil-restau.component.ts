@@ -73,6 +73,7 @@ export class AccueilRestaurantComponent implements OnInit {
   }
 
   toggleFilter(): void {
+    console.log("coucou");
     const dialogRef = this.dialog.open(FilterComponent, {});
     dialogRef.afterClosed().subscribe((result) => {
       console.log('Filtres reçus depuis la boîte de dialogue :', result); // Log pour débogage
@@ -162,8 +163,8 @@ export class AccueilRestaurantComponent implements OnInit {
   }
 
 
-
   toggleAccueil(): void {
+    // Rediriger vers /accueil
     this.router.navigate(['/accueil']);
   }
 }

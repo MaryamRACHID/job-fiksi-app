@@ -10,8 +10,6 @@ import {SecuriteComponent} from './pages/securite/securite.component';
 import {DocumentListComponent} from './pages/document-list/document-list.component';
 import { PreferenceComponent } from './profile-components/preference/preference.component';
 import { AccueilRestaurantComponent } from './pages/accueil-restau/accueil-restau.component';
-import {FirstPageComponent} from './pages/first-page/first-page.component';
-import {SplashScreenComponent} from './pages/splash-screen/splash-screen.component';
 import {BaseInformationComponent} from './offers-components/base-information/base-information.component';
 import {JobInformationComponent} from './offers-components/job-information/job-information.component';
 import {PrerequisitesComponent} from './offers-components/prerequisites/prerequisites.component';
@@ -24,9 +22,25 @@ import {MessagesListComponent} from './messagerie/messages-list/messages-list.co
 import {ChatComponent} from './messagerie/chat/chat.component';
 import {NoMessagesComponent} from './messagerie/no-messages/no-messages.component';
 import {AuthGuard} from './guards/auth.guard';
+import { ProfileRestaurantComponent } from './pages/profile-restaurant/profile-restaurant.component';
+import { ProfileCandidatComponent } from './pages/profile-candidat/profile-candidat.component';
+import { ProfileCandidatVuRecruteurComponent } from './pages/profile-candidat/profile-candidat-vu-recruteur/profile-candidat-vu-recruteur.component';
+import { ModifierProfileCandidatComponent } from './pages/profile-candidat/modifier-profile-candidat/modifier-profile-candidat.component';
+import {SplashScreenComponent} from './pages/splash-screen/splash-screen.component';
+import {FirstPageComponent} from './pages/first-page/first-page.component';
 import { HeaderRechercheComponent } from './offers-components/header-recherche/header-recherche.component';
 import { RechercheCandidatComponent } from './pages/recherche-candidat/recherche-candidat.component';
 import {AccueilComponent} from './pages/accueil/accueil.component';
+import {RechercheDesCandidatsComponent} from './pages/recherche-des-candidats/recherche-des-candidats.component';
+import {DetailsComponent} from './pages/recherche-des-candidats/details/details.component';
+import {PostulerComponent} from './pages/recherche-des-candidats/postuler/postuler.component';
+import {MesFavoriesComponent} from './pages/recherche-des-candidats/mes-favories/mes-favories.component';
+import {MesCandidaturesComponent} from './pages/recherche-des-candidats/mes-candidatures/mes-candidatures.component';
+import {GenereContratComponent} from './pages/profile-restaurant/genere-contrat/genere-contrat.component';
+import {FeedbackCandidatComponent} from './pages/profile-restaurant/feedback-candidat/feedback-candidat.component';
+import {
+  MesFavoriesCandidatsComponent
+} from './pages/profile-restaurant/mes-favories-candidats/mes-favories-candidats.component';
 
 export const routes: Routes = [
   { path: '', component: FirstPageComponent },
@@ -55,8 +69,22 @@ export const routes: Routes = [
   { path: 'ajout/message', component: NoMessagesComponent },
   { path: 'header-recherche', component: HeaderRechercheComponent},
   { path: 'rechercheCandidat', component: RechercheCandidatComponent},
+  {path:'profile-restaurant', component:ProfileRestaurantComponent},
+  {path:'modifier-infos-restaurant', component: InformationsComponent},
+  {path:'profile-candidat', component: ProfileCandidatComponent},
+  {path:'profileCandidatVuParResto',component: ProfileCandidatVuRecruteurComponent},
+  {path:'modifier-profil-candidat', component: ModifierProfileCandidatComponent},
+  { path: 'header-recherche', component: HeaderRechercheComponent},
+  { path: 'rechercheCandidat', component: RechercheCandidatComponent},
+  {path:'rechercheDesCandidats', component: RechercheDesCandidatsComponent},
+  {path:'details', component: DetailsComponent},
+  {path:'postuler', component: PostulerComponent},
+  {path:'mesFavoriesOffre', component:MesFavoriesComponent },
+  {path:'mesCandidatures', component: MesCandidaturesComponent},
+  {path:'genereContrat',component: GenereContratComponent},
+  {path:'feedbackCandidat',component:FeedbackCandidatComponent},
+  {path:'mesFavorisCandidats',component:MesFavoriesCandidatsComponent},
   { path: '**', redirectTo: '' }, // Redirection vers l'accueil pour les routes inconnues
-
 ];
 
 @NgModule({

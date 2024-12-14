@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<div class="header" *ngIf="showInfos">
+  <div class="top-section">
+    <mat-toolbar color="primary" class="toolbar">
+      <button mat-icon-button>
+        <mat-icon>arrow_back</mat-icon>
+      </button>
+      <span class="company_name"> {{user.nomUser}} </span>
+      <span class="spacer"></span>
+      <button mat-icon-button>
+        <mat-icon>share</mat-icon>
+      </button>
+      <button mat-icon-button [routerLink]="['/settings']">
+        <mat-icon>settings</mat-icon>
+      </button>
+      <button mat-icon-button>
+        <mat-icon (click)="onTabEdit()">edit</mat-icon>
+      </button>
+    </mat-toolbar>
+  </div>
+  <div class="logo-container">
+    <img class="logo">
+  </div>
+  <div class="bottom-section"></div>
+</div>
+
+<div class="editInfosSection" *ngIf="showEditSection">
+  <app-modifier-profile-candidat [user]="user" (cancelEdit)="handleCancel()"></app-modifier-profile-candidat>
+</div>
+
+<div class="showInfosCandidat"  *ngIf="showInfos">
+  <div class="content" >
+  <section class="company-info">
+     <h2>{{user.nomUser}}</h2>
+    <div class="contact-info">
+      <div class="info-item">
+        <mat-icon>email</mat-icon>
+          <div class="info">
+              <p class="label">Email</p>
+               <p>{{user.emailUser}}</p>
+          </div>
+      </div>
+      <div class="info-item">
+        <mat-icon>phone</mat-icon>
+          <div class="info">
+              <p class="label">Numéro de téléphone</p>
+               <p>{{user.telUser}}</p>
+          </div>
+      </div>
+      <div class="info-item">
+        <mat-icon>location_on</mat-icon>
+          <div class="info">
+              <p class="label">Localisation</p>
+               <p>{{user.adresseUser}}</p>
+          </div>
+      </div>
+      <div class="info-item">
+         <mat-icon class="iconDispo">event_available</mat-icon>
+          <div class="info">
+              <p class="label">Disponibilité</p>
+              <div class="dispo"> <!--tags-->
+                <span class="daysUser"
+                  *ngFor="let day of user.disponibilitesUser">
+                  {{ day }}
+                </span><!--tag-->
+              </div>
+          </div>
+      </div>
+  </div>
+  </section>
+
+  <div class="separator"></div>
+  <section class="description">
+    <h2>Description</h2>
+     <p>{{user.descriptionUser}}</p>
+    <a href="#" class="lien">Voir le CV</a>
+  </section>
+
+
+  <div class="separator"></div>
+  <section class="formations">
+    <h2>Formations</h2>
+    <div class="interview-date" *ngFor="let formation of user.formationsUser">
+      <div class="date-label">
+        <span class="showInfosEntretien">
+          {{ formation.dateDebutFormation | date: 'yyyy' }} - {{ formation.dateFinFormation | date: 'yyyy' }}
+        </span>
+        <ul class="interview-l">
+          <li class="detailsEntretien">
+            <span></span>{{formation.nomFormation}}
+          </li>
+          <li class="detailsEntite">
+            <span></span>{{formation.etablissementFormation}}
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <div class="separator"></div>
+  <section class="advantages">
+    <h2>Compétences</h2>
+    <mat-chip-listbox class="tags">
+      <mat-chip *ngFor="let competence of user.competencesUser" class="tag">
+        {{ competence }}
+      </mat-chip>
+      <!-- <mat-chip color="primary" class="avant">responsabilité</mat-chip>
+      <mat-chip color="primary" class="avant">esprit d'équipe</mat-chip> -->
+    </mat-chip-listbox>
+  </section>
+
+  <div class="separator"></div>
+  <section class="experiences">
+    <h2>Experiences</h2>
+    <div class="interview-date" *ngFor="let experience of user.experiencesUser">
+      <div class="date-label">
+        <span class="showInfosEntretien">{{experience.debutExperience  | date: 'yyyy'}}-{{experience.finExperience  | date: 'yyyy'}}</span>
+        <ul class="interview-l">
+          <li class="detailsEntretien">
+            <span></span>• {{experience.poste}}
+          </li>
+          <li class="detailsEntite">
+            <span></span>• {{experience.structure}}
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <div class="separator"></div>
+  <section class="social-links">
+    <h2>Social média</h2>
+    <div class="info-item">
+      <mat-icon>linkdIn</mat-icon>
+        <div class="info">
+          <p class="label">LinkdIn</p>
+          <a href="https://www.LinkdIn.com" target="_blank"></a><p class="text">profil_linkdin</p>
+        </div>
+    </div>
+  </section>
+</div>
+</div>
+
+<app-menu-bar
+[acceuil]="'/rechercheDesCandidats'"
+[favorie]="'/mesFavoriesOffre'"
+[posteoucandidature]="'/mesCandidatures'"
+[messagerie]="'/messagerie'"
+[profil]="'/profil-candidat'">
+</app-menu-bar>

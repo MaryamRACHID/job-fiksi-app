@@ -1,0 +1,68 @@
+.mesFavories{
+  margin: 0;
+  padding: 1rem;
+  // height: calc(100% - 4rem); /* Ajustez 4rem en fonction de la hauteur de la barre de navigation */
+  overflow-y: auto;
+}
+.top-section {
+  // background: linear-gradient(90deg, #f7b733, #fc4a1a); /* Dégradé jaune/orange */
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  display: flex;
+  // color: white;
+  font-size: 1.5rem;
+  font-weight: bold;
+  justify-content: space-between;
+}
+
+.content-favories{
+  margin: 0;
+  padding: 0;
+  margin-top: 3rem;
+}
+
+.favorie{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  align-items: center;
+  border-bottom: 1px solid #ccc;
+  gap:1rem;
+  padding: 0.7rem;
+}
+
+.items1 {
+  display: flex;
+  justify-content: center; /* Centre horizontalement */
+  align-items: center;    /* Centre verticalement */
+  // height: 300px;          /* Hauteur du conteneur */
+  overflow: hidden;       /* Cache les parties de l'image trop grandes */
+}
+
+.logo{
+  width: 20%;        /* Réduit la largeur si nécessaire */
+  height: 20%;       /* Réduit la hauteur si nécessaire */
+  object-fit: contain;    /* Adapte l'image sans la déformer */
+}
+
+.items2{
+  display: flex;
+  flex-direction: column;
+  gap:0;
+}
+
+.poste{
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.entreprise{
+  font-size: 0.9rem;
+}
+
+.adresse{
+  color: rgb(196, 195, 193);
+  font-size: 0.9rem;
+}
+

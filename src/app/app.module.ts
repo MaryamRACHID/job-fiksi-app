@@ -39,6 +39,6 @@ import {AuthInterceptor} from './intercepteurs/auth.interceptor';
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
     provideAnimationsAsync()
-  ],
+  ]
 })
 export class AppModule {}

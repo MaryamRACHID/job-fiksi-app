@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<div class="calendar-container border p-3 rounded">
+  <div class="contentAgenda">
+    <div class="calendar-header d-flex  align-items-center">
+      <button (click)="previousMonth()" class="fas fa-chevron-left"></button>
+      <h3>{{ currentMonth | date: 'MMMM yyyy' }}</h3>
+      <button (click)="nextMonth()" class="fas fa-chevron-right"></button>
+    </div>
+
+    <div class="calendar-body">
+      <div class="week-days d-flex justify-content-around">
+        <div *ngFor="let day of weekDays" class="days">{{ day }}</div>
+      </div>
+      <div class="days-grid">
+        <div *ngFor="let date of datesInMonth" class="day"
+            [ngClass]="{'highlight': isInterviewDate(date)}"
+            (click)="selectDate(date)">
+          {{ date.getDate() }}
+        </div>
+      </div>
+    </div>
+  </div>
+<div class="interview-date">
+  <div class="date-label">
+    <span *ngIf="selectedDate" class="showInfosEntretien">{{ selectedDate | date: 'EEEE d MMMM' }}</span>
+    <ul class="interview-l" *ngIf="selectedInterviews.length > 0; else noInterviews">
+      <li *ngFor="let interview of selectedInterviews" class="detailsEntretien">
+        <span></span>• Entretien avec {{ interview.name }} à {{ interview.HeureEntretien }}
+      </li>
+    </ul>
+    <ng-template #noInterviews><p>Pas d'entretiens pour ce jour.</p></ng-template>
+  </div>
+</div>

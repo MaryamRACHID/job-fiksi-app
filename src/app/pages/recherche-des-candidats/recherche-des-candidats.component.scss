@@ -1,0 +1,85 @@
+/* Background gradient */
+
+.content-emplois{
+  height: calc(100% - 8rem); /* Ajustez 4rem en fonction de la hauteur de la barre de navigation */
+  overflow-y: auto;
+}
+.bg-gradient {
+  background: linear-gradient(98deg, #f1ba00, #f59609) !important;
+  border-radius: 8px;
+  gap: 5px !important;
+}
+
+/* Logo styling */
+.logo {
+  width: 40px;
+  border-radius: 50%;
+  height: auto;
+}
+
+/* Search bar styling */
+.search-bar {
+  background: white;
+  border-radius: 7px;
+  padding: 3px 10px;
+  width: 60%;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.search-bar input {
+  border: none;
+  outline: none;
+  width: 100%;
+}
+
+/* Icon alignment */
+.material-icons {
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.menu-icon, .filter-icon{
+  width: 40px;
+  border-radius: 50%;
+  height: auto;
+}
+.menu-icon{
+  width: 30px;
+}
+
+.container{
+  width: 100%;
+  justify-content: center;
+  justify-items: center;
+  padding: 0 !important;
+  padding-top: 1rem !important;
+  background-color: #f1f1f18e;
+  height: calc(100% - 4rem); /* Ajustez 4rem en fonction de la hauteur de la barre de navigation */
+  overflow-y: auto;
+  // display: flex;
+}
+h2{
+  font-size: 1rem;
+  // margin: 1rem;
+}
+.container{
+background-color: #f1f1f18e;
+padding-top: 4rem;
+height: calc(100% - 4rem); /* Ajustez 4rem en fonction de la hauteur de la barre de navigation */
+  overflow-y: auto;
+}
+
+.filter-container {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 50%; /* Ajustez selon vos besoins */
+  background: white;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 16px 16px 0 0; /* Arrondi en haut */
+  z-index: 1000;
+}

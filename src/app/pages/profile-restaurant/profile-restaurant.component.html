@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<div class="body">
+
+<div class="header">
+  <div class="top-section">
+    <mat-toolbar color="primary" class="toolbar">
+      <button mat-icon-button [routerLink]="['/rechercheCandidat']">
+        <mat-icon class="icon-header">arrow_back</mat-icon>
+      </button>
+      <span class="company_name"> Burger King </span>
+      <span class="spacer"></span>
+      <button mat-icon-button>
+        <mat-icon class="icon-header">share</mat-icon>
+      </button>
+      <button mat-icon-button [routerLink]="['/settings']">
+        <mat-icon class="icon-header">settings</mat-icon>
+      </button>
+      <button mat-icon-button *ngIf="showButtonEdit" (click)="onTabEdit()">
+        <mat-icon class="icon-header">edit</mat-icon>
+      </button>
+    </mat-toolbar>
+  </div>
+  <div class="logo-container">
+    <img class="logo">
+  </div>
+  <div class="bottom-section"></div>
+</div>
+<div class="container_resto mt-4" *ngIf="showProfile">
+  <ul class="nav nav-tabs custom-tabs" role="tablist">
+    <li class="nav-item" role="presentation">
+      <button
+        class="nav-link"
+        [class.active]="activeTab === 'informations'"
+        (click)="changeTab('informations'); afficheInfo()"
+        type="button"
+        role="tab">
+        Informations
+      </button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button
+        class="nav-link"
+        [class.active]="activeTab === 'offres'"
+        (click)="changeTab('offres'); afficheOffre()"
+        type="button"
+        role="tab">
+        Offres
+      </button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button
+        class="nav-link"
+        [class.active]="activeTab === 'planning'"
+        (click)="changeTab('planning'); affichePlanning()"
+        type="button"
+        role="tab">
+        Planning
+      </button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button
+        class="nav-link"
+        [class.active]="activeTab === 'contrats'"
+        (click)="changeTab('contrats') ; afficheContrat()"
+        type="button"
+        role="tab">
+        Contrats
+      </button>
+    </li>
+  </ul>
+
+  <div class="tab-content mt-3">
+    <div
+      class="tab-pane fade"
+      [class.show]="activeTab === 'informations'"
+      [class.active]="activeTab === 'informations'">
+      <!-- <p>Contenu de l'onglet Informations.</p> -->
+      <app-restaurant-infos [infos]="RestaurantInfos"></app-restaurant-infos>
+    </div>
+    <div
+      class="offres"
+      [class.show]="activeTab === 'offres'"
+      [class.active]="activeTab === 'offres'">
+        <div class="offreSection" *ngIf="showTitle && !showOffreSection">
+          <h2>Mes offres d'emplois</h2>
+          <!-- <button class="addOffre" type="button" id="addOffre">Ajouter une offre</button> -->
+          <div *ngFor="let job of jobList">
+            <app-offre-description [job]="job" *ngIf="!job.show"
+              (viewCandidatures)="viewJobApplications(job)"></app-offre-description>
+          </div>
+          <button class="postOffre" type="button" [routerLink]="['/addPost/base']">Publier une offre d'emploi</button>
+        </div>
+      <div *ngFor="let job of jobList">
+        <div class="contentOffre" *ngIf="job.show && showOffreSection && showTitle">
+          <div class="candidature-header">
+            <span class="back-arrow" (click)="backToJobList()">←</span>
+            <h2 class="candidature-title">Candidatures pour {{ job.title }}</h2>
+          </div>
+            <div *ngFor="let candidate of job.candidatures">
+              <app-candidat-description [candidate]="candidate"></app-candidat-description>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="offres"
+      [class.show]="activeTab === 'planning'"
+      [class.active]="activeTab === 'planning'">
+      <!-- <p>Contenu de l'onglet Planning.</p> -->
+       <app-planning *ngIf="showPlanning" [jobList]="jobList"></app-planning>
+
+    </div>
+    <div
+      class="offres"
+      [class.show]="activeTab === 'contrats'"
+      [class.active]="activeTab === 'contrats'" *ngIf="showContrat">
+      <!-- <p>Contenu de l'onglet Contrats.</p> -->
+      <h2>Mes contrats</h2>
+
+      <div *ngFor="let contrat_users of contrat">
+        <app-contrat [contrat_users]="contrat_users"></app-contrat>
+      </div>
+      <button class="postOffre" type="button" [routerLink]="['/genereContrat']">Générer une contrat</button>
+
+    </div>
+  </div>
+</div>
+
+<!-- ///////////// EDIT PROFIL //////////////////////// -->
+<div class="editInfosSection" *ngIf="showEditSection">
+  <app-modifier-infos-restaurant [infos]="RestaurantInfos" (cancelEdit)="handleCancel()"></app-modifier-infos-restaurant>
+</div>
+
+<!-- /////////////////// RESTAURANT INFOS ///////////////////// -->
+<!-- <div class="restaurantInfos" *ngIf="showInfos && !showOffreSection">
+  <app-restaurant-infos [infos]="RestaurantInfos"></app-restaurant-infos>
+</div> -->
+
+<!-- ////////////////////////AFFICHAGE OFFRE EMPLOI ////////////////////////////// -->
+<!-- <div class="contentOffre" *ngIf="showTitle && !showOffreSection">
+  <h2>Mes offres d'emplois</h2>
+  <div *ngFor="let job of jobList">
+    <app-offre-description [job]="job" *ngIf="!job.show"
+      (viewCandidatures)="viewJobApplications(job)"></app-offre-description>
+  </div>
+  <button class="postOffre" type="button">Publier une offre d'emploi</button>
+</div> -->
+
+<!-- ///////////////////////// AFFICHAGE CANDIDATURES //////////////////////////////////// -->
+<!-- <div *ngFor="let job of jobList">
+<div class="contentOffre" *ngIf="job.show && showOffreSection && showTitle">
+  <div class="candidature-header">
+    <span class="back-arrow" (click)="backToJobList()">←</span>
+    <h2 class="candidature-title">Candidatures pour {{ job.title }}</h2>
+  </div>
+    <div *ngFor="let candidate of job.candidatures">
+      <app-candidat-description [candidate]="candidate"></app-candidat-description>
+
+  </div>
+
+
+  </div>
+</div> -->
+<!-- /////////////////////////////////// AFFICHAGE PLANNING ///////////////////////////////////// -->
+<!-- <div class="contentPlanning" *ngIf="showPlanning">
+  <app-planning *ngIf="showPlanning" [jobList]="jobList"></app-planning>
+</div> -->
+
+<app-menu-bar
+[acceuil]="'/rechercheCandidat'"
+[favorie]="'/mesFavorisCandidats'"
+[posteoucandidature]="'/profile-restaurant'"
+[messagerie]="'/messagerie'"
+[profil]="'/profile-restaurant'">
+</app-menu-bar>
+
+</div>

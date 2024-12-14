@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<div class="container-enregistrement">
+  <div class="top-section">
+    <div class="item1">
+      <button mat-icon-button>
+        <mat-icon class="icon-header" [routerLink]="['/profile-restaurant']">arrow_back</mat-icon>
+      </button>
+      <span class="company_name"> Mes enregistrements </span>
+    </div>
+  </div>
+  <div class="container">
+    <div class="content" *ngFor="let favorite of users">
+      <div class="select">
+        <button>
+          <!-- <div class="favorite" [ngClass]=""></div> -->
+          <div
+          class="favorite"
+          [ngClass]="{'selected': isSelected}"
+          (click)="toggleSelection()">
+        </div>
+
+        </button>
+      </div>
+      <div class="first-content">
+        <div class="logo-container">
+          <img class="logo-img" src="{{favorite.logo}}">
+        </div>
+        <div class="content-container">
+          <div class="infos">
+            <h2>{{favorite.nom}}</h2>
+            <div class="info-container">
+              <div class="info-item">
+                <div class="icon-entreprise"></div>
+                <span>{{favorite.adresse}}</span>
+              </div>
+              <div class="info-item">
+                <div class="icon-loc"></div>
+                <span>{{favorite.telephone}}</span>
+              </div>
+            </div>
+            <div class="description">
+              <h2>Description</h2>
+              <p class="description">{{favorite.description}}</p>
+            </div>
+            <div class="competence">
+              <h2>Compétences</h2>
+                <mat-chip-listbox class="tags">
+                  <mat-chip *ngFor="let competence of favorite.competences" class="tag">
+                    {{ competence }}
+                  </mat-chip>
+                </mat-chip-listbox>
+            </div>
+            <!-- <span style="display: none;">{{details.disponibilites}}</span>
+            <span style="display: none;">{{details.avantages}}</span> -->
+          </div>
+
+        </div>
+      </div>
+      <button class="btn-voir-profil">Voir le profil</button>
+    </div>
+  </div>
+</div>
+<app-menu-bar
+[acceuil]="'/rechercheCandidat'"
+[favorie]="'/mesFavorisCandidats'"
+[posteoucandidature]="'/profile-restaurant'"
+[messagerie]="'/messagerie'"
+[profil]="'/profile-restaurant'">
+</app-menu-bar>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<div class="container-candidatures">
+  <div class="top-section">
+    <div class="item1">
+      <button mat-icon-button>
+        <mat-icon class="icon-header" [routerLink]="['/rechercheDesCandidats']">arrow_back</mat-icon>
+      </button>
+      <span class="company_name"> Mes candidatires </span>
+    </div>
+  </div>
+
+  <div class="content-candidature" *ngFor="let candidature of mesCandidatures">
+    <div class="items-candidature">
+      <div class="bloc-status">
+        <div [ngClass]="{'enCours': candidature.etat=='Candidature en cours','accepter': candidature.etat=='Candidature acceptée','refuser': candidature.etat=='Candidature refusée'}">{{candidature.etat}}</div>
+      </div>
+      <div class="info-offre">
+        <img class="logo" src="{{candidature.logo}}" alt="">
+        <p class="poste">{{candidature.titre}}</p>
+        <p class="entreprise">{{candidature.entreprise}}</p>
+        <p class="adresse">{{candidature.adresse}}</p>
+        <div class="dispo">
+          <p class="item-dispo" *ngFor="let day of candidature.disponibilites">{{day}}</p>
+        </div>
+        <div class="date-prix">
+          <p class="date">Candidature envoyée le {{candidature.date}}</p>
+          <div class="price">
+            <p class="prix">{{candidature.prix}}</p>
+            <p class="heure">/heure</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-menu-bar
+[acceuil]="'/rechercheDesCandidats'"
+[favorie]="'/mesFavoriesOffre'"
+[posteoucandidature]="'/mesCandidatures'"
+[messagerie]="'/messagerie'"
+[profil]="'/profil-candidat'">
+</app-menu-bar>

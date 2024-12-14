@@ -106,6 +106,7 @@ toggleButton(educationLevel: string) {
     step: 1,
     translate: (value: number): string => `${value} ans`
   };
+  router: any;
 
   selectedFilterBy: string[] = [];
   selectedLocations: string[] = [];
@@ -122,6 +123,7 @@ toggleButton(educationLevel: string) {
 
   closeFilter() {
     this.dialogRef.close();
+
   }
 
   applyFilters() {

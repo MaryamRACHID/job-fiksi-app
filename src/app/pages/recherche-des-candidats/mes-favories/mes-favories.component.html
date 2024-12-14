@@ -1,0 +1,30 @@
+<div class="mesFavories">
+  <div class="top-section">
+    <div class="item1">
+      <button mat-icon-button>
+        <mat-icon class="icon-header" [routerLink]="['/rechercheDesCandidats']">arrow_back</mat-icon>
+      </button>
+      <span class="company_name"> Mes favories </span>
+    </div>
+  </div>
+
+  <div class="content-favories">
+    <div class="favorie"  *ngFor="let favorie of mesFavories">
+      <img class="logo" src="{{favorie.logo}}" alt="Candidat 1">
+      <div class="item2">
+        <div class="poste">{{favorie.poste}}</div>
+        <div class="entreprise">{{favorie.entreprise}}</div>
+        <div class="adress">{{favorie.adresse}}</div>
+      </div>
+    </div>
+  </div>
+</div>
+<app-menu-bar
+[acceuil]="'/rechercheDesCandidats'"
+[favorie]="'/mesFavoriesOffre'"
+[posteoucandidature]="'/mesCandidatures'"
+[messagerie]="'/messagerie'"
+[profil]="'/profil-candidat'">
+</app-menu-bar>
+
+
