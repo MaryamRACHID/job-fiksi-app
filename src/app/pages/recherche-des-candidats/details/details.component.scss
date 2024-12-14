@@ -131,9 +131,9 @@
 }
 
 .separator{
-  height: 0.07rem;
+  height: 0.04rem;
   background-color:#d3d3d3;
-  margin-top: 1.5rem;
+  margin-top: 1.7rem;
   margin-bottom: 1rem;
 }
 
@@ -160,8 +160,12 @@
   display: flex;
   flex-direction: row;
   gap:0.7rem;
-  margin-bottom: 1rem;
-  // align-items: center;
+  margin-bottom: 0.7rem;
+
+  p {
+    font-size: 1.1rem;
+    font-weight: bold;
+  }
 }
 
 
@@ -199,4 +203,108 @@
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Ombre subtile */
     transition: background-color 0.3s ease;
 }
+
+.post-container {
+  width: 100%;
+  margin: 0 auto;
+  padding: 30px 20px 100px 20px;
+}
+
+
+.subtitle-1 {
+  font-size: 18px;
+  font-weight: bold;
+  color: #1e1e1e;
+}
+
+.job-title {
+  font-size: 17px;
+  font-weight: 500;
+  margin: 0;
+}
+
+.job-role {
+  font-size: 20px;
+  font-weight: bold;
+  color: #484848;
+  margin-bottom: 20px;
+}
+
+.details p {
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  font-weight: 700;
+  color: #1e1e1e;
+  margin-bottom: 10px;
+}
+
+.details i {
+  color: #ffad00;
+  margin-right: 8px;
+}
+
+.skills {
+  margin: 20px 0;
+}
+
+.skills label {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  display: block;
+}
+
+.tags {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.tag {
+  background-color: #ffedcc;
+  color: #ffad00;
+  padding: 7px 15px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.button-container {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.75), rgb(255, 255, 255, 1));
+  padding: 15px 15px 35px 15px;
+  width: 100%;
+  text-align: center;
+  margin: 0;
+  justify-content: center;
+  align-items: center;
+}
+
+.fixed-button {
+  border-radius: 10px;
+  background-color: #ffad00 !important;
+  color: white !important;
+  padding: 12px;
+  width: 55%;
+}
+
+.fixed-button:hover {
+  background-color: #e79e00 !important;
+}
+
+i{
+  font-size: 30px;
+}
+
+.post-image{
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+}
+
 

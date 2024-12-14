@@ -1,5 +1,8 @@
 import { Component, Input } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
+import {Annonce, Candidat, Restaurant} from '../../accueil/accueil.component';
+import {DataService} from '../../../services/data.service';
+import {UserService} from '../../../services/user.service';
 
 @Component({
   selector: 'app-details',
@@ -9,17 +12,31 @@ import { ActivatedRoute } from '@angular/router';
 export class DetailsComponent {
   @Input() details:any;
   isSelected: boolean = false;
-  toggleSelection() {
-    this.isSelected = !this.isSelected; // Change l'état entre true et false
+  annonce: Annonce | null = null;
+  restaurant: Restaurant | null = null;
+  candidat: Candidat | null = null;
+  id: string | null = null;
+
+  constructor(private route: ActivatedRoute, private router: Router, private dataService: DataService, private userService: UserService) { }
+
+
+  async ngOnInit(): Promise<void> {
+    this.id = localStorage.getItem("userId");
+    this.annonce = this.dataService.getAnnonce();
+    this.restaurant = this.dataService.getRestaurant();
+    this.candidat = await this.userService.getUserProfile(Number(this.id));
   }
 
-  emploiDetails: any;
+  toggleSelection() {
+    this.isSelected = !this.isSelected;
+  }
 
-  constructor(private route: ActivatedRoute) {}
+  postuler(annonce: Annonce, restaurant: Restaurant) {
+    this.dataService.setAnnonceAndRestaurant(annonce, restaurant);
+    console.log('Annonce:', this.annonce);
+    console.log('Restaurant:', this.restaurant);
+    console.log('id:', this.candidat);
+    this.router.navigate(['/postuler']);
 
-  ngOnInit() {
-    this.route.queryParams.subscribe(params => {
-      this.emploiDetails = params;
-    });
   }
 }

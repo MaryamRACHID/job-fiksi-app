@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import { Location } from '@angular/common';
 import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs';
@@ -9,7 +9,9 @@ import { filter } from 'rxjs';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  title: string = ''; // Valeur par défaut
+  title: string = '';
+  @Input() details:any;
+  isSelected: boolean = false;
 
   constructor(
     private location: Location,
@@ -49,5 +51,9 @@ export class HeaderComponent implements OnInit {
   // Fonction pour revenir à la page précédente
   goBack(): void {
     this.location.back();
+  }
+
+  toggleSelection() {
+    this.isSelected = !this.isSelected; // Change l'état entre true et false
   }
 }

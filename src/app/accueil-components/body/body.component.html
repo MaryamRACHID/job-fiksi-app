@@ -19,7 +19,8 @@
 
   <div class="row" *ngIf="userType === 'candidat'">
     <div class="col-md-12 mb-2" *ngFor="let item of annoncesAvecRestaurant | slice:0:list ? annoncesAvecRestaurant.length : 2">
-      <div class="card clickable-card" *ngIf="item.restaurant != null" [routerLink]="['/login']">
+      <div class="card clickable-card" *ngIf="item.restaurant != null" (click)="onCardClick(item)">
+
         <div class="row card-centent">
           <div class="col-2 ps-0 pe-0">
             <img *ngIf="item.restaurant.image" [src]="item.restaurant.image" class="img" alt="{{ item.restaurant.nom }}">

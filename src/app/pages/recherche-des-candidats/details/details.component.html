@@ -1,84 +1,77 @@
-<!DOCTYPE html>
-<div class="container-details">
-  <div class="top-section">
-    <div class="item1">
-      <button mat-icon-button>
-        <mat-icon class="icon-header" [routerLink]="['/rechercheDesCandidats']">arrow_back</mat-icon>
-      </button>
-      <span class="company_name"> Détails </span>
+<div class="post-container">
+  <app-header></app-header>
+
+  <div class="post-preview p-3 pt-0" *ngIf="annonce && restaurant">
+    <div class="row">
+      <div class="col-8">
+        <p class="job-title mt-3">{{ restaurant.nom }}</p>
+        <p class="job-role">{{ annonce.titre }}</p>
+      </div>
+      <div class="col-4">
+        <img *ngIf="restaurant.image" [src]="restaurant.image" class="post-image" alt="{{ restaurant.nom }}">
+      </div>
     </div>
-    <div class="item2">
-      <div class="select" class="select"
-      [ngClass]="{'selected': isSelected}"
-      (click)="toggleSelection()"></div>
-      <button mat-icon-button>
-        <mat-icon class="icon-header">share</mat-icon>
-      </button>
-    </div>
-  </div>
-
-  <section class="section1">
-    <div class="bloc1">
-      <span class="nomEntreprise">{{emploiDetails.entreprise}}</span>
-      <span class="poste">{{emploiDetails.poste}}</span>
-    </div>
-    <img class="bloc2" src="{{emploiDetails.logo}}">
-  </section>
-
-  <section class="section2">
-      <section class="company-info">
-        <div class="contact-info">
-          <div class="info-item">
-            <mat-icon>location_on</mat-icon>
-              <div class="info">
-                  <p class="label">Lieu</p>
-                  <p class="text">{{emploiDetails.adresse}}</p>
-              </div>
-          </div>
-
-                  <!-- Salaire -->
-          <div class="info-item">
-            <mat-icon>attach_money</mat-icon> <!-- Icône pour le salaire -->
-            <div class="info">
-                <p class="label">Salaire</p>
-                <p class="text">{{emploiDetails.prixParHeure}}</p>
-            </div>
-          </div>
-
-          <!-- Disponibilité -->
-          <div class="info-item">
-            <mat-icon>event_available</mat-icon> <!-- Icône pour la disponibilité -->
-            <div class="info">
-                <p class="label">Disponibilité</p>
-                <p class="text">{{emploiDetails.disponibilites}}</p>
-            </div>
-          </div>
+    <div class="details ps-3 pe-3 mt-2">
+      <div class="row mt-3">
+        <div class="col-2"><i class="fa fa-map-marker-alt mt-2"></i></div>
+        <div class="col-10">
+          <span>Lieu</span>
+          <p class="mt-2">{{ restaurant.code_postal }}, {{ restaurant.ville }}, {{ restaurant.pays }}</p>
         </div>
-      </section>
-  </section>
-  <div class="separator"></div>
+      </div>
 
-  <section class="advantages">
-    <div class="blocTitle">
-      <div class="iconAvant"></div>
-      <h2>Avantages</h2>
+      <div class="row mt-3">
+        <div class="col-2"><i class="fa fa-coins mt-2"></i></div>
+        <div class="col-10">
+          <span>Salaire</span>
+          <p class="mt-2">{{ annonce.salaire }}€/heure</p>
+        </div>
+      </div>
+
+      <div class="row mt-3">
+        <div class="col-2"><i class="fa fa-clock mt-2"></i></div>
+        <div class="col-10">
+          <span>Nombre d'heures</span>
+          <p class="mt-2">{{ annonce.nb_heures_semaine }}h/semaine</p>
+        </div>
+      </div>
+
+      <div class="row mt-3">
+        <div class="col-2"><i class="fa fa-calendar-alt mt-2"></i></div>
+        <div class="col-10">
+          <span>Disponibilités</span>
+          <p class="mt-2">{{ annonce.jours_de_travail }}</p>
+        </div>
+      </div>
     </div>
-    <mat-chip-listbox class="tags">
-      <mat-chip *ngFor="let avantage of emploiDetails.avantages" class="tag">
-        {{ avantage }}
-      </mat-chip>
-    </mat-chip-listbox>
-  </section>
 
-  <div class="separator"></div>
-  <section class="description">
-    <div class="blocTitle">
-      <div class="iconDesc"></div>
-      <h2>Description du poste</h2>
+    <div class="separator"></div>
+
+    <div class="skills pt-2">
+      <div class="blocTitle">
+        <div class="iconAvant"></div>
+        <p class="mt-1">Compétences</p>
+      </div>
+      <div class="tags">
+        <span class="tag">{{ annonce.type_annonce }}</span>
+        <span class="tag">{{ annonce.horaire_travail }}</span>
+        <span class="tag">{{ annonce.type_contrat }}</span>
+      </div>
     </div>
-    <p class="Texte">{{emploiDetails.description}}</p>
-  </section>
 
-  <button class="btnPostuler" [routerLink]="['/postuler']">Postuler</button>
+    <div class="separator"></div>
+
+    <div class="job-description pt-2">
+      <div class="blocTitle">
+        <div class="iconDesc"></div>
+        <p class="mt-1">Description du poste</p>
+      </div>
+      <p style="text-align: justify;">{{ annonce.description }}</p>
+    </div>
+
+    <div class="button-container row">
+      <button class="btnPostuler btn fixed-button btn-primary col-5 me-2"  (click)="postuler(annonce, restaurant)">Postuler</button>
+    </div>
+
+  </div>
 </div>
-

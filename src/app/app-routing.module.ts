@@ -77,7 +77,7 @@ export const routes: Routes = [
   { path: 'header-recherche', component: HeaderRechercheComponent},
   { path: 'rechercheCandidat', component: RechercheCandidatComponent},
   {path:'rechercheDesCandidats', component: RechercheDesCandidatsComponent},
-  {path:'details', component: DetailsComponent},
+  {path:'details', component: DetailsComponent, data: { title: 'Détails' }},
   {path:'postuler', component: PostulerComponent},
   {path:'mesFavoriesOffre', component:MesFavoriesComponent },
   {path:'mesCandidatures', component: MesCandidaturesComponent},
