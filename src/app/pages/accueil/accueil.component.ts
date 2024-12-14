@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import {BehaviorSubject, forkJoin, map, Observable, of} from 'rxjs';
+import { catchError } from 'rxjs/operators';
+import {Router} from '@angular/router';
 
 // Interface représentant la structure des candidats
 export interface Candidat {
@@ -57,6 +60,32 @@ export interface Restaurant {
   type_de_restaurant?: string;
 }
 
+export interface Annonce {
+  id: number;
+  titre: string;
+  description?: string;
+  date_publication?: Date;
+  type_contrat: string;
+  salaire?: number;
+  temps_travail: string;
+  statut: string;
+  created_by_id?: number;
+  latitude?: number;
+  longitude?: number;
+  avantages?: string;
+  mode_paiement?: string;
+  nb_heures_semaine?: number;
+  type_annonce?: string;
+  code_postal?: string;
+  created_at?: Date;
+  experience?: string;
+  horaire_travail?: string;
+  jours_de_travail?: string;
+  pays?: string;
+  type_de_travail?: string;
+  updated_at?: Date;
+  ville?: string;
+}
 
 @Component({
   selector: 'app-accueil',
@@ -66,16 +95,21 @@ export interface Restaurant {
 export class AccueilComponent implements OnInit {
   candidats: Candidat[] = [];
   restaurants: Restaurant[] = [];
+  restaurant: Restaurant | null = null;  // Permet de gérer null ou Restaurant
+  annonces: Annonce[] = [];
+  annoncesAvecRestaurant: { annonce: Annonce; restaurant: Restaurant | null }[] = [];
   token: string = 'votre_token_ici';
   userType: string | null = null;
+  restaurantSubject = new BehaviorSubject<Restaurant | null>(null);
+  list: boolean | null = null;
 
+  constructor(private http: HttpClient, private router: Router) {}
 
-  constructor(private http: HttpClient) {}
 
   ngOnInit(): void {
     this.getCandidats();
-    this.getRestaurants()
-    this.userType = localStorage.getItem("userType")
+    this.getAnnonces();
+    this.userType = localStorage.getItem("userType");
   }
 
   getCandidats(): void {
@@ -84,7 +118,6 @@ export class AccueilComponent implements OnInit {
 
     this.http.get<Candidat[]>(url, { headers }).subscribe({
       next: (data) => {
-        console.log('Données des candidats récupérées :', data);
         this.candidats = data;
       },
       error: (error) => {
@@ -95,17 +128,69 @@ export class AccueilComponent implements OnInit {
 
   getRestaurants(): void {
     const headers = new HttpHeaders().set('Authorization', `Token ${this.token}`);
-    const url = 'https://jobfiksi.ismael-dev.com/api/restaurants/profile/';
+    const url = 'https://jobfiksi.ismael-dev.com/api/restaurants/';
 
     this.http.get<Restaurant[]>(url, { headers }).subscribe({
       next: (data) => {
         console.log('Données des restaurants récupérées :', data);
         this.restaurants = data;
-        },
+      },
       error: (error) => {
         console.error('Erreur lors de la récupération des restaurants :', error);
       }
     });
   }
+
+  getRestaurantById(id: number): Observable<Restaurant | null> {
+    const headers = new HttpHeaders().set('Authorization', `Token ${this.token}`);
+    const url = 'https://jobfiksi.ismael-dev.com/api/restaurants/';
+
+    return this.http.get<Restaurant[]>(url, { headers }).pipe(
+      map((restaurants) => {
+        // Trouver le restaurant par ID
+        const restaurant = restaurants.find(r => r.id === id) || null;
+        if (restaurant) {
+          restaurant.image = restaurant.image || 'assets/images/1.PNG'; // Valeur par défaut pour l'image
+        }
+        return restaurant; // Retourne le restaurant trouvé ou null
+      }),
+      catchError((error) => {
+        console.error('Erreur lors de la récupération des restaurants :', error);
+        return of(null); // Retourne null en cas d'erreur
+      })
+    );
+  }
+
+
+  getAnnonces(): void {
+    const headers = new HttpHeaders().set('Authorization', `Token ${this.token}`);
+    const url = 'https://jobfiksi.ismael-dev.com/api/annonces/';
+
+    this.http.get<Annonce[]>(url, { headers }).subscribe({
+      next: (data) => {
+        this.annonces = data;
+        this.annonces.map(annonce => {
+          //return this.getRestaurantById(1);
+          //this.getRestaurantById(annonce.id).subscribe({
+          this.getRestaurantById(2).subscribe({
+            next: (restaurant) => {
+              this.annoncesAvecRestaurant.push({ annonce, restaurant });
+            },
+            error: (error) => {
+              console.error('Erreur:', error);
+            }
+          })
+        });
+      },
+      error: (error) => {
+        console.error('Erreur lors de la récupération des annonces :', error);
+      }
+    });
+  }
+
+  async onVoirToutClick() {
+    this.list = true;
+  }
+
 
 }

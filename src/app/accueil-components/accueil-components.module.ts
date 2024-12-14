@@ -8,26 +8,28 @@ import {MatDividerModule} from '@angular/material/divider';
 import {MatIcon, MatIconModule} from '@angular/material/icon';
 import {NgxSliderModule} from '@angular-slider/ngx-slider';
 import {FormsModule} from '@angular/forms';
+import {RouterModule} from '@angular/router';
 
 @NgModule({
   declarations: [
     AccueilHeaderComponent,
     SideMenuComponent,
     FilterComponent,
-    BodyComponent
+    BodyComponent,
   ],
   exports: [
     AccueilHeaderComponent,
     SideMenuComponent,
     FilterComponent,
-    BodyComponent
+    BodyComponent,
   ],
   imports: [
     CommonModule,
     MatDividerModule,
     MatIconModule,
     NgxSliderModule,
-    FormsModule
+    FormsModule,
+    RouterModule
   ]
 })
 export class AccueilComponentsModule { }

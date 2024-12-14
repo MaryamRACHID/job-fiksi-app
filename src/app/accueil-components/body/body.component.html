@@ -1,4 +1,4 @@
-<div class="container">
+<div class="main-container mt-4">
   <div class="row" *ngIf="userType === 'restaurant'">
     <div class="col-md-4" *ngFor="let candidat of candidats">
       <div class="card">
@@ -16,24 +16,54 @@
       </div>
     </div>
   </div>
+
   <div class="row" *ngIf="userType === 'candidat'">
-    <div class="col-md-4" *ngFor="let restaurant of restaurants">
-      <div class="card">
-        <img *ngIf="restaurant.image" [src]="restaurant.image" class="card-img-top" alt="{{ restaurant.nom }}">
-        <div class="card-body">
-          <h5 class="card-title">{{ restaurant.nom }}</h5>
-          <p class="card-text">Type de restaurant: {{ restaurant.type_de_restaurant }}</p>
-          <p class="card-text">Ville: {{ restaurant.ville }}</p>
-          <p class="card-text">Téléphone: {{ restaurant.tel }}</p>
-          <p class="card-text">Code postal: {{ restaurant.code_postal }}</p>
-          <p class="card-text">Adresse: {{ restaurant.num_et_rue }}</p>
-          <p class="card-text">Pays: {{ restaurant.pays }}</p>
-          <p class="card-text">Site web:
-            <a *ngIf="restaurant.site_web" [href]="restaurant.site_web" target="_blank">{{ restaurant.site_web }}</a>
-          </p>
-          <a href="#" class="btn btn-primary">Voir plus</a>
+    <div class="col-md-12 mb-2" *ngFor="let item of annoncesAvecRestaurant | slice:0:list ? annoncesAvecRestaurant.length : 2">
+      <div class="card clickable-card" *ngIf="item.restaurant != null" [routerLink]="['/login']">
+        <div class="row card-centent">
+          <div class="col-2 ps-0 pe-0">
+            <img *ngIf="item.restaurant.image" [src]="item.restaurant.image" class="img" alt="{{ item.restaurant.nom }}">
+          </div>
+          <div class="col-8">
+            <h6 class="card-title mb-1">{{ item.annonce.titre }}</h6>
+            <div class="row align-items-center address">
+              <div class="col-auto pe-0">
+                <p class="card-text">{{ item.restaurant.nom }} ,</p>
+              </div>
+              <div class="col-auto pe-0 ps-0">
+                <p class="card-text">{{ item.restaurant.ville }} ,</p>
+              </div>
+              <div class="col-auto pe-0 ps-0">
+                <p class="card-text">{{ item.restaurant.code_postal }} ,</p>
+              </div>
+              <div class="col-auto pe-0 ps-0">
+                <p class="card-text">{{ item.restaurant.pays }}</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-2">
+            <button mat-icon-button class="bookmark-button save-btn">
+              <mat-icon>bookmark_border</mat-icon>
+            </button>
+          </div>
+          <div class="ps-0">
+            <p class="salary ms-0 mt-3"><strong>{{ item.annonce.salaire }}€</strong>/h</p>
+            <div class="d-flex flex-nowrap pb-0">
+              <div *ngIf="item.annonce.horaire_travail != null" class="me-3">
+                <p class="tag">{{ item.annonce.horaire_travail }}</p>
+              </div>
+              <div *ngIf="item.annonce.type_contrat != null" class="me-3">
+                <p class="tag">{{ item.annonce.type_contrat }}</p>
+              </div>
+              <div *ngIf="item.annonce.type_annonce != null" class="me-3">
+                <p class="tag">{{ item.annonce.type_annonce }}</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
+    <a [routerLink]="['/login']" class="text-center text-black mt-3" *ngIf="!list">Voir plus</a>
   </div>
+
 </div>

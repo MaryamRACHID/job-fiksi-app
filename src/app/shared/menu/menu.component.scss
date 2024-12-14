@@ -6,7 +6,7 @@
   justify-content: space-around;
   background-color: #fff;
   padding: 10px 0;
-  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.05);
 
   .menu-item {
     display: flex;
@@ -17,28 +17,24 @@
     color: #757575; /* Couleur par défaut */
 
     .material-icons-outlined {
-      font-size: 24px; /* Taille des icônes */
+      font-size: 28px; /* Taille des icônes */
       color: #757575; /* Couleur par défaut des icônes */
       transition: color 0.3s ease; /* Animation fluide */
+      font-weight: lighter;
     }
 
     span {
-      font-size: 12px;
+      font-size: 8px;
       color: #757575; /* Couleur par défaut du label */
       margin-top: 5px;
       transition: color 0.3s ease; /* Animation fluide */
     }
 
     &.active {
-      color: #eeae00; /* Couleur jaune pour le texte et l'icône actif */
-
-      .material-icons-outlined {
-        color: #eeae00; /* Couleur jaune pour l'icône actif */
-      }
+      color: #eeae00;
 
       span {
         color: #eeae00; /* Couleur jaune pour le label actif */
-        font-weight: bold;
       }
 
       &::after {
@@ -47,7 +43,6 @@
         bottom: -2px;
         width: 30%;
         height: 3px;
-        background-color: #eeae00; /* Ligne jaune sous l'élément actif */
         border-radius: 5px;
       }
     }

@@ -1,3 +1,19 @@
-.body-container {
-  margin-bottom: 70px;
+.main{
+  background-color: #f5f5f5 !important;
+
+  .body-container {
+    padding: 20px;
+
+    h6 {
+      font-weight: bold;
+    }
+
+    .view-all{
+      font-size: 0.8rem;
+      color: #a2a2a2 !important;
+      text-decoration: none;
+    }
+
+  }
 }
+

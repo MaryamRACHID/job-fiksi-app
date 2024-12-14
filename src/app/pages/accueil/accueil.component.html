@@ -1,6 +1,17 @@
-<app-accueil-header [userType]="userType"></app-accueil-header>
-<div class="container">
-  <h1>Bienvenue sur la page d'accueil</h1>
-  <app-body [restaurants]="restaurants" [candidats]="candidats" [userType]="userType"></app-body>
+<div class="main">
+  <app-accueil-header [userType]="userType" [list]="list"></app-accueil-header>
+  <div class="body-container mt-3">
+    <div class="row">
+      <div class="col-9">
+        <h6 *ngIf="userType === 'candidat'">Recommandation d'emploi</h6>
+        <h6 *ngIf="userType === 'restaurant'">Recommandation de candidats</h6>
+      </div>
+      <div class="col-3" style="text-align: end">
+        <a (click)="onVoirToutClick()" class="view-all" *ngIf="!list">Voir tout</a>
+      </div>
+    </div>
+    <app-body [list]="list" [restaurants]="restaurants"  [annoncesAvecRestaurant]="annoncesAvecRestaurant" [candidats]="candidats" [userType]="userType"></app-body>
+  </div>
+  <app-menu [userType]="userType"></app-menu>
 </div>
-<app-menu [userType]="userType"></app-menu>
+

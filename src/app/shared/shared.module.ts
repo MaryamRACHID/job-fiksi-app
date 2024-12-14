@@ -11,11 +11,11 @@ import {RouterModule} from "@angular/router";
     HeaderComponent,
     MenuComponent,
   ],
-    imports: [
-        CommonModule,
-        MatIconModule,
-        RouterModule
-    ],
+  imports: [
+    CommonModule,
+    MatIconModule,
+    RouterModule
+  ],
   exports:[
     HeaderComponent,
     MenuComponent

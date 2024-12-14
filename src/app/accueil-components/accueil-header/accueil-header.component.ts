@@ -11,8 +11,13 @@ import {Router} from '@angular/router';
 export class AccueilHeaderComponent {
   searchValue: string = '';
   @Input() userType!: string | null;
+  @Input() list!: boolean | null;
 
   constructor(private dialog: MatDialog, private router: Router) {}
+
+  ngOnInit(): void {
+    console.log(this.list)
+  }
 
   onSearch(): void {
     console.log('Rechercher :', this.searchValue);

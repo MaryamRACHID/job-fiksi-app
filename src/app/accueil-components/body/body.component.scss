@@ -1,34 +1,69 @@
-.recommendations {
-  padding: 20px;
+.main-container{
+  padding-bottom: 100px;
+}
 
-  .card {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: #f9f9f9;
-    padding: 10px;
-    margin-bottom: 10px;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+.card {
+  display: flex;
+  background: white !important;
+  padding: 20px 20px 5px 35px;
+  margin-bottom: 10px;
+  border-radius: 20px;
+  border: none !important;
 
-    .card-content {
-      display: flex;
-      align-items: center;
 
-      .avatar {
-        width: 40px;
-        height: 40px;
-        background: #ddd;
-        border-radius: 50%;
-        margin-right: 10px;
-      }
-    }
+  .address{
+    font-size: 0.8rem;
+    color: #8c8c8c;
+  }
 
-    .save-btn {
-      background: none;
-      border: none;
-      color: #FFAA00;
-      cursor: pointer;
+  .save-btn {
+    background: none;
+    border: none;
+    color: #777777;
+    cursor: pointer;
+  }
+
+  .img{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+  }
+
+  .card-title{
+    font-size: 0.9rem;
+    font-weight: bold;
+  }
+
+  .card-centent{
+  }
+
+  .salary{
+    color: #8c8c8c;
+    font-size: 0.9rem;
+
+    strong{
+      color: black;
     }
   }
+
+  .tag{
+    font-size: 0.8rem;
+    padding: 3px 15px;
+    text-align: center;
+    background-color: #f6f6f6;
+    color: #777777;
+    border-radius: 5px;
+  }
 }
+
+.clickable-card {
+  cursor: pointer;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.clickable-card:hover {
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  transform: translateY(-2px);
+  background-color: #f9f9f9;
+}
+
