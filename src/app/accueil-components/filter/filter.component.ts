@@ -21,7 +21,14 @@ export class FilterComponent  implements OnInit {
     location: true,
     availability: true,
     specialization: true,
-    age: true
+    age: true,
+    salaire: true,
+    lastUpdates: true,
+    restauTypes: true,
+    jobTypes: true,
+    jours: true,
+    experiences: true,
+    workSlots: true
   };
 
   filters = {
@@ -31,12 +38,17 @@ export class FilterComponent  implements OnInit {
     sector: ''
   };
 
-  sortsBy = ['Les plus récents', 'Les plus pertinents'];
+  sortsBy = ['Par pertinence', 'Le plus récent', 'Le plus proche', 'La date de disponibilité'];
+  lastUpdates = ['Récemment', 'Semaine dernière', 'Mois dernier', 'À tout moment'];
+  jobTypes = ['Serveur', 'Chef cuisinier', 'Livraison', 'Caissier', 'Plongeur', 'Sous-chef', 'Responsable de banquet', 'Hôte d’accueil', 'Préparateur de commande', 'Pâtissier', 'Serveur événementiel', 'Assistant', 'Commis de cuisine'];
+  restauTypes = ['Asiatique', 'Italien', 'Marocain', 'Tout'];
+  jours = ['Tous les jours', 'Semaine', 'Week-end', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche'];
   educationLevels = ['Master', 'BAC+3', 'BAC+2', 'Licence', 'BAC'];
-  locations = ['Paris', 'Lyon', 'Nice', 'Nantes'];
+  locations = ['Paris', 'Marseille', 'Strasbourg', 'Lyon', 'Toulouse', 'Bordeaux', 'Rennes', 'Nantes', 'Nice', 'Montpellier', 'Lille'];
   availabilityOptions = ['Tout de suite', 'Dans les 3 prochains jours', 'Prochaines semaines', 'Prochain mois'];
   specializations = ['Serveur', 'Livreur', 'Nettoyage', 'Chef'];
-
+  experiences = ['Pas d’expérience', 'Moins un année', '1-3 ans', '3-5 ans', '5-10 ans', 'Plus que 10 ans'];
+  workSlots = ['La journée', 'La matinée', 'La soirée', '08h00 - 10h00', '10h00 - 12h00', '13h00 - 15h00', '15h00 - 17h00', '18h00 - 20h00', '20h00 - 22h00', '22h00 - 00h00', '00h00 - 06h00'];
   selectedButton: string[] = [];
 
   toggleButton(educationLevel: string) {
@@ -116,6 +128,16 @@ export class FilterComponent  implements OnInit {
     ceil: 65,
     step: 1,
     translate: (value: number): string => `${value} ans`
+  };
+  salairePreference = {
+    min: 200,
+    max: 700
+  };
+  salaireSliderOptions: Options = {
+    floor: 50,
+    ceil: 1500,
+    step: 20,
+    translate: (value: number): string => `${value} €`
   };
 
   selectedFilterBy: string[] = [];

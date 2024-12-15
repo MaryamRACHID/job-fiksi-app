@@ -131,9 +131,205 @@
   </div>
 
   <div *ngIf="data.userType === 'candidat'" class="filter-container">
+    <!-- Filtrer par -->
+    <div class="filter-section">
+      <h3 class="filter-header" (click)="toggleSection('sortBy')">
+        Filtrer par
+        <span class="toggle-icon">
+        <mat-icon>{{ sectionStates['sortBy'] ? 'expand_less' : 'expand_more' }}</mat-icon>
+      </span>
+      </h3>
+      <div *ngIf="sectionStates['sortBy']" class="filter-content">
+        <ul class="filter-list">
+          <li *ngFor="let sortBy of sortsBy">
+            <label class="radio-label">
+              <input
+                type="radio"
+                [value]="sortBy"
+                [checked]="selectedFilterBy.includes(sortBy)"
+                (change)="toggleSortBy(sortBy, $event)" />
+              <span class="radio-custom"></span> {{ sortBy }}
+            </label>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <mat-divider></mat-divider>
+    <!-- Dernière mise à jour -->
+    <div class="filter-section">
+      <h3 class="filter-header" (click)="toggleSection('lastUpdate')">
+        Dernière mise à jour
+        <span class="toggle-icon">
+        <mat-icon>{{ sectionStates['lastUpdates'] ? 'expand_less' : 'expand_more' }}</mat-icon>
+      </span>
+      </h3>
+      <div *ngIf="sectionStates['lastUpdates']" class="filter-content">
+        <ul class="filter-list">
+          <li *ngFor="let lastUpdate of lastUpdates">
+            <label class="radio-label">
+              <input
+                type="radio"
+                [value]="lastUpdate"
+                [checked]="selectedFilterBy.includes(lastUpdate)"
+                (change)="toggleSortBy(lastUpdate, $event)" />
+              <span class="radio-custom"></span> {{ lastUpdate }}
+            </label>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <mat-divider></mat-divider>
+    <!-- Type de restaurant -->
+    <div class="filter-section">
+      <h3 class="filter-header" (click)="toggleSection('restauType')">
+        Type de restaurant
+        <span class="toggle-icon">
+        <mat-icon>{{ sectionStates['restauTypes'] ? 'expand_less' : 'expand_more' }}</mat-icon>
+      </span>
+      </h3>
+      <div *ngIf="sectionStates['restauTypes']" class="filter-content">
+        <ul class="filter-list">
+          <li *ngFor="let restauType of restauTypes">
+            <label class="radio-label">
+              <input
+                type="radio"
+                [value]="restauType"
+                [checked]="selectedFilterBy.includes(restauType)"
+                (change)="toggleSortBy(restauType, $event)" />
+              <span class="radio-custom"></span> {{ restauType }}
+            </label>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <mat-divider></mat-divider>
+    <!-- Type d’emploi -->
+    <div class="filter-section">
+      <h3 class="filter-header" (click)="toggleSection('jobTypes')">
+        Type d’emploi
+        <span class="toggle-icon">
+        <mat-icon>{{ sectionStates['jobTypes'] ? 'expand_less' : 'expand_more' }}</mat-icon>
+      </span>
+      </h3>
+      <div *ngIf="sectionStates['jobTypes']" class="filter-content">
+        <div class="filter-option">
+          <button
+            class="filter-button"
+            *ngFor="let jobType of jobTypes"
+            [ngClass]="{ 'selected': selectedButton.includes(jobType) }"
+            (click)="toggleButton(jobType)">
+            {{ jobType }}
+          </button>
+        </div>
+      </div>
 
+    </div>
+    <mat-divider></mat-divider>
+    <!-- Jours de travail -->
+    <div class="filter-section">
+      <h3 class="filter-header" (click)="toggleSection('jours')">
+        Type d’emploi
+        <span class="toggle-icon">
+        <mat-icon>{{ sectionStates['jours'] ? 'expand_less' : 'expand_more' }}</mat-icon>
+      </span>
+      </h3>
+      <div *ngIf="sectionStates['jours']" class="filter-content">
+        <div class="filter-option">
+          <button
+            class="filter-button"
+            *ngFor="let jour of jours"
+            [ngClass]="{ 'selected': selectedButton.includes(jour) }"
+            (click)="toggleButton(jour)">
+            {{ jour }}
+          </button>
+        </div>
+      </div>
+
+    </div>
+    <mat-divider></mat-divider>
+    <!-- Lieu -->
+    <div class="filter-section">
+      <h3 class="filter-header" (click)="toggleSection('location')">
+        Lieu
+        <span class="toggle-icon">
+      <mat-icon>{{ sectionStates['location'] ? 'expand_less' : 'expand_more' }}</mat-icon>
+    </span>
+      </h3>
+      <div *ngIf="sectionStates['location']" class="filter-content">
+        <ul class="filter-list row">
+          <li class="col-4" *ngFor="let location of locations">
+            <label class="checkbox-label">
+              <input
+                type="checkbox"
+                [value]="location"
+                [checked]="selectedLocations.includes(location)"
+                (change)="toggleLocation(location, $event)" />
+              <span class="checkbox-custom"></span> {{ location }}
+            </label>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <mat-divider></mat-divider>
+    <!-- Age -->
+    <div class="filter-section">
+      <h3 class="filter-header" (click)="toggleSection('salaire')">
+        Salaire
+      </h3>
+      <div *ngIf="sectionStates['salaire']" class="filter-content">
+        <ngx-slider
+          [(value)]="salairePreference.min"
+          [(highValue)]="salairePreference.max"
+          [options]="salaireSliderOptions">
+        </ngx-slider>
+      </div>
+    </div>
+    <mat-divider></mat-divider>
+    <!-- Expériences -->
+    <div class="filter-section">
+      <h3 class="filter-header" (click)="toggleSection('experiences')">
+        Expériences
+      </h3>
+      <div *ngIf="sectionStates['experiences']" class="filter-content">
+        <ul class="filter-list">
+          <li *ngFor="let experience of experiences">
+            <label class="checkbox-label">
+              <input
+                type="checkbox"
+                [value]="experience"
+                [checked]="selectedSpecializations.includes(experience)"
+                (change)="toggleSpecialization(experience, $event)" />
+              <span class="checkbox-custom"></span> {{ experience }}
+            </label>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <mat-divider></mat-divider>
+    <!-- Heure de travail -->
+    <div class="filter-section">
+      <h3 class="filter-header" (click)="toggleSection('location')">
+        Lieu
+        <span class="toggle-icon">
+      <mat-icon>{{ sectionStates['location'] ? 'expand_less' : 'expand_more' }}</mat-icon>
+    </span>
+      </h3>
+      <div *ngIf="sectionStates['workSlots']" class="filter-content">
+        <ul class="filter-list row">
+          <li class="col-6" *ngFor="let workSlot of workSlots">
+            <label class="checkbox-label">
+              <input
+                type="checkbox"
+                [value]="workSlot"
+                [checked]="selectedLocations.includes(workSlot)"
+                (change)="toggleLocation(workSlot, $event)" />
+              <span class="checkbox-custom"></span> {{ workSlot }}
+            </label>
+          </li>
+        </ul>
+      </div>
+    </div>
   </div>
-
 
   <button class="apply-button" (click)="applyFilters()">Appliquer</button>
 </div>

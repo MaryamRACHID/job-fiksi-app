@@ -38,9 +38,8 @@ import {MesFavoriesComponent} from './pages/recherche-des-candidats/mes-favories
 import {MesCandidaturesComponent} from './pages/recherche-des-candidats/mes-candidatures/mes-candidatures.component';
 import {GenereContratComponent} from './pages/profile-restaurant/genere-contrat/genere-contrat.component';
 import {FeedbackCandidatComponent} from './pages/profile-restaurant/feedback-candidat/feedback-candidat.component';
-import {
-  MesFavoriesCandidatsComponent
-} from './pages/profile-restaurant/mes-favories-candidats/mes-favories-candidats.component';
+import { MesFavoriesCandidatsComponent } from './pages/profile-restaurant/mes-favories-candidats/mes-favories-candidats.component';
+import {FilterComponent} from './accueil-components/filter/filter.component';
 
 export const routes: Routes = [
   { path: '', component: FirstPageComponent },
@@ -84,6 +83,7 @@ export const routes: Routes = [
   {path:'mesCandidatures', component: MesCandidaturesComponent},
   {path:'genereContrat',component: GenereContratComponent},
   {path:'feedbackCandidat',component:FeedbackCandidatComponent},
+  {path:'filter',component:FilterComponent},
   { path: '**', redirectTo: '' }, // Redirection vers l'accueil pour les routes inconnues
 ];
 
