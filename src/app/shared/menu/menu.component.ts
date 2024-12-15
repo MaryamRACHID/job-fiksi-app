@@ -7,4 +7,10 @@ import {Component, Input} from '@angular/core';
 })
 export class MenuComponent {
   @Input() userType!: string | null;
+  typeUser: string | null = null;
+
+  async ngOnInit(): Promise<void> {
+    this.typeUser = localStorage.getItem("userType");
+    console.log(this.typeUser)
+  }
 }

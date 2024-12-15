@@ -1,14 +1,18 @@
 .container-postuler{
   margin: 0;
-  padding: 1rem;
+  padding: 1.5rem 0.7rem;
 }
+
+.form-postuler{
+  margin: 0;
+  padding: 0 0.9rem;
+}
+
 .top-section {
-  // background: linear-gradient(90deg, #f7b733, #fc4a1a); /* Dégradé jaune/orange */
   margin: 0;
   padding: 0;
   width: 100%;
   display: flex;
-  // color: white;
   font-size: 1.5rem;
   font-weight: bold;
   justify-content: space-between;
@@ -53,20 +57,7 @@
   margin-top: 1rem;
   margin-bottom: 1rem;
 }
-.form-group{
-  margin-top: 1rem;
-}
-.form-group label{
-  color: #000 !important;
-  font-size: 1.2rem;
-  font-weight: 500;
-}
-.form-group input{
-  padding: 1rem;
-  border-radius: 0.2rem;
-  border: 2px solid #aaaaaa;
-  margin-bottom: 1rem;
-}
+
 .crenaux{
   margin-bottom: 2rem !important;
 }
@@ -78,6 +69,12 @@
 
 }
 
+.form-check-label{
+  text-align: justify !important;
+  padding-left: 5px;
+  font-size: 12px;
+}
+
 .highlighted-creneaux {
   background-color: #F6BB10; /* Jaune pour les jours disponibles */
   color: #fff;
@@ -87,6 +84,16 @@
   background-color: #f5f5f5; /* Gris clair pour les jours non disponibles */
   color: #000;
 }
+
+::ng-deep .mdc-checkbox__native-control:enabled:checked~.mdc-checkbox__background, .mdc-checkbox__native-control:enabled:indeterminate~.mdc-checkbox__background {
+  background-color: #F6BB10 !important;  /* Couleur jaune pour l'élément coché */
+  border-color: #F6BB10 !important;  /* Bordure jaune */
+}
+
+::ng-deep .mdc-checkbox__checkmark {
+  transform: scale(0.8);
+}
+
 .btn-postuler{
   width: 100%;
   margin: 0;
@@ -97,15 +104,7 @@
 }
 .btn{
   margin: auto !important;
-    // left: 25%;
-    bottom: 20px; /* Distance du bas de la page */ /* Distance du côté droit de la page */
-    padding: 10px 60px; /* Taille interne */
-    background-color: #f6b400; /* Couleur du bouton */
-    color: white; /* Couleur du texte */
-    font-size: 1.7rem; /* Taille du texte */
-    border: none; /* Supprime la bordure par défaut */
-    border-radius: 10px; /* Coins arrondis */
-    cursor: pointer; /* Curseur interactif */
+  padding: 10px 60px;
 }
 
 .container-done{
@@ -113,25 +112,21 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  // height: 100vh;
   padding-top: 5rem;
   gap: 1.5rem;
   margin: 0;
-  // padding: 0;
-}
 
-.container-done p{
-  font-size: 1.5rem;
-  font-weight: 500;
-  margin-bottom: 1rem;
-  text-align: center;
+  a{
+    text-decoration: underline;
+    font-size: 1.2rem;
+  }
+  p{
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
 }
-
-.container-done a{
-  text-decoration: underline;
-  font-size: 1.2rem;
-}
-
 
 .image-container {
   display: flex;
@@ -139,10 +134,11 @@
   align-items: center;    /* Centre verticalement */
   height: 300px;          /* Hauteur du conteneur */
   overflow: hidden;       /* Cache les parties de l'image trop grandes */
+
+  img {
+    max-width: 100%;        /* Réduit la largeur si nécessaire */
+    max-height: 100%;       /* Réduit la hauteur si nécessaire */
+    object-fit: contain;    /* Adapte l'image sans la déformer */
+  }
 }
 
-.image-container img {
-  max-width: 100%;        /* Réduit la largeur si nécessaire */
-  max-height: 100%;       /* Réduit la hauteur si nécessaire */
-  object-fit: contain;    /* Adapte l'image sans la déformer */
-}

@@ -6,6 +6,8 @@ import { Component } from '@angular/core';
   styleUrl: './mes-favories.component.scss'
 })
 export class MesFavoriesComponent {
+
+
   mesFavories = [
     {
       poste:'Serveur H/F',
@@ -32,4 +34,11 @@ export class MesFavoriesComponent {
       logo:'/assets/OIP.jpg'
     }
   ]
+
+  userType: string | null = null;
+
+  async ngOnInit(): Promise<void> {
+    this.userType = localStorage.getItem("userType");
+    console.log(this.userType)
+  }
 }

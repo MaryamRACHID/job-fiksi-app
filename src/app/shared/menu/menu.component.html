@@ -3,7 +3,11 @@
     <span class="material-icons-outlined">home</span>
     <span>Accueil</span>
   </a>
-  <a class="menu-item" routerLink="/saved" routerLinkActive="active">
+  <a *ngIf="typeUser === 'candidat'" class="menu-item" routerLink="/mesFavoriesOffre" routerLinkActive="active">
+    <span class="material-icons-outlined">bookmark_border</span>
+    <span>Mes favoris</span>
+  </a>
+  <a *ngIf="typeUser === 'restaurant'" class="menu-item" routerLink="/mesFavorisCandidats" routerLinkActive="active">
     <span class="material-icons-outlined">bookmark_border</span>
     <span>Mes favoris</span>
   </a>
@@ -11,11 +15,15 @@
     <span class="material-icons-outlined">work_outline</span>
     <span>Mes postes</span>
   </a>
-  <a class="menu-item" routerLink="/messages" routerLinkActive="active">
+  <a class="menu-item" routerLink="/messagerie" routerLinkActive="active">
     <span class="material-icons-outlined">chat</span>
     <span>Messagerie</span>
   </a>
-  <a class="menu-item" routerLink="/profile" routerLinkActive="active">
+  <a *ngIf="typeUser === 'candidat'" class="menu-item" routerLink="/profile-candidat" routerLinkActive="active">
+    <span class="material-icons-outlined">person_outline</span>
+    <span>Mon profil</span>
+  </a>
+  <a *ngIf="typeUser === 'restaurant'" class="menu-item" routerLink="/profile-restaurant" routerLinkActive="active">
     <span class="material-icons-outlined">person_outline</span>
     <span>Mon profil</span>
   </a>

@@ -78,12 +78,12 @@ export const routes: Routes = [
   { path: 'rechercheCandidat', component: RechercheCandidatComponent},
   {path:'rechercheDesCandidats', component: RechercheDesCandidatsComponent},
   {path:'details', component: DetailsComponent, data: { title: 'Détails' }},
-  {path:'postuler', component: PostulerComponent},
+  {path:'postuler', component: PostulerComponent, data: { title: 'Postuler' }},
   {path:'mesFavoriesOffre', component:MesFavoriesComponent },
+  {path:'mesFavorisCandidats',component:MesFavoriesCandidatsComponent},
   {path:'mesCandidatures', component: MesCandidaturesComponent},
   {path:'genereContrat',component: GenereContratComponent},
   {path:'feedbackCandidat',component:FeedbackCandidatComponent},
-  {path:'mesFavorisCandidats',component:MesFavoriesCandidatsComponent},
   { path: '**', redirectTo: '' }, // Redirection vers l'accueil pour les routes inconnues
 ];
 
