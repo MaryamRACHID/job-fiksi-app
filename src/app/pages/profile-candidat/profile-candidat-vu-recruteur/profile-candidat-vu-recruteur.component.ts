@@ -1,9 +1,11 @@
 import { Component, Input } from '@angular/core';
 import { ProfileCandidatComponent } from '../../profile-candidat/profile-candidat.component';
+import {Annonce, Candidat, Restaurant} from '../../accueil/accueil.component';
+import {ActivatedRoute, Router} from '@angular/router';
+import {DataService} from '../../../services/data.service';
+import {UserService} from '../../../services/user.service';
 @Component({
   selector: 'app-profile-candidat-vu-recruteur',
-  // standalone: true,
-  // imports: [],
   templateUrl: './profile-candidat-vu-recruteur.component.html',
   styleUrls: ['./profile-candidat-vu-recruteur.component.scss','../profile-candidat.component.scss',]
 })
@@ -47,4 +49,14 @@ export class ProfileCandidatVuRecruteurComponent {
     ],
     linkdin: 'inas.hakkou',
   };
+
+  candidat: Candidat | null = null;
+
+  constructor(private route: ActivatedRoute, private router: Router, private dataService: DataService) { }
+
+  async ngOnInit(): Promise<void> {
+    this.candidat = this.dataService.getCandidat();
+  }
+
+
 }

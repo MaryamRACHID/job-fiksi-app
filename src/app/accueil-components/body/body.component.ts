@@ -12,22 +12,31 @@ export class BodyComponent implements OnInit {
   @Input() candidats: Candidat[] = [];
   @Input() restaurants: Restaurant[] = [];
   @Input() annonces: Annonce[] = [];
+  @Input() candidat: Candidat | null = null;
   @Input() annoncesAvecRestaurant: { annonce: Annonce; restaurant: Restaurant | null  }[] = [];
 
   @Input() userType!: string | null;
   @Input() list!: boolean | null;
 
   ngOnInit(): void {
-    console.log(this.annoncesAvecRestaurant)
   }
 
   constructor(private dataService: DataService, private router: Router) { }
 
-  onCardClick(item: any): void {
-    // Stocker les données dans le service
+  onCardAnnonceClick(item: any): void {
     this.dataService.setAnnonceAndRestaurant(item.annonce, item.restaurant);
-
-    // Naviguer vers le composant details
-    this.router.navigate(['/details']);
+    setTimeout(() => {
+      this.router.navigate(['/details']);
+    }, 0);
   }
+
+
+  onCardCandidatClick(candidat: any): void {
+    this.dataService.setCandidat(candidat);
+    setTimeout(() => {
+      this.router.navigate(['/profileCandidatVuParResto']);
+    }, 0);
+  }
+
+
 }

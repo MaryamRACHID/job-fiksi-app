@@ -13,11 +13,12 @@
   cursor: pointer;
   display: flex;
   align-items: center;
-  color: #484848; // Couleur de la flèche, modifiez si nécessaire
+  color: inherit;
   position: absolute;
   left: 0; // Positionnement à gauche
   margin-right: auto; // Pour s’assurer qu’il est bien collé à gauche
   padding: 0px;
+  margin-left: 10px;
 
   mat-icon {
     font-size: 30px;
@@ -30,7 +31,7 @@
 }
 
 .page-title {
-  font-size: 30px;
+  font-size: 20px;
   font-weight: 700;
-  margin: 0 35px;
+  margin: 0 5px 0 45px;
 }

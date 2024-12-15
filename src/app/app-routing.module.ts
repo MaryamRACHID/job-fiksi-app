@@ -72,7 +72,7 @@ export const routes: Routes = [
   {path:'profile-restaurant', component:ProfileRestaurantComponent},
   {path:'modifier-infos-restaurant', component: InformationsComponent},
   {path:'profile-candidat', component: ProfileCandidatComponent},
-  {path:'profileCandidatVuParResto',component: ProfileCandidatVuRecruteurComponent},
+  {path:'profileCandidatVuParResto',component: ProfileCandidatVuRecruteurComponent, data: { title: 'profil de candidat' }},
   {path:'modifier-profil-candidat', component: ModifierProfileCandidatComponent},
   { path: 'header-recherche', component: HeaderRechercheComponent},
   { path: 'rechercheCandidat', component: RechercheCandidatComponent},

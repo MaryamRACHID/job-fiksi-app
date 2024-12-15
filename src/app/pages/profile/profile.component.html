@@ -5,11 +5,11 @@
     (skip)="skip()">
   </app-profile-header>
   <div class="component-container">
-    <app-informations *ngIf="step === 1" [userType]="userType" [personalInfo]="personalInfo"></app-informations>
-    <app-contact *ngIf="step === 2" [userType]="userType" [contactInfo]="contactInfo"></app-contact>
-    <app-preference *ngIf="step === 3 && userType === 'candidat'" [userType]="userType" [preferencesInfo]="preferencesInfo"></app-preference>
-    <app-info-restaurant *ngIf="step === 3 && userType === 'restaurant'" [userType]="userType" [restauInfo]="restauInfo"></app-info-restaurant>
-    <app-disponibilites *ngIf="step === 4 && userType === 'candidat'" [userType]="userType" [disponibilitesInfo]="disponibilitesInfo"></app-disponibilites>
+    <app-informations *ngIf="step === 1" [userType]="userType" [personalInfo]="personalInfo" (personalInfoChange)="handleInfoChange($event)"></app-informations>
+    <app-contact *ngIf="step === 2" [userType]="userType" [contactInfo]="contactInfo" (contactInfoChange)="handleInfoChange($event)"></app-contact>
+    <app-preference *ngIf="step === 3 && userType === 'candidat'" [userType]="userType" [preferencesInfo]="preferencesInfo" (preferencesInfoChange)="handleInfoChange($event)"></app-preference>
+    <app-info-restaurant *ngIf="step === 3 && userType === 'restaurant'" [userType]="userType" [restauInfo]="restauInfo" (restaurantInfoChange)="handleInfoChange($event)"></app-info-restaurant>
+    <app-disponibilites *ngIf="step === 4 && userType === 'candidat'" [userType]="userType" [disponibilitesInfo]="disponibilitesInfo" (availabilityInfoChange)="handleInfoChange($event)"></app-disponibilites>
     <app-notifications *ngIf="step === 4 && userType === 'restaurant'" [userType]="userType" [notificationsInfo]="notificationsInfo"></app-notifications>
     <app-description *ngIf="step === 5" [userType]="userType" [descriptionInfo]="descriptionInfo"></app-description>
     <app-formation *ngIf="step === 6" [userType]="userType" [formationInfo]="formationInfo"></app-formation>
@@ -19,8 +19,9 @@
     <app-bank *ngIf="step === 10"  [userType]="userType" [bankInfo]="bankInfo"></app-bank>
     <app-notifications *ngIf="step === 11" [userType]="userType" [notificationsInfo]="notificationsInfo"></app-notifications>
   </div>
+
   <div class="button-container">
-    <button *ngIf="(step != 11  && (userType === null || userType === 'candidat')) || (step != 4 && userType === 'restaurant')" (click)="goToNextStep()" [disabled]="!userType" class="fixed-button btn btn-primary full-width">Continuer</button>
+    <button *ngIf="(step != 11  && (userType === null || userType === 'candidat')) || (step != 4 && userType === 'restaurant')" (click)="goToNextStep()" [disabled]="!userType || isFormValid" class="fixed-button btn btn-primary full-width">Continuer</button>
     <button *ngIf="(step === 11  && userType === 'candidat') || (step === 4  && userType === 'restaurant')" (click)="goToNextStep()" [disabled]="!userType" class="fixed-button btn btn-primary full-width">Terminer mon inscription</button>
   </div>
 </div>

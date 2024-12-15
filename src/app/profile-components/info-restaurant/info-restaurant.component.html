@@ -1,30 +1,93 @@
-<h2 class="title">Complétez votre profil</h2>
+<div class="restaurant-info-container">
+  <form [formGroup]="restauForm">
+    <div class="form-group">
+      <label for="restaurantName">Nom du Restaurant</label>
+      <input
+        id="restaurantName"
+        type="text"
+        class="form-control"
+        formControlName="restaurantName"
+        [(ngModel)]="restauForm.controls['restaurantName'].value"
+        placeholder="Entrez le nom du restaurant"
+      />
+      <small
+        *ngIf="restauForm.get('restaurantName')?.invalid && restauForm.get('restaurantName')?.touched"
+        class="text-danger"
+      >
+        Le nom du restaurant est requis (min. 3 caractères).
+      </small>
+    </div>
 
-<div>
-  <p class="subtitle-1">Information de restaurant</p>
+    <div class="form-group">
+      <label for="address">Adresse</label>
+      <input
+        id="address"
+        type="text"
+        class="form-control"
+        formControlName="address"
+        [(ngModel)]="restauForm.controls['address'].value"
+        placeholder="Entrez l'adresse"
+      />
+      <small
+        *ngIf="restauForm.get('address')?.invalid && restauForm.get('address')?.touched"
+        class="text-danger"
+      >
+        L'adresse est requise.
+      </small>
+    </div>
 
-  <div class="form-group my-3 mt-5">
-    <label for="phone">Nom de l’établissement</label>
-    <input name="nom_restaurant" type="tel" class="form-control" id="phone" [(ngModel)]="infoRestaurant.name" placeholder="Numéro de téléphone">
-  </div>
-  <div class="form-group">
-    <label for="address">Type de restauration</label>
-    <input name="type_restaurant" type="text" class="form-control" id="address" [(ngModel)]="infoRestaurant.type" placeholder="N° et rue">
-  </div>
-  <div class="form-group">
-    <label for="postalCode">Adresse de l’établissement</label>
-    <input name="code_postal" type="text" class="form-control" id="postalCode" [(ngModel)]="infoRestaurant.code_postal" placeholder="Code postal">
-  </div>
-  <div class="form-group">
-    <label for="tel">Téléphone de contact</label>
-    <input name="tel" type="text" class="form-control" id="tel" [(ngModel)]="infoRestaurant.tel_pro" placeholder="telephone">
-  </div>
-  <div class="form-group">
-    <label for="email">Email de l’établissement</label>
-    <input name="email" type="text" class="form-control" id="email" [(ngModel)]="infoRestaurant.email_pro" placeholder="email">
-  </div>
-  <div class="form-group">
-    <label for="website">Site web</label>
-    <input name="website" type="text" class="form-control" id="website" [(ngModel)]="infoRestaurant.site_web" placeholder="website">
-  </div>
+    <div class="form-group">
+      <label for="siret">Numéro SIRET</label>
+      <input
+        id="siret"
+        type="text"
+        class="form-control"
+        formControlName="siret"
+        [(ngModel)]="restauForm.controls['siret'].value"
+        placeholder="Entrez le numéro SIRET"
+      />
+      <small
+        *ngIf="restauForm.get('siret')?.hasError('invalidSiret') && restauForm.get('siret')?.touched"
+        class="text-danger"
+      >
+        Le numéro SIRET doit contenir 14 chiffres.
+      </small>
+    </div>
+
+    <div class="form-group">
+      <label for="phone">Numéro de téléphone</label>
+      <input
+        id="phone"
+        type="text"
+        class="form-control"
+        formControlName="phone"
+        [(ngModel)]="restauForm.controls['phone'].value"
+        placeholder="Entrez le numéro de téléphone"
+      />
+      <small
+        *ngIf="restauForm.get('phone')?.hasError('pattern') && restauForm.get('phone')?.touched"
+        class="text-danger"
+      >
+        Le numéro de téléphone doit contenir 10 chiffres.
+      </small>
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input
+        id="email"
+        type="email"
+        class="form-control"
+        formControlName="email"
+        [(ngModel)]="restauForm.controls['email'].value"
+        placeholder="Entrez l'email"
+      />
+      <small
+        *ngIf="restauForm.get('email')?.hasError('email') && restauForm.get('email')?.touched"
+        class="text-danger"
+      >
+        Adresse email invalide.
+      </small>
+    </div>
+  </form>
 </div>

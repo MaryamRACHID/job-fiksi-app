@@ -4,6 +4,17 @@
   // padding-right: 0.2rem !important;
 }
 
+.top-section{
+  background: linear-gradient(
+      135deg,
+      #6d5e52 0%,
+      #a07f46 50%,
+      #e6a305 100%
+  ) !important;
+  padding: 30px 15px 0 15px;
+  height: 200px !important;
+}
+
 .spacer {
   // background-color: aqua;
   padding: 4rem !important;
@@ -27,4 +38,16 @@
   border-radius: 0.5rem;
   color: rgb(255, 255, 255);
   // font-weight: 50
+}
+
+.img {
+  position: absolute;
+  top: 130px;
+  left: 26%;
+  transform: translateX(-50%);
+  margin-bottom: 1rem;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border: 7px solid white;
 }

@@ -1,4 +1,4 @@
-import {Component, Output, EventEmitter, ViewChild, Input} from '@angular/core';
+import {Component, Output, EventEmitter, ViewChild, Input, ChangeDetectorRef} from '@angular/core';
 import { Router } from '@angular/router';
 import { DisponibilitesComponent } from '../../profile-components/disponibilites/disponibilites.component';
 import {InformationsComponent} from '../../profile-components/informations/informations.component';
@@ -62,6 +62,7 @@ export class ProfileComponent {
   languages: string[] = [];
   preferences: any = { preferredJobTypes: [], locations: [] };
   notifications: any = { emailNotifications: false, smsNotifications: false };
+  isFormValid: boolean = false;
 
   @ViewChild(ProfileTypeComponent) profileTypeComponent!: ProfileTypeComponent;
   @ViewChild(InformationsComponent) informationsComponent!: InformationsComponent;
@@ -80,7 +81,7 @@ export class ProfileComponent {
   token: string | null = null;
   userId: string | null = null;
 
-  constructor(private router: Router, private userService: UserService) {}
+  constructor(private router: Router, private userService: UserService, private cdRef: ChangeDetectorRef) {}
 
   ngOnInit(): void {
     const savedContactInfo = localStorage.getItem('contactInfo');
@@ -90,19 +91,35 @@ export class ProfileComponent {
       this.userType = localStorage.getItem("userType")
   }
 
+
+  handleInfoChange(isValid: boolean): void {
+    this.isFormValid = isValid;
+    console.log('Formulaire valide:', this.isFormValid);
+    console.log("first", this.isFormValid)
+    this.cdRef.detectChanges();
+  }
+
   goToNextStep() {
     switch (this.step) {
       case 1:
         this.informationsComponent.saveInfo();
+        this.step++;
         break;
       case 2:
         this.contactComponent.saveContact();
+        this.step++;
         break;
       case 3:
         if (this.userType == 'candidat'){
           this.preferenceComponent.savePreference();
+          this.step++;
         } else {
-          this.infoRestaurantComponent.saveRestaurantInfo();
+          console.log("first", this.isFormValid)
+          this.infoRestaurantComponent.onSubmit();
+          console.log("last", this.isFormValid)
+          if (this.isFormValid){
+            this.step++;
+          }
         }
         break;
       case 4:
@@ -137,7 +154,6 @@ export class ProfileComponent {
         this.router.navigate(['/accueil']);
         return;
     }
-    this.step++;
   }
 
   saveAvailability() {
@@ -211,10 +227,8 @@ export class ProfileComponent {
 
   skip() {
     // Logique pour abandonner
-    if(this.userType === "candidat"){
-      this.router.navigate(['/login']);
-    } else {
       this.router.navigate(['/accueil']);
-    }
   }
+
+
 }

@@ -1,57 +1,50 @@
-<!DOCTYPE html>
 <div class="header">
-  <div class="top-section">
-    <mat-toolbar color="primary" class="toolbar">
-      <button mat-icon-button>
-        <mat-icon>arrow_back</mat-icon>
-      </button>
-      <span class="company_name"> {{user.nomUser}} </span>
-      <span class="spacer"></span>
+  <div class="top-section d-flex pt-3 pb-3">
+    <div class="col-10">
+      <app-header></app-header>
+    </div>
+    <div class="col-2 d-flex justify-content-end pt-1">
       <button mat-icon-button>
         <mat-icon>share</mat-icon>
       </button>
       <button mat-icon-button [routerLink]="['/settings']">
         <mat-icon>settings</mat-icon>
       </button>
-    </mat-toolbar>
+    </div>
   </div>
-  <div class="logo-container">
-    <img class="logo">
+  <div class="" *ngIf="candidat != null">
+    <img *ngIf="candidat.image" src="{{candidat.image}}" class="img">
   </div>
-  <div class="bottom-section"></div>
 </div>
 
-
-
-<div class="showInfosCandidat">
-  <!-- <app-button-contact-candidat></app-button-contact-candidat> -->
-  <div class="button-contact">
+<div class="showInfosCandidat" *ngIf="candidat != null">
+  <div class="button-contact mt-4">
     <button>appeler</button>
     <button>envoyer message</button>
   </div>
   <div class="content" >
   <section class="company-info">
-     <h2>{{user.nomUser}}</h2>
+     <h2>{{candidat.prenom}} {{candidat.nom}}</h2>
     <div class="contact-info">
       <div class="info-item">
         <mat-icon>email</mat-icon>
           <div class="info">
               <p class="label">Email</p>
-               <p>{{user.emailUser}}</p>
+               <p>{{candidat.email_pro}}</p>
           </div>
       </div>
       <div class="info-item">
         <mat-icon>phone</mat-icon>
           <div class="info">
               <p class="label">Numéro de téléphone</p>
-               <p>{{user.telUser}}</p>
+               <p>{{candidat.tel}}</p>
           </div>
       </div>
       <div class="info-item">
         <mat-icon>location_on</mat-icon>
           <div class="info">
               <p class="label">Localisation</p>
-               <p>{{user.adresseUser}}</p>
+               <p>{{candidat.num_et_rue}}, {{candidat.ville}}, {{candidat.code_postal}}, {{candidat.pays}}</p>
           </div>
       </div>
       <div class="info-item">
@@ -59,10 +52,7 @@
           <div class="info">
               <p class="label">Disponibilité</p>
               <div class="dispo"> <!--tags-->
-                <span class="daysUser"
-                  *ngFor="let day of user.disponibilitesUser">
-                  {{ day }}
-                </span><!--tag-->
+                <span class="daysUser">{{candidat.disponibilite}}</span>
               </div>
           </div>
       </div>
@@ -72,7 +62,7 @@
   <div class="separator"></div>
   <section class="description">
     <h2>Description</h2>
-     <p>{{user.descriptionUser}}</p>
+     <p>{{candidat.langues_parlees}}</p>
     <a href="#" class="lien">Voir le CV</a>
   </section>
 

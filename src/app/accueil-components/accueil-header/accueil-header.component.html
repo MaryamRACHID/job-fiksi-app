@@ -1,7 +1,7 @@
-<div *ngIf="userType === 'candidat'" [ngClass]="{'list-active': list, 'list-inactive': !list}">
+<div *ngIf="userType === 'candidat' && profileCandidat != null" [ngClass]="{'list-active': list, 'list-inactive': !list}">
   <div *ngIf="!list" class="logo">
-    <img src="assets/logo.png" alt="Logo" class="logo-image">
-    <span class="welcome-message">Bonjour, <strong>Candidat</strong></span>
+    <img *ngIf="profileCandidat.image" src="https://jobfiksi.ismael-dev.com/{{profileCandidat.image}}" class="logo-image">
+    <span class="welcome-message">Bonjour, <strong>{{profileCandidat.prenom}}</strong></span>
   </div>
 
   <div class="mt-3 text-light me-5" *ngIf="!list">
@@ -9,7 +9,7 @@
   </div>
 
   <div class="search-section" [ngClass]="{'search-section-active': list, 'search-section-inactive': !list}">
-    <img *ngIf="list" src="assets/logo.png" alt="Logo" class="logo-image">
+    <img *ngIf="profileCandidat.image && list" src="https://jobfiksi.ismael-dev.com/{{profileCandidat.image}}" class="logo-image">
     <div class="search-input-wrapper">
       <i class="fas fa-search"></i>
       <input
@@ -24,17 +24,18 @@
   </div>
 </div>
 
-<div class="header" *ngIf="userType === 'restaurant'">
-  <div class="logo">
-    <img src="assets/logo.png" alt="Logo" class="logo-image">
-    <span class="welcome-message">Bonjour, <strong>Restaurant</strong></span>
+<div *ngIf="userType === 'restaurant' && profileRestaurant != null" [ngClass]="{'list-active': list, 'list-inactive': !list}">
+  <div *ngIf="!list" class="logo">
+    <img *ngIf="profileRestaurant.image" src="https://jobfiksi.ismael-dev.com/{{profileRestaurant.image}}" class="logo-image">
+    <span class="welcome-message">Bonjour, <strong>{{profileRestaurant.nom}}</strong></span>
   </div>
 
-  <div>
-    <h1>Trouve vite votre prochain candidat !</h1>{{list}}
+  <div class="mt-3 text-light me-5" *ngIf="!list">
+    <h3 style="font-weight: bold">Trouve vite votre prochain candidat !</h3>
   </div>
 
-  <div class="search-section">
+  <div class="search-section" [ngClass]="{'search-section-active': list, 'search-section-inactive': !list}">
+    <img *ngIf="profileRestaurant.image && list" src="https://jobfiksi.ismael-dev.com/{{profileRestaurant.image}}" class="logo-image">
     <div class="search-input-wrapper">
       <i class="fas fa-search"></i>
       <input

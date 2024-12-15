@@ -1,46 +1,35 @@
 <div class="main-container mt-4">
   <div class="row" *ngIf="userType === 'restaurant'">
-    <div class="col-md-4" *ngFor="let candidat of candidats">
-      <div class="card">
-        <img *ngIf="candidat.image" [src]="candidat.image" class="card-img-top" alt="{{ candidat.nom }} {{ candidat.prenom }}">
-        <div class="card-body">
-          <h5 class="card-title">{{ candidat.nom }} {{ candidat.prenom }}</h5>
-          <p class="card-text">Spécialisation: {{ candidat.specilaite }}</p>
-          <p class="card-text">Ville: {{ candidat.ville }}</p>
-          <p class="card-text">Téléphone: {{ candidat.tel }}</p>
-          <p class="card-text">Disponibilité: {{ candidat.disponibilite }}</p>
-          <p class="card-text">Niveau d'étude: {{ candidat.niveau_etude }}</p>
-          <p class="card-text">Salaire souhaité: {{ candidat.preference_salaire | currency }}</p>
-          <a href="#" class="btn btn-primary">Voir plus</a>
+    <div class="col-md-12 mb-2" *ngFor="let candidat of candidats | slice:0:list ? candidats.length : 10">
+      <div class="card clickable-card pb-3" (click)="onCardCandidatClick(candidat)">
+        <div class="row card-centent">
+          <div class="col-2 ps-0 pe-0">
+            <img *ngIf="candidat.image" [src]="candidat.image" class="img" alt="{{ candidat.nom }} {{ candidat.prenom }}">
+          </div>
+          <div class="col-8">
+            <h6 class="card-title mb-1">{{ candidat.nom }} {{ candidat.prenom }}</h6>
+            <p class="card-text address">{{candidat.ville}}, {{ candidat.code_postal }}, {{ candidat.pays }}</p>
+          </div>
+          <div class="col-2">
+            <button mat-icon-button class="bookmark-button save-btn">
+              <mat-icon>bookmark_border</mat-icon>
+            </button>
+          </div>
         </div>
       </div>
     </div>
+    <a [routerLink]="['/login']" class="text-center text-black mt-3" *ngIf="!list">Voir plus</a>
   </div>
-
   <div class="row" *ngIf="userType === 'candidat'">
-    <div class="col-md-12 mb-2" *ngFor="let item of annoncesAvecRestaurant | slice:0:list ? annoncesAvecRestaurant.length : 2">
-      <div class="card clickable-card" *ngIf="item.restaurant != null" (click)="onCardClick(item)">
-
+    <div class="col-md-12 mb-2" *ngFor="let item of annoncesAvecRestaurant | slice:0:list ? annoncesAvecRestaurant.length : 10">
+      <div class="card clickable-card" *ngIf="item.restaurant != null" (click)="onCardAnnonceClick(item)">
         <div class="row card-centent">
           <div class="col-2 ps-0 pe-0">
-            <img *ngIf="item.restaurant.image" [src]="item.restaurant.image" class="img" alt="{{ item.restaurant.nom }}">
+            <img *ngIf="item.restaurant.image" [src]="item.restaurant.image" class="img">
           </div>
           <div class="col-8">
             <h6 class="card-title mb-1">{{ item.annonce.titre }}</h6>
-            <div class="row align-items-center address">
-              <div class="col-auto pe-0">
-                <p class="card-text">{{ item.restaurant.nom }} ,</p>
-              </div>
-              <div class="col-auto pe-0 ps-0">
-                <p class="card-text">{{ item.restaurant.ville }} ,</p>
-              </div>
-              <div class="col-auto pe-0 ps-0">
-                <p class="card-text">{{ item.restaurant.code_postal }} ,</p>
-              </div>
-              <div class="col-auto pe-0 ps-0">
-                <p class="card-text">{{ item.restaurant.pays }}</p>
-              </div>
-            </div>
+            <p class="card-text address">{{ item.restaurant.nom }} , {{ item.restaurant.ville }}, {{ item.restaurant.code_postal }}, {{ item.restaurant.pays }}</p>
           </div>
           <div class="col-2">
             <button mat-icon-button class="bookmark-button save-btn">

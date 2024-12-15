@@ -7,7 +7,7 @@ import { NotificationsComponent } from './notifications/notifications.component'
 import { DisponibilitesComponent } from './disponibilites/disponibilites.component';
 import { PreferenceComponent } from './preference/preference.component';
 import { SharedModule } from '../shared/shared.module';
-import { FormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { ProfileTypeComponent } from './profile-type/profile-type.component';
 import { ContactComponent } from './contact/contact.component';
 import { ExperiencesComponent } from './experiences/experiences.component';
@@ -79,7 +79,8 @@ import {ProfileHeaderComponent} from './profile-header/profile-header.component'
     MatOptionModule,
     MatListModule,
     NgxSliderModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ]
 })
 export class ProfileComponentsModule { }

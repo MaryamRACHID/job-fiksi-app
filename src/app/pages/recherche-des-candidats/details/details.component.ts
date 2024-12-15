@@ -21,9 +21,9 @@ export class DetailsComponent {
 
 
   async ngOnInit(): Promise<void> {
-    this.id = localStorage.getItem("userId");
-    this.annonce = this.dataService.getAnnonce();
-    this.restaurant = this.dataService.getRestaurant();
+    this.id = localStorage.getItem('userId');
+    this.annonce = this.dataService.getAnnonce();       // Récupération de l'annonce
+    this.restaurant = this.dataService.getRestaurant(); // Récupération du restaurant
     this.candidat = await this.userService.getUserProfile(Number(this.id));
   }
 

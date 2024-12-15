@@ -3,6 +3,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {BehaviorSubject, forkJoin, map, Observable, of} from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import {Router} from '@angular/router';
+import {MatDialog} from '@angular/material/dialog';
+import {UserService} from '../../services/user.service';
 
 // Interface représentant la structure des candidats
 export interface Candidat {
@@ -103,13 +105,18 @@ export class AccueilComponent implements OnInit {
   restaurantSubject = new BehaviorSubject<Restaurant | null>(null);
   list: boolean | null = null;
 
-  constructor(private http: HttpClient, private router: Router) {}
+  profile: Candidat | Restaurant | null = null;
+  id: string | null = null;
 
+  constructor(private http: HttpClient, private router: Router, private dialog: MatDialog, private userService: UserService) {}
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
     this.getCandidats();
     this.getAnnonces();
     this.userType = localStorage.getItem("userType");
+    this.id = localStorage.getItem("userId")
+    this.profile = await this.userService.getUserProfile(Number(this.id))
+
   }
 
   getCandidats(): void {
