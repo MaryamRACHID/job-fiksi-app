@@ -58,7 +58,7 @@ import { ContratComponent } from './profile-restaurant/contrat/contrat.component
 import { GenereContratComponent } from './profile-restaurant/genere-contrat/genere-contrat.component';
 import { FeedbackCandidatComponent } from './profile-restaurant/feedback-candidat/feedback-candidat.component';
 import { MesFavoriesCandidatsComponent } from './profile-restaurant/mes-favories-candidats/mes-favories-candidats.component';
-
+import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
 @NgModule({
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 
@@ -162,7 +162,8 @@ import { MesFavoriesCandidatsComponent } from './profile-restaurant/mes-favories
     MatRadioModule,
     MatDialogModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    NgxMaterialTimepickerModule
   ],
   providers: [
     MatDatepickerModule, // Nécessaire pour fournir le service du datepicker

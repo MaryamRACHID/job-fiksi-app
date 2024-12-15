@@ -1,71 +1,116 @@
-<div class="post-container">
-  <app-header></app-header>
-
-  <p class="subtitle-1">Aperçu</p>
-
-  <div class="post-preview p-3 pt-0">
-    <div class="row">
-      <div class="col-8">
-        <p class="job-title mt-3">{{ restaurantName }}</p>
-        <p class="job-role">{{ jobTitle }}</p>
-      </div>
-      <div class="col-4">
-        <img src="assets/images/img.PNG" alt="Image du poste" class="post-image" />
-      </div>
-    </div>
-
-    <div class="details ps-3 pe-3 mt-2">
-      <!-- Affichage du lieu -->
-      <div class="row">
-        <div class="col-2"><i class="fa fa-map-marker-alt mt-2"></i></div>
-        <div class="col-10">
-          <span>Lieu</span>
-          <p class="mt-2">{{ location }}</p>
-        </div>
-      </div>
-
-      <!-- Affichage du salaire -->
-      <div class="row">
-        <div class="col-2"><i class="fa fa-coins mt-2"></i></div>
-        <div class="col-10">
-          <span>Salaire</span>
-          <p class="mt-2">{{ salary }}€/heure</p>
-        </div>
-      </div>
-
-      <!-- Affichage du nombre d'heures -->
-      <div class="row">
-        <div class="col-2"><i class="fa fa-clock mt-2"></i></div>
-        <div class="col-10">
-          <span>Nombre d'heures</span>
-          <p class="mt-2">{{ hours }}h/semaine</p>
-        </div>
-      </div>
-
-      <!-- Affichage des disponibilités -->
-      <div class="row">
-        <div class="col-2"><i class="fa fa-calendar-alt mt-2"></i></div>
-        <div class="col-10">
-          <span>Disponibilités</span>
-          <p class="mt-2">{{ selectedDays.join(' | ') }}</p>
-        </div>
-      </div>
+<div class="container-details">
+  <div class="top-section">
+    <div class="item1">
+      <button mat-icon-button>
+        <mat-icon class="icon-header">arrow_back</mat-icon>
+      </button>
+      <span class="company_name"> Détails </span>
     </div>
   </div>
+  <div class="container-details">
+  <h1>Aperçu</h1>
 
-  <!-- Affichage des compétences -->
-  <div class="skills p-3 pt-0">
-    <label>Compétences</label>
-    <div class="tags">
-      <span class="tag">{{ competences }}</span>
-    </div>
-  </div>
+    <section class="section1">
+      <div class="bloc1">
+        <span class="nomEntreprise">{{restaurantName}}</span>
+        <span class="poste">{{jobTitle}}</span>
+      </div>
+      <img class="bloc2" src="{{logo}}">
+    </section>
 
-  <!-- Affichage de la description -->
-  <div class="job-description p-3 pt-0">
-    <label>Description</label>
-    <p>{{ jobDescription }}</p>
-  </div>
+    <section class="section2">
+        <section class="company-info">
+          <div class="contact-info">
+            <div class="info-item">
+              <mat-icon>location_on</mat-icon>
+                <div class="info">
+                    <p class="label">Lieu</p>
+                    <p class="text">{{location}}</p>
+                </div>
+            </div>
+
+                    <!-- Salaire -->
+            <div class="info-item">
+              <mat-icon>attach_money</mat-icon> <!-- Icône pour le salaire -->
+              <div class="info">
+                  <p class="label">Salaire</p>
+                  <p class="text">{{salary}}Eur/heur</p>
+              </div>
+            </div>
+
+            <!-- nombre heure -->
+            <div class="info-item">
+              <mat-icon style="color: #fbbc04;">schedule</mat-icon> <!-- Icône pour la disponibilité -->
+              <div class="info">
+                  <p class="label">Nombre d'heures</p>
+                  <p class="text">{{hours}}h/semaine</p>
+              </div>
+            </div>
+
+            <!-- temps de travail -->
+            <div class="info-item">
+              <mat-icon style="color: #fbbc04;">hourglass_empty</mat-icon> <!-- Icône pour la disponibilité -->
+              <div class="info">
+                  <p class="label">Temps de travail</p>
+                  <p class="text">{{jobType}}</p>
+              </div>
+            </div>
+
+            <!-- Type de contrat -->
+            <div class="info-item">
+              <mat-icon style="color: #fbbc04;">assignment</mat-icon> <!-- Icône pour la disponibilité -->
+              <div class="info">
+                  <p class="label">Type de contrat</p>
+                  <p class="text">{{jobType}}</p>
+              </div>
+            </div>
+
+            <!-- Disponibilité -->
+            <div class="info-item">
+              <mat-icon>event_available</mat-icon> <!-- Icône pour la disponibilité -->
+              <div class="info">
+                  <p class="label">Disponibilité</p>
+                  <p class="text">{{selectedDays}}</p>
+              </div>
+            </div>
+          </div>
+        </section>
+    </section>
+    <div class="separator"></div>
+    <section class="description">
+      <div class="blocTitle">
+        <div class="iconAvant"></div>
+        <h2>Compétences</h2>
+      </div>
+      <p class="Texte">{{competences}}</p>
+    </section>
+
+    <div class="separator"></div>
+    <section class="description">
+      <div class="blocTitle">
+        <div class="iconDesc"></div>
+        <h2>Description du poste</h2>
+      </div>
+      <p class="Texte">{{jobDescription}}</p>
+    </section>
+
+    <div class="separator"></div>
+    <section class="description">
+      <div class="blocTitle">
+        <div class="iconProfil"></div>
+        <h2>Profil</h2>
+      </div>
+      <p class="Texte">Niveau d'étude minimal {{niveauEtude}}</p>
+    </section>
+
+    <div class="separator"></div>
+    <section class="description">
+      <div class="blocTitle">
+        <div class="iconComp"></div>
+        <h2>Avantages</h2>
+      </div>
+      <p class="Texte">Avantages: {{avantages}}</p>
+    </section>
 
   <!-- Boutons de navigation -->
   <div class="button-container row">
@@ -77,3 +122,5 @@
     </button>
   </div>
 </div>
+</div>
+

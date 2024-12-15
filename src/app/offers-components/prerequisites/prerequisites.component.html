@@ -4,7 +4,7 @@
     <p class="title-page">Pré-requis</p>
 
     <!-- Âge minimal des candidats -->
-    <div class="row mt-4 mb-3">
+    <!-- <div class="row mt-4 mb-3">
       <div class="col-12 position-relative">
         <label for="minAge" class="form-label">Âge minimal des candidats *</label>
         <select id="minAge" class="form-control" [(ngModel)]="ageMins" name="minAge" required>
@@ -13,7 +13,7 @@
         </select>
         <i class="fa fa-chevron-down position-absolute chevron-icon"></i>
       </div>
-    </div>
+    </div> -->
 
     <!-- Niveau d'études -->
     <div class="row mt-4 mb-3">
@@ -60,9 +60,9 @@
       <h5>Disponibilité</h5>
       <div class="col-12 mt-3">
         <h6>Jours disponibles :</h6>
-        <div class="d-flex flex-wrap justify-content-center mt-2">
+        <div class="d-flex flex-wrap mt-2">
           <div
-            class="form-check day-checkbox mx-auto me-3 mt-3"
+            class="form-check day-checkbox me-3 mt-3"
             *ngFor="let day of days">
             <input
               type="checkbox"
@@ -81,15 +81,17 @@
     <div class="row mt-4">
       <div class="col-12">
         <h6>Plages horaires disponibles :</h6>
-        <div *ngFor="let timeSlot of timeSlots" class="form-check row">
-          <input
-            type="checkbox"
-            class="form-check-input col"
-            [id]="timeSlot.id"
-            [(ngModel)]="timeSlot.selected"
-            name="timeSlots"
-          />
-          <label class="form-check-label" [for]="timeSlot.id">{{ timeSlot.label }}</label>
+        <div class="d-flex flex-wrap mt-2">
+          <div *ngFor="let timeSlot of timeSlots" class="form-check day-checkbox me-3 mt-3">
+            <input
+              type="checkbox"
+              class="form-check-input col"
+              [id]="timeSlot.id"
+              [(ngModel)]="timeSlot.selected"
+              name="timeSlots"
+            />
+            <label class="form-check-label" [for]="timeSlot.id">{{ timeSlot.label }}</label>
+          </div>
         </div>
       </div>
     </div>
@@ -98,9 +100,9 @@
     <div class="row mt-4">
       <div class="col-12">
         <h6>Comment se passe l’entretien ?</h6>
-        <div class="d-flex flex-wrap justify-content-center mt-2">
+        <div class="d-flex flex-wrap mt-2">
           <div
-            class="form-check day-checkbox mx-auto me-3 mt-3"
+            class="form-check day-checkbox me-3 mt-3"
             *ngFor="let mode of modes">
             <input
               type="checkbox"
