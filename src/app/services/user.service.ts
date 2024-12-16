@@ -47,6 +47,8 @@ export class UserService {
   async loginUser(data: { username: string; password: string }) {
     try {
       const response = await axios.post('https://jobfiksi.ismael-dev.com/login/', data);
+      console.log('Réponse API:', response.data);
+
       const user = response.data.user;
 
       if (user && user.token) {

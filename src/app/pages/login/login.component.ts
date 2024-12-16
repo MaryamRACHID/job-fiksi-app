@@ -66,24 +66,32 @@ export class LoginComponent implements OnInit {
   async onLoginSubmit(): Promise<void> {
     if (this.loginForm.valid) {
       const { username, password } = this.loginForm.value;
-
+  
       try {
+        // Appel au service pour connecter l'utilisateur
         const response = await this.userService.loginUser({ username, password });
-        this.isSuccess = true;
         this.successMessage = 'Connexion réussie ! Redirection en cours...';
+        this.isError = false;
+        this.isSuccess = true;
 
-        setTimeout(() => {
-          this.router.navigate(['/profil']);
-        }, 1500); // Redirection avec délai
+        //récupération du type d'utilisateur
+        const userType = response?.user_type; 
+        if (userType === 'restaurant') {            
+          setTimeout(() => this.router.navigate(['/accueilRestau']), 1500);
+        } else if (userType=== 'candidat') {
+          console.log('TODO navigate TO /accueilCandidat');
+        }
+        
       } catch (error: any) {
         this.isError = true;
-        this.errorMessage = error?.message || 'Une erreur s\'est produite lors de la connexion.';
+        this.errorMessage = error?.response?.data?.message || 'Une erreur s\'est produite lors de la connexion.';
       }
     } else {
       this.isError = true;
       this.errorMessage = 'Veuillez remplir correctement le formulaire.';
     }
   }
+  
 
   // Soumettre le formulaire d'inscription
   async onInscriptionSubmit(): Promise<void> {

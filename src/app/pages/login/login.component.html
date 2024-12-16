@@ -37,7 +37,7 @@
           <input type="checkbox" class="form-check-input me-2 mt-0" id="stay-logged-in">
           <label class="form-check-label label" for="stay-logged-in">Rester connecté</label>
         </div>
-        <a href="#" class="forgot-password label">Mot de passe oublié ?</a>
+        <a href="/password" class="forgot-password label">Mot de passe oublié ?</a>
       </div>
 
       <button class="btn btn-primary full-width label mt-3" type="submit">Me connecter</button>
@@ -77,8 +77,9 @@
       </div>
 
       <button class="btn btn-primary full-width label mt-3" type="submit">M'inscrire</button>
+      <p class="subtitle">Vous avez déjà un compte? <span class="span label" (click)="setToggle('connexion')">Se connecter</span></p>
+
     </form>
   </div>
 
-  <p class="subtitle">Vous avez déjà un compte? <span class="span label" (click)="setToggle('connexion')">Se connecter</span></p>
 </div>
