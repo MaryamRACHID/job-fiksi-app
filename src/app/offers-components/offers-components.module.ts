@@ -19,7 +19,8 @@ import {SucceedPageComponent} from './succeed-page/succeed-page.component';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
 import { HeaderRechercheComponent } from './header-recherche/header-recherche.component';
-
+import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
+import { MatChipsModule } from '@angular/material/chips';
 @NgModule({
   declarations: [
     BaseInformationComponent,
@@ -56,7 +57,9 @@ import { HeaderRechercheComponent } from './header-recherche/header-recherche.co
     NgxSliderModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    NgxSliderModule
+    NgxSliderModule,
+    NgxMaterialTimepickerModule,
+    MatChipsModule
   ]
 })
 export class OffersComponentsModule { }

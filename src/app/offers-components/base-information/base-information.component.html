@@ -80,7 +80,7 @@
       </div>
     </div>
     <div class="row mt-4 mb-3">
-      <div class="col-12 position-relative">
+      <!-- <div class="col-12 position-relative">
         <label class="form-label mt-2">Quel salaire proposez-vous ?</label>
         <div class="custom-dropdown">
           <select
@@ -95,7 +95,35 @@
           </select>
           <i class="fa fa-chevron-down position-absolute chevron-icon"></i>
         </div>
+      </div> -->
+      <div class="col-12">
+        <label for="namePost" class="form-label">Quel salaire proposez-vous ?*</label>
+        <input
+          type="text"
+          class="form-control"
+          id="salary"
+          [(ngModel)]="baseInfo.salary"
+          name="jobType"
+          placeholder="12£/heure"
+          required
+        />
       </div>
+
+      <!-- ####lieu de poste###### -->
+      <!-- <div class="row mt-4 mb-3">
+      <div class="col-12">
+        <label for="namePost" class="form-label">Lieu de poste *</label>
+        <input
+          type="text"
+          class="form-control"
+          id="lieu"
+          [(ngModel)]="baseInfo.lieu"
+          name="jobLieu"
+          placeholder="Lieu"
+          required
+        />
+      </div>
+      </div> -->
     </div>
 
     <!--<div class="row mt-4">

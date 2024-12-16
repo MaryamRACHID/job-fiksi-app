@@ -11,16 +11,26 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 export class JobPageComponent implements OnInit {
   // Données du restaurant
   restaurantName: string = '';
+  logo: string = '';
   location: string = '';
-
+  niveau='bac+5';
+  avtg=['av1', 'av2', 'av3'];
   // Données saisies dans les autres étapes
   jobTitle: string = '';
   jobDescription: string = '';
   jobType: string = '';
   salary: string = '';
+  lieu: string = '';
+  // ageMin:string ='';
+  niveauEtude:string = '';
+  attenteCandidat:string = '';
+  plageHoraire:string[] = [];
+  avantages : string[] = [];
+  paiement : string = '';
   hours: string = '';
   selectedDays: string[] = [];
   competences: string = '';
+
 
   // API URL et token pour récupérer les données du restaurant
   apiUrl = 'https://jobfiksi.ismael-dev.com/api/restaurants/profile/';
@@ -43,15 +53,22 @@ export class JobPageComponent implements OnInit {
       this.jobDescription = baseInfo.description || '';
       this.jobType = baseInfo.jobType || '';
       this.salary = baseInfo.salary || '';
+      console.log(this.jobType, this.salary, this.lieu, this.jobTitle, this.jobDescription);
     }
 
     if (prerequisitesInfo) {
+      this.niveauEtude = prerequisitesInfo.education || '';
       this.competences = prerequisitesInfo.competences || '';
       this.selectedDays = Object.keys(prerequisitesInfo.availabilityInfo).filter(day => prerequisitesInfo.availabilityInfo[day]);
+      this.plageHoraire = Object.keys(prerequisitesInfo.timeSlots).filter(time => prerequisitesInfo.timeSlots[time]);
+      console.log(this.plageHoraire,this.selectedDays,this.competences,this.niveauEtude);
     }
 
     if (jobAdvantages) {
       this.hours = jobAdvantages.hours || '';
+      this.paiement = jobAdvantages.paiement || '';
+      this.avantages = Object.keys(jobAdvantages.selectedAdvantages).filter(advg => jobAdvantages.selectedAdvantages[advg]);
+      console.log(this.avantages, this.hours, this.paiement)
     }
   }
 
@@ -62,6 +79,7 @@ export class JobPageComponent implements OnInit {
     this.http.get(this.apiUrl, { headers }).subscribe(
       (response: any) => {
         this.restaurantName = response.nom;
+        this.logo = response.image;
         this.location = `${response.num_et_rue}, ${response.code_postal} ${response.ville}, ${response.pays}`;
         console.log('Restaurant:', this.restaurantName, 'Location:', this.location);
       },
