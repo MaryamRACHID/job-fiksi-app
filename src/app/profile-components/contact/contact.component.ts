@@ -59,7 +59,7 @@ export class ContactComponent  {
 
     const headers = new HttpHeaders().set('Authorization', `Token ${this.token}`);
 
-    this.http.put(apiUrl, formData, { headers }).subscribe(
+    this.http.patch(apiUrl, formData, { headers }).subscribe(
       response => {
         console.log('Données et fichier enregistrés avec succès:', response);
       },

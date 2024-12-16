@@ -99,7 +99,7 @@ export class InformationsComponent {
     console.log('En-têtes de la requête:', headers);
 
     // Utilisez PUT ou PATCH si l'API le nécessite (ici j'utilise PUT comme exemple)
-    this.http.put(apiUrl, formData, { headers }).subscribe(
+    this.http.patch(apiUrl, formData, { headers }).subscribe(
       response => {
         console.log('Données et fichier enregistrés avec succès:', response);
       },
