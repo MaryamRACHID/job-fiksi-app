@@ -77,7 +77,7 @@ export class LoginComponent implements OnInit {
         //récupération du type d'utilisateur
         const userType = response?.user_type; 
         if (userType === 'restaurant') {            
-          setTimeout(() => this.router.navigate(['/accueilRestau']), 1500);
+          setTimeout(() => this.router.navigate(['/rechercheCandidat']), 1500);
         } else if (userType=== 'candidat') {
           console.log('TODO navigate TO /accueilCandidat');
         }
