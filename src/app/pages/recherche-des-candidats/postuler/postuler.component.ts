@@ -14,6 +14,7 @@ export class PostulerComponent {
 
   token: string | null = null;
 
+  joursDisponibilite: string[] = ['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche'];
   jours = [
     {
       nom: 'Lundi',
@@ -44,7 +45,47 @@ export class PostulerComponent {
         { heure: '14h00', isHighlighted: false },
         { heure: '15h00', isHighlighted: false }
       ]
-    }
+    },
+    {
+      nom: 'Jeudi',
+      creneaux: [
+        { heure: '10h00', isHighlighted: false },
+        { heure: '11h00', isHighlighted: false },
+        { heure: '12h00', isHighlighted: false },
+        { heure: '14h00', isHighlighted: false },
+        { heure: '15h00', isHighlighted: false }
+      ]
+    },
+    {
+      nom: 'Vendredi',
+      creneaux: [
+        { heure: '10h00', isHighlighted: false },
+        { heure: '11h00', isHighlighted: false },
+        { heure: '12h00', isHighlighted: false },
+        { heure: '14h00', isHighlighted: false },
+        { heure: '15h00', isHighlighted: false }
+      ]
+    },
+    {
+      nom: 'Samedi',
+      creneaux: [
+        { heure: '10h00', isHighlighted: false },
+        { heure: '11h00', isHighlighted: false },
+        { heure: '12h00', isHighlighted: false },
+        { heure: '14h00', isHighlighted: false },
+        { heure: '15h00', isHighlighted: false }
+      ]
+    },
+    {
+      nom: 'Dimanche',
+      creneaux: [
+        { heure: '10h00', isHighlighted: false },
+        { heure: '11h00', isHighlighted: false },
+        { heure: '12h00', isHighlighted: false },
+        { heure: '14h00', isHighlighted: false },
+        { heure: '15h00', isHighlighted: false }
+      ]
+    },
   ]
   annonce: Annonce | null = null;
   restaurant: Restaurant | null = null;
@@ -54,11 +95,11 @@ export class PostulerComponent {
     prenom: 'John',
     tel: '+33612345678',
     date_naissance: '1990-01-01',
-    cv: 'cv_john_doe.pdf',
+    cv: null,
     niveau_etude: 'Master',
     experience: '5 ans',
     user_id: 101,
-    disponibilite: 'Lundi, Mardi',
+    disponibilite: [],
     genre: 'Masculin',
     image: 'photo_john_doe.jpg',
     plage_horaire: '9h-18h',
@@ -86,6 +127,7 @@ export class PostulerComponent {
     email_pro: 'john.doe@example.com',
     specilaite: 'Développement web'
   };
+  showDone: boolean = true;
 
   id: string | null = null;
   constructor(  private http: HttpClient, private route: ActivatedRoute, private router: Router, private dataService: DataService, private userService: UserService) { }
@@ -98,19 +140,94 @@ export class PostulerComponent {
     console.log("heeeeeeeeeeey")
   }
 
-    toggleClass(jour: any, cren: any) {
-      cren.isHighlighted = !cren.isHighlighted; // Inverse l'état pour le créneau cliqué du jour spécifique
+  toggleDisponibilite(jour: string, isChecked: boolean): void {
+    // Initialiser le tableau s'il est undefined
+    if (!this.candidat.disponibilite) {
+      this.candidat.disponibilite = [];
     }
 
-  showDone: boolean = true; // Par défaut, Div 1 est visible
+    if (isChecked) {
+      // Ajouter le jour s'il est coché et qu'il n'est pas déjà présent
+      if (!this.candidat.disponibilite.includes(jour)) {
+        this.candidat.disponibilite.push(jour);
+      }
+    } else {
+      // Supprimer le jour s'il est décoché
+      this.candidat.disponibilite = this.candidat.disponibilite.filter(d => d !== jour);
+    }
+  }
+
+  toggleClass(jour: any, cren: any): void {
+    cren.isHighlighted = !cren.isHighlighted; // Basculer l'état de surlignage du créneau
+
+    // Mettez à jour uniquement la disponibilité des créneaux, sans altérer les jours sélectionnés.
+    const disponibiliteCreneaux: string[] = [];
+
+    for (const j of this.jours) {
+      for (const c of j.creneaux) {
+        if (c.isHighlighted) {
+          disponibiliteCreneaux.push(`${j.nom} - ${c.heure}`);
+        }
+      }
+    }
+
+    if (this.candidat.disponibilite) {
+      this.candidat.disponibilite = [
+        ...this.candidat.disponibilite.filter(d => !d.includes(' - ')), // Conservez les jours
+        ...disponibiliteCreneaux // Ajoutez les créneaux sélectionnés
+      ];
+    }
+
+    const selectedCount = jour.creneaux.filter((c: any) => c.isHighlighted).length;
+
+    // Désactiver tous les autres créneaux si 5 sont sélectionnés
+    jour.creneaux.forEach((c: any) => {
+      c.disabled = selectedCount >= 5 && !c.isHighlighted;
+    });
+
+
+    console.log('Disponibilité mise à jour :', this.candidat.disponibilite);
+  }
+
+
+  updateDisponibilite(): void {
+    const disponibiliteCreneaux: string[] = [];
+
+    for (const jour of this.jours) {
+      for (const cren of jour.creneaux) {
+        if (cren.isHighlighted) {
+          disponibiliteCreneaux.push(`${jour.nom} - ${cren.heure}`);
+        }
+      }
+    }
+
+    this.candidat.disponibilite = disponibiliteCreneaux;
+    console.log('Disponibilité mise à jour :', this.candidat.disponibilite);
+  }
+
+  onFileSelected(event: Event): void {
+    const input = event.target as HTMLInputElement;
+    if (input.files && input.files.length > 0) {
+      const file = input.files[0];
+      this.candidat.cv = file; // Assurez-vous que `cv` est typé comme `File | null`
+    }
+  }
 
 
   envoyerCandidature(): void {
     const formData = new FormData();
 
-    if (this.candidat.cv) {
-      formData.append('cv', this.candidat.cv);
+    if (this.annonce?.id) {
+      formData.append('annonce', this.annonce.id.toString());
     }
+
+    if (this.candidat.id) {
+      formData.append('candidat_id', this.candidat.id.toString());
+    }
+
+    //if (this.candidat.cv) {
+      //formData.append('cv', this.candidat.cv, this.candidat.cv.name);
+    //}
 
     if (this.candidat.nom) {
       formData.append('nom', this.candidat.nom);
@@ -124,54 +241,41 @@ export class PostulerComponent {
     if (this.candidat.email_pro) {
       formData.append('email', this.candidat.email_pro);
     }
-    if (this.candidat.disponibilite) {
-      formData.append('disponibilite', this.candidat.disponibilite);
-    }
+
     if (this.candidat.lettre_motivation) {
-      formData.append('lettre_motivation', this.candidat.lettre_motivation);
+      formData.append('message', this.candidat.lettre_motivation);
     }
 
-    const apiUrl = 'https://jobfiksi.ismael-dev.com/api/candidate/';
+    //if (this.candidat.disponibilite) {
+      //const disponibiliteString = this.candidat.disponibilite.join(',');
+      //formData.append('disponibilite', disponibiliteString);
+    //}
+
+    const apiUrl = 'https://jobfiksi.ismael-dev.com/api/candidatures/';
 
     const headers = new HttpHeaders().set('Authorization', `Token ${this.token}`);
 
-    this.http.put(apiUrl, formData, { headers }).subscribe({
+    this.http.post(apiUrl, formData, { headers }).subscribe({
       next: (response) => {
         console.log('Candidature envoyée avec succès', response);
         this.showDone = !this.showDone;
-        this.router.navigate(['/rechercheDesCandidats']);
+        this.router.navigate(['/postuler']);
       },
       error: (error) => {
         console.error('Erreur lors de l\'envoi de la candidature', error);
+
+        // Vérifier si le code d'erreur est 400 et si le message correspond
+        if (error.status === 400 && error.error?.candidature === 'Vous avez déjà postulé à cette annonce.') {
+          // Redirection vers /accueil
+          alert('Vous avez déjà postulé à cette annonce.');
+          this.router.navigate(['/accueil']);
+        } else {
+          // Gérer les autres erreurs
+          console.error('Autre erreur', error);
+        }
       }
+
     });
   }
-
-
-
-  toggleDisponibilite(jour: string, isChecked: boolean): void {
-    if (!this.candidat.disponibilite) {
-      this.candidat.disponibilite = '';
-    }
-
-    const disponibilites = this.candidat.disponibilite.split(', ').filter(Boolean);
-
-    if (isChecked) {
-      // Ajouter le jour s'il est coché
-      disponibilites.push(jour);
-    } else {
-      // Supprimer le jour s'il est décoché
-      const index = disponibilites.indexOf(jour);
-      if (index > -1) {
-        disponibilites.splice(index, 1);
-      }
-    }
-
-    // Mettre à jour les disponibilités sous forme de chaîne
-    this.candidat.disponibilite = disponibilites.join(', ');
-  }
-
-  joursDisponibilite: string[] = ['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche'];
-
 
 }

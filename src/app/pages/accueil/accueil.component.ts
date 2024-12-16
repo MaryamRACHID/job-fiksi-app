@@ -13,11 +13,11 @@ export interface Candidat {
   prenom?: string;
   tel?: string;
   date_naissance?: string;
-  cv?: string;
+  cv?: File | null;
   niveau_etude?: string;
   experience?: string;
   user_id: number;
-  disponibilite?: string;
+  disponibilite?: string[];
   genre?: string;
   image?: string;
   plage_horaire?: string;
@@ -105,7 +105,8 @@ export class AccueilComponent implements OnInit {
   restaurantSubject = new BehaviorSubject<Restaurant | null>(null);
   list: boolean | null = null;
 
-  profile: Candidat | Restaurant | null = null;
+  profileCandidat: Candidat | null = null;
+  profileRestaurant: Restaurant | null = null;
   id: string | null = null;
 
   constructor(private http: HttpClient, private router: Router, private dialog: MatDialog, private userService: UserService) {}
@@ -115,7 +116,8 @@ export class AccueilComponent implements OnInit {
     this.getAnnonces();
     this.userType = localStorage.getItem("userType");
     this.id = localStorage.getItem("userId")
-    this.profile = await this.userService.getUserProfile(Number(this.id))
+    this.profileCandidat = await this.userService.getUserProfile(Number(this.id))
+    this.profileRestaurant = await this.userService.getUserProfile(Number(this.id))
 
   }
 
@@ -199,5 +201,14 @@ export class AccueilComponent implements OnInit {
     this.list = true;
   }
 
+  onCandidatsFiltered(filteredCandidats: Candidat[]): void {
+    console.log('hooo Candidats filtrés reçus dans AccueilComponent:', filteredCandidats);
+    this.candidats = filteredCandidats;
+  }
+
+  onAnnonceFiltered(filteredAnnonces: Annonce[]): void {
+    console.log('hooo Annonces filtrés reçus dans AccueilComponent:', filteredAnnonces);
+    this.annonces = filteredAnnonces;
+  }
 
 }

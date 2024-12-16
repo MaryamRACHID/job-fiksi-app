@@ -3,7 +3,7 @@
   <div class="form-postuler">
     <!-- ######### Formulaire pour postuler ######### -->
     <div class="form-section" *ngIf="showDone" style="display: flex;">
-      <form>
+      <form enctype="multipart/form-data">
         <p class="subtitle-1">Informations personnelles</p>
         <!-- Nom -->
         <div class="form-group">
@@ -73,28 +73,24 @@
             </mat-checkbox>
           </div>
         </div>
-
         <!-- Créneaux disponibles -->
         <div class="form-group">
           <label for="crenaux" class="crenaux">Créneaux disponibles pour un entretien potentiel</label>
-          <div class="days" *ngFor="let jour of jours">
-            <div class="blocCreneaux">
-              <span>{{ jour.nom }}</span>
-              <div class="grid-items" *ngFor="let cren of jour.creneaux">
-                <p
-                  class="items"
-                  (click)="toggleClass(jour, cren)"
-                  [ngClass]="{
-                  'highlighted-creneaux': cren.isHighlighted,
-                  'default-creneaux': !cren.isHighlighted
-                }"
-                >
-                  {{ cren.heure }}
-                </p>
+          <ng-container *ngFor="let jour of jours">
+            <div class="days mt-3" *ngIf="candidat.disponibilite?.includes(jour.nom)">
+              <div class="blocCreneaux">
+                <span>{{ jour.nom }}</span>
+                <div class="grid-items" *ngFor="let cren of jour.creneaux">
+                  <p
+                    class="items"
+                    [class.highlighted]="cren.isHighlighted"
+                    (click)="toggleClass(jour, cren)">
+                    {{ cren.heure }}
+                  </p>
+                </div>
               </div>
             </div>
-            <div class="separator"></div>
-          </div>
+          </ng-container>
         </div>
 
         <!-- CV -->
@@ -104,12 +100,12 @@
             type="file"
             class="form-control cv"
             id="cv"
-            placeholder="CV"
-            [(ngModel)]="candidat.cv"
             name="cv"
+            (change)="onFileSelected($event)"
             required
           />
         </div>
+
 
         <!-- Message -->
         <div class="form-group">
@@ -156,7 +152,7 @@
         <img src="/assets/picture-postuler-done.jpg" alt="Description" />
       </div>
       <p>Votre candidature a bien été postulée.</p>
-      <a mat-button routerLink="/rechercheDesCandidats">Retour à la page d'accueil</a>
+      <a mat-button routerLink="/accueil">Retour à la page d'accueil</a>
     </div>
   </div>
 
