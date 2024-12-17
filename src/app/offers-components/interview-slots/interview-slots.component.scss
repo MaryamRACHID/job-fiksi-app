@@ -97,3 +97,68 @@ select option[value=""] {
   color: black;
 }
 
+/* Container styling */
+.input-container {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  max-width: 400px;
+  font-family: "Roboto", sans-serif;
+  align-items: center;
+  justify-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.input-label {
+  font-weight: bold;
+  font-size: 16px;
+  // color: #3f51b5; /* Material Design primary color */
+}
+
+/* Field group styling */
+.field-group {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+/* Individual fields */
+.custom-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.custom-field label {
+  font-size: 14px;
+  font-weight: bold;
+  color: #6c757d;
+}
+
+.date-input,
+.time-input {
+  padding: 10px 12px;
+  font-size: 14px;
+  border: 1px solid #dcdcdc;
+  border-radius: 4px;
+  outline: none;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Hover and focus states */
+.date-input:hover,
+.time-input:hover {
+  border-color: #9e9e9e;
+}
+
+.date-input:focus,
+.time-input:focus {
+  border-color: #3f51b5;
+  box-shadow: 0 2px 5px rgba(63, 81, 181, 0.3);
+}
+
+

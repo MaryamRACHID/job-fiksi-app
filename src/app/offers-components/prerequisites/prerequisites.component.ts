@@ -16,8 +16,7 @@ export class PrerequisitesComponent {
 
   modes: string[] = [
     'En présentiel',
-    'Par téléphone',
-    'Autre'
+    'Par téléphone'
   ];
 
   education = { level: '', certificates: '' };
@@ -35,8 +34,7 @@ export class PrerequisitesComponent {
   timeSlots = [
     { id: 'morning', label: 'Matin', selected: false },
     { id: 'afternoon', label: 'Après-midi', selected: false },
-    { id: 'evening', label: 'Soir', selected: false },
-    { id: 'autre', label: 'Autre', selected: false }
+    { id: 'evening', label: 'Soir', selected: false }
   ];
 
   constructor(private router: Router, private formDataService: FormDataService) {}
@@ -79,15 +77,17 @@ export class PrerequisitesComponent {
 
   // Passer à l'étape suivante
   goToNextStep() {
+    console.log(this.education, this.timeSlots, this.availabilityInfo, this.competences)
     // Stocker les données saisies dans le service
     this.formDataService.setFormData('prerequisitesInfo', {
-      education: this.education,
+      education: this.education.level,
       availabilityInfo: this.availabilityInfo,
       timeSlots: this.timeSlots,
+      competences: this.competences,
     });
 
     // Naviguer vers l'étape suivante
-    this.router.navigate(['/addPost/interviewSlots']);
+    this.router.navigate(['/addPost/jobAvantages']);
   }
 
   goToPreviousStep() {
