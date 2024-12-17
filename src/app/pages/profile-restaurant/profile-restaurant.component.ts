@@ -1,19 +1,10 @@
 import { Component } from '@angular/core';
-import { MatIconModule } from '@angular/material/icon';
-import { MatChipsModule } from '@angular/material/chips';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatTabsModule } from '@angular/material/tabs';
 import { MatTabChangeEvent } from '@angular/material/tabs';
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
 import { trigger, state, style, transition, animate } from '@angular/animations';
-// import { OffreDescriptionComponent } from './offre-description/offre-description.component';
-// import { ModifierInfosRestaurantComponent } from './modifier-infos-restaurant/modifier-infos-restaurant.component';
-import { CommonModule } from '@angular/common';
-import { DescriptionComponent } from '../../profile-components/description/description.component';
-import { MatDialogModule } from '@angular/material/dialog'; // Ajoute ceci si tu utilises des dialogues
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
-import { RestaurantService } from '../../services/restaurant.service';
+import {Candidat, Restaurant} from '../accueil/accueil.component';
+import {ActivatedRoute, Router} from '@angular/router';
+import {UserService} from '../../services/user.service';
+
 @Component({
   selector: 'app-profile-restaurant',
   templateUrl: './profile-restaurant.component.html',
@@ -41,7 +32,15 @@ export class ProfileRestaurantComponent{
   infos: any = {};
 
 
-  // constructor(private restaurantService: RestaurantService) {}
+  restaurant: Restaurant | null = null;
+  id: string | null = null;
+
+  constructor(private route: ActivatedRoute, private router: Router, private userService: UserService) { }
+
+  async ngOnInit(): Promise<void> {
+    this.id = localStorage.getItem('userId');
+    this.restaurant = await this.userService.getUserProfile(Number(this.id));
+  }
 
   // ngOnInit(): void {
   //   this.restaurantService.getRestaurantProfile().subscribe(
