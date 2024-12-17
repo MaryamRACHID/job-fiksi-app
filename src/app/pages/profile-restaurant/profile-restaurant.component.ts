@@ -4,6 +4,7 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
 import {Candidat, Restaurant} from '../accueil/accueil.component';
 import {ActivatedRoute, Router} from '@angular/router';
 import {UserService} from '../../services/user.service';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-profile-restaurant',
@@ -35,12 +36,18 @@ export class ProfileRestaurantComponent{
   restaurant: Restaurant | null = null;
   id: string | null = null;
 
-  constructor(private route: ActivatedRoute, private router: Router, private userService: UserService) { }
+  constructor(private location: Location, private route: ActivatedRoute, private router: Router, private userService: UserService) { }
+
 
   async ngOnInit(): Promise<void> {
     this.id = localStorage.getItem('userId');
     this.restaurant = await this.userService.getUserProfile(Number(this.id));
   }
+
+  goBack(): void {
+    this.location.back();
+  }
+
 
   // ngOnInit(): void {
   //   this.restaurantService.getRestaurantProfile().subscribe(

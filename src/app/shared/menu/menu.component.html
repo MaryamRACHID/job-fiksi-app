@@ -15,6 +15,10 @@
     <span class="material-icons-outlined">work_outline</span>
     <span>Mes postes</span>
   </a>
+  <a *ngIf="typeUser === 'restaurant'" class="menu-item" routerLink="/profile-restaurant" routerLinkActive="active">
+    <span class="material-icons-outlined">work_outline</span>
+    <span>Mes postes</span>
+  </a>
   <a class="menu-item" routerLink="/messagerie" routerLinkActive="active">
     <span class="material-icons-outlined">chat</span>
     <span>Messagerie</span>
