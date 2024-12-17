@@ -1,12 +1,9 @@
-<!DOCTYPE html>
-<div class="header" *ngIf="showInfos">
-  <div class="top-section">
-    <mat-toolbar color="primary" class="toolbar">
-      <button mat-icon-button>
-        <mat-icon>arrow_back</mat-icon>
-      </button>
-      <span class="company_name"> {{user.nomUser}} </span>
-      <span class="spacer"></span>
+<div class="header">
+  <div class="top-section d-flex pt-3 pb-3">
+    <div class="col-10">
+      <app-header></app-header>
+    </div>
+    <div class="col-2 d-flex justify-content-end pt-1">
       <button mat-icon-button>
         <mat-icon>share</mat-icon>
       </button>
@@ -16,135 +13,122 @@
       <button mat-icon-button>
         <mat-icon (click)="onTabEdit()">edit</mat-icon>
       </button>
-    </mat-toolbar>
+    </div>
   </div>
-  <div class="logo-container">
-    <img class="logo">
+  <div class="" *ngIf="candidat != null">
+    <img *ngIf="candidat.image" src="https://jobfiksi.ismael-dev.com/{{candidat.image}}" class="img">
   </div>
-  <div class="bottom-section"></div>
 </div>
 
-<div class="editInfosSection" *ngIf="showEditSection">
-  <app-modifier-profile-candidat [user]="user" (cancelEdit)="handleCancel()"></app-modifier-profile-candidat>
-</div>
-
-<div class="showInfosCandidat"  *ngIf="showInfos">
+<div class="showInfosCandidat mt-5 pt-5" *ngIf="candidat != null">
   <div class="content" >
-  <section class="company-info">
-     <h2>{{user.nomUser}}</h2>
-    <div class="contact-info">
-      <div class="info-item">
-        <mat-icon>email</mat-icon>
+    <section class="company-info">
+      <h2>{{candidat.prenom}} {{candidat.nom}}</h2>
+      <div class="contact-info">
+        <div class="info-item">
+          <mat-icon>email</mat-icon>
           <div class="info">
-              <p class="label">Email</p>
-               <p>{{user.emailUser}}</p>
+            <p class="label">Email</p>
+            <p>{{candidat.email_pro}}</p>
           </div>
-      </div>
-      <div class="info-item">
-        <mat-icon>phone</mat-icon>
+        </div>
+        <div class="info-item">
+          <mat-icon>phone</mat-icon>
           <div class="info">
-              <p class="label">Numéro de téléphone</p>
-               <p>{{user.telUser}}</p>
+            <p class="label">Numéro de téléphone</p>
+            <p>{{candidat.tel}}</p>
           </div>
-      </div>
-      <div class="info-item">
-        <mat-icon>location_on</mat-icon>
+        </div>
+        <div class="info-item">
+          <mat-icon>location_on</mat-icon>
           <div class="info">
-              <p class="label">Localisation</p>
-               <p>{{user.adresseUser}}</p>
+            <p class="label">Localisation</p>
+            <p>{{candidat.num_et_rue}}, {{candidat.ville}}, {{candidat.code_postal}}, {{candidat.pays}}</p>
           </div>
-      </div>
-      <div class="info-item">
-         <mat-icon class="iconDispo">event_available</mat-icon>
+        </div>
+        <div class="info-item">
+          <mat-icon class="iconDispo">event_available</mat-icon>
           <div class="info">
-              <p class="label">Disponibilité</p>
-              <div class="dispo"> <!--tags-->
-                <span class="daysUser"
-                  *ngFor="let day of user.disponibilitesUser">
-                  {{ day }}
-                </span><!--tag-->
-              </div>
+            <p class="label">Disponibilité</p>
+            <div class="dispo"> <!--tags-->
+              <span class="daysUser">{{candidat.disponibilite}}</span>
+            </div>
           </div>
+        </div>
       </div>
-  </div>
-  </section>
+    </section>
 
-  <div class="separator"></div>
-  <section class="description">
-    <h2>Description</h2>
-     <p>{{user.descriptionUser}}</p>
-    <a href="#" class="lien">Voir le CV</a>
-  </section>
+    <div class="separator"></div>
+    <section class="description">
+      <h2>Description</h2>
+      <p>{{candidat.langues_parlees}}</p>
+      <a href="#" class="lien">Voir le CV</a>
+    </section>
 
 
-  <div class="separator"></div>
-  <section class="formations">
-    <h2>Formations</h2>
-    <div class="interview-date" *ngFor="let formation of user.formationsUser">
-      <div class="date-label">
+    <div class="separator"></div>
+    <section class="formations">
+      <h2>Formations</h2>
+      <div class="interview-date" *ngFor="let formation of user.formationsUser">
+        <div class="date-label">
         <span class="showInfosEntretien">
           {{ formation.dateDebutFormation | date: 'yyyy' }} - {{ formation.dateFinFormation | date: 'yyyy' }}
         </span>
-        <ul class="interview-l">
-          <li class="detailsEntretien">
-            <span></span>{{formation.nomFormation}}
-          </li>
-          <li class="detailsEntite">
-            <span></span>{{formation.etablissementFormation}}
-          </li>
-        </ul>
+          <ul class="interview-l">
+            <li class="detailsEntretien">
+              <span></span>{{formation.nomFormation}}
+            </li>
+            <li class="detailsEntite">
+              <span></span>{{formation.etablissementFormation}}
+            </li>
+          </ul>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <div class="separator"></div>
-  <section class="advantages">
-    <h2>Compétences</h2>
-    <mat-chip-listbox class="tags">
-      <mat-chip *ngFor="let competence of user.competencesUser" class="tag">
-        {{ competence }}
-      </mat-chip>
-      <!-- <mat-chip color="primary" class="avant">responsabilité</mat-chip>
-      <mat-chip color="primary" class="avant">esprit d'équipe</mat-chip> -->
-    </mat-chip-listbox>
-  </section>
+    <div class="separator"></div>
+    <section class="advantages">
+      <h2>Compétences</h2>
+      <mat-chip-listbox class="tags">
+        <mat-chip *ngFor="let competence of user.competencesUser" class="tag">
+          {{ competence }}
+        </mat-chip>
+        <!-- <mat-chip color="primary" class="avant">responsabilité</mat-chip>
+        <mat-chip color="primary" class="avant">esprit d'équipe</mat-chip> -->
+      </mat-chip-listbox>
+    </section>
 
-  <div class="separator"></div>
-  <section class="experiences">
-    <h2>Experiences</h2>
-    <div class="interview-date" *ngFor="let experience of user.experiencesUser">
-      <div class="date-label">
-        <span class="showInfosEntretien">{{experience.debutExperience  | date: 'yyyy'}}-{{experience.finExperience  | date: 'yyyy'}}</span>
-        <ul class="interview-l">
-          <li class="detailsEntretien">
-            <span></span>• {{experience.poste}}
-          </li>
-          <li class="detailsEntite">
-            <span></span>• {{experience.structure}}
-          </li>
-        </ul>
+    <div class="separator"></div>
+    <section class="experiences">
+      <h2>Experiences</h2>
+      <div class="interview-date" *ngFor="let experience of user.experiencesUser">
+        <div class="date-label">
+          <span class="showInfosEntretien">{{experience.debutExperience  | date: 'yyyy'}}-{{experience.finExperience  | date: 'yyyy'}}</span>
+          <ul class="interview-l">
+            <li class="detailsEntretien">
+              <span></span>• {{experience.poste}}
+            </li>
+            <li class="detailsEntite">
+              <span></span>• {{experience.structure}}
+            </li>
+          </ul>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <div class="separator"></div>
-  <section class="social-links">
-    <h2>Social média</h2>
-    <div class="info-item">
-      <mat-icon>linkdIn</mat-icon>
+    <div class="separator"></div>
+    <section class="social-links">
+      <h2>Social média</h2>
+      <div class="info-item">
+        <mat-icon>linkdIn</mat-icon>
         <div class="info">
           <p class="label">LinkdIn</p>
           <a href="https://www.LinkdIn.com" target="_blank"></a><p class="text">profil_linkdin</p>
         </div>
-    </div>
-  </section>
-</div>
+      </div>
+    </section>
+  </div>
 </div>
 
-<app-menu-bar
-[acceuil]="'/rechercheDesCandidats'"
-[favorie]="'/mesFavoriesOffre'"
-[posteoucandidature]="'/mesCandidatures'"
-[messagerie]="'/messagerie'"
-[profil]="'/profil-candidat'">
-</app-menu-bar>
+<app-menu/>
+

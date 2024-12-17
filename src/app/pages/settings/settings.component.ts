@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {Router} from '@angular/router';
 import {MatDialog} from '@angular/material/dialog';
+import {UserService} from '../../services/user.service';
 
 @Component({
   selector: 'app-settings',
@@ -12,7 +13,7 @@ export class SettingsComponent {
   publicProfileEnabled: boolean = true;
   showLogoutPopup = false;
 
-  constructor(private router: Router, public dialog: MatDialog) {}
+  constructor(private router: Router, public dialog: MatDialog, private userService: UserService) {}
 
   navigateTo(route: string) {
     this.router.navigate([`/${route}`]);
@@ -28,8 +29,11 @@ export class SettingsComponent {
   }
 
   confirmLogout(): void {
-    // Ajoutez ici le code pour gérer la déconnexion
+    this.userService.logout();
     console.log("Déconnecté");
     this.closeLogoutPopup();
+    this.navigateTo("login")
+
   }
+
 }

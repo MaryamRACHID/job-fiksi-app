@@ -1,4 +1,8 @@
 import { Component } from '@angular/core';
+import {Candidat} from '../accueil/accueil.component';
+import {ActivatedRoute, Router} from '@angular/router';
+import {DataService} from '../../services/data.service';
+import {UserService} from '../../services/user.service';
 // import { ButtonContactCandidatComponent } from './button-contact-candidat/button-contact-candidat.component';
 @Component({
   selector: 'app-profile-candidat',
@@ -60,13 +64,15 @@ export class ProfileCandidatComponent {
     linkdin: 'inas.hakkou',
   };
 
-// Liste des jours de la semaine
-daysOfWeek: string[] = ['Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam', 'Dim'];
+  candidat: Candidat | null = null;
+  id: string | null = null;
 
+  constructor(private route: ActivatedRoute, private router: Router, private userService: UserService) { }
 
-// Disponibilités de l'utilisateur
-
-// Vérifie si un jour est dans les disponibilités de l'utilisateur
+  async ngOnInit(): Promise<void> {
+    this.id = localStorage.getItem('userId');
+    this.candidat = await this.userService.getUserProfile(Number(this.id));
+  }
 isAvailable(day: string): boolean {
   return this.user.disponibilitesUser.includes(day);
 }

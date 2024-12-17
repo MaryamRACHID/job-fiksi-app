@@ -21,7 +21,7 @@
   </div>
 
   <div class="button-container">
-    <button *ngIf="(step != 11  && (userType === null || userType === 'candidat')) || (step != 4 && userType === 'restaurant')" (click)="goToNextStep()" [disabled]="!userType || isFormValid" class="fixed-button btn btn-primary full-width">Continuer</button>
+    <button *ngIf="(step != 11  && (userType === null || userType === 'candidat')) || (step != 4 && userType === 'restaurant')" (click)="goToNextStep()" [disabled]="!userType" class="fixed-button btn btn-primary full-width">Continuer</button>
     <button *ngIf="(step === 11  && userType === 'candidat') || (step === 4  && userType === 'restaurant')" (click)="goToNextStep()" [disabled]="!userType" class="fixed-button btn btn-primary full-width">Terminer mon inscription</button>
   </div>
 </div>

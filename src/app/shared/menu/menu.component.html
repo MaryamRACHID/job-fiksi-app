@@ -11,7 +11,7 @@
     <span class="material-icons-outlined">bookmark_border</span>
     <span>Mes favoris</span>
   </a>
-  <a class="menu-item" routerLink="/posts" routerLinkActive="active">
+  <a *ngIf="typeUser === 'candidat'" class="menu-item" routerLink="/mesCandidatures" routerLinkActive="active">
     <span class="material-icons-outlined">work_outline</span>
     <span>Mes postes</span>
   </a>
