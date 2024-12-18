@@ -17,6 +17,11 @@ export class BankComponent {
   rib: string = '';  // Modèle pour le RIB
   iban: string = ''; // Modèle pour l'IBAN
   bic: string = '';  // Modèle pour le BIC
+  userId: string | null = '';
+
+  ngOnInit(): void {
+    this.userId = localStorage.getItem('userId');
+  }
 
   constructor(private http: HttpClient) {}
 
@@ -41,9 +46,15 @@ export class BankComponent {
       formData.append('ribDocument', this.otherDocFile, this.otherDocFile.name);  // Envoi du fichier RIB
     }
       // Ajout des informations de RIB, IBAN, BIC dans FormData
-      formData.append('rib', this.rib);
-      formData.append('iban', this.iban);
-      formData.append('bic', this.bic);
+    if (this.userId) {
+      formData.append('user', this.userId);
+    } else {
+      console.error('User ID is null or undefined.');
+      return; // Arrêtez l'exécution si userId est manquant
+    }
+    formData.append('rib', this.rib);
+    formData.append('iban', this.iban);
+    formData.append('bic', this.bic);
 
       console.log(this.iban);
 

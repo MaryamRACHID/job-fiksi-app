@@ -29,6 +29,7 @@ export class InformationsComponent {
     this.personalInfoChange.emit(this.personalInfo);
   }
 
+
   async ngOnInit() {
     try {
       this.userId = localStorage.getItem('userId');
@@ -95,6 +96,13 @@ export class InformationsComponent {
 
     if (this.selectedFile) {
       formData.append('image', this.selectedFile);
+    }
+
+    if (this.userId) {
+      formData.append('user', this.userId);
+    } else {
+      console.error('User ID is null or undefined.');
+      return; // Arrêtez l'exécution si userId est manquant
     }
 
     // Vérifiez que chaque champ n'est pas null ou vide avant de l'ajouter au FormData

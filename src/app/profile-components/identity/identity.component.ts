@@ -13,6 +13,11 @@ export class IdentityComponent {
   @ViewChild('vitaleUploadInput') vitaleUploadInput!: ElementRef;
 
   @Input() userType: string | null = null;
+  userId: string | null = '';
+
+  ngOnInit(): void {
+    this.userId = localStorage.getItem('userId');
+  }
 
   selectedIdentityFile: File | null = null;
   selectedVitaleFile: File | null = null;
@@ -39,6 +44,12 @@ export class IdentityComponent {
 
     if (this.selectedIdentityFile || this.selectedVitaleFile) {
       const formData = new FormData();
+      if (this.userId) {
+        formData.append('user', this.userId);
+      } else {
+        console.error('User ID is null or undefined.');
+        return; // Arrêtez l'exécution si userId est manquant
+      }
 
       if (this.selectedIdentityFile) {
         formData.append('identity', this.selectedIdentityFile, this.selectedIdentityFile.name);

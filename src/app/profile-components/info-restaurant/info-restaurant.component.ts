@@ -68,8 +68,10 @@ export class InfoRestaurantComponent {
   restauForm!: FormGroup;
 
 
+  userId: string | null = '';
+
   ngOnInit(): void {
-    // Initialisation du formulaire
+    this.userId = localStorage.getItem('userId');
     this.restauForm = this.fb.group({
       restaurantName: [
         this.restauInfo?.restaurantName || '',
@@ -119,6 +121,13 @@ export class InfoRestaurantComponent {
     this.restaurantInfoChange.emit(this.isvalid);
 
     const formData = new FormData();
+    if (this.userId) {
+      formData.append('user', this.userId);
+    } else {
+      console.error('User ID is null or undefined.');
+      return; // Arrêtez l'exécution si userId est manquant
+    }
+
 
     // Ajouter les données du formulaire à formData
     if (this.infoRestaurant.name) {

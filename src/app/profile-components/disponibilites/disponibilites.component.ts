@@ -11,6 +11,11 @@ export class DisponibilitesComponent {
   @Input() userType: string | null = null;
 
   token: string | null = null;
+  userId: string | null = '';
+
+  ngOnInit(): void {
+    this.userId = localStorage.getItem('userId');
+  }
 
   days = ['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche'];
   availabilityInfo: { [key: string]: boolean } = {
@@ -61,20 +66,27 @@ export class DisponibilitesComponent {
     const apiUrl = 'https://jobfiksi.ismael-dev.com/api/candidats/profile/';
 
     const formData = new FormData();
+    if (this.userId) {
+      formData.append('user', this.userId);
+    } else {
+      console.error('User ID is null or undefined.');
+      return; // Arrêtez l'exécution si userId est manquant
+    }
 
     const selectedDays = Object.keys(this.availabilityInfo).filter(day => this.availabilityInfo[day]);
     if (selectedDays.length > 0) {
-      formData.append('disponibilite', JSON.stringify(selectedDays));
+      formData.append('disponibilite', JSON.stringify(selectedDays).toString());
     }
 
     const selectedTimeSlots = this.timeSlots.filter(slot => this.timeSlotsInfo[slot]);
     if (selectedTimeSlots.length > 0) {
       formData.append('plages_horaires', JSON.stringify(selectedTimeSlots));
+
     }
 
     const headers = new HttpHeaders().set('Authorization', `Token ${this.token}`);
 
-    this.http.put(apiUrl, formData, { headers }).subscribe(
+   /* this.http.put(apiUrl, formData, { headers }).subscribe(
       response => {
         console.log('Availability saved successfully:', response);
       },
@@ -82,6 +94,6 @@ export class DisponibilitesComponent {
         console.error('Error saving availability:', error);
         //alert('Une erreur est survenue lors de l\'enregistrement des disponibilités.');
       }
-    );
+    );*/
   }
 }

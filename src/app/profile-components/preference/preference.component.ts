@@ -28,6 +28,7 @@ export class PreferenceComponent implements OnInit {
     };
   };
   @Input() userType: string | null = null;
+  userId: string | null = '';
 
   token: string | null = null; // Déclarer le token ici
   filteredCities: string[] = [];
@@ -56,6 +57,7 @@ export class PreferenceComponent implements OnInit {
   constructor(private http: HttpClient, private userService: UserService) {}
 
   ngOnInit() {
+    this.userId = localStorage.getItem('userId');
     // Récupérer le token depuis le localStorage
     this.token = localStorage.getItem('token'); // Si le token est stocké dans localStorage
   }
@@ -91,7 +93,12 @@ export class PreferenceComponent implements OnInit {
     const apiUrl = `https://jobfiksi.ismael-dev.com/api/candidats/profile/`;
 
     const formData = new FormData();
-
+    if (this.userId) {
+      formData.append('user', this.userId);
+    } else {
+      console.error('User ID is null or undefined.');
+      return; // Arrêtez l'exécution si userId est manquant
+    }
     if (this.preferencesInfo.jobPreferences.server) {
       formData.append('type_de_contrat_recherche', 'true');
     }

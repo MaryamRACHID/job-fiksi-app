@@ -13,6 +13,11 @@ export class FormationComponent {
   diplomas = [
     { name: '', institution: '', startDate: '', endDate: '' }
   ];
+  userId: string | null = '';
+
+  ngOnInit(): void {
+    this.userId = localStorage.getItem('userId');
+  }
 
   education = { level: '', certificates: '' };  // Education level entered
   educationLevels = ['Bac', 'Bac+2', 'Bac+3', 'Bac+5', 'Doctorat'];  // Education levels list
@@ -65,7 +70,12 @@ export class FormationComponent {
 
     // Create FormData object to send data
     const formData = new FormData();
-
+    if (this.userId) {
+      formData.append('user', this.userId);
+    } else {
+      console.error('User ID is null or undefined.');
+      return; // Arrêtez l'exécution si userId est manquant
+    }
     // Add the education data
     formData.append('niveau_etude', this.education.level);
     formData.append('certificates', this.education.certificates);

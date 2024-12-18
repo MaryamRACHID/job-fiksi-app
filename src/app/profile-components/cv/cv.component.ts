@@ -38,12 +38,23 @@ export class CvComponent {
   }
 
   // Save CV and related documents (upload to server)
+  userId: string | null = '';
+
+  ngOnInit(): void {
+    this.userId = localStorage.getItem('userId');
+  }
   saveCV() {
     this.cvInfoChange.emit(this.userType);
 
     // Vérifier si un fichier a été sélectionné
     if (this.cvFile || this.coverLetterFile || this.otherDocumentFile) {
       const formData = new FormData();
+      if (this.userId) {
+        formData.append('user', this.userId);
+      } else {
+        console.error('User ID is null or undefined.');
+        return; // Arrêtez l'exécution si userId est manquant
+      }
       if (this.cvFile) formData.append('cv', this.cvFile, this.cvFile.name);
       if (this.coverLetterFile) formData.append('lettre_motivation', this.coverLetterFile, this.coverLetterFile.name);
       if (this.otherDocumentFile) formData.append('autres_documents', this.otherDocumentFile, this.otherDocumentFile.name);

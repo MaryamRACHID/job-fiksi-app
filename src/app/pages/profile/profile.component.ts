@@ -130,28 +130,36 @@ export class ProfileComponent {
           this.notificationsComponent.saveNotifications();
           return;
         }
+        this.step++;
         break;
       case 5:
         this.descriptionComponent.saveDescription();
+        this.step++;
         break;
       case 6:
         this.formationComponent.saveFormation();
+        this.step++;
         break;
       case 7:
         this.experiencesComponent.saveExperience();
+        this.step++;
         break;
       case 8:
         this.cvComponent.saveCV();
+        this.step++;
         break;
       case 9:
         this.identityComponent.saveIdentity();
+        this.step++;
         break;
       case 10:
         this.bankComponent.saveBank();
+        this.step++;
         break;
       case 11:
         this.notificationsComponent.saveNotifications();
         this.router.navigate(['/accueil']);
+        this.step++;
         return;
     }
   }

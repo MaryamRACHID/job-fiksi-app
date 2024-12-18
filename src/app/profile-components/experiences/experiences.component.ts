@@ -9,6 +9,11 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 export class ExperiencesComponent {
   @Output() experienceInfoChange = new EventEmitter<any>();
   @Input() userType: string | null = null;
+  userId: string | null = '';
+
+  ngOnInit(): void {
+    this.userId = localStorage.getItem('userId');
+  }
 
   experiences = [{ title: '', company: '', startDate: '', endDate: '' }];
   spokenLanguages: { french: boolean; english: boolean; other: string } = {
@@ -34,12 +39,19 @@ export class ExperiencesComponent {
 
     const formData = new FormData();
 
+    if (this.userId) {
+      formData.append('user', this.userId);
+    } else {
+      console.error('User ID is null or undefined.');
+      return; // Arrêtez l'exécution si userId est manquant
+    }
     // Ajout des expériences dans FormData avec des noms de colonnes
     this.experiences.forEach((experience, i) => {
       formData.append(`poste_occupe`, experience.title);  // Nom de colonne: 'poste_occupe'
       formData.append(`experience`, experience.company);   // Nom de colonne: 'entreprise'
       formData.append(`date_debut`, experience.startDate); // Nom de colonne: 'date_debut'
       formData.append(`date_fin`, experience.endDate);     // Nom de colonne: 'date_fin'
+
     });
 
     // Ajout des langues parlées dans FormData

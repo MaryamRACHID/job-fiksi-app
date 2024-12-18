@@ -23,6 +23,9 @@ export class ContactComponent  {
   token: string | null = null;
   userId: string | null = null;
 
+  ngOnInit(): void {
+    this.userId = localStorage.getItem('userId');
+  }
   constructor(private http: HttpClient, private router: Router, private userService: UserService) {}
 
   onInputChange() {
@@ -41,8 +44,12 @@ export class ContactComponent  {
       : 'https://jobfiksi.ismael-dev.com/api/restaurants/profile/';
 
     const formData = new FormData();
-
-    formData.append('nom', 'this.contactInfo.phone');
+    if (this.userId) {
+      formData.append('user', this.userId);
+    } else {
+      console.error('User ID is null or undefined.');
+      return; // Arrêtez l'exécution si userId est manquant
+    }    formData.append('nom', 'this.contactInfo.phone');
 
     if (this.contactInfo.phone) {
       formData.append('tel', this.contactInfo.phone);

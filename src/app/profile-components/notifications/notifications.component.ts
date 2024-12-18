@@ -11,14 +11,23 @@ export class NotificationsComponent {
   notificationsPreference: number = 1; // Valeur par défaut : 'Oui' (1)
   publicProfile: number = 0; // Valeur par défaut : 'Non' (0)
   @Input() userType: string | null = null; // Type d'utilisateur passé en entrée
+  userId: string | null = '';
 
+  ngOnInit(): void {
+    this.userId = localStorage.getItem('userId');
+  }
   constructor(private http: HttpClient) {}
 
   // Sauvegarder les préférences de notifications
   saveNotifications() {
     // Créer un FormData
     const formData = new FormData();
-
+    if (this.userId) {
+      formData.append('user', this.userId);
+    } else {
+      console.error('User ID is null or undefined.');
+      return; // Arrêtez l'exécution si userId est manquant
+    }
     // Ajouter les préférences dans le FormData
     formData.append('notification_mail', this.notificationsPreference.toString());
     formData.append('profil_public', this.publicProfile.toString());

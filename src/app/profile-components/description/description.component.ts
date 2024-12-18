@@ -14,6 +14,11 @@ export class DescriptionComponent {
   description: string = '';
   skills: string = '';
   token: string | null = null;
+  userId: string | null = '';
+
+  ngOnInit(): void {
+    this.userId = localStorage.getItem('userId');
+  }
 
   constructor(private http: HttpClient) {}
 
@@ -29,9 +34,16 @@ export class DescriptionComponent {
     };
 
     const formData = new FormData();
+    if (this.userId) {
+      formData.append('user', this.userId);
+    } else {
+      console.error('User ID is null or undefined.');
+      return; // Arrêtez l'exécution si userId est manquant
+    }
     formData.append('hasExperience', JSON.stringify(this.hasExperience));
     formData.append('description', this.description);
     formData.append('skills', this.skills);
+
 
     const headers = new HttpHeaders().set('Authorization', `Token ${this.token}`);
 
